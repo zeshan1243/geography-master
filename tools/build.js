@@ -7,12 +7,27 @@
  * and this produces its page, its table rows and its sitemap entry.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs';
+import {
+  readFileSync,
+  writeFileSync,
+  mkdirSync,
+  rmSync,
+  existsSync,
+  readdirSync,
+  cpSync
+} from 'node:fs';
 import { join, dirname } from 'node:path';
 import { SITE, ROOT } from './lib/layout.js';
 import { decorate } from './lib/util.js';
 import { mapCoverage } from './lib/mapgeo.js';
 import * as pages from './lib/pages.js';
+
+/**
+ * Everything the site serves is assembled into OUT. Nothing outside it is
+ * deployed, which keeps tools/, package.json and the build-time-only data
+ * (data/details) off the public web.
+ */
+const OUT = join(ROOT, 'public');
 
 const readData = (name) => JSON.parse(readFileSync(join(ROOT, 'data', `${name}.json`), 'utf8'));
 
@@ -27,17 +42,35 @@ function readDetails() {
 const written = [];
 
 function write(relativePath, contents) {
-  const full = join(ROOT, relativePath);
+  const full = join(OUT, relativePath);
   mkdirSync(dirname(full), { recursive: true });
   writeFileSync(full, contents);
   written.push(relativePath);
 }
 
-/** Generated directories are cleared first so removed data cannot leave strays. */
+/** The output directory is rebuilt from scratch so deleted data cannot leave strays. */
 function clean() {
-  for (const dir of ['game', 'countries', 'continents', 'lists', 'guides']) {
-    const full = join(ROOT, dir);
-    if (existsSync(full)) rmSync(full, { recursive: true, force: true });
+  if (existsSync(OUT)) rmSync(OUT, { recursive: true, force: true });
+  mkdirSync(OUT, { recursive: true });
+}
+
+/**
+ * Hand-written source that ships as-is. data/details is deliberately excluded:
+ * those files feed the page generator and are never fetched by the browser.
+ */
+function copyStatic() {
+  for (const dir of ['css', 'js']) {
+    cpSync(join(ROOT, dir), join(OUT, dir), { recursive: true });
+  }
+
+  mkdirSync(join(OUT, 'data'), { recursive: true });
+  for (const file of readdirSync(join(ROOT, 'data'))) {
+    if (file.endsWith('.json')) cpSync(join(ROOT, 'data', file), join(OUT, 'data', file));
+  }
+
+  mkdirSync(join(OUT, 'assets'), { recursive: true });
+  for (const file of readdirSync(join(ROOT, 'assets'))) {
+    if (file.endsWith('.svg')) cpSync(join(ROOT, 'assets', file), join(OUT, 'assets', file));
   }
 }
 
@@ -196,7 +229,9 @@ function build() {
   if (ads) write('ads.txt', ads);
   write('sitemap.xml', sitemap(urls));
 
-  console.log(`Built ${written.length} files:`);
+  copyStatic();
+
+  console.log(`Built ${written.length} files into public/:`);
   console.log(`  ${countries.length} country pages`);
   console.log(`  ${continents.length} continent pages`);
   console.log(`  ${games.length} game pages`);

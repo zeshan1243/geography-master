@@ -1,6 +1,11 @@
 # Dependencies (the site itself has none; tools/ may use dev-only packages)
 node_modules/
 
+# Build output. `npm run build` regenerates all of it from data/ + tools/,
+# and the host runs that build itself — committing it only creates drift.
+public/
+.vercel/
+
 # Downloaded map source packages — only the extracted SVGs in assets/ are kept.
 # The MapSVG plugin archive is ~170MB and is re-downloadable; never commit it.
 assets/mapsvg-*/

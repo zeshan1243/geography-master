@@ -282,7 +282,7 @@ function checkAds() {
   }
 
   // ads.txt must exist and name the same publisher, or AdSense flags the site.
-  const adsTxtPath = join(ROOT, 'ads.txt');
+  const adsTxtPath = join(OUT, 'ads.txt');
   ok(existsSync(adsTxtPath), 'ads.txt is missing');
   if (existsSync(adsTxtPath)) {
     const body = readFileSync(adsTxtPath, 'utf8');
@@ -332,9 +332,11 @@ function checkAds() {
 
 /* --- 3. Generated HTML --------------------------------------------------- */
 
-function htmlFiles(dir = ROOT, found = []) {
+const OUT = join(ROOT, 'public');
+
+function htmlFiles(dir = OUT, found = []) {
   for (const entry of readdirSync(dir)) {
-    if (['node_modules', '.git', 'tools', 'data', 'css', 'js'].includes(entry)) continue;
+    if (['node_modules', '.git', 'tools', 'data', 'css', 'js', 'assets'].includes(entry)) continue;
     const full = join(dir, entry);
     if (statSync(full).isDirectory()) htmlFiles(full, found);
     else if (entry.endsWith('.html')) found.push(full);
@@ -358,7 +360,7 @@ async function checkGuides() {
     ok(a.description.length <= 165, `guide "${a.slug}": meta description too long`);
     ok((a.body.match(/<h2>/g) || []).length >= 4, `guide "${a.slug}": needs more structure`);
     ok(!/<h1[ >]/.test(a.body), `guide "${a.slug}": body must not contain its own <h1>`);
-    ok(existsSync(join(ROOT, 'guides', `${a.slug}.html`)), `guide "${a.slug}" was not generated`);
+    ok(existsSync(join(OUT, 'guides', `${a.slug}.html`)), `guide "${a.slug}" was not generated`);
   }
 
   const total = ARTICLES.reduce(
@@ -388,10 +390,7 @@ function checkLinks() {
     for (const match of html.matchAll(/(?:href|src)="(\/[^"#?]*)/g)) {
       const target = match[1];
       linkCount += 1;
-      const candidates = [
-        join(ROOT, target),
-        join(ROOT, target, 'index.html')
-      ];
+      const candidates = [join(OUT, target), join(OUT, target, 'index.html')];
       if (!candidates.some((c) => existsSync(c))) {
         if (!missing.has(target)) missing.set(target, relative(ROOT, file));
       }

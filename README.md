@@ -24,13 +24,14 @@ Node 18+ is required for the build scripts. Nothing is installed — there are n
 
 ```
 data/*.json          the source of truth (countries, landmarks, oceans, continents, games)
+css/  js/  assets/   hand-written, shipped as-is
        ↓
-tools/build.js       generates every HTML page from the data
+tools/build.js       generates the HTML and assembles everything into public/
        ↓
-*.html               committed static output — this is what you deploy
+public/              the deployable site — not committed, rebuilt on every deploy
 ```
 
-`js/` and `css/` are hand-written and shipped as-is; only the HTML is generated.
+Nothing outside `public/` is ever served, which keeps `tools/`, `package.json` and the build-time-only `data/details/` off the public web.
 
 ### Adding a country
 
@@ -63,9 +64,13 @@ Add an entry to `data/games.json` and a question builder in `js/quiz.js`. The pa
 
 ## Deployment
 
-Everything is static. Deploy the repository root to any static host — the generated HTML, `css/`, `js/` and `data/` are all that is needed. `tools/`, `package.json` and `README.md` can be excluded.
+Everything is static. Run `npm run build` and deploy `public/`.
 
-Links are root-relative, so the site must be served from a domain root rather than a subdirectory.
+On Vercel this is already configured in `vercel.json` (`buildCommand: npm run build`, `outputDirectory: public`) — no dashboard settings needed. Any other host works the same way: run the build, serve `public/` as the document root.
+
+`public/` is gitignored on purpose. It is pure derived output, the host rebuilds it on every deploy, and committing it only creates drift between the data and the pages.
+
+Links are root-relative, so the site must be served from a domain root rather than a subdirectory. Do **not** enable "clean URLs" style rewrites: internal links, canonical tags and `sitemap.xml` all use explicit `.html`, and a host-level redirect to extensionless URLs would fight the canonicals.
 
 Before going live, set `url` in `site.config.json` to the real domain and rebuild — it feeds the canonical tags, Open Graph URLs and `sitemap.xml`.
 
