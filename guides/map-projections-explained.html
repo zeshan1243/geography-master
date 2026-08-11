@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Map Projections Explained — Why Every World Map Is Wrong | World Geography Games</title>
+<meta name="description" content="Every flat world map distorts something. What Mercator, Gall-Peters and Winkel Tripel each preserve, what they sacrifice, and how to read around it.">
+<link rel="canonical" href="https://zehum.com/guides/map-projections-explained.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Map Projections Explained — Why Every World Map Is Wrong | World Geography Games">
+<meta property="og:description" content="Every flat world map distorts something. What Mercator, Gall-Peters and Winkel Tripel each preserve, what they sacrifice, and how to read around it.">
+<meta property="og:url" content="https://zehum.com/guides/map-projections-explained.html">
+<meta property="og:site_name" content="World Geography Games">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/games.css">
+<link rel="stylesheet" href="/css/game.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong theme. */
+(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3366385543056829" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"Article","headline":"How to read a world map","description":"Every flat world map distorts something. What Mercator, Gall-Peters and Winkel Tripel each preserve, what they sacrifice, and how to read around it.","url":"https://zehum.com/guides/map-projections-explained.html","author":{"@type":"Organization","name":"World Geography Games"},"publisher":{"@type":"Organization","name":"World Geography Games"},"inLanguage":"en"},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://zehum.com/"},{"@type":"ListItem","position":2,"name":"Guides","item":"https://zehum.com/guides/"},{"@type":"ListItem","position":3,"name":"How to read a world map","item":"https://zehum.com/guides/map-projections-explained.html"}]}]</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <span class="globe" aria-hidden="true">🌍</span>
+        <span class="brand-full">World Geography Games</span>
+        <span class="brand-short">Geography</span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+          <a href="/">Home</a>
+          <a href="/games/">Games</a>
+          <a href="/countries/">Countries</a>
+          <a href="/lists/countries-and-capitals.html">Capitals</a>
+          <a href="/lists/world-flags.html">Flags</a>
+          <a href="/continents/">Continents</a>
+          <a href="/guides/">Guides</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="search">
+          <label class="sr-only" for="site-search">Search countries</label>
+          <input id="site-search" type="search" placeholder="Search a country…"
+                 autocomplete="off" data-country-search="site-search-results">
+          <div class="search-results" id="site-search-results" role="listbox" aria-label="Search results"></div>
+        </div>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch colour theme">🌙</button>
+        <button class="icon-btn nav-toggle" type="button" data-nav-toggle
+                aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <div class="nav-drawer" id="nav-drawer" data-open="false">
+      <nav aria-label="Mobile">
+        <a href="/">Home</a>
+        <a href="/games/">Games</a>
+        <a href="/countries/">Countries</a>
+        <a href="/lists/countries-and-capitals.html">Capitals</a>
+        <a href="/lists/world-flags.html">Flags</a>
+        <a href="/continents/">Continents</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
+    </div>
+  </header>
+<main id="main">
+<div class="wrap has-rail">
+<div class="has-rail-main">
+<nav class="wrap breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span> <a href="/guides/">Guides</a><span aria-hidden="true">›</span> <span aria-current="page">How to read a world map</span></nav>
+<article class="section wrap">
+  <header style="margin-bottom:24px">
+    <h1>How to read a world map</h1>
+    <p class="lead" style="margin-top:12px">Every world map is wrong, necessarily and provably. The useful question is not which one is accurate but which distortion you are willing to accept.</p>
+    <p class="muted" style="font-size:.875rem;margin-top:12px">4 min read · Updated 11 August 2026</p>
+  </header>
+
+  <div class="article">
+    <p>Every flat map of the world is wrong. This is not a criticism of cartographers; it is a mathematical certainty. A sphere cannot be flattened without stretching, tearing or compressing it somewhere, and no amount of cleverness escapes that.</p>
+
+<p>Carl Friedrich Gauss proved the underlying result in 1827. A sphere has intrinsic curvature and a plane does not, so no mapping between them can preserve all distances. Every world map is therefore a choice about what to sacrifice — and understanding which choice was made is most of what it takes to read a map well.</p>
+
+<h2>What a projection can preserve</h2>
+
+<p>There are four properties a map might want, and no projection can hold all of them at once:</p>
+
+<ul>
+  <li><strong>Area</strong> — regions of equal size on the globe appear equal on the map</li>
+  <li><strong>Shape</strong> — local angles are correct, so small features look right</li>
+  <li><strong>Distance</strong> — measured distances are proportional to real ones</li>
+  <li><strong>Direction</strong> — bearings from a point are true</li>
+</ul>
+
+<p>A projection that preserves shape is called conformal; one that preserves area is equal-area. Provably, no projection can be both. That single fact explains almost every argument about world maps.</p>
+
+<h2>Mercator: correct angles, wildly wrong areas</h2>
+
+<p>Gerardus Mercator published his projection in 1569 to solve a navigation problem. On his map, a straight line is a line of constant compass bearing — a rhumb line. A navigator could draw a straight line from Lisbon to Recife, read off the bearing, and hold that heading. For an age of sail with no reliable longitude, this was transformative.</p>
+
+<p>The cost is area. To keep angles correct as meridians are forced parallel, Mercator stretches north-south distances by the same factor as east-west ones, and that factor grows without limit toward the poles. The consequences are severe:</p>
+
+<ul>
+  <li>Greenland appears roughly the size of Africa. Africa is about fourteen times larger.</li>
+  <li>Alaska appears comparable to Brazil. Brazil is around five times larger.</li>
+  <li>Antarctica appears to be an infinite white band, and the poles cannot be shown at all.</li>
+</ul>
+
+<p>Mercator is excellent at what it was designed for and poor at what it is mostly used for. Online slippy maps still use a variant, for a good reason: conformality means shapes stay correct at every zoom level, and north is always up. At street level the area distortion is irrelevant. At world level it is enormous.</p>
+
+<h2>Gall-Peters: correct areas, distorted shapes</h2>
+
+<p>The best-known equal-area response. Every country occupies its correct share of the map, which means the tropics are represented at their true size — the reason it was promoted from the 1970s as a corrective to Mercator's flattering of the northern hemisphere.</p>
+
+<p>The trade is shape. Landmasses appear vertically stretched near the equator and horizontally squashed at high latitudes; Africa looks unnaturally elongated. It is honest about area and unpleasant to look at, which is roughly the opposite of Mercator's bargain.</p>
+
+<h2>Robinson and Winkel Tripel: compromise</h2>
+
+<p>Most modern world maps use a projection that preserves nothing exactly and everything approximately.</p>
+
+<p>Arthur Robinson's 1963 projection was explicitly designed by eye rather than by formula — he tuned it until it looked right, then derived the mathematics. It was the National Geographic Society's standard world map from 1988 to 1998.</p>
+
+<p>Winkel Tripel, which replaced it there in 1998, takes its name from the German for "triple", referring to its aim of minimising three distortions at once: area, direction and distance. It is now the most common choice for general-purpose world maps, and if you have seen a modern atlas world map, it was probably this.</p>
+
+<h2>What the map quiz here uses</h2>
+
+<p>The world map behind the <a href="/game/map-quiz.html">map quiz</a> is an equirectangular-family projection, the simplest of all: longitude maps directly to x, latitude to y. Lines of latitude and longitude form a perfect grid.</p>
+
+<p>This is not a good projection for reading area — it stretches high latitudes horizontally, which is why Greenland, northern Canada and Russia look wider than they should. It is a good projection for interaction, because the relationship between screen position and coordinates is simple and predictable.</p>
+
+<p>It is worth knowing this while playing, because it affects what you see. Northern countries appear larger than they are. Norway's outline in particular looks enormously stretched vertically compared with its actual proportions, which is a projection artefact rather than an error in the map.</p>
+
+<h2>Reading around the distortion</h2>
+
+<p>A few habits make any world map more useful:</p>
+
+<p><strong>Compare along the equator, not across latitudes.</strong> Two countries at similar latitudes are distorted by similar amounts, so comparing them is reasonably safe. Comparing Greenland with the Democratic Republic of the Congo is not.</p>
+
+<p><strong>Distrust your sense of the far north.</strong> Russia, Canada, Greenland and Scandinavia are the regions where inflation is worst on the most common projections. Russia genuinely is enormous — it does not need the help the map gives it.</p>
+
+<p><strong>Remember that shortest routes are not straight lines.</strong> A flight from London to Tokyo passes near the Arctic, which looks like a detour on a flat map and is in fact the shorter path on a sphere. This is why polar flight routes appear so strange when drawn on a world map.</p>
+
+<p><strong>Use a globe when area matters.</strong> A globe is the only representation with no distortion at all. Every flat map is a compromise, and the honest question is never whether it is accurate but which inaccuracy you have agreed to accept.</p>
+
+<p>If you want to test how much of your mental map survives contact with a real one, the <a href="/game/map-quiz.html">map quiz</a> and the <a href="/game/shape-quiz.html">country shape quiz</a> are the two games here that use actual geography rather than names.</p>
+  </div>
+
+  <div class="ad-container" data-ad data-ad-slot-id="8268112020" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+  </div>
+
+  <div class="related">
+    <h2>More guides</h2>
+    <div class="related-links">
+      <a href="/guides/how-to-memorise-every-country.html">How to memorise all 195 countries</a>
+      <a href="/guides/why-flags-look-alike.html">Why so many national flags look alike</a>
+      <a href="/guides/countries-people-misplace.html">The countries people most often misplace</a>
+    </div>
+  </div>
+</article>
+</div>
+<aside class="ad-rail" aria-label="Advertisement">
+    <div class="ad-rail-sticky">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-container ad-container-rail" data-ad data-ad-slot-id="7250058413"></div>
+    </div>
+  </aside>
+</div>
+</main>
+<footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand"><span class="globe" aria-hidden="true">🌍</span> World Geography Games</span>
+          <p>Learn the world. Play. Improve. Free geography games with no account and no downloads.</p>
+        </div>
+        <div>
+          <h3>Play</h3>
+          <ul>
+            <li><a href="/games/">All games</a></li>
+            <li><a href="/game/country-quiz.html">Country quiz</a></li>
+            <li><a href="/game/capital-quiz.html">Capital quiz</a></li>
+            <li><a href="/game/flag-quiz.html">Flag quiz</a></li>
+            <li><a href="/game/mixed-quiz.html">Mixed quiz</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="/countries/">All countries</a></li>
+            <li><a href="/continents/">Continents</a></li>
+            <li><a href="/lists/countries-and-capitals.html">Countries and capitals</a></li>
+            <li><a href="/lists/world-flags.html">World flags</a></li>
+            <li><a href="/lists/largest-countries.html">Largest countries</a></li>
+            <li><a href="/guides/">Guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Site</h3>
+          <ul>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/privacy-policy.html">Privacy policy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> World Geography Games. All rights reserved.</span>
+        <span>Country data is compiled from public sources and rounded for readability.</span>
+      </div>
+    </div>
+  </footer>
+<script type="module" src="/js/app.js"></script>
+</body>
+</html>

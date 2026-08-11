@@ -1,0 +1,422 @@
+#!/usr/bin/env node
+/**
+ * check.js — verification suite.
+ *
+ * Three layers:
+ *   1. Data integrity (the JSON is internally consistent).
+ *   2. The real quiz engine, run under a fetch stub that reads /data from disk,
+ *      across every game type and difficulty.
+ *   3. The generated HTML — every internal link resolves to a file that exists.
+ */
+
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { join, relative } from 'node:path';
+import { ROOT, SITE } from './lib/layout.js';
+import { slugify } from './lib/util.js';
+
+let failures = 0;
+let checks = 0;
+
+function ok(condition, message) {
+  checks += 1;
+  if (!condition) {
+    failures += 1;
+    console.error(`  ✗ ${message}`);
+  }
+  return condition;
+}
+
+function section(name) {
+  console.log(`\n${name}`);
+}
+
+const read = (name) => JSON.parse(readFileSync(join(ROOT, 'data', `${name}.json`), 'utf8'));
+
+/* --- 1. Data ------------------------------------------------------------- */
+
+const countries = read('countries');
+const landmarks = read('landmarks');
+const waters = read('oceans');
+const continents = read('continents');
+const games = read('games');
+const coverage = read('map-coverage');
+const details = (() => {
+  const dir = join(ROOT, 'data', 'details');
+  return readdirSync(dir)
+    .filter((f) => f.endsWith('.json'))
+    .reduce((all, f) => Object.assign(all, JSON.parse(readFileSync(join(dir, f), 'utf8'))), {});
+})();
+
+function checkData() {
+  section('Data integrity');
+
+  ok(countries.length === 195, `expected 195 countries, found ${countries.length}`);
+
+  const names = new Set();
+  const codes = new Set();
+  const slugs = new Set();
+  const continentNames = new Set(continents.map((c) => c.name));
+
+  for (const c of countries) {
+    ok(!names.has(c.name), `duplicate country name: ${c.name}`);
+    ok(!codes.has(c.code), `duplicate country code: ${c.code}`);
+    names.add(c.name);
+    codes.add(c.code);
+
+    const slug = slugify(c.name);
+    ok(!slugs.has(slug), `duplicate slug: ${slug}`);
+    slugs.add(slug);
+
+    ok(/^[A-Z]{2}$/.test(c.code), `${c.name}: code must be two uppercase letters`);
+    ok(Boolean(c.capital), `${c.name}: missing capital`);
+    ok(continentNames.has(c.continent), `${c.name}: unknown continent "${c.continent}"`);
+    ok([1, 2, 3, 4].includes(c.tier), `${c.name}: tier must be 1-4`);
+    ok(c.population > 0, `${c.name}: population must be positive`);
+    ok(c.area > 0, `${c.name}: area must be positive`);
+    ok(Boolean(c.currency && c.language), `${c.name}: missing currency or language`);
+  }
+
+  // Declared continent counts must match the country list.
+  for (const continent of continents) {
+    const actual = countries.filter((c) => c.continent === continent.name).length;
+    ok(
+      actual === continent.countries,
+      `${continent.name}: declares ${continent.countries} countries, data has ${actual}`
+    );
+    ok(Boolean(continent.slug && continent.summary), `${continent.name}: missing slug or summary`);
+    ok(Array.isArray(continent.facts) && continent.facts.length >= 3, `${continent.name}: needs at least 3 facts`);
+  }
+
+  // Every landmark must point at a country that exists.
+  for (const l of landmarks) {
+    ok(names.has(l.country), `landmark "${l.name}" references unknown country "${l.country}"`);
+    ok(continentNames.has(l.continent), `landmark "${l.name}": unknown continent`);
+    ok(Boolean(l.fact), `landmark "${l.name}": missing fact`);
+  }
+
+  for (const w of waters) {
+    ok(Boolean(w.name && w.fact && w.icon), `water "${w.name}": missing field`);
+    ok(['Ocean', 'Sea'].includes(w.type), `water "${w.name}": type must be Ocean or Sea`);
+  }
+
+  const gameSlugs = new Set();
+  for (const g of games) {
+    ok(!gameSlugs.has(g.slug), `duplicate game slug: ${g.slug}`);
+    gameSlugs.add(g.slug);
+    ok(Boolean(g.metaTitle && g.metaDescription), `game "${g.name}": missing SEO metadata`);
+    ok(g.metaDescription.length <= 165, `game "${g.name}": meta description too long (${g.metaDescription.length})`);
+  }
+}
+
+function checkDetails() {
+  section('Country detail');
+
+  const codes = new Set(countries.map((c) => c.code));
+  ok(Object.keys(details).length === 195, `expected 195 detail entries, found ${Object.keys(details).length}`);
+
+  let borderCount = 0;
+  for (const [code, d] of Object.entries(details)) {
+    ok(codes.has(code), `detail entry for unknown country code ${code}`);
+    ok(Array.isArray(d.facts) && d.facts.length >= 3, `${code}: needs at least 3 facts`);
+    ok(d.facts.every((f) => f.split(' ').length >= 10), `${code}: a fact is too short to be worth showing`);
+    ok(Array.isArray(d.cities) && d.cities.length > 0, `${code}: no cities listed`);
+    ok(Boolean(d.region), `${code}: no region`);
+    ok(d.highest && d.highest.name && d.highest.m > 0, `${code}: highest point missing`);
+
+    // Borders must be mutual. This is the strongest check available on the
+    // data: a one-sided border is always a mistake in one of the two entries.
+    for (const other of d.borders) {
+      borderCount += 1;
+      ok(codes.has(other), `${code}: border with unknown code ${other}`);
+      ok(
+        details[other] && details[other].borders.includes(code),
+        `${code} borders ${other}, but ${other} does not border ${code}`
+      );
+    }
+  }
+
+  // Facts are the point of these pages; duplicated ones mean templated filler.
+  const seen = new Map();
+  for (const [code, d] of Object.entries(details)) {
+    for (const fact of d.facts) {
+      if (seen.has(fact)) ok(false, `${code} repeats a fact already used by ${seen.get(fact)}`);
+      seen.set(fact, code);
+    }
+  }
+  console.log(`  ${seen.size} distinct facts, ${borderCount / 2} mutual land borders`);
+}
+
+function checkMapCoverage() {
+  section('Map coverage');
+
+  const codes = new Set(countries.map((c) => c.code));
+  ok(coverage.countries.length === 195, `map coverage should list 195 countries, has ${coverage.countries.length}`);
+  ok(coverage.viewBox.width > 0 && coverage.viewBox.height > 0, 'map viewBox is missing');
+
+  let shape = 0;
+  let locate = 0;
+  for (const entry of coverage.countries) {
+    ok(codes.has(entry.code), `map coverage lists unknown country code ${entry.code}`);
+    ok(entry.box !== null, `${entry.name}: no path found in world.svg`);
+    if (entry.shape) shape += 1;
+    if (entry.locate) locate += 1;
+
+    // A country playable on the map must be big enough to see and to tap.
+    if (entry.locate) {
+      const maxDim = Math.max(entry.box.width, entry.box.height);
+      ok(maxDim >= coverage.rules.locate.minDim, `${entry.name}: marked locate-playable but only ${maxDim} units`);
+      ok(entry.area >= coverage.rules.locate.minArea, `${entry.name}: marked locate-playable but area ${entry.area}`);
+    }
+  }
+
+  // Every difficulty must have enough countries to fill a 10-question round.
+  const tiers = { easy: [1], medium: [1, 2], hard: [2, 3], expert: [3, 4] };
+  for (const mode of ['shape', 'locate']) {
+    for (const [name, allowed] of Object.entries(tiers)) {
+      const n = coverage.countries.filter((c) => c[mode] && allowed.includes(c.tier)).length;
+      ok(n >= 10, `${mode}/${name}: only ${n} playable countries, need at least 10`);
+    }
+  }
+  console.log(`  ${shape} countries usable as shapes, ${locate} on the map (of 195)`);
+}
+
+/* --- 2. The quiz engine -------------------------------------------------- */
+
+/** Lets the browser modules run in Node by serving /data from disk. */
+function installFetchStub() {
+  globalThis.fetch = async (input) => {
+    const href = typeof input === 'string' ? input : input.href;
+    const file = join(ROOT, 'data', href.split('/data/')[1]);
+    if (!existsSync(file)) return { ok: false, status: 404, json: async () => null };
+    return { ok: true, status: 200, json: async () => JSON.parse(readFileSync(file, 'utf8')) };
+  };
+}
+
+async function checkEngine() {
+  section('Quiz engine');
+  installFetchStub();
+
+  const quiz = await import('../js/quiz.js');
+  const score = await import('../js/score.js');
+
+  const types = ['flags', 'capitals', 'countries', 'continents', 'landmarks', 'waters', 'shapes', 'locate', 'mixed'];
+  const difficulties = quiz.DIFFICULTIES.map((d) => d.id);
+
+  for (const type of types) {
+    for (const id of difficulties) {
+      const round = await quiz.buildRound({ type, difficulty: id, count: 10 });
+
+      ok(round.length > 0, `${type}/${id}: produced no questions`);
+      ok(round.length <= 10, `${type}/${id}: produced more than 10 questions`);
+
+      // Small pools (oceans on easy) legitimately cap below 10; flag anything worse.
+      ok(round.length >= 6, `${type}/${id}: only ${round.length} questions available`);
+
+      const subjects = new Set();
+      for (const q of round) {
+        // The map quiz answers on the map itself, so it has no option buttons.
+        const expectedOptions = q.interaction === 'map' ? 0 : 4;
+        ok(
+          q.options.length === expectedOptions,
+          `${type}/${id}: expected ${expectedOptions} options, got ${q.options.length}`
+        );
+        ok(
+          new Set(q.options).size === q.options.length,
+          `${type}/${id}: duplicate options in "${q.prompt}"`
+        );
+        if (expectedOptions) {
+          ok(q.options.includes(q.answer), `${type}/${id}: answer missing from options`);
+        } else {
+          ok(Boolean(q.answerCode && q.visual.box), `${type}/${id}: map question needs answerCode and box`);
+        }
+        ok(Boolean(q.prompt && q.explanation), `${type}/${id}: missing prompt or explanation`);
+        ok(Boolean(q.visual), `${type}/${id}: missing visual`);
+        ok(!subjects.has(q.id), `${type}/${id}: repeated question in one round`);
+        subjects.add(q.id);
+      }
+    }
+  }
+
+  // The daily challenge must be identical for everyone on a given day.
+  const seed = quiz.dailySeed('2026-08-11');
+  const a = await quiz.buildRound({ type: 'mixed', difficulty: 'medium', count: 10, rng: quiz.makeRng(seed) });
+  const b = await quiz.buildRound({ type: 'mixed', difficulty: 'medium', count: 10, rng: quiz.makeRng(seed) });
+  ok(
+    JSON.stringify(a.map((q) => q.id)) === JSON.stringify(b.map((q) => q.id)),
+    'daily challenge is not reproducible from its seed'
+  );
+
+  const different = await quiz.buildRound({
+    type: 'mixed',
+    difficulty: 'medium',
+    count: 10,
+    rng: quiz.makeRng(quiz.dailySeed('2026-08-12'))
+  });
+  ok(
+    JSON.stringify(a.map((q) => q.id)) !== JSON.stringify(different.map((q) => q.id)),
+    'daily challenge is the same on different days'
+  );
+
+  section('Scoring');
+  ok(score.scoreAnswer({ correct: false, elapsedMs: 100, streak: 0 }).points === 0, 'wrong answer should score 0');
+  ok(score.scoreAnswer({ correct: true, elapsedMs: 9000, streak: 1 }).points === 100, 'slow correct answer should score 100');
+  ok(score.scoreAnswer({ correct: true, elapsedMs: 1000, streak: 1 }).points === 150, 'fast correct answer should score 150');
+  ok(score.scoreAnswer({ correct: true, elapsedMs: 9000, streak: 3 }).points === 150, '3-streak should add 50');
+  ok(score.scoreAnswer({ correct: true, elapsedMs: 1000, streak: 10 }).points === 400, '10-streak fast should score 400');
+  ok(score.stars(8, 10) === 4, '8/10 should be 4 stars');
+  ok(score.stars(10, 10) === 5, '10/10 should be 5 stars');
+  ok(score.starString(4) === '★★★★☆', 'star string should pad to five');
+}
+
+/* --- 3. AdSense ---------------------------------------------------------- */
+
+function checkAds() {
+  const client = SITE.adsense?.client;
+  if (!client) return;
+  section('AdSense');
+
+  ok(/^ca-pub-\d{16}$/.test(client), `publisher id looks wrong: ${client}`);
+
+  for (const [name, slot] of Object.entries(SITE.adsense.slots || {})) {
+    ok(/^\d{10}$/.test(slot), `slot "${name}" should be 10 digits, got "${slot}"`);
+  }
+
+  // ads.txt must exist and name the same publisher, or AdSense flags the site.
+  const adsTxtPath = join(ROOT, 'ads.txt');
+  ok(existsSync(adsTxtPath), 'ads.txt is missing');
+  if (existsSync(adsTxtPath)) {
+    const body = readFileSync(adsTxtPath, 'utf8');
+    ok(
+      body.includes(client.replace(/^ca-/, '')) && body.includes('f08c47fec0942fa0'),
+      'ads.txt does not authorise this publisher id'
+    );
+  }
+
+  const files = htmlFiles();
+  let withUnit = 0;
+  for (const file of files) {
+    const html = readFileSync(file, 'utf8');
+    const name = relative(ROOT, file);
+
+    ok(
+      html.includes(`adsbygoogle.js?client=${client}`),
+      `${name}: missing the AdSense loader script`
+    );
+
+    if (html.includes('data-ad-slot-id=')) withUnit += 1;
+
+    // Inline push() would fire before the results screen is laid out; ads.js
+    // owns activation instead. Guard against the snippet creeping back in.
+    ok(
+      !/adsbygoogle\s*=\s*window\.adsbygoogle/.test(html),
+      `${name}: inline adsbygoogle push found — activation belongs in js/ads.js`
+    );
+
+    for (const match of html.matchAll(/data-ad-slot-id="([^"]*)"/g)) {
+      ok(/^\d{10}$/.test(match[1]), `${name}: malformed ad slot "${match[1]}"`);
+    }
+
+    // <ins> must not be in the served HTML: a hidden one would swallow the
+    // push meant for a visible unit (see js/ads.js).
+    ok(
+      !html.includes('class="adsbygoogle"'),
+      `${name}: static <ins class="adsbygoogle"> found — units are injected by js/ads.js`
+    );
+  }
+  const allHtml = files.map((f) => readFileSync(f, 'utf8')).join('');
+  for (const [name, slot] of Object.entries(SITE.adsense.slots || {})) {
+    ok(allHtml.includes(`data-ad-slot-id="${slot}"`), `slot "${name}" (${slot}) is never placed on any page`);
+  }
+  console.log(`  ${withUnit} of ${files.length} pages carry an ad unit`);
+}
+
+/* --- 3. Generated HTML --------------------------------------------------- */
+
+function htmlFiles(dir = ROOT, found = []) {
+  for (const entry of readdirSync(dir)) {
+    if (['node_modules', '.git', 'tools', 'data', 'css', 'js'].includes(entry)) continue;
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) htmlFiles(full, found);
+    else if (entry.endsWith('.html')) found.push(full);
+  }
+  return found;
+}
+
+async function checkGuides() {
+  section('Guides');
+  const { ARTICLES } = await import('./lib/articles.js');
+
+  const slugs = new Set();
+  for (const a of ARTICLES) {
+    ok(!slugs.has(a.slug), `duplicate guide slug: ${a.slug}`);
+    slugs.add(a.slug);
+
+    const words = a.body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+    // A short guide is filler. If one cannot clear this bar it should be cut.
+    ok(words >= 800, `guide "${a.slug}" is only ${words} words`);
+    ok(Boolean(a.metaTitle && a.description && a.summary), `guide "${a.slug}": missing metadata`);
+    ok(a.description.length <= 165, `guide "${a.slug}": meta description too long`);
+    ok((a.body.match(/<h2>/g) || []).length >= 4, `guide "${a.slug}": needs more structure`);
+    ok(!/<h1[ >]/.test(a.body), `guide "${a.slug}": body must not contain its own <h1>`);
+    ok(existsSync(join(ROOT, 'guides', `${a.slug}.html`)), `guide "${a.slug}" was not generated`);
+  }
+
+  const total = ARTICLES.reduce(
+    (n, a) => n + a.body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length,
+    0
+  );
+  console.log(`  ${ARTICLES.length} guides, ${total} words total`);
+}
+
+function checkLinks() {
+  section('Generated pages and links');
+
+  const files = htmlFiles();
+  ok(files.length > 200, `expected 200+ generated pages, found ${files.length}`);
+
+  const missing = new Map();
+  let linkCount = 0;
+
+  for (const file of files) {
+    const html = readFileSync(file, 'utf8');
+
+    ok(/<title>[^<]{10,}<\/title>/.test(html), `${relative(ROOT, file)}: missing or short <title>`);
+    ok(/name="description" content="[^"]{50,}"/.test(html), `${relative(ROOT, file)}: missing or short meta description`);
+    ok((html.match(/<h1[ >]/g) || []).length === 1, `${relative(ROOT, file)}: should have exactly one <h1>`);
+    ok(/rel="canonical"/.test(html), `${relative(ROOT, file)}: missing canonical link`);
+
+    for (const match of html.matchAll(/(?:href|src)="(\/[^"#?]*)/g)) {
+      const target = match[1];
+      linkCount += 1;
+      const candidates = [
+        join(ROOT, target),
+        join(ROOT, target, 'index.html')
+      ];
+      if (!candidates.some((c) => existsSync(c))) {
+        if (!missing.has(target)) missing.set(target, relative(ROOT, file));
+      }
+    }
+  }
+
+  for (const [target, from] of missing) {
+    ok(false, `broken link ${target} (first seen in ${from})`);
+  }
+  console.log(`  checked ${linkCount} internal links across ${files.length} pages`);
+}
+
+/* --- Run ----------------------------------------------------------------- */
+
+checkData();
+checkDetails();
+checkMapCoverage();
+await checkEngine();
+checkAds();
+await checkGuides();
+checkLinks();
+
+console.log(`\n${checks - failures}/${checks} checks passed`);
+if (failures) {
+  console.error(`${failures} failed`);
+  process.exit(1);
+}
+console.log('All good.');

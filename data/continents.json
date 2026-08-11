@@ -1,0 +1,128 @@
+[
+{
+  "name": "Africa",
+  "slug": "africa",
+  "icon": "🌍",
+  "countries": 54,
+  "area": 30370000,
+  "population": 1460000000,
+  "largest": "Algeria",
+  "smallest": "Seychelles",
+  "highest": "Mount Kilimanjaro (5,895 m)",
+  "summary": "Africa is the second largest and second most populous continent. It holds 54 sovereign countries, the Sahara — the largest hot desert on Earth — and the Nile, one of the world's longest rivers.",
+  "facts": [
+    "Africa is the only continent that spans both the northern and southern temperate zones.",
+    "Nigeria is the most populous African country, with over 220 million people.",
+    "The Sahara covers roughly a third of the continent's land area.",
+    "More than 1,000 languages are spoken across Africa."
+  ]
+},
+{
+  "name": "Asia",
+  "slug": "asia",
+  "icon": "🌏",
+  "countries": 48,
+  "area": 44579000,
+  "population": 4750000000,
+  "largest": "Russia (partly in Europe)",
+  "smallest": "Maldives",
+  "highest": "Mount Everest (8,849 m)",
+  "summary": "Asia is the largest continent by both area and population. It contains the world's highest mountain, its most populous countries, and some of the oldest continuously inhabited cities.",
+  "facts": [
+    "Around 60% of all people on Earth live in Asia.",
+    "China and India each have more than 1.4 billion residents.",
+    "The Dead Sea shore is the lowest land point on the planet.",
+    "Asia contains both the highest and lowest natural elevations on land."
+  ]
+},
+{
+  "name": "Europe",
+  "slug": "europe",
+  "icon": "🌍",
+  "countries": 44,
+  "area": 10180000,
+  "population": 745000000,
+  "largest": "Russia (partly in Asia)",
+  "smallest": "Vatican City",
+  "highest": "Mount Elbrus (5,642 m)",
+  "summary": "Europe is the second smallest continent by area but one of the most densely populated. Its 44 countries range from Russia, the largest country on Earth, down to Vatican City, the smallest.",
+  "facts": [
+    "Vatican City is the smallest sovereign state in the world at 0.49 km².",
+    "The Euro is the official currency of 20 European Union member states.",
+    "Iceland sits on the Mid-Atlantic Ridge, between two tectonic plates.",
+    "The Danube flows through more countries than any other river in the world."
+  ]
+},
+{
+  "name": "North America",
+  "slug": "north-america",
+  "icon": "🌎",
+  "countries": 23,
+  "area": 24709000,
+  "population": 604000000,
+  "largest": "Canada",
+  "smallest": "Saint Kitts and Nevis",
+  "highest": "Denali (6,190 m)",
+  "summary": "North America stretches from the Arctic tundra of Canada and Greenland to the tropical islands of the Caribbean, and includes 23 sovereign countries.",
+  "facts": [
+    "Canada has the longest coastline of any country on Earth.",
+    "Mexico City is one of the largest metropolitan areas in the world.",
+    "The Caribbean holds 13 of the continent's 23 sovereign states.",
+    "The Great Lakes contain about a fifth of the world's surface fresh water."
+  ]
+},
+{
+  "name": "South America",
+  "slug": "south-america",
+  "icon": "🌎",
+  "countries": 12,
+  "area": 17840000,
+  "population": 439000000,
+  "largest": "Brazil",
+  "smallest": "Suriname",
+  "highest": "Aconcagua (6,961 m)",
+  "summary": "South America is home to the Amazon rainforest, the Andes — the longest mountain range in the world — and just 12 sovereign countries, making it a favourite starting point for geography learners.",
+  "facts": [
+    "The Amazon carries more water than any other river on Earth.",
+    "The Andes run for about 7,000 kilometres along the western edge of the continent.",
+    "Bolivia and Paraguay are the continent's only landlocked countries.",
+    "Angel Falls in Venezuela is the world's tallest uninterrupted waterfall."
+  ]
+},
+{
+  "name": "Oceania",
+  "slug": "oceania",
+  "icon": "🌏",
+  "countries": 14,
+  "area": 8600000,
+  "population": 45000000,
+  "largest": "Australia",
+  "smallest": "Nauru",
+  "highest": "Puncak Jaya (4,884 m)",
+  "summary": "Oceania spans Australia, New Zealand, Papua New Guinea and thousands of Pacific islands. It is the smallest continent by land area and by population.",
+  "facts": [
+    "Australia accounts for the vast majority of Oceania's land area.",
+    "Nauru is the world's smallest island country at just 21 km².",
+    "The Great Barrier Reef is the largest living structure on the planet.",
+    "Many Oceanian states use the Australian or US dollar rather than their own currency."
+  ]
+},
+{
+  "name": "Antarctica",
+  "slug": "antarctica",
+  "icon": "🐧",
+  "countries": 0,
+  "area": 14200000,
+  "population": 0,
+  "largest": "—",
+  "smallest": "—",
+  "highest": "Vinson Massif (4,892 m)",
+  "summary": "Antarctica is the southernmost continent and the only one with no permanent population and no sovereign countries. It is governed by the Antarctic Treaty and holds about 70% of the world's fresh water as ice.",
+  "facts": [
+    "The lowest natural temperature ever recorded, −89.2 °C, was measured at Vostok Station.",
+    "Antarctica is technically the largest desert in the world.",
+    "No country owns Antarctica; the Antarctic Treaty reserves it for scientific research.",
+    "Its ice sheet averages about 1.9 kilometres thick."
+  ]
+}
+]

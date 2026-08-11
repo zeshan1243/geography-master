@@ -1,0 +1,71 @@
+{
+"AU": {"region":"Australasia","borders":[],"cities":["Sydney","Melbourne","Brisbane"],"highest":{"name":"Mount Kosciuszko","m":2228},"facts":[
+  "Australia is the only country that covers an entire continent, and the sixth largest in the world.",
+  "Around 85% of Australians live within 50 kilometres of the coast, leaving the interior almost empty.",
+  "The Great Barrier Reef is the largest living structure on Earth and is visible from orbit."]},
+
+"FJ": {"region":"Melanesia","borders":[],"cities":["Suva","Lautoka","Nadi"],"highest":{"name":"Mount Tomanivi","m":1324},"facts":[
+  "Fiji is made up of over 330 islands, roughly a third of them inhabited.",
+  "The 180th meridian passes through the country, so it straddles the theoretical line between hemispheres.",
+  "Rugby sevens is the national sport, and Fiji won Olympic gold in it in 2016."]},
+
+"KI": {"region":"Micronesia","borders":[],"cities":["Tarawa","Betio","Bikenibeu"],"highest":{"name":"unnamed point on Banaba","m":81},"facts":[
+  "Kiribati straddles the equator and all four hemispheres, spanning some 3.5 million square kilometres of ocean.",
+  "It was the first country to enter the year 2000, having shifted the date line east in 1995.",
+  "Most of its land sits barely two metres above sea level, making it acutely exposed to rising seas."]},
+
+"MH": {"region":"Micronesia","borders":[],"cities":["Majuro","Ebeye","Arno"],"highest":{"name":"unnamed point on Likiep","m":10},"facts":[
+  "The Marshall Islands consists of 29 coral atolls and five isolated islands.",
+  "Bikini Atoll was the site of 23 nuclear tests between 1946 and 1958 and remains largely uninhabited.",
+  "Traditional Marshallese stick charts mapped ocean swells for navigation between atolls."]},
+
+"FM": {"region":"Micronesia","borders":[],"cities":["Weno","Palikir","Kolonia"],"highest":{"name":"Dolohmwar","m":791},"facts":[
+  "The Federated States of Micronesia spans over 600 islands across 2,700 kilometres of the Pacific.",
+  "Nan Madol, built on artificial islets of basalt, is the only ancient city constructed atop a coral reef.",
+  "The country is a federation of four states, each with its own distinct language and culture."]},
+
+"NR": {"region":"Micronesia","borders":[],"cities":["Yaren","Denigomodu","Aiwo"],"highest":{"name":"Command Ridge","m":65},"facts":[
+  "Nauru is the smallest island country in the world at 21 square kilometres.",
+  "It has no official capital city; government offices sit in the Yaren district.",
+  "Phosphate mining made it briefly one of the richest countries per person, then left much of the interior stripped."]},
+
+"NZ": {"region":"Australasia","borders":[],"cities":["Auckland","Wellington","Christchurch"],"highest":{"name":"Aoraki / Mount Cook","m":3724},"facts":[
+  "New Zealand was among the last large landmasses settled by humans, reached by Polynesians around 1300.",
+  "It was the first country to grant women the vote in national elections, in 1893.",
+  "Wellington is the southernmost capital city of any sovereign state."]},
+
+"PW": {"region":"Micronesia","borders":[],"cities":["Koror","Ngerulmud","Airai"],"highest":{"name":"Mount Ngerchelchuus","m":242},"facts":[
+  "Palau created the world's first shark sanctuary in 2009, banning commercial shark fishing in its waters.",
+  "Jellyfish Lake holds millions of jellyfish that lost most of their sting through isolation.",
+  "Ngerulmud is the least populous capital city of any sovereign state."]},
+
+"PG": {"region":"Melanesia","borders":["ID"],"cities":["Port Moresby","Lae","Mount Hagen"],"highest":{"name":"Mount Wilhelm","m":4509},"facts":[
+  "Papua New Guinea has over 800 living languages, more than any other country on Earth.",
+  "It occupies the eastern half of New Guinea, the world's second largest island.",
+  "Much of the highland interior was unknown to outsiders until aerial survey in the 1930s."]},
+
+"WS": {"region":"Polynesia","borders":[],"cities":["Apia","Vaitele","Faleula"],"highest":{"name":"Mount Silisili","m":1858},"facts":[
+  "Samoa switched to the western side of the international date line in 2011 to align with Australia and New Zealand.",
+  "It was the first Pacific island nation to gain independence in the modern era, in 1962.",
+  "Traditional tatau tattooing has been practised here continuously for around two thousand years."]},
+
+"SB": {"region":"Melanesia","borders":[],"cities":["Honiara","Auki","Gizo"],"highest":{"name":"Mount Popomanaseu","m":2335},"facts":[
+  "The Solomon Islands comprises nearly 1,000 islands spread across the southwestern Pacific.",
+  "Guadalcanal was the site of a decisive campaign of the Pacific war in 1942 and 1943.",
+  "A high share of the population has naturally blond hair, caused by a gene variant found almost nowhere else."]},
+
+"TO": {"region":"Polynesia","borders":[],"cities":["Nuku'alofa","Neiafu","Haveluloto"],"highest":{"name":"Kao","m":1046},"facts":[
+  "Tonga is the only Pacific island nation never formally colonised, retaining its monarchy throughout.",
+  "It sits beside the Tonga Trench, one of the deepest points in the ocean.",
+  "The 2022 Hunga Tonga eruption was among the most powerful recorded and was heard thousands of kilometres away."]},
+
+"TV": {"region":"Polynesia","borders":[],"cities":["Funafuti","Vaiaku","Asau"],"highest":{"name":"unnamed point on Niulakita","m":4.6},"facts":[
+  "Tuvalu is the fourth smallest country in the world at 26 square kilometres.",
+  "Its highest point is under five metres, leaving it among the most threatened by sea level rise.",
+  "Licensing its .tv internet domain provides a significant share of government revenue."]},
+
+"VU": {"region":"Melanesia","borders":[],"cities":["Port Vila","Luganville","Norsup"],"highest":{"name":"Mount Tabwemasana","m":1877},"facts":[
+  "Vanuatu is an archipelago of about 80 islands formed along a volcanic arc.",
+  "It regularly ranks as one of the most natural-disaster-exposed countries in the world.",
+  "Land diving on Pentecost Island, where men jump from towers with vines tied to their ankles, inspired bungee jumping."]}
+}

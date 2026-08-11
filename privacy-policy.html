@@ -1,145 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy — Geography Master</title>
-  <meta name="description" content="Privacy Policy for the Geography Master mobile app." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌍</text></svg>" />
-  <style>
-    :root {
-      --bg: #0F172A; --surface: #1E293B; --primary: #38BDF8;
-      --text: #F1F5F9; --muted: #94A3B8; --border: #475569;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg); color: var(--text); line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: var(--primary); }
-    .wrap { max-width: 760px; margin: 0 auto; padding: 0 22px; }
-    header.nav {
-      border-bottom: 1px solid var(--border);
-      background: rgba(15,23,42,.85); backdrop-filter: blur(10px);
-      position: sticky; top: 0;
-    }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 19px; }
-    .brand .logo { font-size: 24px; }
-    .nav a { color: var(--muted); font-weight: 600; }
-    .nav a:hover { color: var(--text); }
-    main { padding: 48px 0 72px; }
-    h1 { font-size: 34px; font-weight: 900; letter-spacing: -.5px; }
-    .updated { color: var(--muted); margin-top: 8px; font-size: 14px; }
-    h2 { font-size: 21px; margin: 34px 0 10px; }
-    p, li { color: #d5dced; font-size: 16px; }
-    ul { margin: 10px 0 10px 22px; }
-    li { margin-bottom: 6px; }
-    .box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 18px 20px; margin: 20px 0;
-    }
-    strong { color: var(--text); }
-    footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 14px; text-align: center; }
-    footer a { margin: 0 10px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — World Geography Games</title>
+<meta name="description" content="How World Geography Games handles local storage, cookies, advertising and analytics.">
+<link rel="canonical" href="https://zehum.com/privacy-policy.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Privacy Policy — World Geography Games">
+<meta property="og:description" content="How World Geography Games handles local storage, cookies, advertising and analytics.">
+<meta property="og:url" content="https://zehum.com/privacy-policy.html">
+<meta property="og:site_name" content="World Geography Games">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/games.css">
+<link rel="stylesheet" href="/css/responsive.css">
+<script>
+/* Applied before first paint so the page never flashes the wrong theme. */
+(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3366385543056829" crossorigin="anonymous"></script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://zehum.com/"},{"@type":"ListItem","position":2,"name":"Privacy policy","item":"https://zehum.com/privacy-policy.html"}]}</script>
 </head>
 <body>
-  <header class="nav">
-    <div class="wrap nav-inner">
-      <a class="brand" href="index.html" style="color:inherit;"><span class="logo">🌍</span> Geography Master</a>
-      <nav><a href="index.html">← Back to home</a></nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/">
+        <span class="globe" aria-hidden="true">🌍</span>
+        <span class="brand-full">World Geography Games</span>
+        <span class="brand-short">Geography</span>
+      </a>
+      <nav class="nav-links" aria-label="Main">
+          <a href="/">Home</a>
+          <a href="/games/">Games</a>
+          <a href="/countries/">Countries</a>
+          <a href="/lists/countries-and-capitals.html">Capitals</a>
+          <a href="/lists/world-flags.html">Flags</a>
+          <a href="/continents/">Continents</a>
+          <a href="/guides/">Guides</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="search">
+          <label class="sr-only" for="site-search">Search countries</label>
+          <input id="site-search" type="search" placeholder="Search a country…"
+                 autocomplete="off" data-country-search="site-search-results">
+          <div class="search-results" id="site-search-results" role="listbox" aria-label="Search results"></div>
+        </div>
+        <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch colour theme">🌙</button>
+        <button class="icon-btn nav-toggle" type="button" data-nav-toggle
+                aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+    <div class="nav-drawer" id="nav-drawer" data-open="false">
+      <nav aria-label="Mobile">
+        <a href="/">Home</a>
+        <a href="/games/">Games</a>
+        <a href="/countries/">Countries</a>
+        <a href="/lists/countries-and-capitals.html">Capitals</a>
+        <a href="/lists/world-flags.html">Flags</a>
+        <a href="/continents/">Continents</a>
+        <a href="/guides/">Guides</a>
+        <a href="/about.html">About</a>
+      </nav>
     </div>
   </header>
+<main id="main">
+<nav class="wrap breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">›</span> <span aria-current="page">Privacy policy</span></nav>
+<section class="section wrap">
+  <div class="article">
+    <h1>Privacy policy</h1>
+    
+    <p class="muted">Last updated: 11 August 2026</p>
 
-  <main class="wrap">
-    <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 1 July 2026</p>
+    <p>This policy explains what World Geography Games ("we", "the site") stores, what third parties may store, and what choices you have. Plain language, no lawyer-speak where it can be avoided.</p>
 
-    <div class="box">
-      This Privacy Policy explains how the <strong>Geography Master</strong> mobile
-      application ("the App", "we", "us") handles information. Geography Master is a
-      fully offline learning game. We do <strong>not</strong> require an account, and
-      we do <strong>not</strong> collect or sell your personal information.
-    </div>
+    <h2>1. No account, no personal data collected by us</h2>
+    <p>You do not create an account to use this site. We do not ask for your name, email address or any other personal detail, and we do not operate a user database. If you email us, we hold that email only to reply to you.</p>
 
-    <h2>1. Information We Collect</h2>
-    <p>We (the developer) do not collect, store, or transmit any personally identifiable
-    information such as your name, email address, or location. The App works offline and
-    has no login or user accounts.</p>
-    <p><strong>Data stored on your device only:</strong> Your quiz scores, accuracy,
-    streaks, achievements, and learning progress are saved locally on your device using
-    on-device storage (AsyncStorage). This data never leaves your device and is removed
-    when you uninstall the App or use the in-app "Reset Progress" option.</p>
-
-    <h2>2. Advertising (Google AdMob)</h2>
-    <p>The App displays advertisements through <strong>Google AdMob</strong>, a service
-    provided by Google. To serve ads, Google and its partners may collect and process
-    certain information, including:</p>
+    <h2>2. Local storage</h2>
+    <p>The site uses your browser's <strong>local storage</strong> to remember:</p>
     <ul>
-      <li>Advertising identifiers (e.g. Google Advertising ID / IDFA)</li>
-      <li>Device information (device model, operating system, language, coarse region)</li>
-      <li>App interaction and ad-performance data (e.g. ad views and clicks)</li>
-      <li>Approximate, non-precise location derived from the above</li>
+      <li>your light or dark theme preference;</li>
+      <li>your best scores per game and difficulty;</li>
+      <li>counts of games played, questions answered and correct answers;</li>
+      <li>which days you have played, so a streak can be shown.</li>
     </ul>
-    <p>This information is used to deliver and measure ads, including personalized ads
-    where permitted. We do not control the data practices of Google. Please review
-    Google's policies:</p>
+    <p>This data stays on your device. It is not transmitted to us or to anyone else, and it is not linked to any identity. You can erase it at any time by clearing site data in your browser settings; the site will simply start again from zero.</p>
+
+    <h2>3. Cookies</h2>
+    <p>We set no cookies of our own. Third-party services described below may set cookies in your browser.</p>
+
+    <h2>4. Advertising and Google AdSense</h2>
+    <p>This site displays advertising to cover its running costs. Advertising is served by Google AdSense.</p>
     <ul>
-      <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></li>
-      <li><a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a></li>
+      <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this and/or other sites on the internet.</li>
+      <li>You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" rel="nofollow noopener" target="_blank">Google Ads Settings</a>.</li>
+      <li>You can opt out of third-party vendor cookies for personalised advertising at <a href="https://www.aboutads.info/choices/" rel="nofollow noopener" target="_blank">aboutads.info/choices</a>.</li>
     </ul>
+    <p>Where required by law, we ask for your consent before non-essential cookies are set, and you can withdraw that consent at any time through your browser settings.</p>
 
-    <h2>3. Your Choices &amp; Controls</h2>
-    <ul>
-      <li><strong>Reset advertising ID:</strong> You can reset or delete your Advertising
-      ID in your device settings (Android: Settings → Google → Ads; iOS: Settings →
-      Privacy → Tracking / Apple Advertising).</li>
-      <li><strong>Limit ad personalization:</strong> Your device settings let you opt out
-      of personalized ads.</li>
-      <li><strong>Consent (EEA/UK):</strong> Where required, the App presents a consent
-      form so you can choose how your data is used for ads.</li>
-      <li><strong>Clear your data:</strong> Use "Reset Progress" in the App, or uninstall
-      the App, to remove all locally stored data.</li>
-    </ul>
+    <h2>5. Analytics</h2>
+    <p>We may use a privacy-respecting analytics service to count page views and understand which games are played. Any such analytics is configured to record aggregate usage only — no attempt is made to identify individual visitors or to combine analytics data with advertising data.</p>
 
-    <h2>4. Children's Privacy</h2>
-    <p>The App is a general-audience educational game. We do not knowingly collect
-    personal information from children. If the App is directed to or used by children in
-    your region, applicable ad settings (such as tagging requests for child-directed
-    treatment) are used to help limit data collection. If you believe a child has
-    provided personal information, please contact us and we will address it.</p>
+    <h2>6. Third-party services</h2>
+    <p>Beyond advertising and analytics, the site is deliberately plain: there are no social widgets, no embedded videos, no comment system, no external fonts and no content delivery networks loading third-party scripts. Pages are static HTML, CSS and JavaScript served from our own host.</p>
 
-    <h2>5. Data Security &amp; Retention</h2>
-    <p>Because progress data is stored only on your device, its security depends on your
-    device. We retain no personal data on our servers (we operate none). Advertising data
-    is retained by Google according to Google's own policies.</p>
+    <h2>7. Children</h2>
+    <p>The site is suitable for all ages and is used in classrooms. We do not knowingly collect personal information from anyone, including children. If you believe a child has sent us personal information by email, contact us and we will delete it.</p>
 
-    <h2>6. Third-Party Services</h2>
-    <p>The App uses the following third-party service, which may process data as described
-    above:</p>
-    <ul>
-      <li>Google AdMob — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a></li>
-    </ul>
+    <h2>8. Your rights</h2>
+    <p>Because we hold no personal data about you, there is generally nothing for us to export or delete on request. For data held by advertising partners, use the opt-out links in section 4, which are controlled by those partners rather than by us.</p>
+    <p>Visitors in the European Economic Area, the United Kingdom, Switzerland and California have specific rights under the GDPR, UK GDPR and CCPA respectively. Requests can be made through the <a href="/contact.html">contact page</a>.</p>
 
-    <h2>7. Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. Changes will be posted on this
-    page with an updated "Last updated" date. Continued use of the App after changes
-    constitutes acceptance of the revised policy.</p>
+    <h2>9. Data transfers and retention</h2>
+    <p>We retain no visitor data, so there is nothing to transfer or to age out. Third parties named above operate their own retention schedules, documented in their own policies.</p>
 
-    <h2>8. Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, contact us at:
-    <a href="mailto:suleman@trillo.io">suleman@trillo.io</a></p>
-  </main>
+    <h2>10. Changes to this policy</h2>
+    <p>If this policy changes materially, the date at the top of the page will be updated. Continued use of the site after a change means you accept the revised policy.</p>
 
-  <footer>
+    <h2>11. Contact</h2>
+    <p>Questions about privacy can be sent through the <a href="/contact.html">contact page</a>.</p>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
     <div class="wrap">
-      © 2026 Geography Master
-      <span>·</span>
-      <a href="index.html">Home</a>
-      <a href="mailto:suleman@trillo.io">Contact</a>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand"><span class="globe" aria-hidden="true">🌍</span> World Geography Games</span>
+          <p>Learn the world. Play. Improve. Free geography games with no account and no downloads.</p>
+        </div>
+        <div>
+          <h3>Play</h3>
+          <ul>
+            <li><a href="/games/">All games</a></li>
+            <li><a href="/game/country-quiz.html">Country quiz</a></li>
+            <li><a href="/game/capital-quiz.html">Capital quiz</a></li>
+            <li><a href="/game/flag-quiz.html">Flag quiz</a></li>
+            <li><a href="/game/mixed-quiz.html">Mixed quiz</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="/countries/">All countries</a></li>
+            <li><a href="/continents/">Continents</a></li>
+            <li><a href="/lists/countries-and-capitals.html">Countries and capitals</a></li>
+            <li><a href="/lists/world-flags.html">World flags</a></li>
+            <li><a href="/lists/largest-countries.html">Largest countries</a></li>
+            <li><a href="/guides/">Guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Site</h3>
+          <ul>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            <li><a href="/privacy-policy.html">Privacy policy</a></li>
+            <li><a href="/terms.html">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span data-year>2026</span> World Geography Games. All rights reserved.</span>
+        <span>Country data is compiled from public sources and rounded for readability.</span>
+      </div>
     </div>
   </footer>
+<script type="module" src="/js/app.js"></script>
 </body>
 </html>

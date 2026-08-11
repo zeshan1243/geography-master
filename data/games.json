@@ -1,0 +1,164 @@
+[
+  {
+    "id": "countries",
+    "slug": "country-quiz",
+    "name": "Country Quiz",
+    "icon": "🌎",
+    "accent": "blue",
+    "category": "Country Games",
+    "tagline": "Identify the country from a set of clues",
+    "description": "Read the capital, continent and currency, then name the country. A great way to connect facts that are usually learned separately.",
+    "metaTitle": "Country Quiz — Guess the Country from Clues",
+    "metaDescription": "Play a free country quiz. Identify countries from their capital city, continent and currency across four difficulty levels.",
+    "popular": true,
+    "guide": [
+      "The country quiz is the hardest of the name-based games because it gives you no picture to lean on. You get a capital, a continent and a currency, and have to work backwards to the country. That is a genuinely different skill from recognising a flag: it tests whether the facts are connected in your memory or merely stored side by side.",
+      "The currency line is usually the most useful clue. West African CFA franc narrows the field to eight countries in one stroke; Central African CFA franc to six others. Learning which countries share a currency does more work here than memorising any individual capital.",
+      "If a round feels impossible, the gap is usually capitals rather than countries. Play the capital quiz on the same difficulty for a few rounds and come back."
+    ]
+  },
+  {
+    "id": "capitals",
+    "slug": "capital-quiz",
+    "name": "Capital Quiz",
+    "icon": "🏛️",
+    "accent": "amber",
+    "category": "Capital Games",
+    "tagline": "Guess the capital city of a country",
+    "description": "One country, four cities, ten questions. Capitals are the fastest route to knowing a map, and the wrong answers come from the same region to keep it honest.",
+    "metaTitle": "Capital Cities Quiz — Guess the Capital of Every Country",
+    "metaDescription": "Play a free world capitals quiz. Guess the capital city of countries from every continent, from easy to expert difficulty.",
+    "popular": true,
+    "guide": [
+      "Capitals are the hardest basic geography facts to hold because nothing about the name points to the country. There is no visual hook the way there is with a flag, and no logic connecting Bishkek to Kyrgyzstan. Repetition with immediate correction is the only thing that reliably works, which is what this game is built around.",
+      "The wrong answers are drawn from the same continent as the correct one, so elimination by region will not save you. On expert rounds you will regularly see four plausible Central Asian or West African capitals together.",
+      "A handful catch almost everyone out: Bolivia's constitutional capital is Sucre rather than La Paz, South Africa's seat of government is Pretoria, Sri Lanka's is Sri Jayawardenepura Kotte rather than Colombo, and Myanmar moved its capital to Naypyidaw in 2005."
+    ]
+  },
+  {
+    "id": "flags",
+    "slug": "flag-quiz",
+    "name": "Flag Quiz",
+    "icon": "🚩",
+    "accent": "red",
+    "category": "Flag Games",
+    "tagline": "Identify countries from their flags",
+    "description": "See a flag, name the country. Distractors are drawn from the same continent, so the expert rounds are genuinely difficult.",
+    "metaTitle": "Flag Quiz — Guess the Country by Its Flag",
+    "metaDescription": "Play a free world flags quiz. Identify all 195 country flags across easy, medium, hard and expert difficulty.",
+    "popular": true,
+    "guide": [
+      "Flags are the fastest route into world geography because they are visual. Most people can recognise a flag long before they can recall the matching capital, and that recognition then acts as a hook for everything else about the country.",
+      "The hard rounds lean on genuine near-duplicates. Chad and Romania are almost indistinguishable. Monaco and Indonesia differ only in proportion. Ireland and Ivory Coast are mirror images. Australia and New Zealand both carry the Union Jack and the Southern Cross, differing in the number and colour of the stars.",
+      "Flags render using your device's own emoji font, so the exact drawing style depends on your operating system. The colours and layout are the same everywhere."
+    ]
+  },
+  {
+    "id": "continents",
+    "slug": "continent-quiz",
+    "name": "Continent Quiz",
+    "icon": "🌍",
+    "accent": "green",
+    "category": "World Games",
+    "tagline": "Place every country on the right continent",
+    "description": "The quickest game on the site and the best starting point. Given a country, choose the continent it belongs to.",
+    "metaTitle": "Continent Quiz — Which Continent Is Each Country In?",
+    "metaDescription": "Play a free continents quiz. Match all 195 countries to Africa, Asia, Europe, North America, South America or Oceania.",
+    "popular": true,
+    "guide": [
+      "This is the fastest game on the site and the best place to start if geography is new to you. Six possible answers, no memorisation of names required, and it builds the mental map that every other game hangs off.",
+      "The awkward cases are the ones that straddle a boundary. Russia and Turkey span Europe and Asia; this site places Russia in Europe and Turkey in Asia, following the most common convention. Cyprus, Georgia, Armenia and Azerbaijan are counted as Asia. Central America and the Caribbean sit under North America, which surprises a lot of players.",
+      "Egypt has territory on both sides of the Suez Canal and is counted as Africa throughout."
+    ]
+  },
+  {
+    "id": "locate",
+    "slug": "map-quiz",
+    "name": "Map Quiz",
+    "icon": "🗺️",
+    "accent": "green",
+    "category": "Country Games",
+    "tagline": "Find the country on the world map",
+    "description": "You get a country name and a map. Click the right country. The map zooms to the surrounding region so even smaller countries stay easy to hit on a phone.",
+    "metaTitle": "World Map Quiz — Find the Country on the Map",
+    "metaDescription": "Play a free world map quiz. Click countries on an interactive map across four difficulty levels and learn where every country is.",
+    "popular": true,
+    "guide": [
+      "Knowing a country's name and knowing where it is are separate skills, and most quizzes only test the first. This one puts a map in front of you and asks you to point.",
+      "The map zooms to the region around the target so smaller countries stay large enough to tap on a phone. That means you are given the neighbourhood and asked to find the country inside it, which is closer to how you would actually read an atlas.",
+      "Not every country appears. At world scale the smallest states are a few pixels across, so the map quiz draws on the 154 countries that are large enough to identify and tap reliably. The shape quiz covers 163 on a similar basis."
+    ]
+  },
+  {
+    "id": "shapes",
+    "slug": "shape-quiz",
+    "name": "Country Shape Quiz",
+    "icon": "🧩",
+    "accent": "purple",
+    "category": "Country Games",
+    "tagline": "Name the country from its outline",
+    "description": "One silhouette, four names. No flags, no capitals, no borders drawn in — just the shape of the country, which is how most people actually picture a map.",
+    "metaTitle": "Country Shape Quiz — Guess the Country by Its Outline",
+    "metaDescription": "Play a free country shape quiz. Identify countries from their outline alone, from easy silhouettes to expert ones.",
+    "popular": false,
+    "guide": [
+      "Ask someone to picture Italy and they will see the boot, not the flag or the capital. Outlines are how most people actually store a map, and this is the only game here that tests that directly.",
+      "Some silhouettes are unmistakable: Italy, Chile, Norway, India, Japan. Others are far harder than you would expect, because a country's shape is the part of it we rehearse least. Landlocked states in central Africa and central Asia give almost nothing away.",
+      "Outlines are drawn at world-map scale and then enlarged, so tiny states are excluded — 163 of the 195 countries have an outline distinct enough to be worth asking about."
+    ]
+  },
+  {
+    "id": "landmarks",
+    "slug": "landmark-quiz",
+    "name": "Landmark Quiz",
+    "icon": "🗿",
+    "accent": "purple",
+    "category": "Landmark Games",
+    "tagline": "Find the country behind famous landmarks",
+    "description": "From the Taj Mahal to Table Mountain — name the country each landmark stands in, and pick up a fact about it on the way.",
+    "metaTitle": "Landmark Quiz — Which Country Is This Landmark In?",
+    "metaDescription": "Play a free landmarks quiz. Identify the country behind 60 world-famous landmarks and learn a fact about each one.",
+    "popular": false,
+    "guide": [
+      "Landmarks are a sideways route into geography. You almost certainly recognise Petra, Machu Picchu and the Sydney Opera House already; what this game tests is whether you know which country each one stands in.",
+      "That gap is common and worth closing. Plenty of people can picture Angkor Wat without being able to name Cambodia, or the Great Mosque of Djenné without placing Mali.",
+      "Every answer comes with a fact about the landmark, so a round doubles as a short tour. The 60 sites here span all six inhabited continents."
+    ]
+  },
+  {
+    "id": "waters",
+    "slug": "ocean-quiz",
+    "name": "Oceans & Seas Quiz",
+    "icon": "🌊",
+    "accent": "blue",
+    "category": "World Games",
+    "tagline": "Learn the oceans and the major seas",
+    "description": "Five oceans and twenty-five major seas, described one at a time. The part of the map most quizzes ignore.",
+    "metaTitle": "Oceans and Seas Quiz — Name the World's Waters",
+    "metaDescription": "Play a free oceans and seas quiz. Identify the five oceans and the major seas of the world from short descriptions.",
+    "popular": false,
+    "guide": [
+      "Oceans and seas are the part of the map most quizzes skip entirely, which is odd given that water covers most of the planet. This game covers the five oceans and twenty-five of the major seas.",
+      "Each question describes a body of water and asks you to name it. That framing rewards understanding over rote recall — knowing that a sea is almost enclosed, or that it connects two others through a narrow strait, is more useful than memorising a list.",
+      "A few are worth knowing before you start: the Caspian is the largest inland body of water on Earth and has no outlet to the ocean, and the Southern Ocean was only formally recognised as distinct in 2000."
+    ]
+  },
+  {
+    "id": "mixed",
+    "slug": "mixed-quiz",
+    "name": "Mixed Geography Quiz",
+    "icon": "🧭",
+    "accent": "purple",
+    "category": "World Games",
+    "tagline": "Random questions from every category",
+    "description": "Flags, capitals, continents, landmarks and oceans shuffled into one round. The closest thing on the site to a general geography test.",
+    "metaTitle": "Mixed Geography Quiz — Flags, Capitals, Countries and More",
+    "metaDescription": "Play a free mixed geography quiz combining flags, capitals, countries, continents, landmarks and oceans in one round.",
+    "popular": true,
+    "guide": [
+      "The mixed quiz pulls from flags, capitals, countries, continents, landmarks and oceans in a single round. It is the closest thing here to an honest general test, and it is the fastest way to find out which category is letting you down.",
+      "Because questions rotate between categories, you cannot settle into one kind of thinking. That makes it noticeably harder than any single game at the same difficulty, even though the individual questions are drawn from the same pools.",
+      "This is also the game behind the daily challenge, where every player gets the same ten questions, generated from the date so they change at midnight."
+    ]
+  }
+]

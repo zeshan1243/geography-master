@@ -1,0 +1,24 @@
+# Dependencies (the site itself has none; tools/ may use dev-only packages)
+node_modules/
+
+# Downloaded map source packages — only the extracted SVGs in assets/ are kept.
+# The MapSVG plugin archive is ~170MB and is re-downloadable; never commit it.
+assets/mapsvg-*/
+assets/mapsvg-*.zip
+*.zip
+
+# Per-country subdivision maps from the MapSVG plugin (24MB). Not used: the
+# shape and map quizzes both derive their geometry from assets/world.svg,
+# which covers all 195 countries. Kept out of the repo, safe to delete.
+assets/maps/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
+
+# Local scratch
+_probe.html
+*.log

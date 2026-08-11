@@ -1,0 +1,84 @@
+/* ==========================================================================
+   Breakpoints. Mobile styles live in the base files; these adapt upward
+   and handle the narrow end where the desktop nav has to collapse.
+   ========================================================================== */
+
+/* --- Tablet and below --------------------------------------------------- */
+@media (max-width: 900px) {
+  .nav-links,
+  .search { display: none; }
+
+  .nav-toggle { display: inline-flex; }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .footer-brand { grid-column: 1 / -1; }
+}
+
+/* --- Mobile ------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .section { padding: 40px 0; }
+
+  .hero { padding: 40px 0 32px; }
+
+  .hero .btn-row .btn { width: 100%; }
+
+  .hero-stats { gap: 20px; }
+  .hero-stat strong { font-size: 1.375rem; }
+
+  .brand-full { display: none; }
+  .brand-short { display: inline; }
+
+  .daily {
+    padding: 24px 20px;
+    text-align: center;
+  }
+
+  .daily .btn { width: 100%; }
+  .daily-body { flex-basis: 100%; }
+  .streak { justify-content: center; }
+
+  .game-grid,
+  .card-grid { grid-template-columns: 1fr; }
+
+  .game-card { min-height: 0; }
+
+  .country-list { grid-template-columns: 1fr; }
+
+  .scoreboard { gap: 20px; padding: 14px; }
+  .scoreboard .value { font-size: 1.5rem; }
+
+  .question-visual { min-height: 150px; padding: 18px; }
+
+  .answer { font-size: 1rem; padding: 14px 16px; }
+
+  .results-score { font-size: 3.25rem; }
+
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { justify-content: center; text-align: center; }
+}
+
+/* --- Small phones ------------------------------------------------------- */
+@media (max-width: 380px) {
+  .wrap { padding-inline: 16px; }
+  .streak-day { width: 34px; }
+  .streak-day .dot { width: 28px; height: 28px; }
+}
+
+/* --- Large screens ------------------------------------------------------ */
+@media (min-width: 1400px) {
+  :root { --wrap: 1240px; }
+}
+
+/* --- Print -------------------------------------------------------------- */
+@media print {
+  .site-header,
+  .site-footer,
+  .ad-container,
+  .nav-drawer { display: none !important; }
+
+  body { background: #fff; color: #000; }
+}

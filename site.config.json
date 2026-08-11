@@ -1,0 +1,15 @@
+{
+  "name": "World Geography Games",
+  "shortName": "Geography",
+  "tagline": "Test your knowledge of countries, capitals, flags and the world.",
+  "url": "https://zehum.com",
+  "locale": "en",
+  "contactEmail": "info@zehum.com",
+  "adsense": {
+    "client": "ca-pub-3366385543056829",
+    "slots": {
+      "default": "8268112020",
+      "rail": "7250058413"
+    }
+  }
+}

@@ -1,0 +1,453 @@
+{
+ "AG": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Saint John's",
+   "All Saints",
+   "Liberta"
+  ],
+  "highest": {
+   "name": "Mount Obama",
+   "m": 402
+  },
+  "facts": [
+   "Antigua is said to have 365 beaches, one for every day of the year.",
+   "The country's highest point was renamed Mount Obama in 2009 and reverted to Boggy Peak in name only locally.",
+   "Nelson's Dockyard is the only continuously working Georgian-era naval dockyard in the world."
+  ]
+ },
+ "BS": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Nassau",
+   "Freeport",
+   "West End"
+  ],
+  "highest": {
+   "name": "Mount Alvernia",
+   "m": 63
+  },
+  "facts": [
+   "The Bahamas is an archipelago of around 700 islands and cays, about 30 of them inhabited.",
+   "Dean's Blue Hole off Long Island is one of the deepest known underwater sinkholes.",
+   "It is one of the few countries whose highest point is under 100 metres."
+  ]
+ },
+ "BB": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Bridgetown",
+   "Speightstown",
+   "Oistins"
+  ],
+  "highest": {
+   "name": "Mount Hillaby",
+   "m": 336
+  },
+  "facts": [
+   "Barbados is made largely of coral limestone rather than volcanic rock, unlike most of its neighbours.",
+   "It became a republic in 2021, replacing the British monarch with a president.",
+   "Rum distilling began here in the 17th century, and Mount Gay claims to be the oldest surviving brand."
+  ]
+ },
+ "BZ": {
+  "region": "Central America",
+  "borders": [
+   "MX",
+   "GT"
+  ],
+  "cities": [
+   "Belize City",
+   "San Ignacio",
+   "Belmopan"
+  ],
+  "highest": {
+   "name": "Doyle's Delight",
+   "m": 1124
+  },
+  "facts": [
+   "Belize is the only country in Central America where English is the official language.",
+   "The Belize Barrier Reef is the second largest reef system in the world after Australia's.",
+   "The capital moved inland to Belmopan in 1970 after a hurricane devastated Belize City."
+  ]
+ },
+ "CA": {
+  "region": "North America",
+  "borders": [
+   "US"
+  ],
+  "cities": [
+   "Toronto",
+   "Montreal",
+   "Vancouver"
+  ],
+  "highest": {
+   "name": "Mount Logan",
+   "m": 5959
+  },
+  "facts": [
+   "Canada has the longest coastline of any country, at over 200,000 kilometres.",
+   "It contains more lake area than the rest of the world combined.",
+   "Its border with the United States is the longest international land border anywhere."
+  ]
+ },
+ "CR": {
+  "region": "Central America",
+  "borders": [
+   "NI",
+   "PA"
+  ],
+  "cities": [
+   "San José",
+   "Alajuela",
+   "Cartago"
+  ],
+  "highest": {
+   "name": "Cerro Chirripó",
+   "m": 3820
+  },
+  "facts": [
+   "Costa Rica abolished its army in 1949 and has not reinstated one.",
+   "Around a quarter of its land is protected, and it holds roughly 5% of the world's biodiversity.",
+   "It has run for long stretches on almost entirely renewable electricity."
+  ]
+ },
+ "CU": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Havana",
+   "Santiago de Cuba",
+   "Camagüey"
+  ],
+  "highest": {
+   "name": "Pico Turquino",
+   "m": 1974
+  },
+  "facts": [
+   "Cuba is the largest island in the Caribbean, bigger than all the others combined by land area.",
+   "It has one of the highest doctor-to-population ratios in the world and exports medical staff abroad.",
+   "Old Havana preserves one of the largest collections of Spanish colonial architecture in the Americas."
+  ]
+ },
+ "DM": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Roseau",
+   "Portsmouth",
+   "Marigot"
+  ],
+  "highest": {
+   "name": "Morne Diablotins",
+   "m": 1447
+  },
+  "facts": [
+   "Dominica is known as the Nature Island for its rainforest and volcanic terrain.",
+   "Boiling Lake is the second largest hot lake in the world, kept simmering by volcanic activity.",
+   "It has the last remaining pre-Columbian Kalinago community in the eastern Caribbean."
+  ]
+ },
+ "DO": {
+  "region": "Caribbean",
+  "borders": [
+   "HT"
+  ],
+  "cities": [
+   "Santo Domingo",
+   "Santiago de los Caballeros",
+   "La Romana"
+  ],
+  "highest": {
+   "name": "Pico Duarte",
+   "m": 3098
+  },
+  "facts": [
+   "The Dominican Republic shares the island of Hispaniola with Haiti.",
+   "Pico Duarte is the highest peak in the entire Caribbean.",
+   "Santo Domingo was the first permanent European settlement in the Americas, founded in 1496."
+  ]
+ },
+ "SV": {
+  "region": "Central America",
+  "borders": [
+   "GT",
+   "HN"
+  ],
+  "cities": [
+   "San Salvador",
+   "Santa Ana",
+   "Soyapango"
+  ],
+  "highest": {
+   "name": "Cerro El Pital",
+   "m": 2730
+  },
+  "facts": [
+   "El Salvador is the smallest and most densely populated country on the Central American mainland.",
+   "It is the only Central American country with no Caribbean coastline.",
+   "In 2021 it became the first country to adopt Bitcoin as legal tender."
+  ]
+ },
+ "GD": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "St. George's",
+   "Gouyave",
+   "Grenville"
+  ],
+  "highest": {
+   "name": "Mount Saint Catherine",
+   "m": 840
+  },
+  "facts": [
+   "Grenada is called the Spice Isle and is a leading producer of nutmeg and mace.",
+   "Nutmeg appears on its national flag, the only flag to feature a spice.",
+   "Its capital, St. George's, is built around a submerged volcanic crater forming the harbour."
+  ]
+ },
+ "GT": {
+  "region": "Central America",
+  "borders": [
+   "MX",
+   "BZ",
+   "SV",
+   "HN"
+  ],
+  "cities": [
+   "Guatemala City",
+   "Mixco",
+   "Villa Nueva"
+  ],
+  "highest": {
+   "name": "Volcán Tajumulco",
+   "m": 4220
+  },
+  "facts": [
+   "Volcán Tajumulco is the highest point in the whole of Central America, and one of more than thirty volcanoes running down the country's Pacific side.",
+   "Guatemala has the largest indigenous population share in Central America, with over twenty Mayan languages spoken.",
+   "Tikal, in the northern rainforest, was one of the most powerful cities of the Maya world."
+  ]
+ },
+ "HT": {
+  "region": "Caribbean",
+  "borders": [
+   "DO"
+  ],
+  "cities": [
+   "Port-au-Prince",
+   "Carrefour",
+   "Delmas"
+  ],
+  "highest": {
+   "name": "Pic la Selle",
+   "m": 2680
+  },
+  "facts": [
+   "Haiti became the first independent nation in Latin America and the first republic founded by former slaves, in 1804.",
+   "It shares Hispaniola with the Dominican Republic and occupies the western third.",
+   "The Citadelle Laferrière, built after independence to repel a French return, is the largest fortress in the Americas."
+  ]
+ },
+ "HN": {
+  "region": "Central America",
+  "borders": [
+   "GT",
+   "SV",
+   "NI"
+  ],
+  "cities": [
+   "Tegucigalpa",
+   "San Pedro Sula",
+   "Choloma"
+  ],
+  "highest": {
+   "name": "Cerro Las Minas",
+   "m": 2870
+  },
+  "facts": [
+   "Copán holds some of the finest Maya sculpture and hieroglyphic inscriptions known.",
+   "Honduras has the second largest section of the Mesoamerican Barrier Reef, off its Bay Islands.",
+   "The Mosquitia rainforest in the east is one of the largest wilderness areas in Central America."
+  ]
+ },
+ "JM": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Kingston",
+   "Portmore",
+   "Spanish Town"
+  ],
+  "highest": {
+   "name": "Blue Mountain Peak",
+   "m": 2256
+  },
+  "facts": [
+   "Jamaica is the birthplace of ska, rocksteady, reggae and dancehall, an unusual concentration of globally influential music for a country of under three million people.",
+   "Blue Mountain coffee, grown at high altitude, is among the most expensive in the world.",
+   "It has produced a remarkable number of world-record sprinters for a country of under three million people."
+  ]
+ },
+ "MX": {
+  "region": "North America",
+  "borders": [
+   "US",
+   "GT",
+   "BZ"
+  ],
+  "cities": [
+   "Mexico City",
+   "Guadalajara",
+   "Monterrey"
+  ],
+  "highest": {
+   "name": "Pico de Orizaba",
+   "m": 5636
+  },
+  "facts": [
+   "Mexico City is built on the drained bed of Lake Texcoco and is sinking by several centimetres a year.",
+   "Mexico is the world's largest producer of silver, and has been a major source of it since the Spanish colonial period.",
+   "Alongside Spanish it recognises 68 indigenous languages, spoken by several million people between them."
+  ]
+ },
+ "NI": {
+  "region": "Central America",
+  "borders": [
+   "HN",
+   "CR"
+  ],
+  "cities": [
+   "Managua",
+   "León",
+   "Masaya"
+  ],
+  "highest": {
+   "name": "Mogotón",
+   "m": 2107
+  },
+  "facts": [
+   "Nicaragua is the largest country in Central America by area.",
+   "Lake Nicaragua is the biggest lake in Central America and holds freshwater sharks and sawfish.",
+   "Ometepe island in the lake is formed by two volcanoes joined by an isthmus."
+  ]
+ },
+ "PA": {
+  "region": "Central America",
+  "borders": [
+   "CR",
+   "CO"
+  ],
+  "cities": [
+   "Panama City",
+   "San Miguelito",
+   "Colón"
+  ],
+  "highest": {
+   "name": "Volcán Barú",
+   "m": 3474
+  },
+  "facts": [
+   "The Panama Canal links the Atlantic and Pacific across 82 kilometres and carries a large share of world shipping.",
+   "Because of the isthmus's curve, the sun rises over the Pacific and sets over the Atlantic in Panama City.",
+   "The Darién Gap is the only break in the Pan-American Highway, an impassable stretch of rainforest and swamp."
+  ]
+ },
+ "KN": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Basseterre",
+   "Charlestown",
+   "Cayon"
+  ],
+  "highest": {
+   "name": "Mount Liamuiga",
+   "m": 1156
+  },
+  "facts": [
+   "Saint Kitts and Nevis is the smallest sovereign state in the Americas by both area and population.",
+   "The two islands are separated by a strait about three kilometres wide.",
+   "Brimstone Hill Fortress is one of the best-preserved historic fortifications in the Americas."
+  ]
+ },
+ "LC": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Castries",
+   "Bisee",
+   "Vieux Fort"
+  ],
+  "highest": {
+   "name": "Mount Gimie",
+   "m": 950
+  },
+  "facts": [
+   "The Pitons, two volcanic spires rising straight from the sea, are the island's defining landmark.",
+   "Saint Lucia changed hands between Britain and France fourteen times.",
+   "It has produced two Nobel laureates, giving it one of the highest rates per capita in the world."
+  ]
+ },
+ "VC": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Kingstown",
+   "Georgetown",
+   "Byera Village"
+  ],
+  "highest": {
+   "name": "La Soufrière",
+   "m": 1234
+  },
+  "facts": [
+   "The country comprises the main island of Saint Vincent plus a chain of smaller Grenadines.",
+   "La Soufrière is an active volcano that erupted significantly in 1902 and again in 2021.",
+   "The Tobago Cays are a group of uninhabited islands inside a horseshoe reef."
+  ]
+ },
+ "TT": {
+  "region": "Caribbean",
+  "borders": [],
+  "cities": [
+   "Chaguanas",
+   "San Fernando",
+   "Port of Spain"
+  ],
+  "highest": {
+   "name": "El Cerro del Aripo",
+   "m": 940
+  },
+  "facts": [
+   "Trinidad sits on the South American continental shelf and was joined to the mainland during the last ice age.",
+   "The Pitch Lake is the largest natural deposit of asphalt in the world.",
+   "The steelpan, developed in Trinidad in the 20th century, is one of the few acoustic instruments invented in modern times."
+  ]
+ },
+ "US": {
+  "region": "North America",
+  "borders": [
+   "CA",
+   "MX"
+  ],
+  "cities": [
+   "New York City",
+   "Los Angeles",
+   "Chicago"
+  ],
+  "highest": {
+   "name": "Denali",
+   "m": 6190
+  },
+  "facts": [
+   "The United States spans six time zones across its states and territories, from Guam to Puerto Rico.",
+   "It has no official language at federal level, though English is used for government business.",
+   "Alaska alone would be the seventh largest country in the world if it were independent."
+  ]
+ }
+}

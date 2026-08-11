@@ -1,0 +1,1068 @@
+{
+ "AF": {
+  "region": "South Asia",
+  "borders": [
+   "IR",
+   "PK",
+   "TM",
+   "UZ",
+   "TJ",
+   "CN"
+  ],
+  "cities": [
+   "Kabul",
+   "Kandahar",
+   "Herat"
+  ],
+  "highest": {
+   "name": "Noshaq",
+   "m": 7492
+  },
+  "facts": [
+   "The Wakhan Corridor, a narrow strip in the northeast, was created in the 19th century as a buffer so the Russian and British empires would not share a border.",
+   "Afghanistan is landlocked and mountainous, with the Hindu Kush running through its centre.",
+   "It is one of the world's largest producers of lapis lazuli, mined in Badakhshan for more than 6,000 years."
+  ]
+ },
+ "AM": {
+  "region": "Western Asia",
+  "borders": [
+   "GE",
+   "AZ",
+   "IR",
+   "TR"
+  ],
+  "cities": [
+   "Yerevan",
+   "Gyumri",
+   "Vanadzor"
+  ],
+  "highest": {
+   "name": "Mount Aragats",
+   "m": 4090
+  },
+  "facts": [
+   "Armenia was the first state to adopt Christianity as its official religion, traditionally dated to 301.",
+   "Mount Ararat is its national symbol and appears on the coat of arms, though the mountain lies inside Turkey.",
+   "The Armenian alphabet was created around 405 and is still used essentially unchanged."
+  ]
+ },
+ "AZ": {
+  "region": "Western Asia",
+  "borders": [
+   "RU",
+   "GE",
+   "AM",
+   "IR",
+   "TR"
+  ],
+  "cities": [
+   "Baku",
+   "Ganja",
+   "Sumqayit"
+  ],
+  "highest": {
+   "name": "Bazardüzü",
+   "m": 4466
+  },
+  "facts": [
+   "Baku sits about 28 metres below sea level, making it the lowest-lying national capital in the world.",
+   "The world's first industrially drilled oil well was sunk near Baku in 1846.",
+   "Azerbaijan borders Turkey only through Nakhchivan, an exclave separated from the rest of the country by Armenia."
+  ]
+ },
+ "BH": {
+  "region": "Western Asia",
+  "borders": [],
+  "cities": [
+   "Manama",
+   "Riffa",
+   "Muharraq"
+  ],
+  "highest": {
+   "name": "Jabal ad Dukhan",
+   "m": 122
+  },
+  "facts": [
+   "Bahrain is an archipelago of about 50 natural islands plus dozens more created by land reclamation.",
+   "It was the first country in the Persian Gulf to discover oil, in 1932, and the first to begin diversifying away from it.",
+   "The King Fahd Causeway has linked it by road to Saudi Arabia since 1986."
+  ]
+ },
+ "BD": {
+  "region": "South Asia",
+  "borders": [
+   "IN",
+   "MM"
+  ],
+  "cities": [
+   "Dhaka",
+   "Chittagong",
+   "Khulna"
+  ],
+  "highest": {
+   "name": "Saka Haphong",
+   "m": 1052
+  },
+  "facts": [
+   "Bangladesh sits on the world's largest river delta, formed by the Ganges, Brahmaputra and Meghna.",
+   "It is among the most densely populated countries on Earth, with more people than Russia in a fraction of the space.",
+   "The Sundarbans, shared with India, is the largest mangrove forest in the world and a stronghold of the Bengal tiger."
+  ]
+ },
+ "BT": {
+  "region": "South Asia",
+  "borders": [
+   "CN",
+   "IN"
+  ],
+  "cities": [
+   "Thimphu",
+   "Phuntsholing",
+   "Punakha"
+  ],
+  "highest": {
+   "name": "Gangkhar Puensum",
+   "m": 7570
+  },
+  "facts": [
+   "Bhutan measures progress by Gross National Happiness alongside economic output.",
+   "Its constitution requires at least 60% of the country to remain under forest cover; the actual figure is higher.",
+   "Gangkhar Puensum is the highest unclimbed mountain in the world, as climbing above 6,000 metres is prohibited."
+  ]
+ },
+ "BN": {
+  "region": "Southeast Asia",
+  "borders": [
+   "MY"
+  ],
+  "cities": [
+   "Bandar Seri Begawan",
+   "Kuala Belait",
+   "Seria"
+  ],
+  "highest": {
+   "name": "Bukit Pagon",
+   "m": 1850
+  },
+  "facts": [
+   "Brunei is split into two parts, both surrounded by the Malaysian state of Sarawak.",
+   "Oil and gas wealth means citizens pay no income tax and receive free healthcare and education.",
+   "Around 70% of the country is still covered by rainforest, one of the highest proportions in Asia."
+  ]
+ },
+ "KH": {
+  "region": "Southeast Asia",
+  "borders": [
+   "TH",
+   "LA",
+   "VN"
+  ],
+  "cities": [
+   "Phnom Penh",
+   "Siem Reap",
+   "Battambang"
+  ],
+  "highest": {
+   "name": "Phnom Aural",
+   "m": 1810
+  },
+  "facts": [
+   "Angkor was the largest pre-industrial urban centre in the world, sprawling across roughly 1,000 square kilometres.",
+   "Cambodia's flag is the only national flag that depicts a building.",
+   "Tonlé Sap reverses its direction of flow twice a year as the Mekong rises and falls."
+  ]
+ },
+ "CN": {
+  "region": "East Asia",
+  "borders": [
+   "AF",
+   "BT",
+   "IN",
+   "KZ",
+   "KP",
+   "KG",
+   "LA",
+   "MN",
+   "MM",
+   "NP",
+   "PK",
+   "RU",
+   "TJ",
+   "VN"
+  ],
+  "cities": [
+   "Shanghai",
+   "Beijing",
+   "Chongqing"
+  ],
+  "highest": {
+   "name": "Mount Everest",
+   "m": 8849
+  },
+  "facts": [
+   "China borders fourteen countries, tied with Russia for the most in the world.",
+   "The entire country operates on a single time zone despite spanning five geographic ones.",
+   "It has more than 100 cities with populations above one million."
+  ]
+ },
+ "CY": {
+  "region": "Western Asia",
+  "borders": [],
+  "cities": [
+   "Nicosia",
+   "Limassol",
+   "Larnaca"
+  ],
+  "highest": {
+   "name": "Mount Olympus",
+   "m": 1952
+  },
+  "facts": [
+   "Nicosia is the last divided capital city in Europe, split since 1974 by a UN buffer zone.",
+   "Cyprus is the third largest island in the Mediterranean, after Sicily and Sardinia.",
+   "Copper takes its name from the island, which supplied the ancient Mediterranean world."
+  ]
+ },
+ "GE": {
+  "region": "Western Asia",
+  "borders": [
+   "RU",
+   "TR",
+   "AM",
+   "AZ"
+  ],
+  "cities": [
+   "Tbilisi",
+   "Batumi",
+   "Kutaisi"
+  ],
+  "highest": {
+   "name": "Shkhara",
+   "m": 5201
+  },
+  "facts": [
+   "Archaeological evidence puts winemaking in Georgia at around 8,000 years ago, the oldest known anywhere.",
+   "The Georgian alphabet is one of only a handful of writing systems in the world with no close relatives.",
+   "Georgia lies on the boundary between Europe and Asia, and is claimed by both depending on the definition used."
+  ]
+ },
+ "IN": {
+  "region": "South Asia",
+  "borders": [
+   "PK",
+   "CN",
+   "NP",
+   "BT",
+   "BD",
+   "MM"
+  ],
+  "cities": [
+   "Mumbai",
+   "Delhi",
+   "Bangalore"
+  ],
+  "highest": {
+   "name": "Kangchenjunga",
+   "m": 8586
+  },
+  "facts": [
+   "India is the most populous country in the world, having passed China in 2023.",
+   "It has 22 languages with official status at national level and hundreds more in daily use.",
+   "The whole country runs on a single time zone offset by 30 minutes from GMT."
+  ]
+ },
+ "ID": {
+  "region": "Southeast Asia",
+  "borders": [
+   "MY",
+   "PG",
+   "TL"
+  ],
+  "cities": [
+   "Jakarta",
+   "Surabaya",
+   "Medan"
+  ],
+  "highest": {
+   "name": "Puncak Jaya",
+   "m": 4884
+  },
+  "facts": [
+   "Indonesia is made up of over 17,000 islands, around 6,000 of which are inhabited.",
+   "It sits on the Ring of Fire and has more active volcanoes than any other country.",
+   "The government is moving the capital from Jakarta, which is sinking, to a new city called Nusantara in Borneo."
+  ]
+ },
+ "IR": {
+  "region": "Western Asia",
+  "borders": [
+   "TR",
+   "AM",
+   "AZ",
+   "TM",
+   "AF",
+   "PK",
+   "IQ"
+  ],
+  "cities": [
+   "Tehran",
+   "Mashhad",
+   "Isfahan"
+  ],
+  "highest": {
+   "name": "Mount Damavand",
+   "m": 5610
+  },
+  "facts": [
+   "Damavand is the highest volcano in Asia and the highest peak in the Middle East.",
+   "Iran's qanats, underground channels that carry water across desert, have been in use for nearly 3,000 years.",
+   "Persian is an Indo-European language, unlike Arabic, which belongs to the Semitic family."
+  ]
+ },
+ "IQ": {
+  "region": "Western Asia",
+  "borders": [
+   "TR",
+   "IR",
+   "KW",
+   "SA",
+   "JO",
+   "SY"
+  ],
+  "cities": [
+   "Baghdad",
+   "Basra",
+   "Mosul"
+  ],
+  "highest": {
+   "name": "Cheekha Dar",
+   "m": 3611
+  },
+  "facts": [
+   "The land between the Tigris and Euphrates is Mesopotamia, where the earliest known cities and writing systems appeared.",
+   "Iraq holds some of the largest proven oil reserves in the world.",
+   "The Mesopotamian Marshes, drained in the 1990s, have been partially re-flooded and are now a World Heritage Site."
+  ]
+ },
+ "IL": {
+  "region": "Western Asia",
+  "borders": [
+   "LB",
+   "SY",
+   "JO",
+   "EG",
+   "PS"
+  ],
+  "cities": [
+   "Jerusalem",
+   "Tel Aviv",
+   "Haifa"
+  ],
+  "highest": {
+   "name": "Mount Meron",
+   "m": 1208
+  },
+  "facts": [
+   "The Dead Sea shore, on Israel's eastern edge, is the lowest land elevation on Earth at around 430 metres below sea level.",
+   "Hebrew was revived as an everyday spoken language in the 19th and 20th centuries after centuries of liturgical use.",
+   "The country spans a sharp climate gradient, from Mediterranean in the north to desert across most of the Negev in the south."
+  ]
+ },
+ "JP": {
+  "region": "East Asia",
+  "borders": [],
+  "cities": [
+   "Tokyo",
+   "Yokohama",
+   "Osaka"
+  ],
+  "highest": {
+   "name": "Mount Fuji",
+   "m": 3776
+  },
+  "facts": [
+   "Japan is an archipelago of roughly 14,000 islands, though four of them hold almost the entire population.",
+   "About three quarters of the country is mountainous, concentrating cities onto a small share of the land.",
+   "Greater Tokyo is the most populous metropolitan area in the world, with around 37 million people."
+  ]
+ },
+ "JO": {
+  "region": "Western Asia",
+  "borders": [
+   "SY",
+   "IQ",
+   "SA",
+   "IL",
+   "PS"
+  ],
+  "cities": [
+   "Amman",
+   "Zarqa",
+   "Irbid"
+  ],
+  "highest": {
+   "name": "Jabal Umm ad Dami",
+   "m": 1854
+  },
+  "facts": [
+   "Petra, carved into sandstone cliffs by the Nabataeans, was lost to the wider world for centuries before being described by a Swiss traveller in 1812.",
+   "Jordan is one of the most water-scarce countries on Earth.",
+   "Its only significant coastline is a short stretch on the Gulf of Aqaba at the Red Sea."
+  ]
+ },
+ "KZ": {
+  "region": "Central Asia",
+  "borders": [
+   "RU",
+   "CN",
+   "KG",
+   "UZ",
+   "TM"
+  ],
+  "cities": [
+   "Almaty",
+   "Astana",
+   "Shymkent"
+  ],
+  "highest": {
+   "name": "Khan Tengri",
+   "m": 7010
+  },
+  "facts": [
+   "Kazakhstan is the largest landlocked country in the world, bigger than all of Western Europe combined.",
+   "The Baikonur Cosmodrome, leased to Russia, has launched crewed spaceflights since Yuri Gagarin in 1961.",
+   "The Aral Sea, once the fourth largest lake on Earth, has largely dried up through Soviet-era irrigation."
+  ]
+ },
+ "KW": {
+  "region": "Western Asia",
+  "borders": [
+   "IQ",
+   "SA"
+  ],
+  "cities": [
+   "Kuwait City",
+   "Al Ahmadi",
+   "Hawalli"
+  ],
+  "highest": {
+   "name": "Mutla Ridge",
+   "m": 306
+  },
+  "facts": [
+   "Kuwait has almost no natural fresh water and relies on desalination for most of its supply.",
+   "Its currency, the dinar, is consistently the highest-valued in the world against the US dollar.",
+   "Around 90% of the population lives in and around Kuwait City on the coast."
+  ]
+ },
+ "KG": {
+  "region": "Central Asia",
+  "borders": [
+   "KZ",
+   "UZ",
+   "TJ",
+   "CN"
+  ],
+  "cities": [
+   "Bishkek",
+   "Osh",
+   "Jalal-Abad"
+  ],
+  "highest": {
+   "name": "Jengish Chokusu",
+   "m": 7439
+  },
+  "facts": [
+   "More than 90% of Kyrgyzstan is mountainous, most of it above 1,500 metres.",
+   "Issyk-Kul is the second largest saline lake in the world and never freezes despite the altitude.",
+   "Traditional yurt-based herding is still practised in the high summer pastures known as jailoo."
+  ]
+ },
+ "LA": {
+  "region": "Southeast Asia",
+  "borders": [
+   "CN",
+   "MM",
+   "TH",
+   "KH",
+   "VN"
+  ],
+  "cities": [
+   "Vientiane",
+   "Pakse",
+   "Savannakhet"
+  ],
+  "highest": {
+   "name": "Phou Bia",
+   "m": 2819
+  },
+  "facts": [
+   "Laos is the only landlocked country in Southeast Asia, which is why the Mekong matters so much to its trade and power supply.",
+   "It is the most heavily bombed country per capita in history, with unexploded ordnance from the 1960s and 70s still being cleared.",
+   "The Mekong forms much of its border and provides most of its electricity through hydropower."
+  ]
+ },
+ "LB": {
+  "region": "Western Asia",
+  "borders": [
+   "SY",
+   "IL"
+  ],
+  "cities": [
+   "Beirut",
+   "Tripoli",
+   "Sidon"
+  ],
+  "highest": {
+   "name": "Qurnat as Sawda",
+   "m": 3088
+  },
+  "facts": [
+   "The cedar of Lebanon on the national flag has been prized as timber since antiquity and is mentioned throughout ancient records.",
+   "Byblos is among the oldest continuously inhabited cities in the world.",
+   "Lebanon's political system allocates the presidency, premiership and speakership to different religious communities."
+  ]
+ },
+ "MY": {
+  "region": "Southeast Asia",
+  "borders": [
+   "TH",
+   "ID",
+   "BN"
+  ],
+  "cities": [
+   "Kuala Lumpur",
+   "George Town",
+   "Johor Bahru"
+  ],
+  "highest": {
+   "name": "Mount Kinabalu",
+   "m": 4095
+  },
+  "facts": [
+   "Malaysia is split in two by the South China Sea, with the peninsula on one side and Borneo states on the other.",
+   "Putrajaya is the administrative capital, while Kuala Lumpur remains the official one.",
+   "Its rainforests are among the oldest in the world, estimated at over 130 million years."
+  ]
+ },
+ "MV": {
+  "region": "South Asia",
+  "borders": [],
+  "cities": [
+   "Malé",
+   "Addu City",
+   "Fuvahmulah"
+  ],
+  "highest": {
+   "name": "unnamed point on Villingili",
+   "m": 5
+  },
+  "facts": [
+   "The Maldives is the lowest-lying country in the world, averaging about 1.5 metres above sea level.",
+   "It consists of roughly 1,200 coral islands grouped into 26 atolls, with fewer than 200 inhabited.",
+   "In 2009 the cabinet held a meeting underwater to draw attention to rising sea levels."
+  ]
+ },
+ "MN": {
+  "region": "East Asia",
+  "borders": [
+   "RU",
+   "CN"
+  ],
+  "cities": [
+   "Ulaanbaatar",
+   "Erdenet",
+   "Darkhan"
+  ],
+  "highest": {
+   "name": "Khüiten Peak",
+   "m": 4374
+  },
+  "facts": [
+   "Mongolia is the most sparsely populated sovereign country in the world.",
+   "Ulaanbaatar is the coldest national capital on Earth by average annual temperature.",
+   "A significant share of the population still lives nomadically or semi-nomadically in gers."
+  ]
+ },
+ "MM": {
+  "region": "Southeast Asia",
+  "borders": [
+   "BD",
+   "IN",
+   "CN",
+   "LA",
+   "TH"
+  ],
+  "cities": [
+   "Yangon",
+   "Mandalay",
+   "Naypyidaw"
+  ],
+  "highest": {
+   "name": "Hkakabo Razi",
+   "m": 5881
+  },
+  "facts": [
+   "The capital moved from Yangon to the purpose-built city of Naypyidaw in 2005.",
+   "Bagan holds over 2,000 surviving temples and pagodas built between the 11th and 13th centuries.",
+   "Myanmar produces most of the world's high-quality rubies, chiefly from the Mogok valley."
+  ]
+ },
+ "NP": {
+  "region": "South Asia",
+  "borders": [
+   "CN",
+   "IN"
+  ],
+  "cities": [
+   "Kathmandu",
+   "Pokhara",
+   "Lalitpur"
+  ],
+  "highest": {
+   "name": "Mount Everest",
+   "m": 8849
+  },
+  "facts": [
+   "Eight of the world's fourteen peaks above 8,000 metres lie wholly or partly in Nepal.",
+   "Its flag is the only national flag that is not a rectangle or square.",
+   "Nepal was never colonised, and its clocks run 45 minutes off GMT, an offset used by no other country."
+  ]
+ },
+ "KP": {
+  "region": "East Asia",
+  "borders": [
+   "CN",
+   "RU",
+   "KR"
+  ],
+  "cities": [
+   "Pyongyang",
+   "Hamhung",
+   "Chongjin"
+  ],
+  "highest": {
+   "name": "Paektu Mountain",
+   "m": 2744
+  },
+  "facts": [
+   "The Korean Demilitarized Zone separating it from South Korea is among the most heavily fortified borders in the world.",
+   "Paektu Mountain, an active volcano on the Chinese border, holds a central place in national mythology.",
+   "The country uses its own Juche calendar, counting years from the birth of Kim Il-sung in 1912."
+  ]
+ },
+ "OM": {
+  "region": "Western Asia",
+  "borders": [
+   "AE",
+   "SA",
+   "YE"
+  ],
+  "cities": [
+   "Muscat",
+   "Salalah",
+   "Sohar"
+  ],
+  "highest": {
+   "name": "Jebel Shams",
+   "m": 3009
+  },
+  "facts": [
+   "Oman controls the southern side of the Strait of Hormuz, through which much of the world's seaborne oil passes.",
+   "The Musandam Peninsula is an Omani exclave separated from the rest of the country by the United Arab Emirates.",
+   "Its aflaj irrigation channels, some over 1,500 years old, still distribute water by gravity across the interior."
+  ]
+ },
+ "PK": {
+  "region": "South Asia",
+  "borders": [
+   "IR",
+   "AF",
+   "CN",
+   "IN"
+  ],
+  "cities": [
+   "Karachi",
+   "Lahore",
+   "Faisalabad"
+  ],
+  "highest": {
+   "name": "K2",
+   "m": 8611
+  },
+  "facts": [
+   "K2 is the second highest mountain on Earth and considered far more dangerous to climb than Everest.",
+   "The Indus Valley Civilisation, centred on sites such as Mohenjo-daro, was contemporary with ancient Egypt.",
+   "Pakistan has the largest glacial ice mass outside the polar regions, in the Karakoram."
+  ]
+ },
+ "PS": {
+  "region": "Western Asia",
+  "borders": [
+   "IL",
+   "JO",
+   "EG"
+  ],
+  "cities": [
+   "Gaza",
+   "Hebron",
+   "Ramallah"
+  ],
+  "highest": {
+   "name": "Mount Nabi Yunis",
+   "m": 1030
+  },
+  "facts": [
+   "Palestine is a UN non-member observer state, recognised by a large majority of member countries.",
+   "Its territory is in two separated parts, the West Bank and the Gaza Strip.",
+   "Jericho in the West Bank is among the oldest continuously inhabited settlements known."
+  ]
+ },
+ "PH": {
+  "region": "Southeast Asia",
+  "borders": [],
+  "cities": [
+   "Quezon City",
+   "Manila",
+   "Davao"
+  ],
+  "highest": {
+   "name": "Mount Apo",
+   "m": 2954
+  },
+  "facts": [
+   "The Philippines comprises about 7,600 islands, of which roughly 2,000 are inhabited.",
+   "It lies on the Ring of Fire and in the main typhoon belt, making it one of the most disaster-exposed countries.",
+   "The Philippine Trench off its east coast plunges to over 10,000 metres."
+  ]
+ },
+ "QA": {
+  "region": "Western Asia",
+  "borders": [
+   "SA"
+  ],
+  "cities": [
+   "Doha",
+   "Al Rayyan",
+   "Al Wakrah"
+  ],
+  "highest": {
+   "name": "Qurayn Abu al Bawl",
+   "m": 103
+  },
+  "facts": [
+   "Qatar has the world's third largest natural gas reserves despite its small size.",
+   "It is a peninsula with a single land border, and almost the entire population lives in or near Doha.",
+   "It hosted the 2022 FIFA World Cup, the first held in the Arab world."
+  ]
+ },
+ "SA": {
+  "region": "Western Asia",
+  "borders": [
+   "JO",
+   "IQ",
+   "KW",
+   "QA",
+   "AE",
+   "OM",
+   "YE"
+  ],
+  "cities": [
+   "Riyadh",
+   "Jeddah",
+   "Mecca"
+  ],
+  "highest": {
+   "name": "Jabal Sawda",
+   "m": 3000
+  },
+  "facts": [
+   "Saudi Arabia has no permanent rivers, the largest country in the world without one.",
+   "The Rub' al Khali, or Empty Quarter, is the largest continuous sand desert on Earth.",
+   "Mecca and Medina, the two holiest cities in Islam, draw millions of pilgrims each year."
+  ]
+ },
+ "SG": {
+  "region": "Southeast Asia",
+  "borders": [],
+  "cities": [
+   "Singapore"
+  ],
+  "highest": {
+   "name": "Bukit Timah Hill",
+   "m": 164
+  },
+  "facts": [
+   "Singapore is one of only three surviving sovereign city-states, alongside Monaco and Vatican City.",
+   "It has grown around 25% in land area since independence through reclamation.",
+   "It has four official languages: English, Malay, Mandarin and Tamil."
+  ]
+ },
+ "KR": {
+  "region": "East Asia",
+  "borders": [
+   "KP"
+  ],
+  "cities": [
+   "Seoul",
+   "Busan",
+   "Incheon"
+  ],
+  "highest": {
+   "name": "Hallasan",
+   "m": 1947
+  },
+  "facts": [
+   "Around half of South Korea's population lives in the Seoul metropolitan area.",
+   "It went from one of the world's poorest countries in the 1950s to a leading industrial economy within four decades.",
+   "Hangul, its alphabet, was purpose-designed in the 15th century rather than evolving gradually."
+  ]
+ },
+ "LK": {
+  "region": "South Asia",
+  "borders": [],
+  "cities": [
+   "Colombo",
+   "Dehiwala-Mount Lavinia",
+   "Moratuwa"
+  ],
+  "highest": {
+   "name": "Pidurutalagala",
+   "m": 2524
+  },
+  "facts": [
+   "Sri Lanka's administrative capital is Sri Jayawardenepura Kotte, though Colombo remains the commercial centre.",
+   "It is one of the world's largest tea exporters, a trade established under British rule in the 19th century.",
+   "Sigiriya, a palace complex built atop a 180-metre rock column, dates from the 5th century."
+  ]
+ },
+ "SY": {
+  "region": "Western Asia",
+  "borders": [
+   "TR",
+   "IQ",
+   "JO",
+   "IL",
+   "LB"
+  ],
+  "cities": [
+   "Damascus",
+   "Aleppo",
+   "Homs"
+  ],
+  "highest": {
+   "name": "Mount Hermon",
+   "m": 2814
+  },
+  "facts": [
+   "Damascus is among the oldest continuously inhabited cities in the world.",
+   "Aleppo's ancient souks were one of the largest covered market complexes anywhere before the recent conflict.",
+   "The Euphrates crosses the country from Turkey to Iraq and supplies most of its fresh water."
+  ]
+ },
+ "TJ": {
+  "region": "Central Asia",
+  "borders": [
+   "AF",
+   "UZ",
+   "KG",
+   "CN"
+  ],
+  "cities": [
+   "Dushanbe",
+   "Khujand",
+   "Bokhtar"
+  ],
+  "highest": {
+   "name": "Ismoil Somoni Peak",
+   "m": 7495
+  },
+  "facts": [
+   "Over 90% of Tajikistan is mountainous, and roughly half of it lies above 3,000 metres.",
+   "The Fedchenko Glacier is among the longest glaciers outside the polar regions.",
+   "Tajik is a variety of Persian, setting it apart from the Turkic languages of its Central Asian neighbours."
+  ]
+ },
+ "TH": {
+  "region": "Southeast Asia",
+  "borders": [
+   "MM",
+   "LA",
+   "KH",
+   "MY"
+  ],
+  "cities": [
+   "Bangkok",
+   "Nonthaburi",
+   "Chiang Mai"
+  ],
+  "highest": {
+   "name": "Doi Inthanon",
+   "m": 2565
+  },
+  "facts": [
+   "Thailand is the only Southeast Asian country never colonised by a European power.",
+   "Bangkok's full ceremonial name is among the longest place names in the world.",
+   "It is one of the largest rice exporters globally and a major producer of natural rubber."
+  ]
+ },
+ "TL": {
+  "region": "Southeast Asia",
+  "borders": [
+   "ID"
+  ],
+  "cities": [
+   "Dili",
+   "Baucau",
+   "Maliana"
+  ],
+  "highest": {
+   "name": "Tatamailau",
+   "m": 2986
+  },
+  "facts": [
+   "Timor-Leste became fully independent in 2002, making it one of the youngest sovereign states.",
+   "It occupies the eastern half of Timor island plus the Oecusse exclave inside Indonesian territory.",
+   "Portuguese and Tetum are the official languages, a legacy of four centuries of Portuguese rule."
+  ]
+ },
+ "TR": {
+  "region": "Western Asia",
+  "borders": [
+   "GR",
+   "BG",
+   "GE",
+   "AM",
+   "AZ",
+   "IR",
+   "IQ",
+   "SY"
+  ],
+  "cities": [
+   "Istanbul",
+   "Ankara",
+   "Izmir"
+  ],
+  "highest": {
+   "name": "Mount Ararat",
+   "m": 5137
+  },
+  "facts": [
+   "Istanbul is the only major city in the world spanning two continents, split by the Bosphorus.",
+   "Göbekli Tepe in the southeast contains monumental structures older than Stonehenge by roughly 6,000 years.",
+   "Turkey controls the Bosphorus and Dardanelles, the sole sea route between the Black Sea and the Mediterranean."
+  ]
+ },
+ "TM": {
+  "region": "Central Asia",
+  "borders": [
+   "KZ",
+   "UZ",
+   "AF",
+   "IR"
+  ],
+  "cities": [
+   "Ashgabat",
+   "Türkmenabat",
+   "Daşoguz"
+  ],
+  "highest": {
+   "name": "Aýrybaba",
+   "m": 3139
+  },
+  "facts": [
+   "The Karakum Desert covers around 70% of Turkmenistan, leaving most of the population along its southern fringe and river oases.",
+   "The Darvaza gas crater, alight since the 1970s, is known as the Door to Hell.",
+   "Ashgabat holds a record for the highest concentration of white marble buildings of any city."
+  ]
+ },
+ "AE": {
+  "region": "Western Asia",
+  "borders": [
+   "SA",
+   "OM"
+  ],
+  "cities": [
+   "Dubai",
+   "Abu Dhabi",
+   "Sharjah"
+  ],
+  "highest": {
+   "name": "Jebel Jais",
+   "m": 1934
+  },
+  "facts": [
+   "The United Arab Emirates is a federation of seven emirates, formed in 1971.",
+   "Abu Dhabi is the capital and holds most of the oil, while Dubai built its economy on trade and services.",
+   "Well over 80% of residents are foreign nationals, one of the highest proportions anywhere."
+  ]
+ },
+ "UZ": {
+  "region": "Central Asia",
+  "borders": [
+   "KZ",
+   "KG",
+   "TJ",
+   "AF",
+   "TM"
+  ],
+  "cities": [
+   "Tashkent",
+   "Namangan",
+   "Samarkand"
+  ],
+  "highest": {
+   "name": "Khazret Sultan",
+   "m": 4643
+  },
+  "facts": [
+   "Uzbekistan is one of only two doubly landlocked countries in the world, along with Liechtenstein.",
+   "Samarkand and Bukhara were among the great trading cities of the Silk Road.",
+   "It is one of the world's leading cotton producers, a legacy of Soviet irrigation that helped drain the Aral Sea."
+  ]
+ },
+ "VN": {
+  "region": "Southeast Asia",
+  "borders": [
+   "CN",
+   "LA",
+   "KH"
+  ],
+  "cities": [
+   "Ho Chi Minh City",
+   "Hanoi",
+   "Haiphong"
+  ],
+  "highest": {
+   "name": "Fansipan",
+   "m": 3147
+  },
+  "facts": [
+   "Vietnam is the world's second largest coffee exporter, specialising in robusta.",
+   "Hạ Long Bay contains roughly 1,600 limestone islands and islets, most of them uninhabited.",
+   "The country stretches over 1,600 kilometres north to south but narrows to under 50 kilometres at its waist."
+  ]
+ },
+ "YE": {
+  "region": "Western Asia",
+  "borders": [
+   "SA",
+   "OM"
+  ],
+  "cities": [
+   "Sanaa",
+   "Aden",
+   "Taiz"
+  ],
+  "highest": {
+   "name": "Jabal An-Nabi Shu'ayb",
+   "m": 3666
+  },
+  "facts": [
+   "Socotra island hosts hundreds of plant species found nowhere else, including the dragon's blood tree.",
+   "Sanaa's old city has been inhabited for more than 2,500 years and is built in distinctive tower houses.",
+   "Coffee takes its trade name Mocha from the Yemeni port that first exported it widely."
+  ]
+ }
+}

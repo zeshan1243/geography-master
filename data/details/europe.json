@@ -1,0 +1,1007 @@
+{
+ "AL": {
+  "region": "Southeast Europe",
+  "borders": [
+   "ME",
+   "MK",
+   "GR"
+  ],
+  "cities": [
+   "Tirana",
+   "Durrës",
+   "Vlorë"
+  ],
+  "highest": {
+   "name": "Mount Korab",
+   "m": 2764
+  },
+  "facts": [
+   "Albania was the most isolated country in Europe under Enver Hoxha, who had several hundred thousand concrete bunkers built across the countryside; many still sit in fields and on beaches today.",
+   "Private cars were banned for ordinary citizens until 1991, so the country went from almost no traffic to full motorisation within a single generation.",
+   "The Albanian language forms its own independent branch of the Indo-European family, with no close living relatives."
+  ]
+ },
+ "AD": {
+  "region": "Southern Europe",
+  "borders": [
+   "FR",
+   "ES"
+  ],
+  "cities": [
+   "Andorra la Vella",
+   "Escaldes-Engordany",
+   "Encamp"
+  ],
+  "highest": {
+   "name": "Coma Pedrosa",
+   "m": 2942
+  },
+  "facts": [
+   "Andorra has two heads of state at once: the President of France and the Bishop of Urgell in Spain, an arrangement dating from 1278.",
+   "At 1,023 metres, Andorra la Vella is the highest capital city in Europe.",
+   "The country has no airport and no railway; every visitor arrives by road through the Pyrenees."
+  ]
+ },
+ "AT": {
+  "region": "Central Europe",
+  "borders": [
+   "DE",
+   "CZ",
+   "SK",
+   "HU",
+   "SI",
+   "IT",
+   "CH",
+   "LI"
+  ],
+  "cities": [
+   "Vienna",
+   "Graz",
+   "Linz"
+  ],
+  "highest": {
+   "name": "Grossglockner",
+   "m": 3798
+  },
+  "facts": [
+   "Austria borders eight countries, more than any other European state except Germany, Russia and Serbia.",
+   "Around 62% of the country lies within the Alps, which is why its population concentrates along the Danube in the flatter east.",
+   "Vienna draws most of its drinking water directly from Alpine springs through pipelines built in the 1870s."
+  ]
+ },
+ "BY": {
+  "region": "Eastern Europe",
+  "borders": [
+   "PL",
+   "LT",
+   "LV",
+   "RU",
+   "UA"
+  ],
+  "cities": [
+   "Minsk",
+   "Gomel",
+   "Mogilev"
+  ],
+  "highest": {
+   "name": "Dzyarzhynskaya Hara",
+   "m": 345
+  },
+  "facts": [
+   "Belarus is one of the flattest countries in Europe; its highest point is a hill barely taller than a 100-storey building.",
+   "Around a fifth of the country is forest and marshland, including Belovezhskaya Pushcha, one of the last primeval forests on the continent.",
+   "It is among the few European countries that never had a coastline at any point in its history."
+  ]
+ },
+ "BE": {
+  "region": "Western Europe",
+  "borders": [
+   "FR",
+   "LU",
+   "DE",
+   "NL"
+  ],
+  "cities": [
+   "Brussels",
+   "Antwerp",
+   "Ghent"
+  ],
+  "highest": {
+   "name": "Signal de Botrange",
+   "m": 694
+  },
+  "facts": [
+   "Belgium has three official languages — Dutch, French and German — and a federal structure built around that divide.",
+   "Brussels hosts the headquarters of both the European Union and NATO.",
+   "The port of Antwerp is one of the largest in Europe and handles a substantial share of the continent's chemical trade."
+  ]
+ },
+ "BA": {
+  "region": "Southeast Europe",
+  "borders": [
+   "HR",
+   "RS",
+   "ME"
+  ],
+  "cities": [
+   "Sarajevo",
+   "Banja Luka",
+   "Tuzla"
+  ],
+  "highest": {
+   "name": "Maglić",
+   "m": 2386
+  },
+  "facts": [
+   "Bosnia and Herzegovina has roughly 20 kilometres of coastline at Neum, which splits Croatia's territory in two.",
+   "The country has a three-member presidency, with one Bosniak, one Croat and one Serb member serving at the same time.",
+   "The 1984 Winter Olympics were held in Sarajevo; several of the venues were damaged during the siege of the city a decade later."
+  ]
+ },
+ "BG": {
+  "region": "Southeast Europe",
+  "borders": [
+   "RO",
+   "RS",
+   "MK",
+   "GR",
+   "TR"
+  ],
+  "cities": [
+   "Sofia",
+   "Plovdiv",
+   "Varna"
+  ],
+  "highest": {
+   "name": "Musala",
+   "m": 2925
+  },
+  "facts": [
+   "Musala is the highest peak in the whole Balkan Peninsula, not just in Bulgaria.",
+   "Plovdiv is one of the oldest continuously inhabited cities in Europe, with settlement traces going back some 8,000 years.",
+   "Bulgaria produces a large share of the world's rose oil, distilled in the Valley of the Roses near Kazanlak."
+  ]
+ },
+ "HR": {
+  "region": "Southeast Europe",
+  "borders": [
+   "SI",
+   "HU",
+   "RS",
+   "BA",
+   "ME"
+  ],
+  "cities": [
+   "Zagreb",
+   "Split",
+   "Rijeka"
+  ],
+  "highest": {
+   "name": "Dinara",
+   "m": 1831
+  },
+  "facts": [
+   "Croatia's coastline includes more than 1,200 islands, though fewer than 50 are permanently inhabited.",
+   "The country is shaped like a crescent, and its territory is interrupted near Neum by Bosnia and Herzegovina's short coastal strip.",
+   "The necktie descends from the scarves worn by Croatian mercenaries in 17th-century France — 'cravate' comes from 'Croat'."
+  ]
+ },
+ "CZ": {
+  "region": "Central Europe",
+  "borders": [
+   "DE",
+   "PL",
+   "SK",
+   "AT"
+  ],
+  "cities": [
+   "Prague",
+   "Brno",
+   "Ostrava"
+  ],
+  "highest": {
+   "name": "Sněžka",
+   "m": 1603
+  },
+  "facts": [
+   "Czechia has the highest beer consumption per person of any country in the world.",
+   "Charles University in Prague, founded in 1348, is the oldest university in Central Europe.",
+   "The country split peacefully from Slovakia on 1 January 1993 in what is usually called the Velvet Divorce."
+  ]
+ },
+ "DK": {
+  "region": "Northern Europe",
+  "borders": [
+   "DE"
+  ],
+  "cities": [
+   "Copenhagen",
+   "Aarhus",
+   "Odense"
+  ],
+  "highest": {
+   "name": "Møllehøj",
+   "m": 171
+  },
+  "facts": [
+   "Denmark proper consists of the Jutland peninsula and around 400 islands, roughly 70 of which are inhabited.",
+   "Its highest natural point is lower than many office buildings, making it one of the flattest countries in Europe.",
+   "The Kingdom of Denmark also includes Greenland and the Faroe Islands, both self-governing."
+  ]
+ },
+ "EE": {
+  "region": "Northern Europe",
+  "borders": [
+   "LV",
+   "RU"
+  ],
+  "cities": [
+   "Tallinn",
+   "Tartu",
+   "Narva"
+  ],
+  "highest": {
+   "name": "Suur Munamägi",
+   "m": 318
+  },
+  "facts": [
+   "Estonia was the first country to hold legally binding general elections over the internet, in 2005.",
+   "More than half the country is covered by forest, and it has over 2,000 islands in the Baltic Sea.",
+   "Estonian is closely related to Finnish and unrelated to the Indo-European languages spoken by most of its neighbours."
+  ]
+ },
+ "FI": {
+  "region": "Northern Europe",
+  "borders": [
+   "SE",
+   "NO",
+   "RU"
+  ],
+  "cities": [
+   "Helsinki",
+   "Espoo",
+   "Tampere"
+  ],
+  "highest": {
+   "name": "Halti",
+   "m": 1324
+  },
+  "facts": [
+   "Finland has roughly 188,000 lakes, more relative to its size than any other country.",
+   "About a quarter of its territory lies north of the Arctic Circle, where the sun does not set for weeks in summer.",
+   "Finnish belongs to the Uralic family alongside Estonian and Hungarian, not to the Indo-European family."
+  ]
+ },
+ "FR": {
+  "region": "Western Europe",
+  "borders": [
+   "BE",
+   "LU",
+   "DE",
+   "CH",
+   "IT",
+   "ES",
+   "AD",
+   "MC"
+  ],
+  "cities": [
+   "Paris",
+   "Marseille",
+   "Lyon"
+  ],
+  "highest": {
+   "name": "Mont Blanc",
+   "m": 4808
+  },
+  "facts": [
+   "Counting its overseas departments, France spans twelve time zones — more than any other country.",
+   "It is the most visited country in the world by international arrivals.",
+   "Because of French Guiana in South America, France's longest land border is with Brazil."
+  ]
+ },
+ "DE": {
+  "region": "Central Europe",
+  "borders": [
+   "DK",
+   "PL",
+   "CZ",
+   "AT",
+   "CH",
+   "FR",
+   "LU",
+   "BE",
+   "NL"
+  ],
+  "cities": [
+   "Berlin",
+   "Hamburg",
+   "Munich"
+  ],
+  "highest": {
+   "name": "Zugspitze",
+   "m": 2962
+  },
+  "facts": [
+   "Germany borders nine countries, more than any other in Europe apart from Russia.",
+   "It was unified as a single nation state only in 1871, and divided again from 1949 until 1990.",
+   "Roughly a third of the country is forested, and it has more than 20,000 castles and fortified houses."
+  ]
+ },
+ "GR": {
+  "region": "Southern Europe",
+  "borders": [
+   "AL",
+   "MK",
+   "BG",
+   "TR"
+  ],
+  "cities": [
+   "Athens",
+   "Thessaloniki",
+   "Patras"
+  ],
+  "highest": {
+   "name": "Mount Olympus",
+   "m": 2917
+  },
+  "facts": [
+   "Greece has around 6,000 islands and islets, of which roughly 227 are inhabited.",
+   "No part of the country is more than about 137 kilometres from the sea.",
+   "Its merchant fleet is among the largest in the world by tonnage, despite the country's small population."
+  ]
+ },
+ "HU": {
+  "region": "Central Europe",
+  "borders": [
+   "SK",
+   "UA",
+   "RO",
+   "RS",
+   "HR",
+   "SI",
+   "AT"
+  ],
+  "cities": [
+   "Budapest",
+   "Debrecen",
+   "Szeged"
+  ],
+  "highest": {
+   "name": "Kékes",
+   "m": 1014
+  },
+  "facts": [
+   "Lake Balaton is the largest lake in Central Europe and is sometimes called the Hungarian Sea.",
+   "Budapest was formed in 1873 by merging Buda and Óbuda on one bank of the Danube with Pest on the other.",
+   "Hungarian is a Uralic language, unrelated to the Slavic and Germanic tongues surrounding it."
+  ]
+ },
+ "IS": {
+  "region": "Northern Europe",
+  "borders": [],
+  "cities": [
+   "Reykjavík",
+   "Kópavogur",
+   "Hafnarfjörður"
+  ],
+  "highest": {
+   "name": "Hvannadalshnúkur",
+   "m": 2110
+  },
+  "facts": [
+   "Iceland sits astride the Mid-Atlantic Ridge, so the island is slowly being pulled apart between two tectonic plates.",
+   "Almost all of its electricity and heating comes from hydro and geothermal sources.",
+   "The Althing, founded around 930, is often described as the oldest surviving parliament in the world."
+  ]
+ },
+ "IE": {
+  "region": "Northern Europe",
+  "borders": [
+   "GB"
+  ],
+  "cities": [
+   "Dublin",
+   "Cork",
+   "Limerick"
+  ],
+  "highest": {
+   "name": "Carrauntoohil",
+   "m": 1038
+  },
+  "facts": [
+   "Ireland has no native snakes, a fact folklore credits to Saint Patrick but which glaciation explains better.",
+   "The Great Famine of the 1840s cut the population by around a quarter through death and emigration, and it has still not returned to its pre-famine peak.",
+   "Its only land border is with Northern Ireland, part of the United Kingdom."
+  ]
+ },
+ "IT": {
+  "region": "Southern Europe",
+  "borders": [
+   "FR",
+   "CH",
+   "AT",
+   "SI",
+   "SM",
+   "VA"
+  ],
+  "cities": [
+   "Rome",
+   "Milan",
+   "Naples"
+  ],
+  "highest": {
+   "name": "Monte Bianco",
+   "m": 4808
+  },
+  "facts": [
+   "Italy completely surrounds two other sovereign states, San Marino and Vatican City.",
+   "It has more UNESCO World Heritage Sites than any other country.",
+   "Mount Etna in Sicily is the most active volcano in Europe and has been erupting on and off for at least 2,700 years."
+  ]
+ },
+ "LV": {
+  "region": "Northern Europe",
+  "borders": [
+   "EE",
+   "RU",
+   "BY",
+   "LT"
+  ],
+  "cities": [
+   "Riga",
+   "Daugavpils",
+   "Liepāja"
+  ],
+  "highest": {
+   "name": "Gaiziņkalns",
+   "m": 312
+  },
+  "facts": [
+   "Riga has one of the largest collections of Art Nouveau architecture of any city in the world.",
+   "Latvia is about half forest, one of the highest proportions in the European Union.",
+   "The Baltic Way of 1989 saw two million people form a human chain across Latvia, Lithuania and Estonia."
+  ]
+ },
+ "LI": {
+  "region": "Central Europe",
+  "borders": [
+   "CH",
+   "AT"
+  ],
+  "cities": [
+   "Vaduz",
+   "Schaan",
+   "Triesen"
+  ],
+  "highest": {
+   "name": "Grauspitz",
+   "m": 2599
+  },
+  "facts": [
+   "Liechtenstein is one of only two doubly landlocked countries in the world, meaning every neighbour is landlocked too.",
+   "It has no airport and no army, having disbanded its forces in 1868.",
+   "The country produces more registered companies than it has residents."
+  ]
+ },
+ "LT": {
+  "region": "Northern Europe",
+  "borders": [
+   "LV",
+   "BY",
+   "PL",
+   "RU"
+  ],
+  "cities": [
+   "Vilnius",
+   "Kaunas",
+   "Klaipėda"
+  ],
+  "highest": {
+   "name": "Aukštojas",
+   "m": 294
+  },
+  "facts": [
+   "Lithuania was the first Soviet republic to declare independence, in March 1990.",
+   "The medieval Grand Duchy of Lithuania was at one point the largest state in Europe.",
+   "Its border with Russia is with Kaliningrad, an exclave separated from the rest of the country."
+  ]
+ },
+ "LU": {
+  "region": "Western Europe",
+  "borders": [
+   "BE",
+   "DE",
+   "FR"
+  ],
+  "cities": [
+   "Luxembourg City",
+   "Esch-sur-Alzette",
+   "Differdange"
+  ],
+  "highest": {
+   "name": "Kneiff",
+   "m": 560
+  },
+  "facts": [
+   "Luxembourg is the world's only remaining sovereign grand duchy, a title that once applied to several European states.",
+   "It has among the highest GDP per capita of any country, driven largely by banking and investment funds.",
+   "In 2020 it became the first country to make all public transport free nationwide."
+  ]
+ },
+ "MT": {
+  "region": "Southern Europe",
+  "borders": [],
+  "cities": [
+   "Valletta",
+   "Birkirkara",
+   "Qormi"
+  ],
+  "highest": {
+   "name": "Ta' Dmejrek",
+   "m": 253
+  },
+  "facts": [
+   "Malta is one of the most densely populated countries in the world, with the whole nation smaller than many cities.",
+   "Maltese is the only Semitic language written in the Latin alphabet and the only one that is an official EU language.",
+   "The Ġgantija temples on Gozo predate both Stonehenge and the Egyptian pyramids."
+  ]
+ },
+ "MD": {
+  "region": "Eastern Europe",
+  "borders": [
+   "RO",
+   "UA"
+  ],
+  "cities": [
+   "Chișinău",
+   "Bălți",
+   "Tiraspol"
+  ],
+  "highest": {
+   "name": "Bălănești Hill",
+   "m": 430
+  },
+  "facts": [
+   "Moldova's Cricova and Mileștii Mici cellars hold some of the largest wine collections in the world, stored in tunnels tens of kilometres long.",
+   "The country is landlocked apart from a few hundred metres of Danube frontage at Giurgiulești, which gives it a river port.",
+   "Transnistria, a strip east of the Dniester, has operated outside government control since 1992."
+  ]
+ },
+ "MC": {
+  "region": "Western Europe",
+  "borders": [
+   "FR"
+  ],
+  "cities": [
+   "Monaco",
+   "Monte Carlo",
+   "La Condamine"
+  ],
+  "highest": {
+   "name": "Chemin des Révoires",
+   "m": 161
+  },
+  "facts": [
+   "Monaco is the second smallest country in the world and the most densely populated.",
+   "It has expanded its territory by around 20% since the 1960s by reclaiming land from the sea.",
+   "The Monaco Grand Prix is run on public streets that are returned to normal traffic within days."
+  ]
+ },
+ "ME": {
+  "region": "Southeast Europe",
+  "borders": [
+   "HR",
+   "BA",
+   "RS",
+   "AL"
+  ],
+  "cities": [
+   "Podgorica",
+   "Nikšić",
+   "Herceg Novi"
+  ],
+  "highest": {
+   "name": "Zla Kolata",
+   "m": 2534
+  },
+  "facts": [
+   "Montenegro restored its independence in 2006 after a referendum ended its union with Serbia.",
+   "The Bay of Kotor is a deeply indented inlet often described, inaccurately but persistently, as Europe's southernmost fjord.",
+   "The country uses the euro despite never having been a member of the European Union."
+  ]
+ },
+ "NL": {
+  "region": "Western Europe",
+  "borders": [
+   "BE",
+   "DE"
+  ],
+  "cities": [
+   "Amsterdam",
+   "Rotterdam",
+   "The Hague"
+  ],
+  "highest": {
+   "name": "Vaalserberg",
+   "m": 322
+  },
+  "facts": [
+   "About a quarter of the Netherlands lies below sea level, protected by an extensive system of dikes and pumps.",
+   "Amsterdam is the constitutional capital, but the government, parliament and royal residence are in The Hague.",
+   "The country is one of the world's largest agricultural exporters despite its small size, largely through greenhouse horticulture."
+  ]
+ },
+ "MK": {
+  "region": "Southeast Europe",
+  "borders": [
+   "RS",
+   "BG",
+   "GR",
+   "AL"
+  ],
+  "cities": [
+   "Skopje",
+   "Bitola",
+   "Kumanovo"
+  ],
+  "highest": {
+   "name": "Mount Korab",
+   "m": 2764
+  },
+  "facts": [
+   "The country added 'North' to its name in 2019 to settle a long dispute with Greece over the name Macedonia.",
+   "Lake Ohrid, shared with Albania, is among the oldest and deepest lakes in Europe.",
+   "It is landlocked and mountainous, with more than fifty peaks above 2,000 metres."
+  ]
+ },
+ "NO": {
+  "region": "Northern Europe",
+  "borders": [
+   "SE",
+   "FI",
+   "RU"
+  ],
+  "cities": [
+   "Oslo",
+   "Bergen",
+   "Trondheim"
+  ],
+  "highest": {
+   "name": "Galdhøpiggen",
+   "m": 2469
+  },
+  "facts": [
+   "Norway's coastline, counting fjords and islands, runs to well over 100,000 kilometres.",
+   "Its sovereign wealth fund, built on North Sea oil, is the largest in the world.",
+   "Svalbard, far to the north, is Norwegian territory but open to citizens of all treaty signatories to live and work."
+  ]
+ },
+ "PL": {
+  "region": "Central Europe",
+  "borders": [
+   "DE",
+   "CZ",
+   "SK",
+   "UA",
+   "BY",
+   "LT",
+   "RU"
+  ],
+  "cities": [
+   "Warsaw",
+   "Kraków",
+   "Łódź"
+  ],
+  "highest": {
+   "name": "Rysy",
+   "m": 2499
+  },
+  "facts": [
+   "Poland disappeared from the map entirely between 1795 and 1918, partitioned between three empires.",
+   "Białowieża Forest on the Belarusian border is one of the last remaining fragments of Europe's primeval lowland forest.",
+   "Warsaw's old town was rebuilt almost from scratch after 1945, using paintings as reference, and is now a World Heritage Site."
+  ]
+ },
+ "PT": {
+  "region": "Southern Europe",
+  "borders": [
+   "ES"
+  ],
+  "cities": [
+   "Lisbon",
+   "Porto",
+   "Braga"
+  ],
+  "highest": {
+   "name": "Mount Pico",
+   "m": 2351
+  },
+  "facts": [
+   "Portugal's mainland border with Spain is one of the oldest continuously settled borders in Europe, largely fixed since 1297.",
+   "The country produces about half the world's cork, harvested from oak bark without felling the trees.",
+   "Its highest point is not on the mainland but on Pico Island in the Azores, over 1,500 kilometres out in the Atlantic."
+  ]
+ },
+ "RO": {
+  "region": "Southeast Europe",
+  "borders": [
+   "UA",
+   "MD",
+   "BG",
+   "RS",
+   "HU"
+  ],
+  "cities": [
+   "Bucharest",
+   "Cluj-Napoca",
+   "Timișoara"
+  ],
+  "highest": {
+   "name": "Moldoveanu Peak",
+   "m": 2544
+  },
+  "facts": [
+   "The Danube Delta, where the river meets the Black Sea, is the best-preserved river delta in Europe.",
+   "Romanian is a Romance language, descended from Latin, surrounded on almost all sides by Slavic and Hungarian speakers.",
+   "The Palace of the Parliament in Bucharest is among the heaviest buildings ever constructed."
+  ]
+ },
+ "RU": {
+  "region": "Eastern Europe",
+  "borders": [
+   "NO",
+   "FI",
+   "EE",
+   "LV",
+   "LT",
+   "PL",
+   "BY",
+   "UA",
+   "GE",
+   "AZ",
+   "KZ",
+   "CN",
+   "MN",
+   "KP"
+  ],
+  "cities": [
+   "Moscow",
+   "Saint Petersburg",
+   "Novosibirsk"
+  ],
+  "highest": {
+   "name": "Mount Elbrus",
+   "m": 5642
+  },
+  "facts": [
+   "Russia spans eleven time zones and borders fourteen countries, both world records.",
+   "It is larger than Pluto's surface area, and covers about an eighth of the world's inhabited land.",
+   "Lake Baikal in Siberia holds roughly a fifth of all unfrozen fresh water on Earth."
+  ]
+ },
+ "SM": {
+  "region": "Southern Europe",
+  "borders": [
+   "IT"
+  ],
+  "cities": [
+   "Dogana",
+   "Borgo Maggiore",
+   "San Marino"
+  ],
+  "highest": {
+   "name": "Monte Titano",
+   "m": 739
+  },
+  "facts": [
+   "San Marino claims to be the oldest surviving sovereign state and the oldest republic, traditionally founded in 301.",
+   "It is entirely surrounded by Italy and has never had a coastline.",
+   "The country has two heads of state, the Captains Regent, who serve six-month terms together."
+  ]
+ },
+ "RS": {
+  "region": "Southeast Europe",
+  "borders": [
+   "HU",
+   "RO",
+   "BG",
+   "MK",
+   "ME",
+   "BA",
+   "HR"
+  ],
+  "cities": [
+   "Belgrade",
+   "Novi Sad",
+   "Niš"
+  ],
+  "highest": {
+   "name": "Midžor",
+   "m": 2169
+  },
+  "facts": [
+   "Serbia lost its coastline when Montenegro voted for independence in 2006.",
+   "Belgrade sits where the Sava meets the Danube and has been destroyed and rebuilt dozens of times.",
+   "The country is a major exporter of raspberries, supplying a large share of the world's frozen crop."
+  ]
+ },
+ "SK": {
+  "region": "Central Europe",
+  "borders": [
+   "PL",
+   "UA",
+   "HU",
+   "AT",
+   "CZ"
+  ],
+  "cities": [
+   "Bratislava",
+   "Košice",
+   "Prešov"
+  ],
+  "highest": {
+   "name": "Gerlachovský štít",
+   "m": 2655
+  },
+  "facts": [
+   "Bratislava is the only national capital that borders two other countries, Austria and Hungary.",
+   "Slovakia has one of the highest numbers of castles and châteaux per person in the world.",
+   "It became an independent state for the first time in the modern era in 1993, on splitting from Czechia."
+  ]
+ },
+ "SI": {
+  "region": "Central Europe",
+  "borders": [
+   "AT",
+   "HU",
+   "HR",
+   "IT"
+  ],
+  "cities": [
+   "Ljubljana",
+   "Maribor",
+   "Celje"
+  ],
+  "highest": {
+   "name": "Triglav",
+   "m": 2864
+  },
+  "facts": [
+   "More than half of Slovenia is forested, one of the highest shares in Europe.",
+   "The word 'karst', used worldwide for limestone cave landscapes, comes from Slovenia's Kras region.",
+   "Its coastline on the Adriatic is only about 47 kilometres long."
+  ]
+ },
+ "ES": {
+  "region": "Southern Europe",
+  "borders": [
+   "FR",
+   "AD",
+   "PT",
+   "MA"
+  ],
+  "cities": [
+   "Madrid",
+   "Barcelona",
+   "Valencia"
+  ],
+  "highest": {
+   "name": "Teide",
+   "m": 3715
+  },
+  "facts": [
+   "Spain borders Morocco by land at the enclaves of Ceuta and Melilla on the African coast.",
+   "Its highest point, Teide, is on Tenerife in the Canary Islands rather than the mainland.",
+   "Madrid, at around 650 metres, is the highest capital city in the European Union."
+  ]
+ },
+ "SE": {
+  "region": "Northern Europe",
+  "borders": [
+   "NO",
+   "FI"
+  ],
+  "cities": [
+   "Stockholm",
+   "Gothenburg",
+   "Malmö"
+  ],
+  "highest": {
+   "name": "Kebnekaise",
+   "m": 2096
+  },
+  "facts": [
+   "Sweden has around 267,000 islands, more than any other country, though most are uninhabited.",
+   "The right of public access, allmansrätten, lets anyone walk and camp on most land regardless of who owns it.",
+   "It has not fought a war since 1814, one of the longest unbroken stretches of peace of any country."
+  ]
+ },
+ "CH": {
+  "region": "Central Europe",
+  "borders": [
+   "DE",
+   "FR",
+   "IT",
+   "AT",
+   "LI"
+  ],
+  "cities": [
+   "Zurich",
+   "Geneva",
+   "Basel"
+  ],
+  "highest": {
+   "name": "Dufourspitze",
+   "m": 4634
+  },
+  "facts": [
+   "Switzerland has four official languages: German, French, Italian and Romansh.",
+   "It is a direct democracy where citizens vote on referendums several times a year, and it joined the UN only in 2002.",
+   "Bern is the seat of government, but the country has no formally designated capital city in its constitution."
+  ]
+ },
+ "UA": {
+  "region": "Eastern Europe",
+  "borders": [
+   "PL",
+   "SK",
+   "HU",
+   "RO",
+   "MD",
+   "BY",
+   "RU"
+  ],
+  "cities": [
+   "Kyiv",
+   "Kharkiv",
+   "Odesa"
+  ],
+  "highest": {
+   "name": "Hoverla",
+   "m": 2061
+  },
+  "facts": [
+   "Ukraine is the largest country lying entirely within Europe, ahead of France and Spain.",
+   "Its chernozem black soils are among the most fertile in the world, making it a major grain exporter.",
+   "Kyiv is one of the oldest cities in Eastern Europe, a major centre by the 10th century."
+  ]
+ },
+ "GB": {
+  "region": "Northern Europe",
+  "borders": [
+   "IE"
+  ],
+  "cities": [
+   "London",
+   "Birmingham",
+   "Manchester"
+  ],
+  "highest": {
+   "name": "Ben Nevis",
+   "m": 1345
+  },
+  "facts": [
+   "The United Kingdom is made up of four countries: England, Scotland, Wales and Northern Ireland.",
+   "Its only land border is with Ireland, running across the island of Ireland.",
+   "It has no single codified constitution, relying instead on statute, convention and case law."
+  ]
+ },
+ "VA": {
+  "region": "Southern Europe",
+  "borders": [
+   "IT"
+  ],
+  "cities": [
+   "Vatican City"
+  ],
+  "highest": {
+   "name": "Vatican Hill",
+   "m": 75
+  },
+  "facts": [
+   "Vatican City is the smallest sovereign state in the world, at about 0.49 square kilometres.",
+   "It is an elective absolute monarchy, with the Pope as head of state chosen by the College of Cardinals.",
+   "Almost all of its residents are clergy or Swiss Guards, and citizenship is generally tied to holding office rather than birth."
+  ]
+ }
+}

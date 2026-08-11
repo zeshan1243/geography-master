@@ -1,0 +1,467 @@
+/* ==========================================================================
+   The quiz screen: setup, question, answers, feedback, results.
+   ========================================================================== */
+
+.game-shell {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.game-screen[hidden] { display: none !important; }
+
+/* --- Setup / difficulty ------------------------------------------------- */
+.setup { text-align: center; }
+
+.setup .game-icon {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.setup h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 8px; }
+.setup > p { margin: 0 auto 28px; color: var(--text-secondary); }
+
+.difficulty-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.difficulty {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  min-height: 76px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  /* Buttons carry text-align:center from the UA sheet, which beats the
+     inherited left alignment on .difficulty-list. */
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .15s ease, transform .12s ease, background-color .15s ease;
+}
+
+.difficulty:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.difficulty[aria-pressed="true"] {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.difficulty .dot { font-size: 1.375rem; line-height: 1; }
+.difficulty strong { display: block; font-size: 1.0625rem; }
+.difficulty small { color: var(--text-secondary); }
+
+.difficulty[aria-pressed="true"] small { color: var(--text); }
+
+.setup-best {
+  margin-top: 20px;
+  color: var(--text-secondary);
+  font-size: .9375rem;
+}
+
+/* --- Play header -------------------------------------------------------- */
+.game-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.game-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.game-counter {
+  font-size: .875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreboard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+}
+
+.scoreboard div { text-align: center; }
+
+.scoreboard .value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.scoreboard .label {
+  font-size: .6875rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-secondary);
+}
+
+.scoreboard .streak-value { color: var(--warning); }
+
+/* --- Progress ----------------------------------------------------------- */
+.progress-track {
+  height: 8px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--primary);
+  border-radius: 999px;
+  transition: width .35s ease;
+}
+
+.progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.progress-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border);
+}
+
+.progress-dots span[data-state="correct"] { background: var(--success); border-color: var(--success); }
+.progress-dots span[data-state="wrong"]   { background: var(--error); border-color: var(--error); }
+
+/* --- Question ----------------------------------------------------------- */
+.question-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
+  padding: 24px;
+  margin-bottom: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.question-visual .flag-big {
+  font-size: clamp(4.5rem, 20vw, 7rem);
+  line-height: 1.1;
+}
+
+.question-visual .subject {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.question-visual .subject-icon { font-size: 3.5rem; line-height: 1.2; }
+.question-visual .subject-sub { color: var(--text-secondary); font-size: .9375rem; margin-top: 6px; }
+
+/* --- Map and shape questions -------------------------------------------- */
+
+.question-visual.is-map,
+.question-visual.is-shape {
+  padding: 10px;
+  min-height: 0;
+  display: block;
+}
+
+/* Country silhouette (shape quiz) */
+.shape-svg {
+  width: 100%;
+  height: 210px;
+}
+
+.shape-svg path {
+  fill: var(--primary);
+  stroke: none;
+}
+
+/* Interactive world map (map quiz) */
+.world-map {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  display: block;
+  border-radius: var(--radius-sm);
+  background: var(--map-sea);
+  touch-action: manipulation;
+}
+
+.world-map path {
+  fill: var(--map-land);
+  stroke: var(--map-line);
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+  transition: fill .12s ease;
+}
+
+/* Territories and dependencies: context only, never an answer. */
+.world-map path.is-inert {
+  fill: var(--map-inert);
+  pointer-events: none;
+}
+
+.world-map path.is-target {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.world-map path.is-target:hover {
+  fill: var(--primary-soft);
+}
+
+.world-map.is-answered path.is-target {
+  cursor: default;
+  pointer-events: none;
+}
+
+.world-map path[data-result="correct"] {
+  fill: var(--success);
+  stroke: var(--success);
+}
+
+.world-map path[data-result="wrong"] {
+  fill: var(--error);
+  stroke: var(--error);
+}
+
+.map-hint {
+  text-align: center;
+  font-size: .8125rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.question-text {
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 auto 20px;
+  max-width: 34ch;
+}
+
+/* --- Answers ------------------------------------------------------------ */
+.answers {
+  display: grid;
+  gap: 12px;
+}
+
+.answer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 60px;
+  padding: 14px 20px;
+  text-align: left;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease, transform .12s ease;
+}
+
+.answer:hover:not(:disabled) {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.answer:disabled { cursor: default; }
+
+.answer .marker {
+  margin-left: auto;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.answer[data-result="correct"] {
+  border-color: var(--success);
+  background: var(--success-soft);
+  color: var(--text);
+}
+
+.answer[data-result="wrong"] {
+  border-color: var(--error);
+  background: var(--error-soft);
+  color: var(--text);
+}
+
+.answer[data-result="muted"] { opacity: .55; }
+
+/* --- Feedback ----------------------------------------------------------- */
+.feedback {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  text-align: center;
+  min-height: 84px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.feedback[hidden] { display: none; }
+
+.feedback strong { font-size: 1.125rem; }
+.feedback .points { font-weight: 700; color: var(--primary); }
+.feedback .note { color: var(--text-secondary); font-size: .9375rem; }
+.feedback[data-kind="correct"] { border-color: var(--success); background: var(--success-soft); }
+.feedback[data-kind="wrong"] { border-color: var(--error); background: var(--error-soft); }
+
+.streak-flash {
+  color: var(--warning);
+  font-weight: 700;
+  font-size: .9375rem;
+}
+
+/* --- Results ------------------------------------------------------------ */
+.results { text-align: center; }
+
+.results-title { font-size: clamp(1.75rem, 5vw, 2.5rem); margin-bottom: 24px; }
+
+.results-score {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.results-score-label {
+  font-size: .75rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.results-stars {
+  font-size: 1.75rem;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+}
+
+.results-summary {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 auto 4px;
+}
+
+.results-best {
+  color: var(--text-secondary);
+  font-size: .9375rem;
+  margin: 0 auto 24px;
+}
+
+.results-new-best {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--success-soft);
+  color: var(--success);
+  font-weight: 700;
+  font-size: .875rem;
+}
+
+.results .btn-row { flex-direction: column; }
+
+.review {
+  margin-top: 32px;
+  text-align: left;
+}
+
+.review h2 { font-size: 1.125rem; margin-bottom: 12px; }
+
+.review li {
+  display: flex;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  margin-bottom: 8px;
+  font-size: .9375rem;
+}
+
+.review li .mark { flex-shrink: 0; }
+.review li .q { color: var(--text-secondary); }
+
+/* --- Related games ------------------------------------------------------ */
+.related {
+  margin-top: 40px;
+}
+
+.related h2 { font-size: 1.25rem; margin-bottom: 16px; text-align: center; }
+
+.related-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.related-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  min-height: 48px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.related-links a:hover { border-color: var(--primary); text-decoration: none; }
+
+/* --- Loading / error ---------------------------------------------------- */
+.game-status {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-secondary);
+}
+
+/* --- Animations --------------------------------------------------------- */
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.animate-in { animation: pop-in .25s ease both; }

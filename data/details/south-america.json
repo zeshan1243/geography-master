@@ -1,0 +1,277 @@
+{
+ "AR": {
+  "region": "South America",
+  "borders": [
+   "CL",
+   "BO",
+   "PY",
+   "BR",
+   "UY"
+  ],
+  "cities": [
+   "Buenos Aires",
+   "Córdoba",
+   "Rosario"
+  ],
+  "highest": {
+   "name": "Aconcagua",
+   "m": 6961
+  },
+  "facts": [
+   "Aconcagua, in the Argentine Andes, is the highest mountain outside Asia at 6,961 metres, and the highest point in both the Western and Southern hemispheres.",
+   "Argentina stretches from subtropical forest in the north to the sub-Antarctic tip of Tierra del Fuego.",
+   "Its border with Chile, running along the Andes, is the third longest international border in the world."
+  ]
+ },
+ "BO": {
+  "region": "South America",
+  "borders": [
+   "BR",
+   "PY",
+   "AR",
+   "CL",
+   "PE"
+  ],
+  "cities": [
+   "Santa Cruz de la Sierra",
+   "El Alto",
+   "La Paz"
+  ],
+  "highest": {
+   "name": "Nevado Sajama",
+   "m": 6542
+  },
+  "facts": [
+   "Bolivia has two capitals: Sucre is the constitutional seat and La Paz holds the government.",
+   "The Salar de Uyuni is the largest salt flat in the world and holds a large share of global lithium reserves.",
+   "It lost its coastline to Chile in the 19th century and still maintains a navy on Lake Titicaca."
+  ]
+ },
+ "BR": {
+  "region": "South America",
+  "borders": [
+   "UY",
+   "AR",
+   "PY",
+   "BO",
+   "PE",
+   "CO",
+   "VE",
+   "GY",
+   "SR"
+  ],
+  "cities": [
+   "São Paulo",
+   "Rio de Janeiro",
+   "Brasília"
+  ],
+  "highest": {
+   "name": "Pico da Neblina",
+   "m": 2995
+  },
+  "facts": [
+   "Brazil borders every South American country except Chile and Ecuador.",
+   "It holds about 60% of the Amazon rainforest and the largest river by discharge in the world.",
+   "Brasília was built from nothing in the 1950s and inaugurated as the capital in 1960."
+  ]
+ },
+ "CL": {
+  "region": "South America",
+  "borders": [
+   "PE",
+   "BO",
+   "AR"
+  ],
+  "cities": [
+   "Santiago",
+   "Valparaíso",
+   "Concepción"
+  ],
+  "highest": {
+   "name": "Ojos del Salado",
+   "m": 6893
+  },
+  "facts": [
+   "Chile runs over 4,300 kilometres north to south but averages under 180 kilometres wide.",
+   "The Atacama Desert is the driest non-polar place on Earth, with some weather stations never recording rain.",
+   "Ojos del Salado is the highest active volcano in the world."
+  ]
+ },
+ "CO": {
+  "region": "South America",
+  "borders": [
+   "PA",
+   "VE",
+   "BR",
+   "PE",
+   "EC"
+  ],
+  "cities": [
+   "Bogotá",
+   "Medellín",
+   "Cali"
+  ],
+  "highest": {
+   "name": "Pico Cristóbal Colón",
+   "m": 5700
+  },
+  "facts": [
+   "Colombia is the only South American country with coastlines on both the Pacific and the Caribbean.",
+   "It is the second most biodiverse country in the world and has more bird species than any other.",
+   "The Sierra Nevada de Santa Marta rises to 5,700 metres within 50 kilometres of the sea."
+  ]
+ },
+ "EC": {
+  "region": "South America",
+  "borders": [
+   "CO",
+   "PE"
+  ],
+  "cities": [
+   "Guayaquil",
+   "Quito",
+   "Cuenca"
+  ],
+  "highest": {
+   "name": "Chimborazo",
+   "m": 6263
+  },
+  "facts": [
+   "Because of the equatorial bulge, Chimborazo's summit is the farthest point on the surface from the Earth's centre.",
+   "Ecuador was the first country to write rights of nature into its constitution, in 2008.",
+   "The Galápagos Islands, roughly 1,000 kilometres offshore, shaped Darwin's theory of natural selection."
+  ]
+ },
+ "GY": {
+  "region": "South America",
+  "borders": [
+   "VE",
+   "BR",
+   "SR"
+  ],
+  "cities": [
+   "Georgetown",
+   "Linden",
+   "New Amsterdam"
+  ],
+  "highest": {
+   "name": "Mount Roraima",
+   "m": 2810
+  },
+  "facts": [
+   "Guyana is the only South American country with English as its official language.",
+   "Kaieteur Falls drops 226 metres in a single uninterrupted plunge, roughly four times the height of Niagara.",
+   "Large offshore oil discoveries after 2015 made it one of the fastest-growing economies in the world."
+  ]
+ },
+ "PY": {
+  "region": "South America",
+  "borders": [
+   "BO",
+   "BR",
+   "AR"
+  ],
+  "cities": [
+   "Asunción",
+   "Ciudad del Este",
+   "San Lorenzo"
+  ],
+  "highest": {
+   "name": "Cerro Peró",
+   "m": 842
+  },
+  "facts": [
+   "Paraguay is one of only two landlocked countries in South America, along with Bolivia.",
+   "The Itaipú Dam, shared with Brazil, is among the largest hydroelectric plants in the world and supplies most of Paraguay's power.",
+   "Guaraní is an official language alongside Spanish and is spoken by most of the population."
+  ]
+ },
+ "PE": {
+  "region": "South America",
+  "borders": [
+   "EC",
+   "CO",
+   "BR",
+   "BO",
+   "CL"
+  ],
+  "cities": [
+   "Lima",
+   "Arequipa",
+   "Trujillo"
+  ],
+  "highest": {
+   "name": "Huascarán",
+   "m": 6768
+  },
+  "facts": [
+   "Machu Picchu, built in the 15th century, was never found by the Spanish and stayed largely unknown outside the region until 1911.",
+   "Peru shares Lake Titicaca with Bolivia, the highest navigable lake in the world.",
+   "The potato was domesticated in the Peruvian Andes, where thousands of varieties are still grown."
+  ]
+ },
+ "SR": {
+  "region": "South America",
+  "borders": [
+   "GY",
+   "BR"
+  ],
+  "cities": [
+   "Paramaribo",
+   "Lelydorp",
+   "Nieuw Nickerie"
+  ],
+  "highest": {
+   "name": "Juliana Top",
+   "m": 1230
+  },
+  "facts": [
+   "Suriname is the smallest sovereign state in South America, both by land area and by population.",
+   "Dutch is the official language, the only country in the Americas where that is the case.",
+   "More than 90% of the country is still covered by rainforest."
+  ]
+ },
+ "UY": {
+  "region": "South America",
+  "borders": [
+   "BR",
+   "AR"
+  ],
+  "cities": [
+   "Montevideo",
+   "Salto",
+   "Ciudad de la Costa"
+  ],
+  "highest": {
+   "name": "Cerro Catedral",
+   "m": 514
+  },
+  "facts": [
+   "Uruguay generates the large majority of its electricity from renewable sources, chiefly wind and hydro.",
+   "It won the first FIFA World Cup, hosted at home in 1930.",
+   "Roughly half the national population lives in the Montevideo metropolitan area."
+  ]
+ },
+ "VE": {
+  "region": "South America",
+  "borders": [
+   "CO",
+   "BR",
+   "GY"
+  ],
+  "cities": [
+   "Caracas",
+   "Maracaibo",
+   "Valencia"
+  ],
+  "highest": {
+   "name": "Pico Bolívar",
+   "m": 4978
+  },
+  "facts": [
+   "Angel Falls drops 979 metres, the tallest uninterrupted waterfall in the world.",
+   "Venezuela holds the largest proven oil reserves of any country.",
+   "Lake Maracaibo sees near-nightly lightning storms, among the most frequent anywhere on Earth."
+  ]
+ }
+}

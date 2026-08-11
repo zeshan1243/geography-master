@@ -1,0 +1,1235 @@
+{
+ "DZ": {
+  "region": "North Africa",
+  "borders": [
+   "MA",
+   "TN",
+   "LY",
+   "NE",
+   "ML",
+   "MR"
+  ],
+  "cities": [
+   "Algiers",
+   "Oran",
+   "Constantine"
+  ],
+  "highest": {
+   "name": "Mount Tahat",
+   "m": 2908
+  },
+  "facts": [
+   "Algeria is the largest country in Africa, a title it took from Sudan when South Sudan separated in 2011.",
+   "About four fifths of its territory is Sahara, so nearly the whole population lives on the northern coastal strip.",
+   "The Tassili n'Ajjer plateau holds thousands of prehistoric rock paintings showing a once-green Sahara."
+  ]
+ },
+ "AO": {
+  "region": "Central Africa",
+  "borders": [
+   "CD",
+   "CG",
+   "ZM",
+   "NA"
+  ],
+  "cities": [
+   "Luanda",
+   "Huambo",
+   "Lobito"
+  ],
+  "highest": {
+   "name": "Mount Moco",
+   "m": 2620
+  },
+  "facts": [
+   "Cabinda, Angola's oil-rich province, is an exclave separated from the rest of the country by DR Congo.",
+   "Angola is one of Africa's largest oil producers and a significant diamond exporter.",
+   "Portuguese is the official language, and Angola has one of the largest Portuguese-speaking populations in Africa."
+  ]
+ },
+ "BJ": {
+  "region": "West Africa",
+  "borders": [
+   "TG",
+   "BF",
+   "NE",
+   "NG"
+  ],
+  "cities": [
+   "Cotonou",
+   "Porto-Novo",
+   "Parakou"
+  ],
+  "highest": {
+   "name": "Mont Sokbaro",
+   "m": 658
+  },
+  "facts": [
+   "Porto-Novo is the official capital, but Cotonou is the seat of government and the largest city.",
+   "The Kingdom of Dahomey, centred here, was known for its all-female military regiment.",
+   "Vodun originated in this region and remains an officially recognised religion in Benin."
+  ]
+ },
+ "BW": {
+  "region": "Southern Africa",
+  "borders": [
+   "NA",
+   "ZA",
+   "ZW",
+   "ZM"
+  ],
+  "cities": [
+   "Gaborone",
+   "Francistown",
+   "Molepolole"
+  ],
+  "highest": {
+   "name": "Otse Hill",
+   "m": 1494
+  },
+  "facts": [
+   "The Kalahari covers around 70% of Botswana, a semi-arid sand basin rather than a true desert, and it supports grazing for much of the year.",
+   "The Okavango Delta is a rare inland delta, emptying into the desert instead of the sea.",
+   "Botswana went from one of the world's poorest countries at independence in 1966 to middle-income status, largely through diamonds."
+  ]
+ },
+ "BF": {
+  "region": "West Africa",
+  "borders": [
+   "ML",
+   "NE",
+   "BJ",
+   "TG",
+   "GH",
+   "CI"
+  ],
+  "cities": [
+   "Ouagadougou",
+   "Bobo-Dioulasso",
+   "Koudougou"
+  ],
+  "highest": {
+   "name": "Ténakourou",
+   "m": 749
+  },
+  "facts": [
+   "The country's name, adopted in 1984, translates roughly as 'land of upright people'.",
+   "It is landlocked and largely flat savanna, with the Sahel across its northern reaches.",
+   "FESPACO in Ouagadougou is the largest African film festival on the continent."
+  ]
+ },
+ "BI": {
+  "region": "East Africa",
+  "borders": [
+   "RW",
+   "TZ",
+   "CD"
+  ],
+  "cities": [
+   "Bujumbura",
+   "Gitega",
+   "Muyinga"
+  ],
+  "highest": {
+   "name": "Mount Heha",
+   "m": 2684
+  },
+  "facts": [
+   "Burundi moved its political capital from Bujumbura to Gitega in 2019.",
+   "It is one of the most densely populated countries in Africa and among the least urbanised.",
+   "Lake Tanganyika on its western border is the second deepest lake in the world."
+  ]
+ },
+ "CV": {
+  "region": "West Africa",
+  "borders": [],
+  "cities": [
+   "Praia",
+   "Mindelo",
+   "Santa Maria"
+  ],
+  "highest": {
+   "name": "Pico do Fogo",
+   "m": 2829
+  },
+  "facts": [
+   "Cabo Verde is an archipelago of ten volcanic islands about 570 kilometres off the West African coast.",
+   "The islands were uninhabited before Portuguese settlement in the 15th century.",
+   "More Cabo Verdeans live abroad than in the country itself, and remittances are a major part of the economy."
+  ]
+ },
+ "CM": {
+  "region": "Central Africa",
+  "borders": [
+   "NG",
+   "TD",
+   "CF",
+   "CG",
+   "GA",
+   "GQ"
+  ],
+  "cities": [
+   "Douala",
+   "Yaoundé",
+   "Garoua"
+  ],
+  "highest": {
+   "name": "Mount Cameroon",
+   "m": 4040
+  },
+  "facts": [
+   "Cameroon is often called 'Africa in miniature' for containing desert, savanna, rainforest and mountains.",
+   "It has both English and French as official languages, a legacy of divided colonial rule.",
+   "Mount Cameroon is an active volcano and one of the wettest places on Earth."
+  ]
+ },
+ "CF": {
+  "region": "Central Africa",
+  "borders": [
+   "TD",
+   "SD",
+   "SS",
+   "CD",
+   "CG",
+   "CM"
+  ],
+  "cities": [
+   "Bangui",
+   "Bimbo",
+   "Berbérati"
+  ],
+  "highest": {
+   "name": "Mont Ngaoui",
+   "m": 1420
+  },
+  "facts": [
+   "The Central African Republic sits almost exactly at the centre of the African landmass.",
+   "It is rich in diamonds, gold and uranium yet remains among the world's least developed economies.",
+   "Sangha Trinational park, shared with Cameroon and Congo, protects largely undisturbed rainforest."
+  ]
+ },
+ "TD": {
+  "region": "Central Africa",
+  "borders": [
+   "LY",
+   "SD",
+   "CF",
+   "CM",
+   "NG",
+   "NE"
+  ],
+  "cities": [
+   "N'Djamena",
+   "Moundou",
+   "Sarh"
+  ],
+  "highest": {
+   "name": "Emi Koussi",
+   "m": 3445
+  },
+  "facts": [
+   "Lake Chad has shrunk by roughly 90% since the 1960s through drought and irrigation.",
+   "Emi Koussi is a dormant volcano in the Tibesti range, the highest point in the Sahara.",
+   "Chad is landlocked, and its capital lies over 1,000 kilometres from the nearest port."
+  ]
+ },
+ "KM": {
+  "region": "East Africa",
+  "borders": [],
+  "cities": [
+   "Moroni",
+   "Mutsamudu",
+   "Fomboni"
+  ],
+  "highest": {
+   "name": "Mount Karthala",
+   "m": 2361
+  },
+  "facts": [
+   "The Comoros is a volcanic archipelago between Mozambique and Madagascar.",
+   "Mount Karthala has one of the largest active volcanic craters in the world.",
+   "It is one of the world's main producers of ylang-ylang, used in perfume."
+  ]
+ },
+ "CG": {
+  "region": "Central Africa",
+  "borders": [
+   "CM",
+   "CF",
+   "CD",
+   "AO",
+   "GA"
+  ],
+  "cities": [
+   "Brazzaville",
+   "Pointe-Noire",
+   "Dolisie"
+  ],
+  "highest": {
+   "name": "Mount Nabemba",
+   "m": 1020
+  },
+  "facts": [
+   "Brazzaville and Kinshasa face each other across the Congo River, the closest pair of capital cities in the world.",
+   "About 60% of the country is rainforest, part of the Congo Basin.",
+   "Oil accounts for the large majority of export earnings, most of it pumped offshore near Pointe-Noire."
+  ]
+ },
+ "CD": {
+  "region": "Central Africa",
+  "borders": [
+   "CG",
+   "CF",
+   "SS",
+   "UG",
+   "RW",
+   "BI",
+   "TZ",
+   "ZM",
+   "AO"
+  ],
+  "cities": [
+   "Kinshasa",
+   "Lubumbashi",
+   "Mbuji-Mayi"
+  ],
+  "highest": {
+   "name": "Mount Stanley",
+   "m": 5109
+  },
+  "facts": [
+   "DR Congo is the second largest country in Africa and holds most of the Congo Basin rainforest.",
+   "It produces the majority of the world's cobalt, essential to rechargeable batteries.",
+   "The Congo River is the deepest river in the world, exceeding 220 metres in places."
+  ]
+ },
+ "DJ": {
+  "region": "East Africa",
+  "borders": [
+   "ER",
+   "ET",
+   "SO"
+  ],
+  "cities": [
+   "Djibouti",
+   "Ali Sabieh",
+   "Tadjoura"
+  ],
+  "highest": {
+   "name": "Mousa Ali",
+   "m": 2028
+  },
+  "facts": [
+   "Lake Assal is the lowest point in Africa and one of the saltiest bodies of water on Earth.",
+   "Djibouti's position at the Bab-el-Mandeb strait makes it a strategic shipping chokepoint.",
+   "It hosts foreign military bases from several countries, more than almost any comparable state."
+  ]
+ },
+ "EG": {
+  "region": "North Africa",
+  "borders": [
+   "LY",
+   "SD",
+   "IL",
+   "PS"
+  ],
+  "cities": [
+   "Cairo",
+   "Alexandria",
+   "Giza"
+  ],
+  "highest": {
+   "name": "Mount Catherine",
+   "m": 2629
+  },
+  "facts": [
+   "Around 95% of Egyptians live on roughly 5% of the land, along the Nile and its delta.",
+   "The Suez Canal, opened in 1869, carries a substantial share of global seaborne trade.",
+   "The Great Pyramid of Giza is the only one of the seven ancient wonders still standing."
+  ]
+ },
+ "GQ": {
+  "region": "Central Africa",
+  "borders": [
+   "CM",
+   "GA"
+  ],
+  "cities": [
+   "Bata",
+   "Malabo",
+   "Ebebiyín"
+  ],
+  "highest": {
+   "name": "Pico Basilé",
+   "m": 3011
+  },
+  "facts": [
+   "Equatorial Guinea is the only sovereign African state where Spanish is an official language.",
+   "Its capital, Malabo, sits on the island of Bioko rather than the mainland.",
+   "Oil discoveries in the 1990s transformed it into one of Africa's largest per-capita oil producers."
+  ]
+ },
+ "ER": {
+  "region": "East Africa",
+  "borders": [
+   "SD",
+   "ET",
+   "DJ"
+  ],
+  "cities": [
+   "Asmara",
+   "Keren",
+   "Massawa"
+  ],
+  "highest": {
+   "name": "Emba Soira",
+   "m": 3018
+  },
+  "facts": [
+   "Asmara's early-20th-century modernist architecture earned the city World Heritage status.",
+   "Eritrea gained independence from Ethiopia in 1993 after a thirty-year war.",
+   "Its independence left Ethiopia landlocked, redrawing the region's trade routes."
+  ]
+ },
+ "SZ": {
+  "region": "Southern Africa",
+  "borders": [
+   "ZA",
+   "MZ"
+  ],
+  "cities": [
+   "Manzini",
+   "Mbabane",
+   "Lobamba"
+  ],
+  "highest": {
+   "name": "Emlembe",
+   "m": 1862
+  },
+  "facts": [
+   "Eswatini is one of the last absolute monarchies in the world.",
+   "It changed its name from Swaziland in 2018 to avoid confusion with Switzerland.",
+   "The country has two capitals: Mbabane is administrative and Lobamba is legislative and royal."
+  ]
+ },
+ "ET": {
+  "region": "East Africa",
+  "borders": [
+   "ER",
+   "DJ",
+   "SO",
+   "KE",
+   "SS",
+   "SD"
+  ],
+  "cities": [
+   "Addis Ababa",
+   "Dire Dawa",
+   "Mekelle"
+  ],
+  "highest": {
+   "name": "Ras Dashen",
+   "m": 4550
+  },
+  "facts": [
+   "Ethiopia was never colonised, apart from a brief Italian occupation from 1936 to 1941.",
+   "It uses its own calendar with thirteen months and runs roughly seven to eight years behind the Gregorian one.",
+   "Coffee originates here, and the Ethiopian highlands remain a centre of arabica cultivation."
+  ]
+ },
+ "GA": {
+  "region": "Central Africa",
+  "borders": [
+   "GQ",
+   "CM",
+   "CG"
+  ],
+  "cities": [
+   "Libreville",
+   "Port-Gentil",
+   "Franceville"
+  ],
+  "highest": {
+   "name": "Mont Iboundji",
+   "m": 1575
+  },
+  "facts": [
+   "Around 88% of Gabon is forest, and 11% of its territory is protected national park.",
+   "Oil wealth gives it one of the higher per-capita incomes in sub-Saharan Africa.",
+   "The Oklo uranium deposit hosted a natural nuclear fission reaction around two billion years ago."
+  ]
+ },
+ "GM": {
+  "region": "West Africa",
+  "borders": [
+   "SN"
+  ],
+  "cities": [
+   "Serekunda",
+   "Brikama",
+   "Banjul"
+  ],
+  "highest": {
+   "name": "Red Rock",
+   "m": 53
+  },
+  "facts": [
+   "The Gambia is the smallest country on mainland Africa, a narrow strip along its river.",
+   "It is surrounded by Senegal on three sides, with the Atlantic on the fourth.",
+   "Its borders roughly follow the navigable stretch of the Gambia River."
+  ]
+ },
+ "GH": {
+  "region": "West Africa",
+  "borders": [
+   "CI",
+   "BF",
+   "TG"
+  ],
+  "cities": [
+   "Accra",
+   "Kumasi",
+   "Tamale"
+  ],
+  "highest": {
+   "name": "Mount Afadjato",
+   "m": 885
+  },
+  "facts": [
+   "Ghana was the first sub-Saharan African country to gain independence from colonial rule, in 1957.",
+   "Lake Volta is among the largest reservoirs in the world by surface area.",
+   "It is a leading cocoa producer and was known as the Gold Coast for its mineral wealth."
+  ]
+ },
+ "GN": {
+  "region": "West Africa",
+  "borders": [
+   "GW",
+   "SN",
+   "ML",
+   "CI",
+   "LR",
+   "SL"
+  ],
+  "cities": [
+   "Conakry",
+   "Nzérékoré",
+   "Kankan"
+  ],
+  "highest": {
+   "name": "Mount Nimba",
+   "m": 1752
+  },
+  "facts": [
+   "Guinea holds the world's largest reserves of bauxite, the ore from which aluminium is made.",
+   "The Niger, Senegal and Gambia rivers all rise in the Guinea Highlands.",
+   "It was the only French colony to reject de Gaulle's 1958 community proposal and take immediate independence."
+  ]
+ },
+ "GW": {
+  "region": "West Africa",
+  "borders": [
+   "SN",
+   "GN"
+  ],
+  "cities": [
+   "Bissau",
+   "Bafatá",
+   "Gabú"
+  ],
+  "highest": {
+   "name": "Dongol Ronde",
+   "m": 300
+  },
+  "facts": [
+   "Guinea-Bissau includes the Bijagós archipelago of around 88 islands, most of them uninhabited.",
+   "Cashew nuts dominate its exports and much of its rural economy.",
+   "Portuguese is official, but Guinea-Bissau Creole is the common everyday language."
+  ]
+ },
+ "CI": {
+  "region": "West Africa",
+  "borders": [
+   "LR",
+   "GN",
+   "ML",
+   "BF",
+   "GH"
+  ],
+  "cities": [
+   "Abidjan",
+   "Bouaké",
+   "Yamoussoukro"
+  ],
+  "highest": {
+   "name": "Mount Nimba",
+   "m": 1752
+  },
+  "facts": [
+   "Ivory Coast is the world's largest cocoa producer, supplying roughly 40% of global output.",
+   "The capital moved to Yamoussoukro in 1983, though Abidjan remains the economic centre.",
+   "The Basilica of Our Lady of Peace in Yamoussoukro is among the largest church buildings in the world."
+  ]
+ },
+ "KE": {
+  "region": "East Africa",
+  "borders": [
+   "ET",
+   "SO",
+   "SS",
+   "UG",
+   "TZ"
+  ],
+  "cities": [
+   "Nairobi",
+   "Mombasa",
+   "Kisumu"
+  ],
+  "highest": {
+   "name": "Mount Kenya",
+   "m": 5199
+  },
+  "facts": [
+   "The Great Rift Valley runs the length of Kenya and is dotted with soda lakes drawing millions of flamingos.",
+   "Kenya pioneered mobile money with M-Pesa, which reshaped banking across East Africa.",
+   "Its highland athletes have dominated middle- and long-distance running for decades."
+  ]
+ },
+ "LS": {
+  "region": "Southern Africa",
+  "borders": [
+   "ZA"
+  ],
+  "cities": [
+   "Maseru",
+   "Teyateyaneng",
+   "Mafeteng"
+  ],
+  "highest": {
+   "name": "Thabana Ntlenyana",
+   "m": 3482
+  },
+  "facts": [
+   "Lesotho is one of only three countries entirely surrounded by a single other country.",
+   "It is the only country in the world with all its land above 1,000 metres.",
+   "It exports water to South Africa through the Lesotho Highlands Water Project."
+  ]
+ },
+ "LR": {
+  "region": "West Africa",
+  "borders": [
+   "SL",
+   "GN",
+   "CI"
+  ],
+  "cities": [
+   "Monrovia",
+   "Gbarnga",
+   "Buchanan"
+  ],
+  "highest": {
+   "name": "Mount Wuteve",
+   "m": 1440
+  },
+  "facts": [
+   "Liberia was founded in the 1820s as a settlement for freed African Americans and declared independence in 1847.",
+   "Its capital, Monrovia, is named after US President James Monroe.",
+   "It operates one of the world's largest ship registries, so a large share of global tonnage flies its flag."
+  ]
+ },
+ "LY": {
+  "region": "North Africa",
+  "borders": [
+   "TN",
+   "DZ",
+   "NE",
+   "TD",
+   "SD",
+   "EG"
+  ],
+  "cities": [
+   "Tripoli",
+   "Benghazi",
+   "Misrata"
+  ],
+  "highest": {
+   "name": "Bikku Bitti",
+   "m": 2267
+  },
+  "facts": [
+   "Libya is over 90% desert and has the largest proven oil reserves in Africa.",
+   "The Great Man-Made River pumps fossil groundwater from beneath the Sahara to the coastal cities.",
+   "Leptis Magna is among the best-preserved Roman cities anywhere in the world."
+  ]
+ },
+ "MG": {
+  "region": "East Africa",
+  "borders": [],
+  "cities": [
+   "Antananarivo",
+   "Toamasina",
+   "Antsirabe"
+  ],
+  "highest": {
+   "name": "Maromokotro",
+   "m": 2876
+  },
+  "facts": [
+   "Madagascar is the fourth largest island in the world and separated from other landmasses around 88 million years ago.",
+   "Roughly 90% of its wildlife exists nowhere else, including all of the world's lemur species.",
+   "Malagasy belongs to the Austronesian family, most closely related to languages of Borneo rather than Africa."
+  ]
+ },
+ "MW": {
+  "region": "East Africa",
+  "borders": [
+   "TZ",
+   "MZ",
+   "ZM"
+  ],
+  "cities": [
+   "Lilongwe",
+   "Blantyre",
+   "Mzuzu"
+  ],
+  "highest": {
+   "name": "Sapitwa Peak",
+   "m": 3002
+  },
+  "facts": [
+   "Lake Malawi covers about a fifth of the country and holds more fish species than any other lake on Earth.",
+   "Malawi is landlocked and one of the most densely populated countries in southern Africa.",
+   "It is often called the Warm Heart of Africa, a nickname tied to its tourism image."
+  ]
+ },
+ "ML": {
+  "region": "West Africa",
+  "borders": [
+   "DZ",
+   "NE",
+   "BF",
+   "CI",
+   "GN",
+   "SN",
+   "MR"
+  ],
+  "cities": [
+   "Bamako",
+   "Sikasso",
+   "Mopti"
+  ],
+  "highest": {
+   "name": "Hombori Tondo",
+   "m": 1155
+  },
+  "facts": [
+   "Timbuktu was a centre of Islamic scholarship, with manuscript libraries dating from the 13th century onward.",
+   "The medieval Mali Empire controlled much of the trans-Saharan gold trade.",
+   "The Great Mosque of Djenné is the largest mud-brick building in the world and is replastered each year by the town."
+  ]
+ },
+ "MR": {
+  "region": "West Africa",
+  "borders": [
+   "DZ",
+   "ML",
+   "SN"
+  ],
+  "cities": [
+   "Nouakchott",
+   "Nouadhibou",
+   "Kiffa"
+  ],
+  "highest": {
+   "name": "Kediet ej Jill",
+   "m": 915
+  },
+  "facts": [
+   "Around three quarters of Mauritania is desert, and the Sahara continues to expand southward.",
+   "The Richat Structure, a huge circular formation in the desert, is a landmark for astronauts in orbit.",
+   "Its coastal waters are among the richest fishing grounds in West Africa."
+  ]
+ },
+ "MU": {
+  "region": "East Africa",
+  "borders": [],
+  "cities": [
+   "Port Louis",
+   "Vacoas-Phoenix",
+   "Beau Bassin-Rose Hill"
+  ],
+  "highest": {
+   "name": "Piton de la Petite Rivière Noire",
+   "m": 828
+  },
+  "facts": [
+   "The dodo was endemic to Mauritius and was driven extinct within a century of European arrival.",
+   "The island was uninhabited before Dutch settlement in the 17th century.",
+   "It has one of Africa's highest per-capita incomes, built on tourism, textiles and financial services."
+  ]
+ },
+ "MA": {
+  "region": "North Africa",
+  "borders": [
+   "DZ",
+   "ES"
+  ],
+  "cities": [
+   "Casablanca",
+   "Rabat",
+   "Fez"
+  ],
+  "highest": {
+   "name": "Toubkal",
+   "m": 4167
+  },
+  "facts": [
+   "Morocco has both Atlantic and Mediterranean coastlines, separated by the Strait of Gibraltar.",
+   "The University of al-Qarawiyyin in Fez, founded in 859, is often cited as the oldest continuously operating university.",
+   "The Atlas Mountains shield the fertile north from the Sahara to the south."
+  ]
+ },
+ "MZ": {
+  "region": "Southern Africa",
+  "borders": [
+   "TZ",
+   "MW",
+   "ZM",
+   "ZW",
+   "ZA",
+   "SZ"
+  ],
+  "cities": [
+   "Maputo",
+   "Matola",
+   "Nampula"
+  ],
+  "highest": {
+   "name": "Monte Binga",
+   "m": 2436
+  },
+  "facts": [
+   "Mozambique has one of Africa's longest coastlines, stretching about 2,500 kilometres on the Indian Ocean.",
+   "Its flag is the only national flag to feature a modern rifle.",
+   "It joined the Commonwealth in 1995 without ever having been a British colony."
+  ]
+ },
+ "NA": {
+  "region": "Southern Africa",
+  "borders": [
+   "AO",
+   "ZM",
+   "BW",
+   "ZA"
+  ],
+  "cities": [
+   "Windhoek",
+   "Rundu",
+   "Walvis Bay"
+  ],
+  "highest": {
+   "name": "Königstein",
+   "m": 2606
+  },
+  "facts": [
+   "The Namib is considered the oldest desert in the world, arid for at least 55 million years.",
+   "Namibia was the first country to write environmental protection into its constitution.",
+   "The Caprivi Strip, a narrow eastward finger, was drawn to give German colonists access to the Zambezi."
+  ]
+ },
+ "NE": {
+  "region": "West Africa",
+  "borders": [
+   "DZ",
+   "LY",
+   "TD",
+   "NG",
+   "BJ",
+   "BF",
+   "ML"
+  ],
+  "cities": [
+   "Niamey",
+   "Zinder",
+   "Maradi"
+  ],
+  "highest": {
+   "name": "Mont Idoukal-n-Taghès",
+   "m": 2022
+  },
+  "facts": [
+   "More than 80% of Niger is Sahara, and it is one of the hottest countries on Earth.",
+   "It has among the highest birth rates in the world, giving it a very young population.",
+   "The Air and Ténéré reserve is one of the largest protected areas in Africa."
+  ]
+ },
+ "NG": {
+  "region": "West Africa",
+  "borders": [
+   "BJ",
+   "NE",
+   "TD",
+   "CM"
+  ],
+  "cities": [
+   "Lagos",
+   "Kano",
+   "Ibadan"
+  ],
+  "highest": {
+   "name": "Chappal Waddi",
+   "m": 2419
+  },
+  "facts": [
+   "Nigeria is the most populous country in Africa, with more people than any European nation.",
+   "Nollywood produces more films per year than almost any other film industry in the world.",
+   "The capital moved from Lagos to the purpose-built city of Abuja in 1991."
+  ]
+ },
+ "RW": {
+  "region": "East Africa",
+  "borders": [
+   "UG",
+   "TZ",
+   "BI",
+   "CD"
+  ],
+  "cities": [
+   "Kigali",
+   "Butare",
+   "Gisenyi"
+  ],
+  "highest": {
+   "name": "Mount Karisimbi",
+   "m": 4507
+  },
+  "facts": [
+   "Rwanda is known as the land of a thousand hills for its steep, terraced landscape.",
+   "It banned single-use plastic bags in 2008, well ahead of most of the world.",
+   "Volcanoes National Park protects a substantial share of the remaining mountain gorillas."
+  ]
+ },
+ "ST": {
+  "region": "Central Africa",
+  "borders": [],
+  "cities": [
+   "São Tomé",
+   "Santo António",
+   "Neves"
+  ],
+  "highest": {
+   "name": "Pico de São Tomé",
+   "m": 2024
+  },
+  "facts": [
+   "São Tomé and Príncipe is the second smallest African country and sits almost on the equator.",
+   "The islands were uninhabited before Portuguese arrival in the 1470s.",
+   "Once the world's largest cocoa producer, it still relies heavily on the crop."
+  ]
+ },
+ "SN": {
+  "region": "West Africa",
+  "borders": [
+   "MR",
+   "ML",
+   "GN",
+   "GW",
+   "GM"
+  ],
+  "cities": [
+   "Dakar",
+   "Touba",
+   "Thiès"
+  ],
+  "highest": {
+   "name": "Sambangalou",
+   "m": 648
+  },
+  "facts": [
+   "Senegal almost completely surrounds The Gambia, which follows its river inland.",
+   "Dakar sits on the Cap-Vert peninsula, the westernmost point of mainland Africa.",
+   "Gorée Island off Dakar is a memorial to the Atlantic slave trade."
+  ]
+ },
+ "SC": {
+  "region": "East Africa",
+  "borders": [],
+  "cities": [
+   "Victoria",
+   "Anse Boileau",
+   "Beau Vallon"
+  ],
+  "highest": {
+   "name": "Morne Seychellois",
+   "m": 905
+  },
+  "facts": [
+   "Seychelles is the smallest African country by both population and land area.",
+   "Its inner islands are granite rather than coral or volcanic, a rarity for mid-ocean islands.",
+   "The coco de mer palm, found only here, produces the largest seed of any plant."
+  ]
+ },
+ "SL": {
+  "region": "West Africa",
+  "borders": [
+   "GN",
+   "LR"
+  ],
+  "cities": [
+   "Freetown",
+   "Bo",
+   "Kenema"
+  ],
+  "highest": {
+   "name": "Mount Bintumani",
+   "m": 1945
+  },
+  "facts": [
+   "Freetown was founded in 1787 as a settlement for freed slaves from Britain, Nova Scotia and Jamaica.",
+   "Its natural harbour is among the largest in the world.",
+   "Sierra Leone's diamond fields funded the civil war of the 1990s, giving rise to the term blood diamonds."
+  ]
+ },
+ "SO": {
+  "region": "East Africa",
+  "borders": [
+   "DJ",
+   "ET",
+   "KE"
+  ],
+  "cities": [
+   "Mogadishu",
+   "Hargeisa",
+   "Bosaso"
+  ],
+  "highest": {
+   "name": "Shimbiris",
+   "m": 2460
+  },
+  "facts": [
+   "Somalia has the longest mainland coastline in Africa, at around 3,300 kilometres.",
+   "It is one of the most linguistically and ethnically homogeneous countries on the continent.",
+   "Somaliland in the north has functioned self-governed since 1991 without international recognition."
+  ]
+ },
+ "ZA": {
+  "region": "Southern Africa",
+  "borders": [
+   "NA",
+   "BW",
+   "ZW",
+   "MZ",
+   "SZ",
+   "LS"
+  ],
+  "cities": [
+   "Johannesburg",
+   "Cape Town",
+   "Durban"
+  ],
+  "highest": {
+   "name": "Mafadi",
+   "m": 3450
+  },
+  "facts": [
+   "South Africa has three capital cities: Pretoria for the executive, Cape Town for parliament and Bloemfontein for the judiciary.",
+   "It recognises twelve official languages, among the most of any country.",
+   "It completely surrounds Lesotho and produces a large share of the world's platinum."
+  ]
+ },
+ "SS": {
+  "region": "East Africa",
+  "borders": [
+   "SD",
+   "ET",
+   "KE",
+   "UG",
+   "CD",
+   "CF"
+  ],
+  "cities": [
+   "Juba",
+   "Wau",
+   "Malakal"
+  ],
+  "highest": {
+   "name": "Mount Kinyeti",
+   "m": 3187
+  },
+  "facts": [
+   "South Sudan became independent in 2011 and is the world's youngest widely recognised country.",
+   "The Sudd, a vast wetland on the White Nile, is one of the largest in the world.",
+   "It is landlocked and depends on pipelines through Sudan to export its oil."
+  ]
+ },
+ "SD": {
+  "region": "North Africa",
+  "borders": [
+   "EG",
+   "ER",
+   "ET",
+   "SS",
+   "CF",
+   "TD",
+   "LY"
+  ],
+  "cities": [
+   "Khartoum",
+   "Omdurman",
+   "Port Sudan"
+  ],
+  "highest": {
+   "name": "Deriba Caldera",
+   "m": 3042
+  },
+  "facts": [
+   "Sudan has more pyramids than Egypt, built by the Kingdom of Kush at Meroë.",
+   "The Blue and White Niles meet at Khartoum to form the main Nile.",
+   "It was Africa's largest country until South Sudan separated in 2011."
+  ]
+ },
+ "TZ": {
+  "region": "East Africa",
+  "borders": [
+   "KE",
+   "UG",
+   "RW",
+   "BI",
+   "CD",
+   "ZM",
+   "MW",
+   "MZ"
+  ],
+  "cities": [
+   "Dar es Salaam",
+   "Mwanza",
+   "Dodoma"
+  ],
+  "highest": {
+   "name": "Mount Kilimanjaro",
+   "m": 5895
+  },
+  "facts": [
+   "Kilimanjaro is the highest point in Africa and the tallest free-standing mountain in the world.",
+   "Tanzania borders three of Africa's great lakes: Victoria, Tanganyika and Malawi.",
+   "The country was formed in 1964 by the union of Tanganyika and Zanzibar."
+  ]
+ },
+ "TG": {
+  "region": "West Africa",
+  "borders": [
+   "GH",
+   "BF",
+   "BJ"
+  ],
+  "cities": [
+   "Lomé",
+   "Sokodé",
+   "Kara"
+  ],
+  "highest": {
+   "name": "Mont Agou",
+   "m": 986
+  },
+  "facts": [
+   "Togo is one of Africa's narrowest countries, roughly 115 kilometres wide but 550 long.",
+   "It is among the world's largest producers of phosphate rock.",
+   "Koutammakou, in the north, is known for its fortified mud tower-houses."
+  ]
+ },
+ "TN": {
+  "region": "North Africa",
+  "borders": [
+   "DZ",
+   "LY"
+  ],
+  "cities": [
+   "Tunis",
+   "Sfax",
+   "Sousse"
+  ],
+  "highest": {
+   "name": "Jebel ech Chambi",
+   "m": 1544
+  },
+  "facts": [
+   "Tunisia is the northernmost country in Africa and the smallest in the Maghreb.",
+   "Carthage, near modern Tunis, was Rome's great rival before its destruction in 146 BC.",
+   "Parts of the Sahara here have stood in for other planets in numerous films."
+  ]
+ },
+ "UG": {
+  "region": "East Africa",
+  "borders": [
+   "SS",
+   "KE",
+   "TZ",
+   "RW",
+   "CD"
+  ],
+  "cities": [
+   "Kampala",
+   "Nansana",
+   "Mbarara"
+  ],
+  "highest": {
+   "name": "Mount Stanley",
+   "m": 5109
+  },
+  "facts": [
+   "Uganda shares Lake Victoria, the largest lake in Africa, with Kenya and Tanzania.",
+   "The Nile's most commonly cited source is at Jinja, where it leaves Lake Victoria.",
+   "The Rwenzori range, the Mountains of the Moon, carries glaciers despite sitting on the equator."
+  ]
+ },
+ "ZM": {
+  "region": "Southern Africa",
+  "borders": [
+   "CD",
+   "TZ",
+   "MW",
+   "MZ",
+   "ZW",
+   "BW",
+   "NA",
+   "AO"
+  ],
+  "cities": [
+   "Lusaka",
+   "Kitwe",
+   "Ndola"
+  ],
+  "highest": {
+   "name": "Mafinga Central",
+   "m": 2339
+  },
+  "facts": [
+   "Zambia borders eight countries, more than any other in southern Africa.",
+   "Victoria Falls on the Zambezi forms the largest sheet of falling water in the world.",
+   "Copper has dominated its economy since the colonial era, and the Copperbelt remains its industrial heart."
+  ]
+ },
+ "ZW": {
+  "region": "Southern Africa",
+  "borders": [
+   "ZA",
+   "BW",
+   "ZM",
+   "MZ"
+  ],
+  "cities": [
+   "Harare",
+   "Bulawayo",
+   "Chitungwiza"
+  ],
+  "highest": {
+   "name": "Mount Nyangani",
+   "m": 2592
+  },
+  "facts": [
+   "Great Zimbabwe, a stone city built between the 11th and 15th centuries, gave the country its name.",
+   "Hyperinflation in 2008 forced the abandonment of the Zimbabwean dollar for nearly a decade.",
+   "Lake Kariba on the Zambezi is one of the largest artificial lakes in the world by volume."
+  ]
+ }
+}
