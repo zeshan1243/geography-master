@@ -11,17 +11,31 @@ import {
   landmarks,
   waters,
   continents as continentData,
-  mapCoverage
+  mapCoverage,
+  borders as borderData
 } from './data.js';
 
 export const DIFFICULTIES = [
-  { id: 'easy',   label: 'Easy',   dot: '🟢', blurb: 'Countries you probably know', tiers: [1] },
-  { id: 'medium', label: 'Medium', dot: '🟡', blurb: 'Test your knowledge',         tiers: [1, 2] },
-  { id: 'hard',   label: 'Hard',   dot: '🔴', blurb: 'Less common countries',       tiers: [2, 3] },
-  { id: 'expert', label: 'Expert', dot: '🟣', blurb: 'Only geography experts survive', tiers: [3, 4] }
+  { id: 'easy',   label: 'Easy',   blurb: 'Countries you probably know', tiers: [1] },
+  { id: 'medium', label: 'Medium', blurb: 'Test your knowledge',         tiers: [1, 2] },
+  { id: 'hard',   label: 'Hard',   blurb: 'Less common countries',       tiers: [2, 3] },
+  {
+    id: 'expert',
+    label: 'Expert',
+    blurb: 'Sudden death — one wrong answer ends the run',
+    tiers: [3, 4],
+    survival: true
+  }
 ];
 
-export const DEFAULT_QUESTIONS = 10;
+export const DEFAULT_QUESTIONS = 30;
+
+/**
+ * Survival rounds have no fixed length, so they are built from as much of the
+ * pool as exists and end on the first wrong answer. Clearing the whole pool is
+ * a legitimate — and very rare — way to finish.
+ */
+export const SURVIVAL_MAX = 250;
 
 export function difficulty(id) {
   return DIFFICULTIES.find((d) => d.id === id) || DIFFICULTIES[1];
@@ -261,13 +275,157 @@ async function mapPool(mode, tiers) {
   return { pool: inTier.length >= 6 ? inTier : usable, all: usable };
 }
 
+/* --- Reverse and attribute questions ------------------------------------- */
+
+/** "Bangkok is the capital of which country?" — the capital quiz backwards. */
+function capitalToCountryQuestion(country, pool, all, rng, index) {
+  const sameContinent = pool.filter((c) => c.continent === country.continent);
+  const options = shuffle(
+    [country.name, ...distractors(country, [sameContinent, pool, all], (c) => c.name, rng)],
+    rng
+  );
+  return {
+    id: `capitalToCountry-${country.code}-${index}`,
+    kind: 'capitalToCountry',
+    prompt: `${country.capital} is the capital of which country?`,
+    // Deliberately no continent hint: that would give half the answer away.
+    visual: { kind: 'subject', value: country.capital },
+    options,
+    answer: country.name,
+    explanation: `${country.flag} ${country.capital} is the capital of ${country.name}, in ${country.continent}.`
+  };
+}
+
+/** "Which flag belongs to Japan?" — recall rather than recognition. */
+function nameToFlagQuestion(country, pool, all, rng, index) {
+  const sameContinent = pool.filter((c) => c.continent === country.continent);
+  const options = shuffle(
+    [country.flag, ...distractors(country, [sameContinent, pool, all], (c) => c.flag, rng)],
+    rng
+  );
+  return {
+    id: `nameToFlag-${country.code}-${index}`,
+    kind: 'nameToFlag',
+    prompt: `Which flag belongs to ${country.name}?`,
+    visual: { kind: 'subject', value: country.name, sub: country.continent },
+    options,
+    optionStyle: 'flag',
+    answer: country.flag,
+    explanation: `${country.flag} is the flag of ${country.name} — capital ${country.capital}.`
+  };
+}
+
+function currencyQuestion(country, pool, all, rng, index) {
+  const sameContinent = pool.filter((c) => c.continent === country.continent);
+  const options = shuffle(
+    [country.currency, ...distractors(country, [sameContinent, pool, all], (c) => c.currency, rng)],
+    rng
+  );
+  return {
+    id: `currencies-${country.code}-${index}`,
+    kind: 'currencies',
+    prompt: `Which currency does ${country.name} use?`,
+    visual: { kind: 'subject', value: country.name, icon: country.flag, sub: country.continent },
+    options,
+    answer: country.currency,
+    explanation: `${country.name} uses the ${country.currency}.`
+  };
+}
+
+function languageQuestion(country, pool, all, rng, index) {
+  const sameContinent = pool.filter((c) => c.continent === country.continent);
+  const options = shuffle(
+    [country.language, ...distractors(country, [sameContinent, pool, all], (c) => c.language, rng)],
+    rng
+  );
+  return {
+    id: `languages-${country.code}-${index}`,
+    kind: 'languages',
+    prompt: `What is the main language of ${country.name}?`,
+    visual: { kind: 'subject', value: country.name, icon: country.flag, sub: country.continent },
+    options,
+    answer: country.language,
+    explanation: `${country.language} is the main language of ${country.name}.`
+  };
+}
+
+/**
+ * "Which country shares a border with Germany?"
+ *
+ * Every wrong option must be a non-neighbour, or the question has more than
+ * one right answer — so neighbours are excluded from the distractor pool
+ * rather than merely deprioritised.
+ */
+function borderQuestion(entry, pool, all, rng, index) {
+  const { country, neighbours } = entry;
+  const neighbourCodes = new Set(neighbours.map((n) => n.code));
+  const correct = neighbours[Math.floor(rng() * neighbours.length)];
+
+  const notNeighbours = (list) =>
+    list.filter((c) => c.code !== country.code && !neighbourCodes.has(c.code));
+
+  const sameContinent = notNeighbours(pool.map((p) => p.country)).filter(
+    (c) => c.continent === country.continent
+  );
+
+  const options = shuffle(
+    [
+      correct.name,
+      ...distractors(correct, [sameContinent, notNeighbours(all)], (c) => c.name, rng)
+    ],
+    rng
+  );
+
+  const names = neighbours.map((n) => n.name);
+  return {
+    id: `borders-${country.code}-${index}`,
+    kind: 'borders',
+    prompt: `Which country shares a land border with ${country.name}?`,
+    visual: { kind: 'subject', value: country.name, icon: country.flag, sub: country.continent },
+    options,
+    answer: correct.name,
+    explanation:
+      names.length > 6
+        ? `${country.name} has ${names.length} land neighbours, including ${names.slice(0, 5).join(', ')}.`
+        : `${country.name} borders ${names.join(', ')}.`
+  };
+}
+
+/** "Which of these landmarks is in Egypt?" — the landmark quiz backwards. */
+function countryToLandmarkQuestion(landmark, pool, allCountries, rng, index) {
+  const elsewhere = pool.filter((l) => l.country !== landmark.country);
+  const home = allCountries.find((c) => c.name === landmark.country);
+  const options = shuffle(
+    [landmark.name, ...distractors(landmark, [elsewhere], (l) => l.name, rng)],
+    rng
+  );
+  return {
+    id: `countryToLandmark-${index}-${landmark.name}`,
+    kind: 'countryToLandmark',
+    prompt: `Which of these landmarks is in ${landmark.country}?`,
+    visual: {
+      kind: 'subject',
+      value: landmark.country,
+      icon: home ? home.flag : landmark.icon,
+      sub: landmark.continent
+    },
+    options,
+    answer: landmark.name,
+    explanation: `${landmark.name} is in ${landmark.city}, ${landmark.country}. ${landmark.fact}`
+  };
+}
+
 /* --- Round assembly ------------------------------------------------------ */
 
 const COUNTRY_BUILDERS = {
   flags: flagQuestion,
   capitals: capitalQuestion,
   countries: countryQuestion,
-  continents: continentQuestion
+  continents: continentQuestion,
+  capitalToCountry: capitalToCountryQuestion,
+  nameToFlag: nameToFlagQuestion,
+  currencies: currencyQuestion,
+  languages: languageQuestion
 };
 
 /**
@@ -278,7 +436,16 @@ export async function buildRound({ type, difficulty: difficultyId, count = DEFAU
   const tiers = difficulty(difficultyId).tiers;
 
   if (type === 'mixed') {
-    const kinds = ['flags', 'capitals', 'countries', 'continents', 'landmarks', 'waters'];
+    const kinds = [
+      'flags',
+      'capitals',
+      'countries',
+      'continents',
+      'landmarks',
+      'waters',
+      'currencies',
+      'languages'
+    ];
     // Built one after another rather than in parallel: the rng must be consumed
     // in a fixed order or the seeded daily challenge stops being reproducible.
     const rounds = [];
@@ -300,6 +467,33 @@ export async function buildRound({ type, difficulty: difficultyId, count = DEFAU
     const { pool, all } = await mapPool(type === 'shapes' ? 'shape' : 'locate', tiers);
     const build = type === 'shapes' ? shapeQuestion : locateQuestion;
     return sample(pool, count, rng).map((item, i) => build(item, pool, all, rng, i));
+  }
+
+  if (type === 'borders') {
+    const [all, adjacency] = await Promise.all([countries(), borderData()]);
+    const byCode = new Map(all.map((c) => [c.code, c]));
+
+    const withNeighbours = all
+      .filter((c) => (adjacency[c.code] || []).length)
+      .map((country) => ({
+        country,
+        neighbours: adjacency[country.code].map((code) => byCode.get(code)).filter(Boolean)
+      }))
+      .filter((entry) => entry.neighbours.length);
+
+    const inTier = withNeighbours.filter((e) => tiers.includes(e.country.tier));
+    const pool = inTier.length >= 6 ? inTier : withNeighbours;
+    return sample(pool, count, rng).map((entry, i) =>
+      borderQuestion(entry, pool, all, rng, i)
+    );
+  }
+
+  if (type === 'countryToLandmark') {
+    const [all, allCountries] = await Promise.all([landmarks(), countries()]);
+    const pool = poolFor(all, tiers);
+    return sample(pool, count, rng).map((item, i) =>
+      countryToLandmarkQuestion(item, pool, allCountries, rng, i)
+    );
   }
 
   if (type === 'landmarks') {

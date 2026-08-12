@@ -53,6 +53,30 @@ export function starString(count) {
   return '★'.repeat(count) + '☆'.repeat(5 - count);
 }
 
+/**
+ * Survival stars come from run length. Accuracy would be meaningless here:
+ * a run always ends on the one wrong answer, so accuracy is near-100% whether
+ * you lasted three questions or thirty.
+ */
+export function survivalStars(runLength) {
+  if (runLength >= 30) return 5;
+  if (runLength >= 20) return 4;
+  if (runLength >= 10) return 3;
+  if (runLength >= 5) return 2;
+  if (runLength >= 1) return 1;
+  return 0;
+}
+
+export function survivalVerdict(runLength, cleared) {
+  if (cleared) return 'You cleared the entire pool without a single mistake.';
+  if (runLength === 0) return 'Out on the first question. Expert is unforgiving.';
+  if (runLength < 5) return 'A short run. Try Hard difficulty to warm up first.';
+  if (runLength < 10) return 'Respectable. Ten in a row is the next target.';
+  if (runLength < 20) return 'Strong run — you know the obscure ones.';
+  if (runLength < 30) return 'Excellent. Very few people get this far on expert.';
+  return 'Exceptional. That is expert-level geography.';
+}
+
 /** A short line of encouragement matched to the result. */
 export function verdict(correct, total) {
   const pct = total ? (correct / total) * 100 : 0;

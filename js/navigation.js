@@ -13,8 +13,10 @@ function initDrawer() {
 
   const setOpen = (open) => {
     drawer.dataset.open = String(open);
+    // The menu/close icons swap in CSS off aria-expanded; setting textContent
+    // here would delete the inline SVGs.
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? '✕' : '☰';
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.body.dataset.navOpen = String(open);
   };
 

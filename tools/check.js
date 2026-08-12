@@ -99,6 +99,12 @@ function checkData() {
     ok(['Ocean', 'Sea'].includes(w.type), `water "${w.name}": type must be Ocean or Sea`);
   }
 
+  const categories = new Set(games.map((g) => g.category));
+  for (const category of categories) {
+    const inCategory = games.filter((g) => g.category === category).length;
+    ok(inCategory >= 2, `category "${category}" has only ${inCategory} game`);
+  }
+
   const gameSlugs = new Set();
   for (const g of games) {
     ok(!gameSlugs.has(g.slug), `duplicate game slug: ${g.slug}`);
@@ -199,17 +205,23 @@ async function checkEngine() {
   const quiz = await import('../js/quiz.js');
   const score = await import('../js/score.js');
 
-  const types = ['flags', 'capitals', 'countries', 'continents', 'landmarks', 'waters', 'shapes', 'locate', 'mixed'];
+  // Driven from the catalogue so a new game cannot be added without being
+  // exercised at every difficulty.
+  const types = games.map((g) => g.id);
   const difficulties = quiz.DIFFICULTIES.map((d) => d.id);
 
   for (const type of types) {
     for (const id of difficulties) {
-      const round = await quiz.buildRound({ type, difficulty: id, count: 10 });
+      const round = await quiz.buildRound({ type, difficulty: id, count: quiz.DEFAULT_QUESTIONS });
 
       ok(round.length > 0, `${type}/${id}: produced no questions`);
-      ok(round.length <= 10, `${type}/${id}: produced more than 10 questions`);
+      ok(
+        round.length <= quiz.DEFAULT_QUESTIONS,
+        `${type}/${id}: produced more than ${quiz.DEFAULT_QUESTIONS} questions`
+      );
 
-      // Small pools (oceans on easy) legitimately cap below 10; flag anything worse.
+      // Small datasets (60 landmarks, 30 bodies of water) legitimately cap
+      // below the full round rather than being padded with repeats.
       ok(round.length >= 6, `${type}/${id}: only ${round.length} questions available`);
 
       const subjects = new Set();
@@ -235,6 +247,54 @@ async function checkEngine() {
         subjects.add(q.id);
       }
     }
+  }
+
+  // Expert is a survival mode: no fixed length, ends on the first mistake.
+  const expert = quiz.difficulty('expert');
+  ok(expert.survival === true, 'expert difficulty should be marked survival');
+  ok(
+    quiz.DIFFICULTIES.filter((d) => d.survival).length === 1,
+    'exactly one difficulty should be survival'
+  );
+
+  for (const type of types) {
+    const run = await quiz.buildRound({ type, difficulty: 'expert', count: quiz.SURVIVAL_MAX });
+    const normal = await quiz.buildRound({ type, difficulty: 'expert', count: quiz.DEFAULT_QUESTIONS });
+    ok(
+      run.length >= normal.length,
+      `${type}: survival round (${run.length}) should offer at least a normal round (${normal.length})`
+    );
+    ok(
+      new Set(run.map((q) => q.id)).size === run.length,
+      `${type}: survival round repeats a question`
+    );
+  }
+
+  // The border quiz is the one game where a bad distractor makes a question
+  // have two right answers, so every option is checked against the real
+  // adjacency list rather than trusted.
+  {
+    const adjacency = read('borders');
+    const byName = Object.fromEntries(countries.map((c) => [c.name, c.code]));
+    let ambiguous = 0;
+    let inspected = 0;
+
+    for (const id of difficulties) {
+      for (let run = 0; run < 4; run += 1) {
+        const round = await quiz.buildRound({ type: 'borders', difficulty: id, count: 30 });
+        for (const question of round) {
+          const subject = question.prompt
+            .replace('Which country shares a land border with ', '')
+            .replace('?', '');
+          const neighbours = new Set(adjacency[byName[subject]] || []);
+          const hits = question.options.filter((o) => neighbours.has(byName[o]));
+          inspected += 1;
+          if (hits.length !== 1 || hits[0] !== question.answer) ambiguous += 1;
+        }
+      }
+    }
+    ok(ambiguous === 0, `${ambiguous} of ${inspected} border questions have more than one correct answer`);
+    console.log(`  ${inspected} border questions verified against the adjacency list`);
   }
 
   // The daily challenge must be identical for everyone on a given day.
@@ -266,6 +326,10 @@ async function checkEngine() {
   ok(score.stars(8, 10) === 4, '8/10 should be 4 stars');
   ok(score.stars(10, 10) === 5, '10/10 should be 5 stars');
   ok(score.starString(4) === '★★★★☆', 'star string should pad to five');
+  ok(score.survivalStars(0) === 0, 'a zero-question run should score no stars');
+  ok(score.survivalStars(9) === 2, 'a 9-question run should be 2 stars');
+  ok(score.survivalStars(10) === 3, 'a 10-question run should be 3 stars');
+  ok(score.survivalStars(45) === 5, 'a 45-question run should cap at 5 stars');
 }
 
 /* --- 3. AdSense ---------------------------------------------------------- */
@@ -370,6 +434,60 @@ async function checkGuides() {
   console.log(`  ${ARTICLES.length} guides, ${total} words total`);
 }
 
+/**
+ * Two layout traps that are invisible in Node but break every page on a phone,
+ * so they get static guards rather than trust.
+ */
+function checkLayoutTraps() {
+  section('Layout traps');
+
+  const files = htmlFiles();
+  const sample = readFileSync(files[0], 'utf8');
+
+  // 1. The mobile drawer must not live inside <header>. .site-header uses
+  //    backdrop-filter, which makes it a containing block for position:fixed
+  //    descendants — nesting the drawer collapses it to the header's height.
+  for (const file of files) {
+    const html = readFileSync(file, 'utf8');
+    const headerEnd = html.indexOf('</header>');
+    const drawer = html.indexOf('id="nav-drawer"');
+    ok(
+      drawer === -1 || (headerEnd !== -1 && drawer > headerEnd),
+      `${relative(ROOT, file)}: nav drawer is inside <header> — backdrop-filter will collapse it`
+    );
+  }
+
+  // 2. Any class used alongside `wrap` must not set the padding shorthand with
+  //    a zero inline value: same specificity as .wrap, so source order decides
+  //    and the side padding silently disappears.
+  const partners = new Set();
+  for (const match of sample.matchAll(/class="([^"]*\bwrap\b[^"]*)"/g)) {
+    for (const cls of match[1].split(/\s+/)) if (cls && cls !== 'wrap') partners.add(cls);
+  }
+
+  const css = ['css/main.css', 'css/responsive.css']
+    .map((f) => readFileSync(join(ROOT, f), 'utf8'))
+    .join('\n');
+
+  for (const cls of partners) {
+    const rule = new RegExp(`\\.${cls}\\s*\\{([^}]*)\\}`, 'g');
+    for (const match of css.matchAll(rule)) {
+      const shorthand = /(^|;)\s*padding:\s*([^;]+)/.exec(match[1]);
+      if (!shorthand) continue;
+      const parts = shorthand[2].trim().split(/\s+/);
+      const inline = parts.length === 1 ? parts[0] : parts[1];
+      ok(
+        !/^0\D*$/.test(inline),
+        `.${cls} sets "padding: ${shorthand[2].trim()}" and is used with .wrap — ` +
+          'this zeroes the inline padding. Use padding-block instead.'
+      );
+    }
+  }
+
+  console.log(`  drawer placement checked on ${files.length} pages; ` +
+    `${partners.size} classes paired with .wrap`);
+}
+
 function checkLinks() {
   section('Generated pages and links');
 
@@ -410,6 +528,7 @@ checkDetails();
 checkMapCoverage();
 await checkEngine();
 checkAds();
+checkLayoutTraps();
 await checkGuides();
 checkLinks();
 

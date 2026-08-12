@@ -4,9 +4,17 @@
    ========================================================================== */
 
 /* --- Tablet and below --------------------------------------------------- */
-@media (max-width: 900px) {
-  .nav-links,
+/* The brand and the nav links have fixed widths, so the search field absorbs
+   every pixel of squeeze — it collapses to an unusable ~80px stub between
+   960px and 1120px. Below 1120 there is genuinely not room for brand + seven
+   links + search + two buttons, so the search is the thing that gives way;
+   country lookup still lives on /countries/. */
+@media (max-width: 1120px) {
   .search { display: none; }
+}
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
 
   .nav-toggle { display: inline-flex; }
 
@@ -20,9 +28,9 @@
 
 /* --- Mobile ------------------------------------------------------------- */
 @media (max-width: 640px) {
-  .section { padding: 40px 0; }
+  .section { padding-block: 40px; }
 
-  .hero { padding: 40px 0 32px; }
+  .hero { padding-block: 40px 32px; }
 
   .hero .btn-row .btn { width: 100%; }
 
@@ -48,14 +56,42 @@
 
   .country-list { grid-template-columns: 1fr; }
 
+  /* One fact per row wastes most of a phone screen; these are short values. */
+  .fact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .fact { padding: 12px 14px; }
+  .fact dd { font-size: .9375rem; }
+  .fact dt { font-size: .6875rem; }
+
   .scoreboard { gap: 20px; padding: 14px; }
   .scoreboard .value { font-size: 1.5rem; }
 
   .question-visual { min-height: 150px; padding: 18px; }
 
+  /* A taller map means bigger countries to tap. The viewBox follows the
+     container's aspect (see js/worldmap.js), so nothing is letterboxed. */
+  .world-map { aspect-ratio: 1 / 1; }
+  .shape-svg { height: 240px; }
+
   .answer { font-size: 1rem; padding: 14px 16px; }
 
   .results-score { font-size: 3.25rem; }
+
+  /* Continent is the least useful column in a flag/capital lookup and is on
+     every country page anyway. Dropping it lets these tables fit a phone
+     without sideways scrolling at all. */
+  .col-optional { display: none; }
+
+  /* nowrap keeps columns as wide as their longest name, which pushes these
+     tables off screen. Wrapping lets the lookup tables fit outright; numbers
+     contain no spaces so they never break mid-figure. */
+  th, td {
+    padding: 10px 12px;
+    white-space: normal;
+  }
 
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { justify-content: center; text-align: center; }

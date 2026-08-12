@@ -41,17 +41,19 @@ Fields: `name`, `code` (ISO 3166-1 alpha-2), `capital`, `continent`, `currency`,
 
 ### Adding a game
 
-Add an entry to `data/games.json` and a question builder in `js/quiz.js`. The page, the card on the homepage and games directory, the related-games links and the sitemap entry all follow from the data.
+Add an entry to `data/games.json` and a question builder in `js/quiz.js`. The page, the card on the homepage and games directory, the related-games links and the sitemap entry all follow from the data — and `npm run check` derives its game-type list from the same catalogue, so a new game is automatically exercised at every difficulty rather than silently untested.
+
+Games whose wrong answers must satisfy a constraint need their own check. The border quiz is the example: a distractor that happens to be a real neighbour would give a question two correct answers, so the suite verifies every option against `data/borders.json` rather than trusting the builder.
 
 ## Source layout
 
 | Path | What it is |
 | --- | --- |
-| `data/` | All content: 195 countries, 60 landmarks, 30 oceans and seas, 7 continents, 9 games |
+| `data/` | All content: 195 countries, 60 landmarks, 30 oceans and seas, 7 continents, 15 games |
 | `data/details/` | Per-country borders, cities, highest point and facts — one file per continent, build-time only |
 | `assets/world.svg` | World map, one path per country keyed by ISO code — see [assets/README.md](assets/README.md) |
 | `js/app.js` | Single entry point loaded by every page |
-| `js/game.js` | The reusable quiz engine — one engine drives all nine games |
+| `js/game.js` | The reusable quiz engine — one engine drives all fifteen games |
 | `js/worldmap.js` | Loads and frames `assets/world.svg` for the map and shape quizzes |
 | `js/quiz.js` | Turns datasets into rounds; seeded RNG for the daily challenge |
 | `js/score.js` | Scoring rules, stars, verdicts |
@@ -106,6 +108,57 @@ The `rail` unit only renders at ≥1240px, in a 300px sticky column on country, 
 - **Country detail** — all 195 have three or more facts, cities, a region and a highest point; no fact is reused on two pages; and every land border is mutual (a one-sided border is always a mistake in one of the two entries).
 - **Map coverage** — every country has a path in `world.svg`, anything marked playable clears the size and area thresholds, and each difficulty has enough countries to fill a round.
 - **Pages** — every generated page has exactly one `<h1>`, a title, a meta description and a canonical link; all ~13,000 internal links resolve to files that exist.
+
+## Rounds and difficulty
+
+Easy, Medium and Hard run **30 questions** (`DEFAULT_QUESTIONS` in `js/quiz.js`, overridable per page via `data-questions`).
+
+**Expert is a survival mode**, flagged by `survival: true` on the difficulty. It has no fixed length: the round is built from as much of the hardest pool as exists (`SURVIVAL_MAX`) and the first wrong answer ends it. Consequences worth knowing before changing it:
+
+- The progress bar and per-question dots are hidden — there is no known total to fill. Dots are also hidden above `DOTS_LIMIT` (12) in normal rounds, since 30 of them do not fit a phone.
+- Results are scored on **run length**, not accuracy. Accuracy is meaningless in sudden death — a run always ends on the single wrong answer, so it is near-100% whether you lasted three questions or thirty. `survivalStars()` and `survivalVerdict()` handle this.
+- The longest run per game is stored separately in `bestRuns`, because points reward speed as well as length.
+- The daily challenge is never survival, even though it uses the mixed quiz: a seeded round everyone shares should not end on question one.
+
+Two datasets are smaller than a full round and cap rather than repeat: the **landmark quiz** (60 landmarks — 21 on Easy, 15 on Expert) and the **oceans quiz** (30 bodies of water — 8 on Easy). Those rounds are as long as the pool allows. Adding entries to `data/landmarks.json` or `data/oceans.json` lengthens them automatically.
+
+## Icons
+
+`js/icons.js` is the single icon set, imported by `tools/lib/layout.js` at build time and by `js/game.js` at runtime — one definition rather than two copies that drift. Icons use `currentColor`, so they match whatever text they sit beside in either theme.
+
+Emoji are not used for interface controls: they cannot take a colour, draw differently on every platform, and sit on the text baseline rather than centring against a label. Emoji that remain are **content**, not chrome — country flags in quiz questions, and the per-game identity icons in `data/games.json` that also appear on the game cards.
+
+Two traps when touching an icon that has states:
+
+- Never write `textContent` on a button that holds an inline SVG — it deletes the icon. The theme toggle, menu toggle and daily "Play Again" button all ship both states in the markup and swap them in CSS off an attribute (`data-theme`, `aria-expanded`, `data-done`), so scripts only update the label and the accessible name.
+- A CSS-driven swap also paints the right icon on the first frame, before any script runs.
+
+## Play screen layout
+
+Above 960px the play screen becomes a two-column grid (`[data-layout="split"]`): visual on the left, prompt and answers on the right. Stacked, a 30-question round pushed the options below the fold and the score out of view while scrolling. Side by side, the screen needs the height of the taller column instead of the sum of both. It uses `grid-template-areas` on the existing children, so no wrapper markup was needed.
+
+The map quiz opts out (`[data-layout="wide"]`) because it answers on the map itself and has no option buttons to put in a second column — `js/game.js` sets the attribute per question. That layout also moves the prompt **above** the map: the map is the tall element, so an instruction underneath is the first thing to scroll away.
+
+`.world-map` is capped at `min(47vh, 440px)`. Unbounded, a full-width map is ~650px tall and pushes the prompt and feedback off screen. Clamping is safe because the viewBox is built from the element's *measured* aspect, so a shorter box just yields a wider, shorter window — never a letterbox or a distortion. Measured to fit at 1280×800, 1440×900, 1024×768 and 1366×768.
+
+The scoreboard is `position: sticky` under the header so the score and streak stay visible while reading the answers.
+
+**The answer feedback reserves its space rather than appearing.** `.feedback` is a fixed 88px strip that is always in the flow; answering fades its contents in and sets `data-kind`. It used to be `hidden` and revealed on answer, which grew the column — and because the split layout's visual was `align-self: stretch`, the visual opposite resized to match, so the whole screen lurched on every answer. Two rules keep it still:
+
+- the strip has a fixed height and its explanation is clamped to two lines, so a long fact cannot change it;
+- the visual is `align-self: start` with a `min-height`, never stretched to match the answers column.
+
+Verified by measuring the visual's height and position, the answers' position and total document height immediately before and after answering: identical on the split, wide and mobile layouts. If you change either rule, re-run that comparison — the jump is easy to reintroduce and easy to miss.
+
+## Mobile
+
+Mobile-first, verified at 390px and 360px across every page type: no horizontal overflow, nothing escaping the viewport, and every non-inline tap target at least 44px tall.
+
+Three things are worth knowing before changing the mobile CSS:
+
+- **The map quiz is square on phones** (`aspect-ratio: 1/1`) rather than 3:2. `zoomWindow()` in `js/worldmap.js` reads the container's measured aspect and builds a matching viewBox, so a taller box means bigger countries to tap rather than letterboxing. Changing the aspect in CSS alone is safe; hard-coding the viewBox aspect is not.
+- **Wide tables wrap rather than scroll.** `white-space: normal` plus hiding the `.col-optional` continent column lets the capitals and flags tables fit a 390px screen outright. The numeric tables still scroll, and `.table-wrap` carries CSS-only scroll shadows that appear only while there is more to reach.
+- **`--scroll-shadow` is a theme token.** A hard-coded dark shadow is invisible against the dark theme, which is exactly the bug it exists to prevent.
 
 ## Not built yet
 

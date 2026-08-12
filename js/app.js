@@ -94,9 +94,16 @@ async function renderDaily() {
   if (state) {
     state.textContent = done
       ? `Completed today — you scored ${formatNumber(done)} points. Play it again for practice.`
-      : 'Ten questions, the same for everyone, changing at midnight.';
+      : 'Thirty questions, the same for everyone, changing at midnight.';
   }
-  if (done && link) link.textContent = '🔁 Play Again';
+
+  if (done && link) {
+    // Only the label changes; the play/refresh icons swap in CSS off
+    // data-done. Writing textContent here would delete the inline SVGs.
+    link.dataset.done = 'true';
+    const label = link.querySelector('[data-daily-label]');
+    if (label) label.textContent = 'Play Again';
+  }
 }
 
 /* --- Streak calendar ----------------------------------------------------- */

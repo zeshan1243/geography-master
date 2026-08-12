@@ -71,6 +71,11 @@ export async function games() {
   return fetchJSON('games');
 }
 
+/** Land-border adjacency: ISO code -> array of neighbouring codes. */
+export async function borders() {
+  return fetchJSON('borders');
+}
+
 /** Per-country map geometry and which map games can use each country. */
 export async function mapCoverage() {
   return fetchJSON('map-coverage');

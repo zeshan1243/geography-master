@@ -156,6 +156,19 @@ function build() {
     join(ROOT, 'data', 'map-coverage.json'),
     `${JSON.stringify(coverage, null, 0)}\n`
   );
+  // Land borders are needed at runtime by the border quiz. The full details
+  // files stay build-time only; this is just the adjacency list, a few KB.
+  writeFileSync(
+    join(ROOT, 'data', 'borders.json'),
+    `${JSON.stringify(
+      Object.fromEntries(
+        Object.entries(details)
+          .filter(([, d]) => d.borders && d.borders.length)
+          .map(([code, d]) => [code, d.borders])
+      )
+    )}\n`
+  );
+
   const playable = {
     shape: coverage.countries.filter((c) => c.shape).length,
     locate: coverage.countries.filter((c) => c.locate).length

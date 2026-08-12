@@ -57,8 +57,11 @@ const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
  * A window around `box` that leaves the country large enough to tap while
  * keeping enough surrounding land to make the question a real one.
  */
-export function zoomWindow(box, map, { context = 2.8, minWidth = 80 } = {}) {
-  const aspect = map.width / map.height;
+export function zoomWindow(box, map, { context = 2.8, minWidth = 80, aspect } = {}) {
+  // The window must match the aspect of the box it will be drawn into,
+  // otherwise preserveAspectRatio letterboxes it and the map renders smaller
+  // than the space available — which matters most on phones.
+  const ratio = aspect || map.width / map.height;
   const maxDim = Math.max(box.width, box.height);
 
   // The window scales with the country so there is always roughly the same
@@ -67,13 +70,19 @@ export function zoomWindow(box, map, { context = 2.8, minWidth = 80 } = {}) {
   // fraction would be wrong in the other direction: it would push large
   // countries like Norway or the United States out to a hemisphere-wide view.
   let width = clamp(maxDim * context, minWidth, map.width);
-  let height = width / aspect;
+  let height = width / ratio;
 
   // Tall, narrow countries (Chile, Norway) need the height driven instead.
   if (height < box.height * 1.3) {
     height = Math.min(box.height * 1.3, map.height);
-    width = clamp(height * aspect, minWidth, map.width);
-    height = width / aspect;
+    width = clamp(height * ratio, minWidth, map.width);
+    height = width / ratio;
+  }
+
+  // A tall container can ask for more height than the map has.
+  if (height > map.height) {
+    height = map.height;
+    width = height * ratio;
   }
 
   const cx = box.x + box.width / 2;

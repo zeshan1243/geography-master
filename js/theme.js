@@ -19,8 +19,10 @@ export function currentTheme() {
 export function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    // Which glyph shows is handled in CSS off :root[data-theme]; only the
+    // accessible name needs updating here. Writing textContent would wipe
+    // the inline SVGs.
     const next = theme === 'dark' ? 'light' : 'dark';
-    btn.textContent = theme === 'dark' ? '☀️' : '🌙';
     btn.setAttribute('aria-label', `Switch to ${next} mode`);
     btn.setAttribute('title', `Switch to ${next} mode`);
   });

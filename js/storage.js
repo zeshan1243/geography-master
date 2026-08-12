@@ -10,6 +10,7 @@ const THEME_KEY = 'theme';
 
 const DEFAULTS = {
   bestScores: {},      // "flags:medium" -> score
+  bestRuns: {},        // "flags" -> longest survival run
   gamesPlayed: 0,
   correctAnswers: 0,
   totalQuestions: 0,
@@ -104,7 +105,7 @@ function shiftDay(key, days) {
  * Record a finished game.
  * @returns {{isBest: boolean, best: number, streakDays: number}}
  */
-export function recordGame({ type, difficulty, score, correct, total, bestStreak, daily }) {
+export function recordGame({ type, difficulty, score, correct, total, bestStreak, daily, survivalRun }) {
   const scoreKey = `${type}:${difficulty}`;
   let isBest = false;
   let best = 0;
@@ -130,6 +131,13 @@ export function recordGame({ type, difficulty, score, correct, total, bestStreak
     if (p.playedDays.length > 60) p.playedDays = p.playedDays.slice(-60);
 
     if (daily) p.dailyDone[today] = Math.max(p.dailyDone[today] || 0, score);
+
+    // Survival is measured in questions survived, which points beat only
+    // loosely — a fast run scores higher than a longer slow one.
+    if (typeof survivalRun === 'number') {
+      p.bestRuns = p.bestRuns || {};
+      p.bestRuns[type] = Math.max(p.bestRuns[type] || 0, survivalRun);
+    }
 
     streakDays = countStreak(p.playedDays);
   });
@@ -173,6 +181,10 @@ export function weekActivity(profile = load()) {
 
 export function bestScore(type, difficulty, profile = load()) {
   return profile.bestScores[`${type}:${difficulty}`] || 0;
+}
+
+export function bestRun(type, profile = load()) {
+  return (profile.bestRuns || {})[type] || 0;
 }
 
 export function favoriteGame(profile = load()) {

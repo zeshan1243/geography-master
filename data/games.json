@@ -1,5 +1,23 @@
 [
   {
+    "id": "borders",
+    "slug": "border-quiz",
+    "name": "Border Quiz",
+    "icon": "🤝",
+    "accent": "green",
+    "category": "Country Games",
+    "tagline": "Name a country that shares a border",
+    "description": "Given a country, pick one of its land neighbours. Knowing who borders whom is the part of a map that names and flags never teach you.",
+    "metaTitle": "Border Quiz — Which Countries Share a Border?",
+    "metaDescription": "Play a free border quiz. Given a country, identify one of its land neighbours across four difficulty levels.",
+    "popular": true,
+    "guide": [
+      "Borders are the relationships a map is actually made of. You can know every flag and capital and still have no idea that Turkey borders Georgia, or that China has fourteen land neighbours — more than any country except Russia, which has the same number.",
+      "The wrong answers are always drawn from the same continent and are never neighbours, so there is exactly one correct choice and no way to get there by elimination. On the harder levels that means four plausible countries from the same region, only one of which actually touches the target.",
+      "Thirty-nine countries never appear as the subject here because they have no land borders at all — island states like Japan, Iceland, Cuba and the Philippines, plus Australia. Their absence is itself worth noticing."
+    ]
+  },
+  {
     "id": "countries",
     "slug": "country-quiz",
     "name": "Country Quiz",
@@ -15,60 +33,6 @@
       "The country quiz is the hardest of the name-based games because it gives you no picture to lean on. You get a capital, a continent and a currency, and have to work backwards to the country. That is a genuinely different skill from recognising a flag: it tests whether the facts are connected in your memory or merely stored side by side.",
       "The currency line is usually the most useful clue. West African CFA franc narrows the field to eight countries in one stroke; Central African CFA franc to six others. Learning which countries share a currency does more work here than memorising any individual capital.",
       "If a round feels impossible, the gap is usually capitals rather than countries. Play the capital quiz on the same difficulty for a few rounds and come back."
-    ]
-  },
-  {
-    "id": "capitals",
-    "slug": "capital-quiz",
-    "name": "Capital Quiz",
-    "icon": "🏛️",
-    "accent": "amber",
-    "category": "Capital Games",
-    "tagline": "Guess the capital city of a country",
-    "description": "One country, four cities, ten questions. Capitals are the fastest route to knowing a map, and the wrong answers come from the same region to keep it honest.",
-    "metaTitle": "Capital Cities Quiz — Guess the Capital of Every Country",
-    "metaDescription": "Play a free world capitals quiz. Guess the capital city of countries from every continent, from easy to expert difficulty.",
-    "popular": true,
-    "guide": [
-      "Capitals are the hardest basic geography facts to hold because nothing about the name points to the country. There is no visual hook the way there is with a flag, and no logic connecting Bishkek to Kyrgyzstan. Repetition with immediate correction is the only thing that reliably works, which is what this game is built around.",
-      "The wrong answers are drawn from the same continent as the correct one, so elimination by region will not save you. On expert rounds you will regularly see four plausible Central Asian or West African capitals together.",
-      "A handful catch almost everyone out: Bolivia's constitutional capital is Sucre rather than La Paz, South Africa's seat of government is Pretoria, Sri Lanka's is Sri Jayawardenepura Kotte rather than Colombo, and Myanmar moved its capital to Naypyidaw in 2005."
-    ]
-  },
-  {
-    "id": "flags",
-    "slug": "flag-quiz",
-    "name": "Flag Quiz",
-    "icon": "🚩",
-    "accent": "red",
-    "category": "Flag Games",
-    "tagline": "Identify countries from their flags",
-    "description": "See a flag, name the country. Distractors are drawn from the same continent, so the expert rounds are genuinely difficult.",
-    "metaTitle": "Flag Quiz — Guess the Country by Its Flag",
-    "metaDescription": "Play a free world flags quiz. Identify all 195 country flags across easy, medium, hard and expert difficulty.",
-    "popular": true,
-    "guide": [
-      "Flags are the fastest route into world geography because they are visual. Most people can recognise a flag long before they can recall the matching capital, and that recognition then acts as a hook for everything else about the country.",
-      "The hard rounds lean on genuine near-duplicates. Chad and Romania are almost indistinguishable. Monaco and Indonesia differ only in proportion. Ireland and Ivory Coast are mirror images. Australia and New Zealand both carry the Union Jack and the Southern Cross, differing in the number and colour of the stars.",
-      "Flags render using your device's own emoji font, so the exact drawing style depends on your operating system. The colours and layout are the same everywhere."
-    ]
-  },
-  {
-    "id": "continents",
-    "slug": "continent-quiz",
-    "name": "Continent Quiz",
-    "icon": "🌍",
-    "accent": "green",
-    "category": "World Games",
-    "tagline": "Place every country on the right continent",
-    "description": "The quickest game on the site and the best starting point. Given a country, choose the continent it belongs to.",
-    "metaTitle": "Continent Quiz — Which Continent Is Each Country In?",
-    "metaDescription": "Play a free continents quiz. Match all 195 countries to Africa, Asia, Europe, North America, South America or Oceania.",
-    "popular": true,
-    "guide": [
-      "This is the fastest game on the site and the best place to start if geography is new to you. Six possible answers, no memorisation of names required, and it builds the mental map that every other game hangs off.",
-      "The awkward cases are the ones that straddle a boundary. Russia and Turkey span Europe and Asia; this site places Russia in Europe and Turkey in Asia, following the most common convention. Cyprus, Georgia, Armenia and Azerbaijan are counted as Asia. Central America and the Caribbean sit under North America, which surprises a lot of players.",
-      "Egypt has territory on both sides of the Suez Canal and is counted as Africa throughout."
     ]
   },
   {
@@ -108,21 +72,147 @@
     ]
   },
   {
-    "id": "landmarks",
-    "slug": "landmark-quiz",
-    "name": "Landmark Quiz",
-    "icon": "🗿",
-    "accent": "purple",
-    "category": "Landmark Games",
-    "tagline": "Find the country behind famous landmarks",
-    "description": "From the Taj Mahal to Table Mountain — name the country each landmark stands in, and pick up a fact about it on the way.",
-    "metaTitle": "Landmark Quiz — Which Country Is This Landmark In?",
-    "metaDescription": "Play a free landmarks quiz. Identify the country behind 60 world-famous landmarks and learn a fact about each one.",
+    "id": "capitalToCountry",
+    "slug": "reverse-capital-quiz",
+    "name": "Reverse Capital Quiz",
+    "icon": "🏙️",
+    "accent": "amber",
+    "category": "Capital Games",
+    "tagline": "Name the country from its capital city",
+    "description": "The capital quiz backwards. You get a city — Bishkek, Asunción, Lusaka — and have to name the country it governs.",
+    "metaTitle": "Reverse Capital Quiz — Name the Country from Its Capital",
+    "metaDescription": "Play a free reverse capital quiz. Given a capital city, name the country it belongs to, from easy to expert.",
     "popular": false,
     "guide": [
-      "Landmarks are a sideways route into geography. You almost certainly recognise Petra, Machu Picchu and the Sydney Opera House already; what this game tests is whether you know which country each one stands in.",
-      "That gap is common and worth closing. Plenty of people can picture Angkor Wat without being able to name Cambodia, or the Great Mosque of Djenné without placing Mali.",
-      "Every answer comes with a fact about the landmark, so a round doubles as a short tour. The 60 sites here span all six inhabited continents."
+      "Recall in one direction does not give you the other. Plenty of people can answer \"what is the capital of Mongolia\" and stall completely on \"Ulaanbaatar is the capital of where\" — the link was learned one way round and only works that way.",
+      "This game is the fastest way to find those one-directional gaps. If you score noticeably worse here than on the ordinary capital quiz, your capitals are memorised as answers to a specific question rather than as facts you actually hold.",
+      "No continent hint is shown with the city, deliberately. Naming the region would eliminate most of the wrong answers before you had thought about the question at all."
+    ]
+  },
+  {
+    "id": "capitals",
+    "slug": "capital-quiz",
+    "name": "Capital Quiz",
+    "icon": "🏛️",
+    "accent": "amber",
+    "category": "Capital Games",
+    "tagline": "Guess the capital city of a country",
+    "description": "One country, four cities, thirty questions. Capitals are the fastest route to knowing a map, and the wrong answers come from the same region to keep it honest.",
+    "metaTitle": "Capital Cities Quiz — Guess the Capital of Every Country",
+    "metaDescription": "Play a free world capitals quiz. Guess the capital city of countries from every continent, from easy to expert difficulty.",
+    "popular": true,
+    "guide": [
+      "Capitals are the hardest basic geography facts to hold because nothing about the name points to the country. There is no visual hook the way there is with a flag, and no logic connecting Bishkek to Kyrgyzstan. Repetition with immediate correction is the only thing that reliably works, which is what this game is built around.",
+      "The wrong answers are drawn from the same continent as the correct one, so elimination by region will not save you. On expert rounds you will regularly see four plausible Central Asian or West African capitals together.",
+      "A handful catch almost everyone out: Bolivia's constitutional capital is Sucre rather than La Paz, South Africa's seat of government is Pretoria, Sri Lanka's is Sri Jayawardenepura Kotte rather than Colombo, and Myanmar moved its capital to Naypyidaw in 2005."
+    ]
+  },
+  {
+    "id": "flags",
+    "slug": "flag-quiz",
+    "name": "Flag Quiz",
+    "icon": "🚩",
+    "accent": "red",
+    "category": "Flag Games",
+    "tagline": "Identify countries from their flags",
+    "description": "See a flag, name the country. Distractors are drawn from the same continent, so the expert rounds are genuinely difficult.",
+    "metaTitle": "Flag Quiz — Guess the Country by Its Flag",
+    "metaDescription": "Play a free world flags quiz. Identify all 195 country flags across easy, medium, hard and expert difficulty.",
+    "popular": true,
+    "guide": [
+      "Flags are the fastest route into world geography because they are visual. Most people can recognise a flag long before they can recall the matching capital, and that recognition then acts as a hook for everything else about the country.",
+      "The hard rounds lean on genuine near-duplicates. Chad and Romania are almost indistinguishable. Monaco and Indonesia differ only in proportion. Ireland and Ivory Coast are mirror images. Australia and New Zealand both carry the Union Jack and the Southern Cross, differing in the number and colour of the stars.",
+      "Flags render using your device's own emoji font, so the exact drawing style depends on your operating system. The colours and layout are the same everywhere."
+    ]
+  },
+  {
+    "id": "nameToFlag",
+    "slug": "find-the-flag-quiz",
+    "name": "Find the Flag",
+    "icon": "🎌",
+    "accent": "red",
+    "category": "Flag Games",
+    "tagline": "Pick the right flag for a named country",
+    "description": "The flag quiz in reverse: you get the country and choose its flag from four. Recognising a flag is easy; producing it from memory is not.",
+    "metaTitle": "Find the Flag — Pick the Correct Flag for Each Country",
+    "metaDescription": "Play a free find-the-flag quiz. Given a country name, choose its flag from four options across four difficulty levels.",
+    "popular": true,
+    "guide": [
+      "Recognition and recall are different skills, and flags flatter the first. Shown Ghana's flag you may well name it; asked to picture Ghana's flag from the name alone, most people find they cannot. This game tests the harder direction.",
+      "Because the wrong flags come from the same continent, the design families do most of the work against you. Four West African flags in red, gold and green look far more alike than any two flags picked at random.",
+      "Flags are drawn with your device's own emoji font, so the exact style depends on your operating system. Colours and layout are identical everywhere."
+    ]
+  },
+  {
+    "id": "continents",
+    "slug": "continent-quiz",
+    "name": "Continent Quiz",
+    "icon": "🌍",
+    "accent": "green",
+    "category": "World Games",
+    "tagline": "Place every country on the right continent",
+    "description": "The quickest game on the site and the best starting point. Given a country, choose the continent it belongs to.",
+    "metaTitle": "Continent Quiz — Which Continent Is Each Country In?",
+    "metaDescription": "Play a free continents quiz. Match all 195 countries to Africa, Asia, Europe, North America, South America or Oceania.",
+    "popular": true,
+    "guide": [
+      "This is the fastest game on the site and the best place to start if geography is new to you. Six possible answers, no memorisation of names required, and it builds the mental map that every other game hangs off.",
+      "The awkward cases are the ones that straddle a boundary. Russia and Turkey span Europe and Asia; this site places Russia in Europe and Turkey in Asia, following the most common convention. Cyprus, Georgia, Armenia and Azerbaijan are counted as Asia. Central America and the Caribbean sit under North America, which surprises a lot of players.",
+      "Egypt has territory on both sides of the Suez Canal and is counted as Africa throughout."
+    ]
+  },
+  {
+    "id": "currencies",
+    "slug": "currency-quiz",
+    "name": "Currency Quiz",
+    "icon": "💱",
+    "accent": "blue",
+    "category": "World Games",
+    "tagline": "Match countries to the money they use",
+    "description": "Which currency does Vietnam use? Currencies group countries in ways borders do not, and learning them makes the country quiz considerably easier.",
+    "metaTitle": "Currency Quiz — Which Currency Does Each Country Use?",
+    "metaDescription": "Play a free world currency quiz. Match countries to their currencies, from the euro and the CFA franc to the ngultrum.",
+    "popular": false,
+    "guide": [
+      "Currencies are the most useful clue in the whole of geography and the least studied. The West African CFA franc narrows a question to eight countries in one stroke; the Central African CFA franc to six others; the euro to twenty.",
+      "Shared currencies also tell you real history. The two CFA francs trace French colonial administration, the East Caribbean dollar ties together seven small island states, and Ecuador, El Salvador, Timor-Leste and several Pacific nations use the US dollar outright rather than issuing their own.",
+      "This is the game that most improves your score elsewhere. The country quiz gives you a currency as one of its three clues, and knowing the currency groups turns that from decoration into an answer."
+    ]
+  },
+  {
+    "id": "languages",
+    "slug": "language-quiz",
+    "name": "Language Quiz",
+    "icon": "🗣️",
+    "accent": "purple",
+    "category": "World Games",
+    "tagline": "Name the main language of each country",
+    "description": "The main language of a country traces its history more directly than almost anything else on a map — trade, empire, migration and independence all leave their mark.",
+    "metaTitle": "Language Quiz — What Language Does Each Country Speak?",
+    "metaDescription": "Play a free world language quiz. Match countries to their main language across every continent and four difficulty levels.",
+    "popular": false,
+    "guide": [
+      "Language maps and political maps rarely agree, which is what makes this interesting. Portuguese is the main language of Angola and Mozambique but of no country between them; Spanish is official in Equatorial Guinea and nowhere else in Africa; French reaches from Belgium to Vanuatu.",
+      "The surprises are worth collecting. Brazil is the only Portuguese-speaking country in the Americas. Suriname is the only Dutch-speaking one. Malagasy, spoken in Madagascar off the African coast, is most closely related to a language of Borneo, some 7,000 kilometres away.",
+      "This site lists one main language per country for the sake of a clean question. Many countries have several official languages — South Africa recognises twelve, India twenty-two at national level — so treat the answer as the principal one rather than the only one."
+    ]
+  },
+  {
+    "id": "mixed",
+    "slug": "mixed-quiz",
+    "name": "Mixed Geography Quiz",
+    "icon": "🧭",
+    "accent": "purple",
+    "category": "World Games",
+    "tagline": "Random questions from every category",
+    "description": "Flags, capitals, continents, landmarks and oceans shuffled into one round. The closest thing on the site to a general geography test.",
+    "metaTitle": "Mixed Geography Quiz — Flags, Capitals, Countries and More",
+    "metaDescription": "Play a free mixed geography quiz combining flags, capitals, countries, continents, landmarks and oceans in one round.",
+    "popular": true,
+    "guide": [
+      "The mixed quiz pulls from flags, capitals, countries, continents, landmarks and oceans in a single round. It is the closest thing here to an honest general test, and it is the fastest way to find out which category is letting you down.",
+      "Because questions rotate between categories, you cannot settle into one kind of thinking. That makes it noticeably harder than any single game at the same difficulty, even though the individual questions are drawn from the same pools.",
+      "This is also the game behind the daily challenge, where every player gets the same thirty questions, generated from the date so they change at midnight."
     ]
   },
   {
@@ -144,21 +234,39 @@
     ]
   },
   {
-    "id": "mixed",
-    "slug": "mixed-quiz",
-    "name": "Mixed Geography Quiz",
-    "icon": "🧭",
+    "id": "countryToLandmark",
+    "slug": "landmarks-by-country-quiz",
+    "name": "Landmarks by Country",
+    "icon": "🏰",
     "accent": "purple",
-    "category": "World Games",
-    "tagline": "Random questions from every category",
-    "description": "Flags, capitals, continents, landmarks and oceans shuffled into one round. The closest thing on the site to a general geography test.",
-    "metaTitle": "Mixed Geography Quiz — Flags, Capitals, Countries and More",
-    "metaDescription": "Play a free mixed geography quiz combining flags, capitals, countries, continents, landmarks and oceans in one round.",
-    "popular": true,
+    "category": "Landmark Games",
+    "tagline": "Pick the landmark that belongs to a country",
+    "description": "The landmark quiz reversed: you get a country and choose which of four famous sites is actually there.",
+    "metaTitle": "Landmarks by Country — Which Landmark Is in Each Country?",
+    "metaDescription": "Play a free landmarks quiz in reverse. Given a country, pick which famous landmark is found there, with a fact for every answer.",
+    "popular": false,
     "guide": [
-      "The mixed quiz pulls from flags, capitals, countries, continents, landmarks and oceans in a single round. It is the closest thing here to an honest general test, and it is the fastest way to find out which category is letting you down.",
-      "Because questions rotate between categories, you cannot settle into one kind of thinking. That makes it noticeably harder than any single game at the same difficulty, even though the individual questions are drawn from the same pools.",
-      "This is also the game behind the daily challenge, where every player gets the same ten questions, generated from the date so they change at midnight."
+      "Going this direction is harder than it sounds. Most people hold landmarks as pictures with a loose sense of somewhere abroad attached; asked to start from the country instead, that loose association stops being enough.",
+      "The wrong answers are always real landmarks in other countries, so every question quietly teaches you four placements rather than one. Over a round that adds up faster than the forward version.",
+      "The sixty landmarks here sit in forty-five countries across all six inhabited continents, so a full round covers a lot of ground."
+    ]
+  },
+  {
+    "id": "landmarks",
+    "slug": "landmark-quiz",
+    "name": "Landmark Quiz",
+    "icon": "🗿",
+    "accent": "purple",
+    "category": "Landmark Games",
+    "tagline": "Find the country behind famous landmarks",
+    "description": "From the Taj Mahal to Table Mountain — name the country each landmark stands in, and pick up a fact about it on the way.",
+    "metaTitle": "Landmark Quiz — Which Country Is This Landmark In?",
+    "metaDescription": "Play a free landmarks quiz. Identify the country behind 60 world-famous landmarks and learn a fact about each one.",
+    "popular": false,
+    "guide": [
+      "Landmarks are a sideways route into geography. You almost certainly recognise Petra, Machu Picchu and the Sydney Opera House already; what this game tests is whether you know which country each one stands in.",
+      "That gap is common and worth closing. Plenty of people can picture Angkor Wat without being able to name Cambodia, or the Great Mosque of Djenné without placing Mali.",
+      "Every answer comes with a fact about the landmark, so a round doubles as a short tour. The 60 sites here span all six inhabited continents."
     ]
   }
 ]

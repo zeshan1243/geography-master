@@ -8,13 +8,27 @@
  *   startGame({ type: 'flags', difficulty: 'medium', questions: 10 })
  */
 
-import { buildRound, DIFFICULTIES, difficulty as findDifficulty, makeRng, dailySeed } from './quiz.js';
-import { scoreAnswer, stars, starString, verdict } from './score.js';
-import { recordGame, bestScore, todayKey } from './storage.js';
+import {
+  buildRound,
+  DIFFICULTIES,
+  DEFAULT_QUESTIONS,
+  difficulty as findDifficulty,
+  makeRng,
+  dailySeed,
+  SURVIVAL_MAX
+} from './quiz.js';
+import { scoreAnswer, stars, verdict, survivalStars, survivalVerdict } from './score.js';
+import { recordGame, bestScore, bestRun, todayKey } from './storage.js';
 import { games, url, mapCoverage } from './data.js';
+import { icon } from './icons.js';
 import { shapeOf, fitShape, interactiveMap, zoomWindow } from './worldmap.js';
 
 const ADVANCE_DELAY = { correct: 1300, wrong: 2300 };
+
+/** Five stars, the first `count` of them filled. */
+function starRow(count) {
+  return Array.from({ length: 5 }, (_, i) => icon(i < count ? 'star' : 'starOutline')).join('');
+}
 
 /** The state object for the round in progress. */
 function freshState(config, questions) {
@@ -41,7 +55,7 @@ function freshState(config, questions) {
  *
  * @returns {Promise<SVGElement|null>} the map element, when there is one
  */
-async function renderVisual(el, visual, onPick) {
+async function renderVisual(el, visual, onPick, showHint = true) {
   el.classList.remove('is-shape', 'is-map');
 
   if (!visual) {
@@ -72,13 +86,23 @@ async function renderVisual(el, visual, onPick) {
       names,
       label: 'World map — click the country'
     });
-    svg.setAttribute('viewBox', zoomWindow(visual.box, map));
     el.appendChild(svg);
 
-    const hint = document.createElement('p');
-    hint.className = 'map-hint';
-    hint.textContent = 'Tap the country on the map';
-    el.appendChild(hint);
+    // Measured after insertion: the container's aspect comes from CSS and
+    // differs between phone and desktop.
+    const rect = svg.getBoundingClientRect();
+    const aspect = rect.width && rect.height ? rect.width / rect.height : undefined;
+    svg.setAttribute('viewBox', zoomWindow(visual.box, map, { aspect }));
+
+    // Shown once. After the first question the prompt ("Find Syria on the
+    // map") says everything the hint did, and on a short phone the extra line
+    // is the only thing that falls below the fold.
+    if (showHint) {
+      const hint = document.createElement('p');
+      hint.className = 'map-hint';
+      hint.textContent = 'Tap the country on the map';
+      el.appendChild(hint);
+    }
 
     svg.addEventListener('click', (event) => {
       const path = event.target.closest('path.is-target');
@@ -104,7 +128,15 @@ async function renderVisual(el, visual, onPick) {
     </div>`;
 }
 
+/** Per-question dots only work for a short round; longer ones use the bar. */
+const DOTS_LIMIT = 12;
+
 function renderDots(el, state) {
+  if (state.survival || state.totalQuestions > DOTS_LIMIT) {
+    el.hidden = true;
+    return;
+  }
+  el.hidden = false;
   el.innerHTML = state.questions
     .map((_, i) => {
       const answer = state.answers[i];
@@ -141,12 +173,17 @@ export async function startGame(config) {
     status.textContent = 'Building your round…';
   }
 
+  const rules = findDifficulty(config.difficulty);
+  const survival = Boolean(rules.survival) && !config.daily;
+
   let questions;
   try {
     questions = await buildRound({
       type: config.type,
       difficulty: config.difficulty,
-      count: config.questions,
+      // Survival has no set length: take the whole pool and let the first
+      // wrong answer end it.
+      count: survival ? SURVIVAL_MAX : config.questions,
       rng: config.seed ? makeRng(config.seed) : Math.random
     });
   } catch (error) {
@@ -161,7 +198,12 @@ export async function startGame(config) {
   if (status) status.hidden = true;
 
   const state = freshState(config, questions);
+  state.survival = survival;
   show('play');
+
+  // A survival run has no known length, so there is nothing to fill a bar with.
+  const progressTrack = root.querySelector('.progress-track');
+  if (progressTrack) progressTrack.hidden = survival;
 
   const answersBox = el('answers');
   const feedback = el('feedback');
@@ -180,23 +222,36 @@ export async function startGame(config) {
     const question = state.questions[state.currentQuestion];
     const counter = el('counter');
     if (counter) {
-      counter.textContent = `Question ${state.currentQuestion + 1}/${state.totalQuestions}`;
+      counter.textContent = state.survival
+        ? `Question ${state.currentQuestion + 1} · sudden death`
+        : `Question ${state.currentQuestion + 1}/${state.totalQuestions}`;
     }
 
     const progress = el('progress');
-    if (progress) {
+    if (progress && !state.survival) {
       progress.style.width = `${(state.currentQuestion / state.totalQuestions) * 100}%`;
     }
 
     // Locked while the visual is prepared, so a stray click cannot answer a
     // question that is not on screen yet.
     state.locked = true;
-    mapEl = await renderVisual(el('visual'), question.visual, (name) => submit(name));
+    mapEl = await renderVisual(
+      el('visual'),
+      question.visual,
+      (name) => submit(name),
+      state.currentQuestion === 0
+    );
 
     const prompt = el('prompt');
     if (prompt) prompt.textContent = question.prompt;
 
     answersBox.hidden = question.interaction === 'map';
+    // Some games answer with a glyph rather than a phrase (the flag picker).
+    if (question.optionStyle) answersBox.dataset.optionStyle = question.optionStyle;
+    else answersBox.removeAttribute('data-option-style');
+    // The map fills the width on its own; everything else pairs a visual with
+    // a column of answers, which is what the split layout is for.
+    root.dataset.layout = question.interaction === 'map' ? 'wide' : 'split';
     answersBox.innerHTML = question.options
       .map(
         (option, i) =>
@@ -209,7 +264,8 @@ export async function startGame(config) {
     setTimeout(() => answersBox.classList.remove('animate-in'), 300);
 
     if (feedback) {
-      feedback.hidden = true;
+      // Keeps its space; only the contents fade out. Removing it from the
+      // flow is what made the screen jump between questions.
       feedback.removeAttribute('data-kind');
       feedback.innerHTML = '';
     }
@@ -259,10 +315,10 @@ export async function startGame(config) {
       btn.disabled = true;
       if (value === question.answer) {
         btn.dataset.result = 'correct';
-        btn.querySelector('.marker').textContent = '✅';
+        btn.querySelector('.marker').innerHTML = icon('check');
       } else if (value === chosen) {
         btn.dataset.result = 'wrong';
-        btn.querySelector('.marker').textContent = '❌';
+        btn.querySelector('.marker').innerHTML = icon('cross');
       } else {
         btn.dataset.result = 'muted';
       }
@@ -270,20 +326,31 @@ export async function startGame(config) {
 
     if (feedback) {
       const streakLine = parts.find((p) => p.label.includes('streak'));
+      // One fixed-shape strip in both states — a headline row plus a clamped
+      // explanation — so revealing it never changes the layout's height.
+      feedback.innerHTML = `<div class="feedback-head">
+          ${icon(isCorrect ? 'checkCircle' : 'crossCircle')}
+          <strong>${isCorrect ? 'Correct' : 'Not quite'}</strong>
+          ${
+            isCorrect
+              ? `<span class="points">+${points}</span>`
+              : `<span class="answer-was">${question.answer}</span>`
+          }
+          ${streakLine ? `<span class="streak-flash">${streakLine.label}</span>` : ''}
+        </div>
+        <p class="note">${question.explanation}</p>`;
       feedback.dataset.kind = isCorrect ? 'correct' : 'wrong';
-      feedback.innerHTML = isCorrect
-        ? `<strong>✅ Correct!</strong>
-           <span class="points">+${points} points</span>
-           ${streakLine ? `<span class="streak-flash">🔥 ${streakLine.label}</span>` : ''}
-           <span class="note">${question.explanation}</span>`
-        : `<strong>❌ Not quite!</strong>
-           <span class="note">Correct answer: <strong>${question.answer}</strong></span>
-           <span class="note">${question.explanation}</span>`;
-      feedback.hidden = false;
     }
 
     paintScore();
     renderDots(el('dots'), state);
+
+    // Sudden death: the run stops here, but the correct answer is still shown
+    // for the usual beat before the results appear.
+    if (state.survival && !isCorrect) {
+      setTimeout(finish, ADVANCE_DELAY.wrong);
+      return;
+    }
 
     setTimeout(next, isCorrect ? ADVANCE_DELAY.correct : ADVANCE_DELAY.wrong);
   }
@@ -298,14 +365,19 @@ export async function startGame(config) {
     const progress = el('progress');
     if (progress) progress.style.width = '100%';
 
+    // In survival the round length is however far they got, not the pool size.
+    const asked = state.answers.length;
+    const cleared = state.survival && state.correct === state.totalQuestions;
+
     const { isBest, best, streakDays } = recordGame({
       type: state.type,
       difficulty: state.difficulty,
       score: state.score,
       correct: state.correct,
-      total: state.totalQuestions,
+      total: state.survival ? asked : state.totalQuestions,
       bestStreak: state.bestStreak,
-      daily: Boolean(state.daily)
+      daily: Boolean(state.daily),
+      survivalRun: state.survival ? state.correct : undefined
     });
 
     const set = (name, value) => {
@@ -313,14 +385,40 @@ export async function startGame(config) {
       if (node) node.textContent = value;
     };
 
-    set('result-score', state.score);
-    set('result-stars', starString(stars(state.correct, state.totalQuestions)));
-    set('result-summary', `${state.correct} / ${state.totalQuestions} correct`);
-    set('result-verdict', verdict(state.correct, state.totalQuestions));
-    set(
-      'result-best',
-      `Best streak: ${state.bestStreak} · Personal best on ${findDifficulty(state.difficulty).label}: ${best} · ${streakDays} day streak`
-    );
+    const title = el('result-title');
+    const titleIcon = el('result-icon');
+    const setIcon = (name) => {
+      if (titleIcon) titleIcon.innerHTML = icon(name);
+    };
+
+    if (state.survival) {
+      if (title) title.textContent = cleared ? 'Pool cleared!' : 'Run over';
+      setIcon(cleared ? 'trophy' : 'crossCircle');
+      set('result-score', state.score);
+      const starsEl = el('result-stars');
+      if (starsEl) starsEl.innerHTML = starRow(survivalStars(state.correct));
+      set(
+        'result-summary',
+        `You survived ${state.correct} ${state.correct === 1 ? 'question' : 'questions'}`
+      );
+      set('result-verdict', survivalVerdict(state.correct, cleared));
+      set(
+        'result-best',
+        `Longest run on this game: ${bestRun(state.type)} · Personal best score on Expert: ${best} · ${streakDays} day streak`
+      );
+    } else {
+      if (title) title.textContent = 'Game complete!';
+      setIcon('flag');
+      set('result-score', state.score);
+      const starsEl = el('result-stars');
+      if (starsEl) starsEl.innerHTML = starRow(stars(state.correct, state.totalQuestions));
+      set('result-summary', `${state.correct} / ${state.totalQuestions} correct`);
+      set('result-verdict', verdict(state.correct, state.totalQuestions));
+      set(
+        'result-best',
+        `Best streak: ${state.bestStreak} · Personal best on ${findDifficulty(state.difficulty).label}: ${best} · ${streakDays} day streak`
+      );
+    }
 
     const newBest = el('result-new-best');
     if (newBest) newBest.hidden = !isBest;
@@ -330,7 +428,7 @@ export async function startGame(config) {
       review.innerHTML = state.answers
         .map(
           (a) => `<li>
-            <span class="mark" aria-hidden="true">${a.correct ? '✅' : '❌'}</span>
+            <span class="mark" data-ok="${a.correct}">${a.correct ? icon('check') : icon('cross')}</span>
             <span><span class="q">${a.question.prompt}</span><br><strong>${a.question.answer}</strong></span>
           </li>`
         )
@@ -374,7 +472,7 @@ function difficultyMarkup(selected) {
   return DIFFICULTIES.map(
     (d) => `<button class="difficulty" type="button" data-difficulty="${d.id}"
               aria-pressed="${d.id === selected}">
-        <span class="dot" aria-hidden="true">${d.dot}</span>
+        <span class="difficulty-dot" data-level="${d.id}">${icon('dot')}</span>
         <span><strong>${d.label}</strong><small>${d.blurb}</small></span>
       </button>`
   ).join('');
@@ -401,7 +499,7 @@ export async function initGamePage() {
 
   const params = new URLSearchParams(window.location.search);
   const type = root.dataset.gameId;
-  const questionCount = Number(root.dataset.questions || 10);
+  const questionCount = Number(root.dataset.questions) || DEFAULT_QUESTIONS;
   const isDaily = params.get('daily') === '1';
 
   let selected = params.get('difficulty');

@@ -7,6 +7,9 @@
  */
 
 import { readFileSync } from 'node:fs';
+// The icon set is shared with the browser so the two can never drift.
+export { icon } from '../../js/icons.js';
+import { icon } from '../../js/icons.js';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -131,22 +134,46 @@ function header() {
       <div class="nav-actions">
         <div class="search">
           <label class="sr-only" for="site-search">Search countries</label>
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="10.5" cy="10.5" r="6.75"/>
+            <path d="M15.5 15.5 20.5 20.5"/>
+          </svg>
           <input id="site-search" type="search" placeholder="Search a country…"
                  autocomplete="off" data-country-search="site-search-results">
           <div class="search-results" id="site-search-results" role="listbox" aria-label="Search results"></div>
         </div>
-        <button class="icon-btn" type="button" data-theme-toggle aria-label="Switch colour theme">🌙</button>
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Switch colour theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20.5 14.8A8.7 8.7 0 0 1 9.2 3.5a8.7 8.7 0 1 0 11.3 11.3Z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.2v2.3M12 19.5v2.3M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2.2 12h2.3M19.5 12h2.3M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/>
+          </svg>
+        </button>
         <button class="icon-btn nav-toggle" type="button" data-nav-toggle
-                aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">☰</button>
+                aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>
+          </svg>
+        </button>
       </div>
     </div>
-    <div class="nav-drawer" id="nav-drawer" data-open="false">
-      <nav aria-label="Mobile">
-        ${navLinks('drawer')}
-        <a href="/about.html">About</a>
-      </nav>
-    </div>
-  </header>`;
+  </header>
+
+  <!-- Outside <header> on purpose: .site-header uses backdrop-filter, which
+       makes it a containing block for position:fixed descendants. Nested here,
+       the drawer would size against the 64px header instead of the viewport. -->
+  <div class="nav-drawer" id="nav-drawer" data-open="false">
+    <nav aria-label="Mobile">
+      ${navLinks('drawer')}
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </div>`;
 }
 
 function footer() {

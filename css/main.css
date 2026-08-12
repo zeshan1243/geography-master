@@ -31,6 +31,7 @@
   --map-land: #ffffff;
   --map-line: #94a3b8;
   --map-inert: #eef2f7;
+  --scroll-shadow: rgba(15, 23, 42, .28);
 
   --shadow-sm: 0 1px 2px rgba(15, 23, 42, .06);
   --shadow: 0 4px 12px rgba(15, 23, 42, .07);
@@ -77,6 +78,7 @@
     --map-land: #3f5068;
     --map-line: #64748b;
     --map-inert: #1c2740;
+    --scroll-shadow: rgba(0, 0, 0, .65);
 
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
     --shadow: 0 4px 12px rgba(0, 0, 0, .35);
@@ -112,6 +114,7 @@
   --map-land: #3f5068;
   --map-line: #64748b;
   --map-inert: #1c2740;
+  --scroll-shadow: rgba(0, 0, 0, .65);
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3);
   --shadow: 0 4px 12px rgba(0, 0, 0, .35);
@@ -236,7 +239,10 @@ p { max-width: 70ch; }
 
 main { flex: 1 0 auto; }
 
-.section { padding: 56px 0; }
+/* padding-block, not the shorthand: many elements are `class="section wrap"`,
+   and `padding: 56px 0` would zero the inline padding .wrap sets — same
+   specificity, so whichever rule comes last would win. */
+.section { padding-block: 56px; }
 
 .section-narrow { max-width: 760px; }
 
@@ -250,6 +256,14 @@ main { flex: 1 0 auto; }
 }
 
 .section-head p { margin-top: 6px; }
+
+/* Section links ("All games →") are primary navigation on mobile. */
+.section-head a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+}
 
 /* --- Header / navigation ------------------------------------------------ */
 .site-header {
@@ -273,6 +287,8 @@ main { flex: 1 0 auto; }
   display: flex;
   align-items: center;
   gap: 10px;
+  /* The logo is a link, so it needs a real tap target, not just text height. */
+  min-height: 44px;
   font-weight: 800;
   font-size: 1.0625rem;
   color: var(--text);
@@ -332,15 +348,42 @@ main { flex: 1 0 auto; }
 
 .icon-btn:hover { background: var(--surface-secondary); }
 
+/* Icon buttons draw SVGs, not emoji: emoji cannot take a colour, render
+   differently on every platform, and the theme toggle in particular looked
+   like a different control on Windows than on iOS. */
+.icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--text-secondary);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: stroke .15s ease;
+}
+
+.icon-btn:hover svg { stroke: var(--text); }
+
+/* Which state each button shows is pure CSS, so the correct icon is painted
+   on the first frame — before any script runs. */
+.icon-sun { display: none; }
+:root[data-theme="dark"] .icon-sun { display: block; }
+:root[data-theme="dark"] .icon-moon { display: none; }
+
+.icon-close { display: none; }
+.nav-toggle[aria-expanded="true"] .icon-menu { display: none; }
+.nav-toggle[aria-expanded="true"] .icon-close { display: block; }
+
 .nav-toggle { display: none; }
 
-/* Mobile drawer */
+/* Mobile drawer — a sibling of <header>, never a child of it. */
 .nav-drawer {
   position: fixed;
   inset: var(--header-height) 0 0 0;
   background: var(--background);
-  padding: 24px 20px 40px;
+  padding: 8px 20px calc(40px + env(safe-area-inset-bottom));
   overflow-y: auto;
+  overscroll-behavior: contain;
   z-index: 39;
   display: none;
 }
@@ -348,15 +391,19 @@ main { flex: 1 0 auto; }
 .nav-drawer[data-open="true"] { display: block; }
 
 .nav-drawer a {
-  display: block;
-  padding: 14px 12px;
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 12px 4px;
   font-size: 1.125rem;
   font-weight: 600;
   color: var(--text);
   border-bottom: 1px solid var(--border);
 }
 
+.nav-drawer a:last-child { border-bottom: 0; }
 .nav-drawer a:hover { color: var(--primary); text-decoration: none; }
+.nav-drawer a[aria-current="page"] { color: var(--primary); }
 
 body[data-nav-open="true"] { overflow: hidden; }
 
@@ -378,15 +425,24 @@ body[data-nav-open="true"] { overflow: hidden; }
 
 .search input::placeholder { color: var(--text-secondary); }
 
-.search::before {
-  content: "🔎";
+/* An SVG rather than an emoji: emoji render differently on every platform,
+   cannot take a colour, and sit on the text baseline rather than centring. */
+.search-icon {
   position: absolute;
-  left: 12px;
+  left: 13px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: .875rem;
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: var(--text-secondary);
+  stroke-width: 2;
+  stroke-linecap: round;
   pointer-events: none;
+  transition: stroke .15s ease;
 }
+
+.search:focus-within .search-icon { stroke: var(--primary); }
 
 .search-results {
   position: absolute;
@@ -440,6 +496,33 @@ body[data-nav-open="true"] { overflow: hidden; }
 
 .btn:hover { text-decoration: none; }
 .btn:active { transform: translateY(1px); }
+
+/* Icons inherit the button's text colour, so they stay correct on every
+   variant and in both themes without a per-variant rule. */
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon .solid {
+  fill: currentColor;
+  stroke: none;
+}
+
+.btn-lg .icon { width: 22px; height: 22px; }
+
+/* The daily button flips to "Play Again" once today's round is done. Both
+   icons ship in the markup and CSS picks one, so the script never has to
+   rewrite the button's contents. */
+.icon-refresh { display: none; }
+[data-done="true"] .icon-play { display: none; }
+[data-done="true"] .icon-refresh { display: block; }
 
 .btn-primary {
   background: var(--primary);
@@ -499,7 +582,18 @@ body[data-nav-open="true"] { overflow: hidden; }
   overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--surface);
+  /* Scroll shadows: the two `local` layers sit on the content and slide away
+     at each end, so the `scroll` shadow layers are only visible while there is
+     more table to reach. Without this, a cut-off column on a phone reads as a
+     broken layout rather than a scrollable one. */
+  background:
+    linear-gradient(to right, var(--surface) 30%, transparent) left center / 40px 100% no-repeat,
+    linear-gradient(to left, var(--surface) 30%, transparent) right center / 40px 100% no-repeat,
+    radial-gradient(farthest-side at 0 50%, var(--scroll-shadow), transparent) left center / 16px 100% no-repeat,
+    radial-gradient(farthest-side at 100% 50%, var(--scroll-shadow), transparent) right center / 16px 100% no-repeat,
+    var(--surface);
+  background-attachment: local, local, scroll, scroll, scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
@@ -651,9 +745,12 @@ tbody tr:hover { background: var(--surface-secondary); }
   margin-bottom: 12px;
 }
 
-.site-footer li { margin-bottom: 8px; }
+.site-footer li { margin-bottom: 2px; }
 
 .site-footer li a {
+  display: inline-block;
+  /* 24px of line box + 20px padding = the 44px minimum target. */
+  padding: 10px 0;
   color: var(--text);
   font-size: .9375rem;
 }

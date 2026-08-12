@@ -7,12 +7,12 @@
  * page, a table row and a sitemap entry with no further work.
  */
 
-import { page, adSlot, breadcrumbs, breadcrumbSchema, esc, SITE } from './layout.js';
+import { page, adSlot, breadcrumbs, breadcrumbSchema, esc, icon, SITE } from './layout.js';
 import { ARTICLES } from './articles.js';
 import { fmt, approx, ordinal } from './util.js';
 
 const GAME_SCREEN_HEIGHT_NOTE =
-  'Answer ten questions, see your score and streak, then jump straight into the next game.';
+  'Thirty questions a round, or survive as long as you can on Expert.';
 
 /* ========================================================================== */
 /*  Homepage                                                                  */
@@ -25,9 +25,9 @@ export function home(countries, games) {
     <h1>Play. Learn. <span class="accent">Explore.</span> 🌍</h1>
     <p class="lead">${esc(SITE.tagline)} Free geography games — no account, no download, straight into a round.</p>
     <div class="btn-row">
-      <a class="btn btn-primary btn-lg" href="/game/flag-quiz.html?difficulty=medium&amp;autostart=1" data-play-now>🎮 Play Now</a>
-      <a class="btn btn-secondary btn-lg" href="/games/">Explore Games</a>
-      <a class="btn btn-ghost btn-lg" href="/games/" data-random-game>🎲 Random Game</a>
+      <a class="btn btn-primary btn-lg" href="/game/flag-quiz.html?difficulty=medium&amp;autostart=1" data-play-now>${icon('play')} Play Now</a>
+      <a class="btn btn-secondary btn-lg" href="/games/">${icon('grid')} Explore Games</a>
+      <a class="btn btn-ghost btn-lg" href="/games/" data-random-game>${icon('dice')} Random Game</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><strong>${countries.length}</strong><span>Countries</span></div>
@@ -43,11 +43,14 @@ export function home(countries, games) {
     <div class="daily-body">
       <span class="daily-date" data-daily-date>Today</span>
       <h2>🔥 Today's Geography Challenge</h2>
-      <p data-daily-state>Ten questions, the same for everyone, changing at midnight.</p>
+      <p data-daily-state>Thirty questions, the same for everyone, changing at midnight.</p>
       <div class="streak" data-streak-calendar></div>
       <p class="muted" data-streak-count style="margin-top:10px;font-size:.9375rem"></p>
     </div>
-    <a class="btn btn-primary btn-lg" href="/game/mixed-quiz.html?daily=1" data-daily-link>▶ Play Today</a>
+    <a class="btn btn-primary btn-lg" href="/game/mixed-quiz.html?daily=1" data-daily-link data-done="false">
+      ${icon('play', 'icon-play')}${icon('refresh', 'icon-refresh')}
+      <span data-daily-label>Play Today</span>
+    </a>
   </div>
 </section>
 
@@ -117,7 +120,7 @@ export function home(countries, games) {
   <div class="article">
     <h2>How well do you know the world?</h2>
     <p>There are ${countries.length} sovereign countries on this site — 193 United Nations member states plus Vatican City and Palestine. Between them they cover six inhabited continents, ${countries.length} capital cities and every flag flown at the UN.</p>
-    <p>Most people can name perhaps thirty or forty countries from memory. Getting from there to all ${countries.length} is a matter of repetition, and repetition is easier when it looks like a game. Each round here is ten questions, takes about a minute, and shows you the right answer the moment you get one wrong — that immediate correction is what makes the facts stick.</p>
+    <p>Most people can name perhaps thirty or forty countries from memory. Getting from there to all ${countries.length} is a matter of repetition, and repetition is easier when it looks like a game. Each round here is thirty questions and shows you the right answer the moment you get one wrong — that immediate correction is what makes the facts stick.</p>
     <p>Start with the <a href="/game/flag-quiz.html">flag quiz</a> on easy, move to <a href="/game/capital-quiz.html">capitals</a> when flags feel comfortable, and use the <a href="/game/mixed-quiz.html">mixed quiz</a> to check what has actually stuck.</p>
   </div>
 </section>`;
@@ -179,7 +182,7 @@ export function gamesIndex(games) {
   const body = `${breadcrumbs([{ label: 'Home', href: '/' }, { label: 'Games' }])}
 <section class="section wrap">
   <h1>Geography games</h1>
-  <p class="lead">${games.length} ways to test your geography knowledge. Every game has four difficulty levels and runs ten questions per round.</p>
+  <p class="lead">${games.length} ways to test your geography knowledge. Every game has four difficulty levels. Easy, Medium and Hard run thirty questions; Expert is sudden death — one wrong answer ends the run.</p>
 
   ${sections}
 
@@ -217,7 +220,7 @@ export function gamePage(game, allGames) {
 
   const body = `${breadcrumbs(trail)}
 <div class="wrap">
-  <div class="game-shell" data-game data-game-id="${game.id}" data-questions="10">
+  <div class="game-shell" data-game data-game-id="${game.id}" data-questions="30">
 
     <div class="game-status" data-status hidden></div>
 
@@ -229,14 +232,14 @@ export function gamePage(game, allGames) {
       <h2 class="sr-only">Choose a difficulty</h2>
       <div class="difficulty-list" data-difficulty-list role="group" aria-label="Difficulty"></div>
 
-      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>🎮 Start Game</button>
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start Game</button>
       <p class="setup-best" data-best></p>
     </section>
 
     <section class="game-screen" data-screen="play" hidden aria-live="polite">
       <div class="game-top">
         <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
-        <span class="game-counter" data-counter>Question 1/10</span>
+        <span class="game-counter" data-counter>Question 1/30</span>
       </div>
 
       <div class="scoreboard">
@@ -262,18 +265,18 @@ export function gamePage(game, allGames) {
     </section>
 
     <section class="game-screen results" data-screen="results" hidden>
-      <h2 class="results-title">🎉 Game complete!</h2>
+      <h2 class="results-title"><span data-result-icon>${icon('flag')}</span> <span data-result-title>Game complete!</span></h2>
       <div class="results-score" data-result-score>0</div>
       <div class="results-score-label">Score</div>
-      <div class="results-stars" data-result-stars aria-hidden="true">☆☆☆☆☆</div>
-      <p class="results-summary" data-result-summary>0 / 10 correct</p>
+      <div class="results-stars" data-result-stars aria-hidden="true"></div>
+      <p class="results-summary" data-result-summary></p>
       <p class="results-summary muted" data-result-verdict></p>
       <p class="results-best" data-result-best></p>
-      <p class="results-new-best" data-result-new-best hidden>🏆 New personal best!</p>
+      <p class="results-new-best" data-result-new-best hidden>${icon('trophy')} New personal best!</p>
 
       <div class="btn-row">
-        <button class="btn btn-primary btn-lg" type="button" data-play-again>🔁 Play Again</button>
-        <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>🎲 Try Another Game</a>
+        <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
+        <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
         <a class="btn btn-ghost" href="/games/">Back to Games</a>
       </div>
 
@@ -299,7 +302,8 @@ export function gamePage(game, allGames) {
     ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
 
     <h3>Difficulty and scoring</h3>
-    <p>Every round is ten questions across four levels — easy covers the countries most people can already name, expert reaches the microstates and the genuinely obscure. A correct answer is worth 100 points, with a bonus for answering inside five seconds and further bonuses for streaks. A wrong answer scores nothing and resets the streak, but never ends the round. The <a href="/about.html">full scoring breakdown</a> is on the about page.</p>
+    <p>Easy, Medium and Hard run thirty questions. Easy covers the countries most people can already name; Hard reaches the ones that need real study. A correct answer is worth 100 points, with a bonus for answering inside five seconds and further bonuses at three, five and ten in a row. A wrong answer scores nothing and resets the streak, but never ends the round.</p>
+    <p><strong>Expert is different.</strong> It has no fixed length and no second chances: questions keep coming from the hardest pool until you get one wrong, and that ends the run immediately. Your result is how many you survived. The <a href="/about.html">full scoring breakdown</a> is on the about page.</p>
 
     <h3>Other games</h3>
     <p>${allGames
@@ -678,7 +682,7 @@ export function continentPage(continent, countries) {
 /*  Reference lists                                                           */
 /* ========================================================================== */
 
-function listPage({ slug, title, h1, description, intro, outro, columns, rows }) {
+function listPage({ slug, title, h1, description, intro, outro, columns, rows, optionalColumn }) {
   const trail = [
     { label: 'Home', href: '/' },
     { label: 'Lists', href: '/lists/countries-and-capitals.html' },
@@ -694,7 +698,9 @@ function listPage({ slug, title, h1, description, intro, outro, columns, rows })
 
   <div class="table-wrap">
     <table>
-      <thead><tr>${columns.map((c) => `<th>${esc(c)}</th>`).join('')}</tr></thead>
+      <thead><tr>${columns
+        .map((c) => `<th${c === optionalColumn ? ' class="col-optional"' : ''}>${esc(c)}</th>`)
+        .join('')}</tr></thead>
       <tbody>
         ${rows.join('\n        ')}
       </tbody>
@@ -739,8 +745,9 @@ export function listPages(countries) {
         intro: `<p>All ${countries.length} sovereign countries with their capital cities, sorted alphabetically. A handful are worth knowing about before you are quizzed on them: Bolivia's constitutional capital is Sucre rather than La Paz, South Africa's seat of government is Pretoria, and Sri Lanka's official capital is Sri Jayawardenepura Kotte, not Colombo.</p>`,
         outro: `<h2>Learning them</h2><p>Capitals are the hardest of the basic geography facts because there is no visual hook — nothing about "Bishkek" points to Kyrgyzstan. What works is repeated short sessions with immediate correction, which is exactly what the <a href="/game/capital-quiz.html">capital quiz</a> does.</p>`,
         columns: ['Flag', 'Country', 'Capital', 'Continent'],
+        optionalColumn: 'Continent',
         rows: byName.map(
-          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td>${esc(c.continent)}</td></tr>`
+          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td class="col-optional">${esc(c.continent)}</td></tr>`
         )
       })
     },
@@ -754,8 +761,9 @@ export function listPages(countries) {
         intro: `<p>Every national flag on the site, with the country it belongs to. Flags are the fastest geography facts to learn because they are visual — most people can recognise a flag long before they can recall the capital.</p>`,
         outro: `<h2>The ones that catch people out</h2><p>Chad and Romania are near-identical. Monaco and Indonesia differ only in proportions. Ireland and Ivory Coast are mirror images of each other. Australia and New Zealand both carry the Union Jack and the Southern Cross, differing in the number and colour of the stars. Those pairs are exactly the distractors the <a href="/game/flag-quiz.html">flag quiz</a> serves up at the harder levels.</p>`,
         columns: ['Flag', 'Country', 'Capital', 'Continent'],
+        optionalColumn: 'Continent',
         rows: byName.map(
-          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td>${esc(c.continent)}</td></tr>`
+          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td class="col-optional">${esc(c.continent)}</td></tr>`
         )
       })
     },
@@ -828,7 +836,7 @@ export function aboutPage(countries) {
     <p>${SITE.name} is a free set of geography quizzes covering all ${countries.length} countries — their flags, capitals, continents, currencies and languages — plus famous landmarks and the world's oceans and seas.</p>
 
     <h2>What it is for</h2>
-    <p>Most people can name thirty or forty countries and stall. The gap is not intelligence, it is repetition with feedback. Every round here is ten questions, takes about a minute, and shows the correct answer immediately when you miss one. Do that a few times a week and the map fills in.</p>
+    <p>Most people can name thirty or forty countries and stall. The gap is not intelligence, it is repetition with feedback. Every round here is thirty questions, and shows the correct answer immediately when you miss one. Do that a few times a week and the map fills in.</p>
 
     <h2>No account, no tracking of your answers</h2>
     <p>There is nothing to sign up for. Your scores, streaks and theme preference are stored in your own browser using local storage and never leave your device. Clear your browser data and they are gone — we could not recover them if we wanted to.</p>
@@ -847,7 +855,11 @@ export function aboutPage(countries) {
       <li>Three in a row — 50 points; five in a row — 100; ten in a row — 250</li>
       <li>Wrong answer — no points, and the streak resets</li>
     </ul>
-    <p>A wrong answer never ends the round. You always play all ten questions.</p>
+
+    <h2>Round length and difficulty</h2>
+    <p>Easy, Medium and Hard are thirty questions long. A wrong answer costs you the points and the streak but never ends the round — you always play all thirty.</p>
+    <p><strong>Expert is a survival mode.</strong> There is no set number of questions: they keep coming from the hardest pool until you answer one wrong, and then the run is over. Your score is how far you got, and the only way to improve it is to start again. Ten in a row on Expert is a genuine achievement; thirty is exceptional.</p>
+    <p>A few games have smaller pools than thirty — the landmark and oceans quizzes draw on 60 landmarks and 30 bodies of water — so those rounds are as long as the pool allows rather than being padded with repeats.</p>
 
     <p><a class="btn btn-primary" href="/games/" style="margin-top:16px">Browse the games</a></p>`
   });
