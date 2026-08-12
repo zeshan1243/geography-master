@@ -16,7 +16,8 @@ import {
   countStreak,
   dailyDoneToday,
   accuracy,
-  favoriteGame
+  favoriteGame,
+  missedCount
 } from './storage.js';
 
 /* --- Game cards ---------------------------------------------------------- */
@@ -154,6 +155,19 @@ function renderStats() {
   if (empty) empty.hidden = profile.gamesPlayed > 0;
 }
 
+/* --- Review prompt ------------------------------------------------------- */
+
+function renderReviewCallout() {
+  const box = document.querySelector('[data-review-callout]');
+  if (!box) return;
+  const due = missedCount();
+  box.hidden = due === 0;
+  const label = box.querySelector('[data-review-callout-count]');
+  if (label) {
+    label.textContent = `Review ${due} question${due === 1 ? '' : 's'} you got wrong`;
+  }
+}
+
 /* --- Country index filtering -------------------------------------------- */
 
 function wireCountryFilter() {
@@ -195,6 +209,7 @@ function boot() {
 
   renderStreak();
   renderStats();
+  renderReviewCallout();
   wireCountryFilter();
 
   renderGameCards();

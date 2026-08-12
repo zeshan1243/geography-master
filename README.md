@@ -107,6 +107,7 @@ The `rail` unit only renders at ≥1240px, in a 300px sticky column on country, 
 - **Guides** — each is at least 800 words, has real section structure, unique metadata, and no stray `<h1>` in its body.
 - **Country detail** — all 195 have three or more facts, cities, a region and a highest point; no fact is reused on two pages; and every land border is mutual (a one-sided border is always a mistake in one of the two entries).
 - **Map coverage** — every country has a path in `world.svg`, anything marked playable clears the size and area thresholds, and each difficulty has enough countries to fill a round.
+- **Module imports** — a function called in `js/` but never imported. ES modules make this silent: the name resolves to a missing global and only throws when that path first runs. One such bug shipped before this check existed. The scanner blanks comments and string bodies first, keeping `${…}` interpolations, so it does not cry wolf.
 - **Pages** — every generated page has exactly one `<h1>`, a title, a meta description and a canonical link; all ~13,000 internal links resolve to files that exist.
 
 ## Rounds and difficulty
@@ -121,6 +122,16 @@ Easy, Medium and Hard run **30 questions** (`DEFAULT_QUESTIONS` in `js/quiz.js`,
 - The daily challenge is never survival, even though it uses the mixed quiz: a seeded round everyone shares should not end on question one.
 
 Two datasets are smaller than a full round and cap rather than repeat: the **landmark quiz** (60 landmarks — 21 on Easy, 15 on Expert) and the **oceans quiz** (30 bodies of water — 8 on Easy). Those rounds are as long as the pool allows. Adding entries to `data/landmarks.json` or `data/oceans.json` lengthens them automatically.
+
+## Review your mistakes
+
+`/practice.html` replays the questions you previously got wrong. It is the one feature that turns the site from a quiz into study, so a few decisions are load-bearing:
+
+- **Every question carries a stable `subject`** — a country code, a landmark name, a sea. Question ids contain a round index and are not stable, so the subject is what a miss is remembered by. `roundContext()` in `js/quiz.js` supplies it, which is also why random rounds and review rounds share one code path: a rebuilt question is identical to a freshly generated one.
+- **Reviews are rebuilt, not stored.** A flag missed on Expert can reappear with different wrong answers beside it. The point is to re-test the fact, not reproduce the round.
+- **Retiring takes two correct answers** (`RETIRE_AT`). Getting something right immediately after being shown the answer proves very little. Missing it again resets progress to zero.
+- **A correct answer on a never-missed item is ignored**, so ordinary rounds cost nothing.
+- The list is capped at `MAX_MISSES` (400), dropping least-recently-seen entries, and lives in the same localStorage profile as scores and streaks.
 
 ## Icons
 

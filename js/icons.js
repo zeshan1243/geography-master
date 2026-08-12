@@ -51,6 +51,10 @@ export const ICONS = {
   starOutline:
     '<path d="M12 3.4l2.65 5.37 5.93.86-4.29 4.18 1.01 5.9L12 16.93l-5.3 2.78 1.01-5.9L3.42 9.63l5.93-.86z"/>',
 
+  target:
+    '<circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.4"/>' +
+    '<circle class="solid" cx="12" cy="12" r="1.5"/>',
+
   dot: '<circle class="solid" cx="12" cy="12" r="6.4"/>'
 };
 

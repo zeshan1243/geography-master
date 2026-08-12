@@ -297,6 +297,46 @@ async function checkEngine() {
     console.log(`  ${inspected} border questions verified against the adjacency list`);
   }
 
+  // Practice rounds must rebuild exactly the remembered questions, from any
+  // game, and never invent extras.
+  {
+    const wanted = [
+      { kind: 'flags', subject: 'JP' },
+      { kind: 'capitals', subject: 'TH' },
+      { kind: 'waters', subject: 'Red Sea' },
+      { kind: 'borders', subject: 'DE' },
+      { kind: 'landmarks', subject: 'Petra' },
+      { kind: 'nameToFlag', subject: 'BR' },
+      { kind: 'countryToLandmark', subject: 'Uluru' },
+      { kind: 'shapes', subject: 'IT' },
+      { kind: 'locate', subject: 'PE' },
+      { kind: 'currencies', subject: 'VN' },
+      { kind: 'ghostGame', subject: 'XX' } // a retired game must be skipped, not throw
+    ];
+    const round = await quiz.buildPracticeRound({ items: wanted, count: 30 });
+    ok(round.length === 10, `practice round should rebuild 10 questions, got ${round.length}`);
+
+    const got = new Set(round.map((q) => `${q.kind}|${q.subject}`));
+    for (const { kind, subject } of wanted.slice(0, 10)) {
+      ok(got.has(`${kind}|${subject}`), `practice round is missing ${kind}/${subject}`);
+    }
+    for (const q of round) {
+      ok(Boolean(q.subject), `practice question ${q.id} has no subject`);
+      ok(
+        q.interaction === 'map' ? q.options.length === 0 : q.options.includes(q.answer),
+        `practice question ${q.id} is malformed`
+      );
+    }
+    ok(quiz.missKey('flags', 'JP') === 'flags|JP', 'missKey should be kind|subject');
+  }
+
+  // Every question must carry a stable subject, or a miss cannot be remembered.
+  for (const type of types) {
+    const round = await quiz.buildRound({ type, difficulty: 'medium', count: 10 });
+    const missing = round.filter((q) => !q.subject).length;
+    ok(missing === 0, `${type}: ${missing} questions have no subject to remember a miss by`);
+  }
+
   // The daily challenge must be identical for everyone on a given day.
   const seed = quiz.dailySeed('2026-08-11');
   const a = await quiz.buildRound({ type: 'mixed', difficulty: 'medium', count: 10, rng: quiz.makeRng(seed) });
@@ -457,7 +497,17 @@ function checkLayoutTraps() {
     );
   }
 
-  // 2. Any class used alongside `wrap` must not set the padding shorthand with
+  // 2. Elements are shown and hidden with the `hidden` attribute all over the
+  //    engine, and a class that sets `display` overrides it. One global rule
+  //    covers every component; if it goes, everything toggled by `hidden`
+  //    silently stays on screen.
+  const mainCss = readFileSync(join(ROOT, 'css', 'main.css'), 'utf8');
+  ok(
+    /\[hidden\]\s*\{[^}]*display:\s*none\s*!important/.test(mainCss),
+    'css/main.css must keep the global `[hidden] { display: none !important }` rule'
+  );
+
+  // 3. Any class used alongside `wrap` must not set the padding shorthand with
   //    a zero inline value: same specificity as .wrap, so source order decides
   //    and the side padding silently disappears.
   const partners = new Set();
@@ -486,6 +536,136 @@ function checkLayoutTraps() {
 
   console.log(`  drawer placement checked on ${files.length} pages; ` +
     `${partners.size} classes paired with .wrap`);
+}
+
+/**
+ * Catches a function that is called in a browser module but never imported.
+ * ES modules make this a silent failure: the name resolves to a missing global
+ * and only throws when that code path first runs, which a page can easily never
+ * do during a build. One such bug (buildPracticeRound) shipped before this
+ * check existed.
+ */
+/**
+ * Blanks out comments and string bodies so the scan only sees real code.
+ * Template literals keep their `${...}` contents, since those hold real calls.
+ */
+function codeOnly(src) {
+  let out = '';
+  let i = 0;
+  const depth = [];
+
+  while (i < src.length) {
+    const two = src.slice(i, i + 2);
+
+    if (two === '//') {
+      while (i < src.length && src[i] !== '\n') { out += ' '; i += 1; }
+      continue;
+    }
+    if (two === '/*') {
+      while (i < src.length && src.slice(i, i + 2) !== '*/') { out += src[i] === '\n' ? '\n' : ' '; i += 1; }
+      out += '  ';
+      i += 2;
+      continue;
+    }
+    if (src[i] === "'" || src[i] === '"') {
+      const quote = src[i];
+      out += ' ';
+      i += 1;
+      while (i < src.length && src[i] !== quote) {
+        if (src[i] === '\\') { out += ' '; i += 1; }
+        out += ' ';
+        i += 1;
+      }
+      out += ' ';
+      i += 1;
+      continue;
+    }
+    if (src[i] === '`') {
+      out += ' ';
+      i += 1;
+      while (i < src.length && src[i] !== '`') {
+        if (src[i] === '\\') { out += ' '; i += 2; continue; }
+        if (src.slice(i, i + 2) === '${') {
+          // Keep interpolated expressions: they contain real calls.
+          out += '  ';
+          i += 2;
+          let braces = 1;
+          while (i < src.length && braces > 0) {
+            if (src[i] === '{') braces += 1;
+            if (src[i] === '}') braces -= 1;
+            out += braces === 0 ? ' ' : src[i];
+            i += 1;
+          }
+          continue;
+        }
+        out += src[i] === '\n' ? '\n' : ' ';
+        i += 1;
+      }
+      out += ' ';
+      i += 1;
+      continue;
+    }
+    out += src[i];
+    i += 1;
+  }
+  return out;
+}
+
+function checkModuleImports() {
+  section('Module imports');
+
+  const dir = join(ROOT, 'js');
+  const files = readdirSync(dir).filter((f) => f.endsWith('.js'));
+
+  // What each module exports.
+  const exportsOf = new Map();
+  const sources = new Map();
+  for (const file of files) {
+    const src = codeOnly(readFileSync(join(dir, file), 'utf8'));
+    sources.set(file, src);
+    const names = new Set();
+    for (const m of src.matchAll(/export\s+(?:async\s+)?function\s+([A-Za-z_$][\w$]*)/g)) names.add(m[1]);
+    for (const m of src.matchAll(/export\s+const\s+([A-Za-z_$][\w$]*)/g)) names.add(m[1]);
+    for (const m of src.matchAll(/export\s*\{([^}]*)\}/g)) {
+      for (const part of m[1].split(',')) {
+        const name = part.split(/\s+as\s+/).pop().trim();
+        if (name) names.add(name);
+      }
+    }
+    exportsOf.set(file, names);
+  }
+
+  let calls = 0;
+  for (const [file, src] of sources) {
+    // Names this file brings in or defines itself.
+    const available = new Set();
+    for (const m of src.matchAll(/import\s*\{([^}]*)\}\s*from/g)) {
+      for (const part of m[1].split(',')) {
+        const name = part.split(/\s+as\s+/).pop().trim();
+        if (name) available.add(name);
+      }
+    }
+    for (const m of src.matchAll(/(?:function|const|let|var|class)\s+([A-Za-z_$][\w$]*)/g)) {
+      available.add(m[1]);
+    }
+
+    // Anything exported by a sibling module and called here must be available.
+    const foreign = new Set();
+    for (const [other, names] of exportsOf) {
+      if (other === file) continue;
+      for (const n of names) foreign.add(n);
+    }
+
+    for (const m of src.matchAll(/(?<![.\w$])([A-Za-z_$][\w$]*)\s*\(/g)) {
+      const name = m[1];
+      if (!foreign.has(name) || available.has(name)) continue;
+      calls += 1;
+      ok(false, `js/${file} calls ${name}() but never imports it`);
+    }
+  }
+
+  console.log(`  ${files.length} browser modules checked for missing imports`);
+  return calls;
 }
 
 function checkLinks() {
@@ -528,6 +708,7 @@ checkDetails();
 checkMapCoverage();
 await checkEngine();
 checkAds();
+checkModuleImports();
 checkLayoutTraps();
 await checkGuides();
 checkLinks();

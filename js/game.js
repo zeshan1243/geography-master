@@ -10,6 +10,7 @@
 
 import {
   buildRound,
+  buildPracticeRound,
   DIFFICULTIES,
   DEFAULT_QUESTIONS,
   difficulty as findDifficulty,
@@ -18,7 +19,17 @@ import {
   SURVIVAL_MAX
 } from './quiz.js';
 import { scoreAnswer, stars, verdict, survivalStars, survivalVerdict } from './score.js';
-import { recordGame, bestScore, bestRun, todayKey } from './storage.js';
+import {
+  recordGame,
+  bestScore,
+  bestRun,
+  todayKey,
+  recordMiss,
+  recordHit,
+  missedItems,
+  missedCount,
+  clearMisses
+} from './storage.js';
 import { games, url, mapCoverage } from './data.js';
 import { icon } from './icons.js';
 import { shapeOf, fitShape, interactiveMap, zoomWindow } from './worldmap.js';
@@ -176,16 +187,20 @@ export async function startGame(config) {
   const rules = findDifficulty(config.difficulty);
   const survival = Boolean(rules.survival) && !config.daily;
 
+  const isPractice = config.type === 'practice';
+
   let questions;
   try {
-    questions = await buildRound({
-      type: config.type,
-      difficulty: config.difficulty,
-      // Survival has no set length: take the whole pool and let the first
-      // wrong answer end it.
-      count: survival ? SURVIVAL_MAX : config.questions,
-      rng: config.seed ? makeRng(config.seed) : Math.random
-    });
+    questions = isPractice
+      ? await buildPracticeRound({ items: missedItems(), count: config.questions })
+      : await buildRound({
+          type: config.type,
+          difficulty: config.difficulty,
+          // Survival has no set length: take the whole pool and let the first
+          // wrong answer end it.
+          count: survival ? SURVIVAL_MAX : config.questions,
+          rng: config.seed ? makeRng(config.seed) : Math.random
+        });
   } catch (error) {
     if (status) {
       status.hidden = false;
@@ -292,6 +307,14 @@ export async function startGame(config) {
     state.streak = isCorrect ? state.streak + 1 : 0;
     state.bestStreak = Math.max(state.bestStreak, state.streak);
     if (isCorrect) state.correct += 1;
+
+    // Remembered so the fact can be re-tested later. A correct answer only
+    // counts against an item that was previously missed, so ordinary rounds
+    // add nothing.
+    if (question.subject) {
+      if (isCorrect) recordHit(question.kind, question.subject);
+      else recordMiss(question.kind, question.subject);
+    }
 
     const { points, parts } = scoreAnswer({ correct: isCorrect, elapsedMs, streak: state.streak });
     state.score += points;
@@ -423,6 +446,11 @@ export async function startGame(config) {
     const newBest = el('result-new-best');
     if (newBest) newBest.hidden = !isBest;
 
+    // Offered only when there is something waiting, and never on the review
+    // page itself.
+    const reviewLink = el('review-link');
+    if (reviewLink) reviewLink.hidden = state.type === 'practice' || missedCount() === 0;
+
     const review = el('result-review');
     if (review) {
       review.innerHTML = state.answers
@@ -507,8 +535,35 @@ export async function initGamePage() {
 
   const list = root.querySelector('[data-difficulty-list]');
   const bestLine = root.querySelector('[data-best]');
+  const practice = type === 'practice';
+
+  /**
+   * The practice screen has no difficulty to choose. What it shows instead is
+   * how much is waiting, and it refuses to start with an empty list.
+   */
+  const paintPractice = () => {
+    const due = missedCount();
+    const countEl = root.querySelector('[data-review-count]');
+    const emptyEl = root.querySelector('[data-review-empty]');
+    const startBtn = root.querySelector('[data-start]');
+
+    if (countEl) {
+      countEl.textContent = due
+        ? `${due} question${due === 1 ? '' : 's'} waiting to be reviewed`
+        : 'Nothing to review yet';
+    }
+    if (emptyEl) emptyEl.hidden = due > 0;
+    if (startBtn) {
+      startBtn.disabled = due === 0;
+      startBtn.textContent = due ? 'Start review' : 'Nothing to review';
+    }
+  };
 
   const paintBest = () => {
+    if (practice) {
+      paintPractice();
+      return;
+    }
     if (!bestLine) return;
     const best = bestScore(type, selected);
     bestLine.textContent = best
@@ -541,10 +596,26 @@ export async function initGamePage() {
     });
 
   root.querySelector('[data-start]')?.addEventListener('click', launch);
-  root.querySelector('[data-play-again]')?.addEventListener('click', launch);
+  root.querySelector('[data-play-again]')?.addEventListener('click', () => {
+    // After a review round the list has shrunk; re-check before restarting.
+    if (practice && missedCount() === 0) {
+      paintPractice();
+      root.querySelector('[data-screen="setup"]').hidden = false;
+      root.querySelector('[data-screen="results"]').hidden = true;
+      return;
+    }
+    launch();
+  });
+
+  root.querySelector('[data-clear-review]')?.addEventListener('click', () => {
+    if (window.confirm('Clear your review list? This cannot be undone.')) {
+      clearMisses();
+      paintPractice();
+    }
+  });
 
   const another = root.querySelector('[data-another-game]');
-  if (another) {
+  if (another && !practice) {
     const all = await games();
     const pick = all.filter((g) => g.id !== type)[Math.floor(Math.random() * (all.length - 1))];
     if (pick) another.href = `${url(`game/${pick.slug}.html`)}?difficulty=${selected}`;

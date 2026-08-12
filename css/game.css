@@ -69,6 +69,25 @@
 
 .difficulty[aria-pressed="true"] small { color: var(--text); }
 
+.review-count {
+  margin: 0 auto 24px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.link-button {
+  background: none;
+  border: 0;
+  padding: 8px 4px;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: .9375rem;
+}
+
+.link-button:hover { color: var(--text); }
+
 .setup-best {
   margin-top: 20px;
   color: var(--text-secondary);
@@ -151,11 +170,6 @@
   border-radius: 999px;
   transition: width .35s ease;
 }
-
-/* .progress-dots sets display:flex, which beats the UA [hidden] rule, so the
-   hidden state needs saying explicitly. */
-.progress-dots[hidden],
-.progress-track[hidden] { display: none; }
 
 .progress-dots {
   display: flex;

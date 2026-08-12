@@ -76,6 +76,15 @@ export function home(countries, games) {
   </div>
   <div class="stat-grid" data-stats></div>
   <p class="muted" data-stats-empty hidden style="margin-top:12px">Finish a game and your score, accuracy and streak will show up here.</p>
+
+  <a class="review-callout" href="/practice.html" data-review-callout hidden>
+    <span class="review-callout-icon" aria-hidden="true">🎯</span>
+    <span>
+      <strong data-review-callout-count>Review your mistakes</strong>
+      <small>Replay the questions you got wrong, until they stick.</small>
+    </span>
+    <span class="review-callout-go" aria-hidden="true">→</span>
+  </a>
 </section>
 
 <section class="section wrap">
@@ -182,6 +191,16 @@ export function gamesIndex(games) {
   const body = `${breadcrumbs([{ label: 'Home', href: '/' }, { label: 'Games' }])}
 <section class="section wrap">
   <h1>Geography games</h1>
+
+  <a class="review-callout" href="/practice.html" data-review-callout hidden style="margin:20px 0 0">
+    <span class="review-callout-icon" aria-hidden="true">🎯</span>
+    <span>
+      <strong data-review-callout-count>Review your mistakes</strong>
+      <small>Replay the questions you got wrong, until they stick.</small>
+    </span>
+    <span class="review-callout-go" aria-hidden="true">→</span>
+  </a>
+
   <p class="lead">${games.length} ways to test your geography knowledge. Every game has four difficulty levels. Easy, Medium and Hard run thirty questions; Expert is sudden death — one wrong answer ends the run.</p>
 
   ${sections}
@@ -211,34 +230,15 @@ export function gamesIndex(games) {
 /*  Game page (the quiz screen itself)                                        */
 /* ========================================================================== */
 
-export function gamePage(game, allGames) {
-  const trail = [
-    { label: 'Home', href: '/' },
-    { label: 'Games', href: '/games/' },
-    { label: game.name, href: `/game/${game.slug}.html` }
-  ];
 
-  const body = `${breadcrumbs(trail)}
-<div class="wrap">
-  <div class="game-shell" data-game data-game-id="${game.id}" data-questions="30">
-
-    <div class="game-status" data-status hidden></div>
-
-    <section class="game-screen setup" data-screen="setup">
-      <div class="game-icon" aria-hidden="true">${game.icon}</div>
-      <h1>${esc(game.name)}</h1>
-      <p>${esc(game.description)}</p>
-
-      <h2 class="sr-only">Choose a difficulty</h2>
-      <div class="difficulty-list" data-difficulty-list role="group" aria-label="Difficulty"></div>
-
-      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start Game</button>
-      <p class="setup-best" data-best></p>
-    </section>
-
-    <section class="game-screen" data-screen="play" hidden aria-live="polite">
+/**
+ * The play and results screens. Identical for every game and for the practice
+ * round, so they live in one place — only the setup screen differs.
+ */
+function playAndResultsScreens({ icon: gameIcon, name, showRelated = true }) {
+  return `    <section class="game-screen" data-screen="play" hidden aria-live="polite">
       <div class="game-top">
-        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="game-title"><span aria-hidden="true">${gameIcon}</span> ${esc(name)}</span>
         <span class="game-counter" data-counter>Question 1/30</span>
       </div>
 
@@ -277,6 +277,7 @@ export function gamePage(game, allGames) {
       <div class="btn-row">
         <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
         <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
+        <a class="btn btn-ghost" href="/practice.html" data-review-link hidden>${icon('target')} Review your mistakes</a>
         <a class="btn btn-ghost" href="/games/">Back to Games</a>
       </div>
 
@@ -286,11 +287,44 @@ export function gamePage(game, allGames) {
       </div>
 
       ${adSlot()}
-
-      <div class="related">
+      ${
+        showRelated
+          ? `<div class="related">
         <h2>You might also like</h2>
         <div class="related-links" data-related></div>
-      </div>
+      </div>`
+          : ''
+      }
+    </section>
+`;
+}
+
+export function gamePage(game, allGames) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name, href: `/game/${game.slug}.html` }
+  ];
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-game data-game-id="${game.id}" data-questions="30">
+
+    <div class="game-status" data-status hidden></div>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+
+      <h2 class="sr-only">Choose a difficulty</h2>
+      <div class="difficulty-list" data-difficulty-list role="group" aria-label="Difficulty"></div>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start Game</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+${playAndResultsScreens({ icon: game.icon, name: game.name })}
     </section>
 
   </div>
@@ -1121,3 +1155,71 @@ export function guidePage(article) {
 }
 
 export { ARTICLES };
+
+
+/* ========================================================================== */
+/*  Practice: replay the questions you got wrong                              */
+/* ========================================================================== */
+
+export function practicePage() {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: 'Review mistakes', href: '/practice.html' }
+  ];
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-game data-game-id="practice" data-questions="30">
+
+    <div class="game-status" data-status hidden></div>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">🎯</div>
+      <h1>Review your mistakes</h1>
+      <p>Every question you answer wrong is remembered. This replays them — drawn from whichever games you missed them in — until you get each one right twice.</p>
+
+      <p class="review-count" data-review-count>Nothing to review yet</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start review</button>
+
+      <p class="setup-best" data-review-empty hidden>
+        Play any game and the questions you miss will collect here.
+        <a href="/games/">Browse the games →</a>
+      </p>
+
+      <p class="setup-best">
+        <button class="link-button" type="button" data-clear-review>Clear review list</button>
+      </p>
+    </section>
+
+    ${playAndResultsScreens({ icon: '🎯', name: 'Review', showRelated: true })}
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>Why review beats replaying</h2>
+    <p>Playing another random round mostly re-tests what you already know. The questions you got wrong are the only ones carrying new information, and they are exactly the ones a random round is least likely to show you again soon.</p>
+    <p>This page fixes that. Every wrong answer across all fifteen games is remembered by what it asked — the country, the landmark, the sea — and replayed here. Getting one right does not remove it immediately: you have to answer it correctly <strong>twice</strong>, because getting something right straight after being shown the answer proves very little.</p>
+    <p>Missing an item again resets its progress. That is deliberate: a fact you get wrong after previously getting it right is the most valuable one in the list.</p>
+
+    <h3>Where the questions come from</h3>
+    <p>Reviews are rebuilt from the original game, not stored as snapshots, so a flag you missed on Expert can reappear with different wrong answers beside it. The point is to re-test the fact rather than to reproduce the round it came from.</p>
+
+    <h3>It stays on your device</h3>
+    <p>The review list lives in your browser's local storage alongside your scores and streak. Nothing is uploaded, and clearing your browser data clears the list. See the <a href="/privacy-policy.html">privacy policy</a> for what else is stored locally.</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `Review Your Mistakes — Practice What You Got Wrong | ${SITE.name}`,
+    description:
+      'Replay the geography questions you answered wrong. Every miss across all games is remembered and repeated until you get it right twice.',
+    path: '/practice.html',
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    schema: breadcrumbSchema(trail)
+  });
+}

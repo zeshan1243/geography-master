@@ -18,8 +18,19 @@ const DEFAULTS = {
   bestStreak: 0,
   gameCounts: {},      // "flags" -> times played
   playedDays: [],      // ISO dates, newest last, capped at 60
-  dailyDone: {}        // ISO date -> score
+  dailyDone: {},       // ISO date -> score
+  misses: {}           // "kind|subject" -> { kind, subject, missed, strength, seen }
 };
+
+/**
+ * How many times a remembered miss must be answered correctly before it stops
+ * being offered for review. One is too few — getting it right immediately
+ * after being shown the answer proves very little.
+ */
+const RETIRE_AT = 2;
+
+/** Bounds localStorage. Oldest-seen entries are dropped first. */
+const MAX_MISSES = 400;
 
 /** localStorage throws in some private-browsing modes; degrade to memory. */
 let memoryFallback = null;
@@ -143,6 +154,71 @@ export function recordGame({ type, difficulty, score, correct, total, bestStreak
   });
 
   return { isBest, best, streakDays };
+}
+
+/* --- Missed questions --------------------------------------------------- */
+
+const missKeyOf = (kind, subject) => `${kind}|${subject}`;
+
+/**
+ * Remember that a question was answered wrong.
+ *
+ * Being missed again resets progress: a fact you get wrong after previously
+ * getting it right is exactly the one worth re-testing.
+ */
+export function recordMiss(kind, subject) {
+  if (!kind || !subject) return;
+  update((p) => {
+    p.misses = p.misses || {};
+    const key = missKeyOf(kind, subject);
+    const entry = p.misses[key] || { kind, subject, missed: 0, strength: 0 };
+    entry.missed += 1;
+    entry.strength = 0;
+    entry.seen = Date.now();
+    p.misses[key] = entry;
+
+    const keys = Object.keys(p.misses);
+    if (keys.length > MAX_MISSES) {
+      keys
+        .sort((a, b) => (p.misses[a].seen || 0) - (p.misses[b].seen || 0))
+        .slice(0, keys.length - MAX_MISSES)
+        .forEach((k) => delete p.misses[k]);
+    }
+  });
+}
+
+/**
+ * Credit a correct answer against a remembered miss. Retires the entry once it
+ * has been answered correctly RETIRE_AT times. Questions that were never
+ * missed are ignored, so ordinary rounds cost nothing.
+ */
+export function recordHit(kind, subject) {
+  if (!kind || !subject) return;
+  const key = missKeyOf(kind, subject);
+  update((p) => {
+    if (!p.misses || !p.misses[key]) return;
+    const entry = p.misses[key];
+    entry.strength = (entry.strength || 0) + 1;
+    entry.seen = Date.now();
+    if (entry.strength >= RETIRE_AT) delete p.misses[key];
+  });
+}
+
+/** Everything currently due for review, most-missed first. */
+export function missedItems(profile = load()) {
+  return Object.values(profile.misses || {}).sort(
+    (a, b) => b.missed - a.missed || (a.seen || 0) - (b.seen || 0)
+  );
+}
+
+export function missedCount(profile = load()) {
+  return Object.keys(profile.misses || {}).length;
+}
+
+export function clearMisses() {
+  update((p) => {
+    p.misses = {};
+  });
 }
 
 /** Consecutive days played, counting back from today (or yesterday). */

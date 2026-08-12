@@ -223,6 +223,9 @@ function build() {
     add(`/guides/${article.slug}.html`, '0.8');
   }
 
+  write('practice.html', pages.practicePage());
+  add('/practice.html', '0.8', 'weekly');
+
   // Static pages
   write('about.html', pages.aboutPage(countries));
   write('contact.html', pages.contactPage());

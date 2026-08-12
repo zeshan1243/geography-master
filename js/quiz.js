@@ -428,6 +428,86 @@ const COUNTRY_BUILDERS = {
   languages: languageQuestion
 };
 
+/** Every tier — practice rounds are not difficulty-graded. */
+const ALL_TIERS = [1, 2, 3, 4];
+
+/**
+ * Resolves a game type into the pool it draws from, a function that turns a
+ * pool item into a question, and the stable key identifying that item.
+ *
+ * Both random rounds and "practice your mistakes" rounds go through this, so
+ * a question built from a remembered miss is identical to one built at random.
+ */
+async function roundContext(type, tiers) {
+  if (type === 'shapes' || type === 'locate') {
+    const { pool, all } = await mapPool(type === 'shapes' ? 'shape' : 'locate', tiers);
+    const build = type === 'shapes' ? shapeQuestion : locateQuestion;
+    return { pool, subjectOf: (c) => c.code, build: (item, i, rng) => build(item, pool, all, rng, i) };
+  }
+
+  if (type === 'borders') {
+    const [all, adjacency] = await Promise.all([countries(), borderData()]);
+    const byCode = new Map(all.map((c) => [c.code, c]));
+
+    const withNeighbours = all
+      .filter((c) => (adjacency[c.code] || []).length)
+      .map((country) => ({
+        country,
+        neighbours: adjacency[country.code].map((code) => byCode.get(code)).filter(Boolean)
+      }))
+      .filter((entry) => entry.neighbours.length);
+
+    const inTier = withNeighbours.filter((e) => tiers.includes(e.country.tier));
+    const pool = inTier.length >= 6 ? inTier : withNeighbours;
+    return {
+      pool,
+      subjectOf: (entry) => entry.country.code,
+      build: (entry, i, rng) => borderQuestion(entry, pool, all, rng, i)
+    };
+  }
+
+  if (type === 'landmarks' || type === 'countryToLandmark') {
+    const [all, allCountries] = await Promise.all([landmarks(), countries()]);
+    const pool = poolFor(all, tiers);
+    const build = type === 'landmarks' ? landmarkQuestion : countryToLandmarkQuestion;
+    return {
+      pool,
+      subjectOf: (l) => l.name,
+      build: (item, i, rng) => build(item, pool, allCountries, rng, i)
+    };
+  }
+
+  if (type === 'waters') {
+    const all = await waters();
+    const pool = poolFor(all, tiers);
+    return {
+      pool,
+      subjectOf: (w) => w.name,
+      build: (item, i, rng) => waterQuestion(item, pool, all, rng, i)
+    };
+  }
+
+  const all = await countries();
+  const pool = poolFor(all, tiers);
+
+  if (type === 'continents') {
+    const names = (await continentData()).filter((c) => c.countries > 0).map((c) => c.name);
+    return {
+      pool,
+      subjectOf: (c) => c.code,
+      build: (item, i, rng) => continentQuestion(item, pool, all, rng, i, names)
+    };
+  }
+
+  const build = COUNTRY_BUILDERS[type] || countryQuestion;
+  return { pool, subjectOf: (c) => c.code, build: (item, i, rng) => build(item, pool, all, rng, i) };
+}
+
+/** The stable identity of a question, used to remember a miss. */
+export function missKey(kind, subject) {
+  return `${kind}|${subject}`;
+}
+
 /**
  * Build a round of questions.
  * @param {{type: string, difficulty: string, count?: number, rng?: () => number}} options
@@ -463,67 +543,44 @@ export async function buildRound({ type, difficulty: difficultyId, count = DEFAU
     return shuffle(pool, rng).slice(0, count);
   }
 
-  if (type === 'shapes' || type === 'locate') {
-    const { pool, all } = await mapPool(type === 'shapes' ? 'shape' : 'locate', tiers);
-    const build = type === 'shapes' ? shapeQuestion : locateQuestion;
-    return sample(pool, count, rng).map((item, i) => build(item, pool, all, rng, i));
+  const { pool, build, subjectOf } = await roundContext(type, tiers);
+  return sample(pool, count, rng).map((item, i) => ({
+    ...build(item, i, rng),
+    subject: subjectOf(item)
+  }));
+}
+
+/**
+ * A round rebuilt from questions the player previously got wrong.
+ *
+ * Distractors are drawn from the full dataset rather than the difficulty the
+ * miss happened on: the point is to re-test the fact, not to reproduce the
+ * exact round it came from.
+ *
+ * @param {{items: Array<{kind: string, subject: string}>, count?: number, rng?: () => number}} options
+ */
+export async function buildPracticeRound({ items, count = DEFAULT_QUESTIONS, rng = Math.random }) {
+  const byKind = new Map();
+  for (const { kind, subject } of items) {
+    if (!byKind.has(kind)) byKind.set(kind, new Set());
+    byKind.get(kind).add(subject);
   }
 
-  if (type === 'borders') {
-    const [all, adjacency] = await Promise.all([countries(), borderData()]);
-    const byCode = new Map(all.map((c) => [c.code, c]));
-
-    const withNeighbours = all
-      .filter((c) => (adjacency[c.code] || []).length)
-      .map((country) => ({
-        country,
-        neighbours: adjacency[country.code].map((code) => byCode.get(code)).filter(Boolean)
-      }))
-      .filter((entry) => entry.neighbours.length);
-
-    const inTier = withNeighbours.filter((e) => tiers.includes(e.country.tier));
-    const pool = inTier.length >= 6 ? inTier : withNeighbours;
-    return sample(pool, count, rng).map((entry, i) =>
-      borderQuestion(entry, pool, all, rng, i)
-    );
+  const questions = [];
+  for (const [kind, subjects] of byKind) {
+    let context;
+    try {
+      context = await roundContext(kind, ALL_TIERS);
+    } catch {
+      continue; // a game that no longer exists should not break the round
+    }
+    const { pool, build, subjectOf } = context;
+    pool
+      .filter((item) => subjects.has(subjectOf(item)))
+      .forEach((item, i) => questions.push({ ...build(item, i, rng), subject: subjectOf(item) }));
   }
 
-  if (type === 'countryToLandmark') {
-    const [all, allCountries] = await Promise.all([landmarks(), countries()]);
-    const pool = poolFor(all, tiers);
-    return sample(pool, count, rng).map((item, i) =>
-      countryToLandmarkQuestion(item, pool, allCountries, rng, i)
-    );
-  }
-
-  if (type === 'landmarks') {
-    const [all, allCountries] = await Promise.all([landmarks(), countries()]);
-    const pool = poolFor(all, tiers);
-    return sample(pool, count, rng).map((item, i) =>
-      landmarkQuestion(item, pool, allCountries, rng, i)
-    );
-  }
-
-  if (type === 'waters') {
-    const all = await waters();
-    const pool = poolFor(all, tiers);
-    return sample(pool, count, rng).map((item, i) => waterQuestion(item, pool, all, rng, i));
-  }
-
-  const all = await countries();
-  const pool = poolFor(all, tiers);
-  const build = COUNTRY_BUILDERS[type] || countryQuestion;
-
-  if (type === 'continents') {
-    const names = (await continentData())
-      .filter((c) => c.countries > 0)
-      .map((c) => c.name);
-    return sample(pool, count, rng).map((item, i) =>
-      continentQuestion(item, pool, all, rng, i, names)
-    );
-  }
-
-  return sample(pool, count, rng).map((item, i) => build(item, pool, all, rng, i));
+  return shuffle(questions, rng).slice(0, count);
 }
 
 /** The seed shared by every player on a given day. */

@@ -130,6 +130,13 @@
 
 * { margin: 0; padding: 0; }
 
+/* The UA rule for [hidden] is `display: none` at the lowest specificity, so any
+   component that sets `display` silently defeats it — an element toggled with
+   `el.hidden = true` stays on screen. That has bitten this codebase three times
+   (.progress-dots, .review-callout, .results-new-best), so it is stated once,
+   globally, rather than patched per component. */
+[hidden] { display: none !important; }
+
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
