@@ -1,5 +1,25 @@
 [
   {
+    "id": "nameCountries",
+    "slug": "name-the-countries",
+    "name": "Name the Countries",
+    "icon": "✍️",
+    "accent": "blue",
+    "category": "Country Games",
+    "tagline": "Type every country you can remember before time runs out",
+    "description": "Type as many countries as you can from memory before time runs out — no options, no hints, just what you actually know. Play all 195 at once, or pick a single starting letter.",
+    "metaTitle": "Name the Countries — Free-Recall Geography Quiz",
+    "metaDescription": "Type as many countries as you can from memory before time runs out. Play all 195 countries, or pick a single starting letter, from A to Z.",
+    "popular": true,
+    "mode": "recall",
+    "variants": "letters",
+    "guide": [
+      "Every other game here shows you four options and asks you to recognise the right one. This is the opposite: a blank box and a clock, and nothing comes up unless you can actually produce it from memory. That is a much harder and much more honest test of what you know.",
+      "Common short names and spelling variants are accepted — type USA, America or United States and all three count, and the same goes for Ivory Coast, Czechia, Myanmar and a handful of other countries with more than one widely used name. There is no partial credit for a near-miss spelling of a name the list does not recognise, so precision still matters.",
+      "Most people stall somewhere between twenty and forty countries, usually after clearing the obvious ones — the large countries, the countries in the news, the ones they have visited. The next fifty come from Africa, the Pacific and Central Asia, and that is exactly the geography the rest of the site's games are built to fill in."
+    ]
+  },
+  {
     "id": "borders",
     "slug": "border-quiz",
     "name": "Border Quiz",

@@ -184,9 +184,126 @@ function build() {
   write('games/index.html', pages.gamesIndex(games));
   add('/games/', '0.9', 'weekly');
 
-  // One page per game
+  // One page per game. "Name the Countries" expands into a hub — play all
+  // 195, or one shorter round per starting or ending letter — rather than a
+  // single page, so its own entry in games.json stays the category's only
+  // card.
+  const LETTER_TIME_TIERS = [[3, 60], [6, 120], [10, 180], [15, 240], [20, 300], [Infinity, 360]];
+  const timeLimitFor = (count) => LETTER_TIME_TIERS.find(([max]) => count <= max)[1];
+
+  const edgeLetter = (name, position) => (position === 'end' ? name[name.length - 1] : name[0]).toUpperCase();
+
+  const letterStats = (position) =>
+    [...new Set(countries.map((c) => edgeLetter(c.name, position)))].sort().map((letter) => ({
+      letter,
+      slug: letter.toLowerCase(),
+      count: countries.filter((c) => edgeLetter(c.name, position) === letter).length
+    }));
+
+  // Spaces and hyphens are not counted — "Sri Lanka" is 8 letters, "Timor-Leste" is 10.
+  const lettersOnlyLength = (name) => name.replace(/[^A-Za-z]/g, '').length;
+
+  const lengthStats = () =>
+    [...new Set(countries.map((c) => lettersOnlyLength(c.name)))].sort((a, b) => a - b).map((length) => ({
+      length,
+      slug: `length-${length}`,
+      count: countries.filter((c) => lettersOnlyLength(c.name) === length).length
+    }));
+
   for (const game of games) {
-    write(`game/${game.slug}.html`, pages.gamePage(game, games));
+    if (game.mode === 'recall' && game.variants === 'letters') {
+      const startLetters = letterStats('start');
+      const endLetters = letterStats('end');
+      const lengthGroups = lengthStats();
+
+      write(
+        `game/${game.slug}/index.html`,
+        pages.recallHubPage(game, games, { startLetters, endLetters, lengthGroups })
+      );
+      add(`/game/${game.slug}/`, '0.9', 'weekly');
+
+      write(
+        `game/${game.slug}/all.html`,
+        pages.recallGamePage(game, games, {
+          letter: null,
+          count: countries.length,
+          seconds: 15 * 60,
+          path: `game/${game.slug}/all`,
+          title: game.name,
+          metaTitle: game.metaTitle,
+          metaDescription: game.metaDescription,
+          breadcrumbLabel: 'All 195 Countries',
+          intro: game.description
+        })
+      );
+      add(`/game/${game.slug}/all`, '0.85', 'weekly');
+
+      const POSITIONS = [
+        { position: 'start', letters: startLetters, urlPrefix: '', label: 'Start With', verb: 'start' },
+        { position: 'end', letters: endLetters, urlPrefix: 'ends-', label: 'End With', verb: 'end' }
+      ];
+
+      for (const { position, letters, urlPrefix, label, verb } of POSITIONS) {
+        for (const { letter, slug, count } of letters) {
+          const seconds = timeLimitFor(count);
+          const minutes = seconds / 60;
+          const urlSlug = `${urlPrefix}${slug}`;
+          write(
+            `game/${game.slug}/${urlSlug}.html`,
+            pages.recallGamePage(game, games, {
+              letter,
+              letterPosition: position,
+              count,
+              seconds,
+              path: `game/${game.slug}/${urlSlug}`,
+              title: `Countries That ${label} ${letter}`,
+              metaTitle: `Countries That ${label} ${letter} — Name Them All`,
+              metaDescription: `Can you name all ${count} countries that ${verb} with the letter ${letter}? Free geography quiz — race the clock before time runs out.`,
+              breadcrumbLabel: `${label} ${letter}`,
+              intro: `Every one of the ${count} ${count === 1 ? 'country' : 'countries'} whose name ${verb}s with ${letter}. ${minutes} minute${minutes === 1 ? '' : 's'} on the clock — shorter than the full round, because there is a lot less ground to cover.`
+            })
+          );
+          add(`/game/${game.slug}/${urlSlug}`, '0.6');
+        }
+      }
+
+      for (const { length, slug, count } of lengthGroups) {
+        const seconds = timeLimitFor(count);
+        const minutes = seconds / 60;
+        write(
+          `game/${game.slug}/${slug}.html`,
+          pages.recallGamePage(game, games, {
+            nameLength: length,
+            count,
+            seconds,
+            path: `game/${game.slug}/${slug}`,
+            title: `Countries With ${length} Letters`,
+            metaTitle: `Countries With ${length} Letters — Name Them All`,
+            metaDescription: `Can you name all ${count} countries whose name has exactly ${length} letters? Free geography quiz — race the clock before time runs out.`,
+            breadcrumbLabel: `${length} Letters`,
+            intro: `Every one of the ${count} ${count === 1 ? 'country' : 'countries'} whose name is exactly ${length} letters long, spaces and hyphens not counted. ${minutes} minute${minutes === 1 ? '' : 's'} on the clock.`
+          })
+        );
+        add(`/game/${game.slug}/${slug}`, '0.6');
+      }
+      continue;
+    }
+
+    const html =
+      game.mode === 'recall'
+        ? pages.recallGamePage(game, games, {
+            letter: null,
+            count: countries.length,
+            seconds: 15 * 60,
+            path: `game/${game.slug}`,
+            title: game.name,
+            metaTitle: game.metaTitle,
+            metaDescription: game.metaDescription,
+            breadcrumbLabel: game.name,
+            intro: game.description
+          })
+        : pages.gamePage(game, games);
+    write(`game/${game.slug}.html`, html);
     add(`/game/${game.slug}`, '0.9', 'weekly');
   }
 

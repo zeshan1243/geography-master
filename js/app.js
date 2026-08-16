@@ -9,7 +9,7 @@
 import { initTheme } from './theme.js';
 import { initNavigation } from './navigation.js';
 import { initAds } from './ads.js';
-import { games, url, formatNumber } from './data.js';
+import { games, url, gameUrl, formatNumber } from './data.js';
 import {
   load,
   weekActivity,
@@ -23,7 +23,7 @@ import {
 /* --- Game cards ---------------------------------------------------------- */
 
 function gameCard(game) {
-  return `<a class="game-card" href="${url(`game/${game.slug}`)}" data-accent="${game.accent}">
+  return `<a class="game-card" href="${gameUrl(game)}" data-accent="${game.accent}">
       <span class="icon" aria-hidden="true">${game.icon}</span>
       <h3>${game.name}</h3>
       <p>${game.tagline}</p>
@@ -46,6 +46,17 @@ async function renderGameCards() {
 
 /* --- Play now / random game --------------------------------------------- */
 
+/**
+ * "Name the Countries" has no single page to autostart — its own slug is a
+ * hub linking out to "all 195" plus one page per letter. Quick-play always
+ * means jumping straight into a round, so it goes to the full 195 variant.
+ */
+function quickPlayUrl(game) {
+  const path = game.mode === 'recall' && game.variants === 'letters' ? `game/${game.slug}/all` : `game/${game.slug}`;
+  const difficulty = game.mode === 'recall' ? '' : 'difficulty=medium&';
+  return `${url(path)}?${difficulty}autostart=1`;
+}
+
 async function wireQuickPlay() {
   const playNow = document.querySelector('[data-play-now]');
   const random = document.querySelector('[data-random-game]');
@@ -57,14 +68,14 @@ async function wireQuickPlay() {
     // The visitor's most-played game if there is one, otherwise the flag quiz.
     const favourite = favoriteGame();
     const target = list.find((g) => g.id === favourite) || list.find((g) => g.id === 'flags') || list[0];
-    playNow.href = `${url(`game/${target.slug}`)}?difficulty=medium&autostart=1`;
+    playNow.href = quickPlayUrl(target);
   }
 
   if (random) {
     random.addEventListener('click', (event) => {
       event.preventDefault();
       const pick = list[Math.floor(Math.random() * list.length)];
-      window.location.href = `${url(`game/${pick.slug}`)}?difficulty=medium&autostart=1`;
+      window.location.href = quickPlayUrl(pick);
     });
   }
 }
@@ -218,6 +229,10 @@ function boot() {
 
   if (document.querySelector('[data-game]')) {
     import('./game.js').then((mod) => mod.initGamePage());
+  }
+
+  if (document.querySelector('[data-recall-game]')) {
+    import('./recall.js').then((mod) => mod.initRecallGame());
   }
 
   initAds();

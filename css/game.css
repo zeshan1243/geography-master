@@ -307,6 +307,47 @@
   stroke: var(--error);
 }
 
+/* Name the Countries: lights up green the instant it is typed. */
+.world-map path.is-found {
+  fill: var(--success);
+}
+
+/* Click-to-zoom, drag-to-pan (js/worldmap.js:makeZoomable). */
+.world-map.is-zoomable { cursor: zoom-in; }
+.world-map.is-zoomable.is-zoomed { cursor: grab; touch-action: none; }
+.world-map.is-zoomable.is-dragging { cursor: grabbing; }
+
+/* Name the Countries: "show countries" hint dots, cleared as each is found. */
+.hint-dot {
+  fill: var(--primary);
+  stroke: var(--surface);
+  stroke-width: 1;
+  pointer-events: none;
+}
+
+.map-frame {
+  position: relative;
+}
+
+.map-hint-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  padding: 6px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: .8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgb(0 0 0 / .12);
+}
+
+.map-hint-toggle:hover { border-color: var(--primary); }
+.map-hint-toggle[aria-pressed="true"] { background: var(--primary-soft); border-color: var(--primary); }
+
 .map-hint {
   text-align: center;
   font-size: .8125rem;
@@ -600,6 +641,89 @@
   text-align: center;
   padding: 60px 20px;
   color: var(--text-secondary);
+}
+
+/* --- Name the Countries (free recall) ------------------------------------ */
+.recall-rules {
+  font-size: .875rem;
+  color: var(--text-secondary);
+  margin-top: -12px;
+}
+
+.recall-timer {
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.recall-timer.is-low {
+  color: var(--error);
+  animation: pop-in .2s ease;
+}
+
+.recall-count {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.recall-form {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0 12px;
+}
+
+.recall-form input {
+  flex: 1;
+  height: 52px;
+  padding: 0 16px;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-size: 1.0625rem;
+}
+
+.recall-form input:focus { border-color: var(--primary); }
+.recall-form input::placeholder { color: var(--text-secondary); }
+
+.recall-form .btn {
+  min-width: 88px;
+}
+
+.recall-feedback {
+  text-align: center;
+  font-weight: 600;
+  font-size: .9375rem;
+  margin-bottom: 12px;
+  min-height: 1.2em;
+}
+
+.recall-feedback[data-kind="correct"] { color: var(--success); }
+.recall-feedback[data-kind="wrong"] { color: var(--error); }
+.recall-feedback[data-kind="duplicate"] { color: var(--warning); }
+
+.recall-found {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.recall-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: .875rem;
+  font-weight: 600;
+  animation: pop-in .2s ease both;
 }
 
 /* --- Animations --------------------------------------------------------- */

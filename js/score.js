@@ -77,6 +77,30 @@ export function survivalVerdict(runLength, cleared) {
   return 'Exceptional. That is expert-level geography.';
 }
 
+/**
+ * The free-recall "Name the Countries" game has no accuracy — everything
+ * typed is either right or ignored — so it needs its own scale, calibrated
+ * against how many countries people actually name in fifteen minutes rather
+ * than a raw percentage of 195.
+ */
+export function recallStars(count) {
+  if (count >= 150) return 5;
+  if (count >= 100) return 4;
+  if (count >= 60) return 3;
+  if (count >= 30) return 2;
+  if (count >= 10) return 1;
+  return 0;
+}
+
+export function recallVerdict(count) {
+  if (count >= 150) return 'Exceptional. That is elite-level geography knowledge.';
+  if (count >= 100) return 'Excellent — most people never get past sixty.';
+  if (count >= 60) return 'Strong. You know most of the world.';
+  if (count >= 30) return 'Solid — above the average of around thirty.';
+  if (count >= 10) return 'A reasonable start. Play again and see how many more come back to you.';
+  return 'Everyone starts somewhere. The list of what you missed is the fastest way to improve.';
+}
+
 /** A short line of encouragement matched to the result. */
 export function verdict(correct, total) {
   const pct = total ? (correct / total) * 100 : 0;

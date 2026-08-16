@@ -71,6 +71,21 @@ export async function games() {
   return fetchJSON('games');
 }
 
+/**
+ * A game's own page. Most games are one flat page; "Name the Countries"
+ * expands into a directory (its hub, plus one page per starting letter), so
+ * linking to it needs the trailing slash to land on its canonical URL
+ * instead of bouncing through a redirect.
+ */
+export function gameUrl(game) {
+  return url(game.mode === 'recall' && game.variants === 'letters' ? `game/${game.slug}/` : `game/${game.slug}`);
+}
+
+/** Alternate/short country names -> canonical slug, e.g. "usa" -> "united-states". */
+export async function aliases() {
+  return fetchJSON('aliases');
+}
+
 /** Land-border adjacency: ISO code -> array of neighbouring codes. */
 export async function borders() {
   return fetchJSON('borders');

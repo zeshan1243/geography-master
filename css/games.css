@@ -188,6 +188,46 @@
 .game-card[data-accent="purple"] .icon { background: color-mix(in srgb, var(--purple) 18%, transparent); }
 .game-card[data-accent="red"] .icon    { background: var(--error-soft); }
 
+/* --- Name the Countries hub: one card per starting letter ---------------- */
+.letter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.letter-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  text-align: center;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.letter-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+  border-color: var(--primary);
+  text-decoration: none;
+}
+
+.letter-card-letter {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.letter-card-count {
+  font-size: .75rem;
+  color: var(--text-secondary);
+}
+
 /* --- Personal stats ----------------------------------------------------- */
 .stat-grid {
   display: grid;

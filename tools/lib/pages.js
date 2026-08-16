@@ -14,6 +14,16 @@ import { fmt, approx, ordinal } from './util.js';
 const GAME_SCREEN_HEIGHT_NOTE =
   'Thirty questions a round, or survive as long as you can on Expert.';
 
+/**
+ * Most games are one flat page (`/game/flag-quiz`). "Name the Countries"
+ * expands into a directory (`/game/name-the-countries/` plus its letter
+ * variants), so linking to it needs the trailing slash to land on its own
+ * canonical URL rather than bouncing through a redirect.
+ */
+function gameHref(game) {
+  return game.mode === 'recall' && game.variants === 'letters' ? `/game/${game.slug}/` : `/game/${game.slug}`;
+}
+
 /* ========================================================================== */
 /*  Homepage                                                                  */
 /* ========================================================================== */
@@ -175,7 +185,7 @@ export function gamesIndex(games) {
     <div class="game-grid">
       ${inCategory
         .map(
-          (g) => `<a class="game-card" href="/game/${g.slug}" data-accent="${g.accent}">
+          (g) => `<a class="game-card" href="${gameHref(g)}" data-accent="${g.accent}">
         <span class="icon" aria-hidden="true">${g.icon}</span>
         <h3>${esc(g.name)}</h3>
         <p>${esc(g.tagline)}</p>
@@ -201,7 +211,7 @@ export function gamesIndex(games) {
     <span class="review-callout-go" aria-hidden="true">→</span>
   </a>
 
-  <p class="lead">${games.length} ways to test your geography knowledge. Every game has four difficulty levels. Easy, Medium and Hard run thirty questions; Expert is sudden death — one wrong answer ends the run.</p>
+  <p class="lead">${games.length} ways to test your geography knowledge. Most games have four difficulty levels — Easy, Medium and Hard run thirty questions, Expert is sudden death — and one is a straight fifteen-minute race against the clock.</p>
 
   ${sections}
 
@@ -343,7 +353,7 @@ ${playAndResultsScreens({ icon: game.icon, name: game.name })}
     <p>${allGames
       .filter((g) => g.id !== game.id)
       .slice(0, 4)
-      .map((g) => `<a href="/game/${g.slug}">${esc(g.name)}</a>`)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
       .join(' · ')}</p>
   </div>
 </section>`;
@@ -368,6 +378,280 @@ ${playAndResultsScreens({ icon: game.icon, name: game.name })}
       },
       breadcrumbSchema(trail)
     ]
+  });
+}
+
+/** Seconds -> "5:00", for the setup screen's static "before JS runs" label. */
+function formatSeconds(totalSeconds) {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
+/**
+ * "Name the Countries" is a free-recall game — a text input and a clock,
+ * not a question-and-four-answers round — so it gets its own body rather
+ * than reusing the difficulty picker and multiple-choice markup above. The
+ * results screen still reuses the same `.results-*` classes as every other
+ * game so it looks like part of the same site.
+ *
+ * The same body also powers the per-letter variants ("Countries That Start
+ * With S"): `variant` carries whatever differs — the letter, how many
+ * countries that leaves, the time limit, and the page's own title/copy.
+ * `variant.letter` is null for the "play all 195" version.
+ */
+export function recallGamePage(game, allGames, variant) {
+  const {
+    letter,
+    letterPosition = 'start',
+    nameLength,
+    count,
+    seconds,
+    path,
+    title,
+    metaTitle,
+    metaDescription,
+    breadcrumbLabel,
+    intro
+  } = variant;
+  const clockLabel = formatSeconds(seconds);
+  const minutes = seconds / 60;
+  const minutesLabel = `${minutes} minute${minutes === 1 ? '' : 's'}`;
+  const setupIcon = letter ? esc(letter) : nameLength ? esc(String(nameLength)) : game.icon;
+  const titleIcon = letter ? '🔤' : nameLength ? '🔢' : game.icon;
+  const dataAttrs = [
+    letter ? ` data-letter="${letter}" data-letter-position="${letterPosition}"` : '',
+    nameLength ? ` data-name-length="${nameLength}"` : '',
+    ` data-time-limit="${seconds}"`
+  ].join('');
+
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name, href: `/game/${game.slug}/` },
+    { label: breadcrumbLabel }
+  ];
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-recall-game${dataAttrs}>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${setupIcon}</div>
+      <h1>${esc(title)}</h1>
+      <p>${esc(intro)}</p>
+      <p class="recall-rules">Just start typing — a country is added the moment it's recognised, no need to press Enter. Common short names and spelling variants are accepted, and each one lights up on the map as you name it.</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start — ${clockLabel} on the clock</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden aria-live="polite">
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${titleIcon}</span> ${esc(title)}</span>
+        <span class="recall-timer" data-timer>${clockLabel}</span>
+      </div>
+
+      <div class="recall-count" data-count>0 / ${count} found</div>
+
+      <div class="progress-track" role="progressbar" aria-label="Countries found">
+        <div class="progress-fill" data-progress></div>
+      </div>
+
+      <div class="map-frame">
+        <div class="question-visual is-map" data-map></div>
+        <button class="map-hint-toggle" type="button" data-map-hint aria-pressed="false">📍 Show countries</button>
+      </div>
+      <p class="map-hint">Click the map to zoom in, drag to pan around</p>
+
+      <form class="recall-form" data-form>
+        <label class="sr-only" for="recall-input">Type a country name</label>
+        <input id="recall-input" data-input type="text" placeholder="Start typing a country…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
+      </form>
+
+      <p class="recall-feedback" data-feedback hidden></p>
+
+      <div class="recall-found" data-found aria-label="Countries found so far"></div>
+
+      <button class="btn btn-ghost btn-block" type="button" data-stop>Stop and see results</button>
+    </section>
+
+    <section class="game-screen results" data-screen="results" hidden>
+      <h2 class="results-title"><span data-result-icon>${icon('flag')}</span> <span data-result-title>Time's up!</span></h2>
+      <div class="results-score" data-result-score>0</div>
+      <div class="results-score-label">Countries named</div>
+      <div class="results-stars" data-result-stars aria-hidden="true"></div>
+      <p class="results-summary" data-result-summary></p>
+      <p class="results-summary muted" data-result-verdict></p>
+      <p class="results-best" data-result-best></p>
+      <p class="results-new-best" data-result-new-best hidden>${icon('trophy')} New personal best!</p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
+        <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
+        <a class="btn btn-ghost" href="/games/">Back to Games</a>
+      </div>
+
+      <div class="review">
+        <h2>Countries you missed</h2>
+        <ul data-result-missed></ul>
+      </div>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(title)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>Your score is how many of the ${count} ${count === 1 ? 'country' : 'countries'} you name correctly before the ${minutesLabel} run${minutes === 1 ? 's' : ''} out. There is no penalty for an unrecognised entry beyond the time it costs you to type it, and duplicates are ignored rather than counted twice. Stopping early locks in whatever you have found so far.</p>
+
+    <h3>More ways to play</h3>
+    <p>
+      <a href="/game/${game.slug}/">${icon('grid')} All letters</a>
+      ${letter ? ` · <a href="/game/${game.slug}/all">Play all 195 countries</a>` : ''}
+      · ${allGames
+        .filter((g) => g.id !== game.id)
+        .slice(0, 3)
+        .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+        .join(' · ')}
+    </p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${metaTitle} | ${SITE.name}`,
+    description: metaDescription,
+    path: `/${path}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: title,
+        description: metaDescription,
+        url: new URL(`/${path}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/${path}` })))
+    ]
+  });
+}
+
+/**
+ * The hub page at /game/name-the-countries/ — the single card that shows in
+ * the games directory expands here into "play all 195" plus one link per
+ * starting letter, so the category listing itself stays a single entry.
+ */
+export function recallHubPage(game, allGames, { startLetters, endLetters, lengthGroups }) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const letterGrid = (letters, prefix) => `<div class="letter-grid">
+    ${letters
+      .map(
+        (l) => `<a class="letter-card" href="/game/${game.slug}/${prefix}${l.slug}">
+      <span class="letter-card-letter">${esc(l.letter)}</span>
+      <span class="letter-card-count">${l.count} ${l.count === 1 ? 'country' : 'countries'}</span>
+    </a>`
+      )
+      .join('\n    ')}
+  </div>`;
+
+  const lengthGrid = (groups) => `<div class="letter-grid">
+    ${groups
+      .map(
+        (g) => `<a class="letter-card" href="/game/${game.slug}/${g.slug}">
+      <span class="letter-card-letter">${g.length}</span>
+      <span class="letter-card-count">${g.count} ${g.count === 1 ? 'country' : 'countries'}</span>
+    </a>`
+      )
+      .join('\n    ')}
+  </div>`;
+
+  const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  /** "W and X" / "B, F, J, P, V, W, X and Z" — for the "these have none" line. */
+  const missingLetters = (letters) => {
+    const missing = ALPHABET.filter((letter) => !letters.some((l) => l.letter === letter));
+    if (missing.length <= 1) return missing.join('');
+    return `${missing.slice(0, -1).join(', ')} and ${missing[missing.length - 1]}`;
+  };
+
+  const body = `${breadcrumbs(trail)}
+<section class="section wrap">
+  <div class="game-icon" aria-hidden="true" style="text-align:center;font-size:3.5rem;margin-bottom:12px">${game.icon}</div>
+  <h1 style="text-align:center">${esc(game.name)}</h1>
+  <p class="lead" style="text-align:center;max-width:60ch;margin:0 auto 32px">${esc(game.description)}</p>
+
+  <div class="game-grid">
+    <a class="game-card" href="/game/${game.slug}/all" data-accent="${game.accent}">
+      <span class="icon" aria-hidden="true">${game.icon}</span>
+      <h3>All 195 Countries</h3>
+      <p>The full free-recall race — fifteen minutes on the clock.</p>
+      <span class="play">Play</span>
+    </a>
+  </div>
+
+  <h2 style="margin-top:40px">Or pick a starting letter</h2>
+  <p class="lead">Every country whose name starts with each letter, with its own shorter clock. ${startLetters.length} letters have at least one country — ${missingLetters(startLetters)} have none.</p>
+
+  ${letterGrid(startLetters, '')}
+
+  <h2 style="margin-top:40px">Or pick an ending letter</h2>
+  <p class="lead">Every country whose name ends with each letter — the same game, the other end of the word. ${endLetters.length} letters have at least one country — ${missingLetters(endLetters)} have none.</p>
+
+  ${letterGrid(endLetters, 'ends-')}
+
+  <h2 style="margin-top:40px">Or pick a name length</h2>
+  <p class="lead">Every country whose name is exactly that many letters long, spaces and hyphens not counted — four-letter countries like Chad and Peru, up to Saint Vincent and the Grenadines at twenty-eight.</p>
+
+  ${lengthGrid(lengthGroups)}
+
+  ${adSlot()}
+
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Other games</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}/`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    schema: breadcrumbSchema([
+      { label: 'Home', href: '/' },
+      { label: 'Games', href: '/games/' },
+      { label: game.name, href: `/game/${game.slug}/` }
+    ])
   });
 }
 

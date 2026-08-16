@@ -30,7 +30,7 @@ import {
   missedCount,
   clearMisses
 } from './storage.js';
-import { games, url, mapCoverage } from './data.js';
+import { games, url, gameUrl, mapCoverage } from './data.js';
 import { icon } from './icons.js';
 import { shapeOf, fitShape, interactiveMap, zoomWindow } from './worldmap.js';
 
@@ -513,7 +513,7 @@ async function renderRelated(root, currentId) {
   const others = list.filter((g) => g.id !== currentId).sort(() => Math.random() - 0.5).slice(0, 3);
   box.innerHTML = others
     .map(
-      (g) => `<a href="${url(`game/${g.slug}`)}">
+      (g) => `<a href="${gameUrl(g)}">
         <span aria-hidden="true">${g.icon}</span> ${g.name}
       </a>`
     )
@@ -618,7 +618,7 @@ export async function initGamePage() {
   if (another && !practice) {
     const all = await games();
     const pick = all.filter((g) => g.id !== type)[Math.floor(Math.random() * (all.length - 1))];
-    if (pick) another.href = `${url(`game/${pick.slug}`)}?difficulty=${selected}`;
+    if (pick) another.href = `${gameUrl(pick)}?difficulty=${selected}`;
   }
 
   renderRelated(root, type);

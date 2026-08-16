@@ -161,3 +161,102 @@ export async function interactiveMap({ clickable, names, label }) {
 
   return { svg, map };
 }
+
+/** Fraction of the full map width/height a click zooms in to. */
+const ZOOM_FACTOR = 0.32;
+/** Pointer movement, in screen pixels, below which a press counts as a click rather than a drag. */
+const DRAG_THRESHOLD = 6;
+
+/**
+ * Click-to-zoom, drag-to-pan for a map built by `interactiveMap`. A click on
+ * open map zooms in centred on that point; a click while zoomed resets back
+ * out. Dragging only pans — it never itself changes the zoom level, so a
+ * drag that ends over the map does not also toggle zoom.
+ *
+ * @returns {{ reset: () => void, isZoomed: () => boolean }}
+ */
+export function makeZoomable(svg, map) {
+  const base = { x: 0, y: 0, w: map.width, h: map.height };
+  let view = { ...base };
+  let zoomed = false;
+  let dragging = false;
+  let moved = false;
+  let last = null;
+
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+  function applyView() {
+    svg.setAttribute('viewBox', `${view.x} ${view.y} ${view.w} ${view.h}`);
+    svg.classList.toggle('is-zoomed', zoomed);
+  }
+
+  /** Screen coordinates -> the same point in the SVG's own coordinate space. */
+  function toSvgPoint(clientX, clientY) {
+    const rect = svg.getBoundingClientRect();
+    return {
+      x: view.x + ((clientX - rect.left) / rect.width) * view.w,
+      y: view.y + ((clientY - rect.top) / rect.height) * view.h
+    };
+  }
+
+  function zoomIn(atX, atY) {
+    const w = base.w * ZOOM_FACTOR;
+    const h = base.h * ZOOM_FACTOR;
+    view = {
+      x: clamp(atX - w / 2, 0, base.w - w),
+      y: clamp(atY - h / 2, 0, base.h - h),
+      w,
+      h
+    };
+    zoomed = true;
+    applyView();
+  }
+
+  function reset() {
+    view = { ...base };
+    zoomed = false;
+    applyView();
+  }
+
+  function panBy(dxClient, dyClient) {
+    const rect = svg.getBoundingClientRect();
+    const x = clamp(view.x - (dxClient / rect.width) * view.w, 0, Math.max(0, base.w - view.w));
+    const y = clamp(view.y - (dyClient / rect.height) * view.h, 0, Math.max(0, base.h - view.h));
+    view = { ...view, x, y };
+    applyView();
+  }
+
+  svg.addEventListener('pointerdown', (event) => {
+    dragging = true;
+    moved = false;
+    last = { x: event.clientX, y: event.clientY };
+    svg.setPointerCapture(event.pointerId);
+  });
+
+  svg.addEventListener('pointermove', (event) => {
+    if (!dragging || !zoomed) return;
+    const dx = event.clientX - last.x;
+    const dy = event.clientY - last.y;
+    if (!moved && Math.hypot(dx, dy) > DRAG_THRESHOLD) moved = true;
+    if (moved) {
+      panBy(dx, dy);
+      last = { x: event.clientX, y: event.clientY };
+      svg.classList.add('is-dragging');
+    }
+  });
+
+  const endDrag = (event) => {
+    if (dragging && !moved) {
+      const point = toSvgPoint(event.clientX, event.clientY);
+      if (zoomed) reset();
+      else zoomIn(point.x, point.y);
+    }
+    dragging = false;
+    svg.classList.remove('is-dragging');
+  };
+  svg.addEventListener('pointerup', endDrag);
+  svg.addEventListener('pointercancel', endDrag);
+
+  svg.classList.add('is-zoomable');
+  return { reset, isZoomed: () => zoomed };
+}
