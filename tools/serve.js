@@ -30,17 +30,33 @@ const TYPES = {
   '.jpg': 'image/jpeg'
 };
 
+/**
+ * Mirrors Vercel's `cleanUrls` rewrite: /about resolves to public/about.html
+ * so pages can link without the extension while the build still writes plain
+ * .html files.
+ */
 async function resolve(urlPath) {
   const clean = normalize(decodeURIComponent(urlPath.split('?')[0])).replace(/^(\.\.[/\\])+/, '');
-  let target = join(ROOT, clean);
+  const target = join(ROOT, clean);
 
   try {
     const info = await stat(target);
-    if (info.isDirectory()) target = join(target, 'index.html');
+    return info.isDirectory() ? join(target, 'index.html') : target;
   } catch {
-    return null;
+    // fall through to the extensionless case below
   }
-  return target;
+
+  if (!extname(target)) {
+    const withHtml = `${target}.html`;
+    try {
+      await stat(withHtml);
+      return withHtml;
+    } catch {
+      return null;
+    }
+  }
+
+  return null;
 }
 
 createServer(async (req, res) => {

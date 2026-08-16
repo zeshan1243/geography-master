@@ -51,7 +51,7 @@ function renderResults(box, matches) {
   }
   box.innerHTML = matches
     .map(
-      (c) => `<a href="${url(`countries/${c.slug}.html`)}">
+      (c) => `<a href="${url(`countries/${c.slug}`)}">
         <span class="flag" aria-hidden="true">${c.flag}</span>
         <span>
           <strong>${c.name}</strong>

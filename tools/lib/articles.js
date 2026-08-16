@@ -57,7 +57,7 @@ export const ARTICLES = [
 
 <p>Capitals are the hardest of the three because nothing about the word points to the country. There is no logic connecting Bishkek to Kyrgyzstan or Thimphu to Bhutan; the link is arbitrary and has to be built by repetition alone. Attempting capitals before the country names are solid means building an arbitrary link onto an unstable foundation, which is why capitals feel disproportionately hard when people rush them.</p>
 
-<p>In practice: <a href="/game/continent-quiz.html">continents</a> until they are automatic, then <a href="/game/flag-quiz.html">flags</a> region by region, then <a href="/game/capital-quiz.html">capitals</a> over the same regions in the same order.</p>
+<p>In practice: <a href="/game/continent-quiz">continents</a> until they are automatic, then <a href="/game/flag-quiz">flags</a> region by region, then <a href="/game/capital-quiz">capitals</a> over the same regions in the same order.</p>
 
 <h2>Short sessions, spaced out</h2>
 
@@ -72,12 +72,12 @@ export const ARTICLES = [
 <p>A country you have never heard of takes one exposure to start learning. A country you confuse with another takes several, because you have to build a distinction rather than a fact. Keep a short list of your own confusions and attack them directly. The usual suspects:</p>
 
 <ul>
-  <li><a href="/countries/slovakia.html">Slovakia</a> and <a href="/countries/slovenia.html">Slovenia</a></li>
-  <li><a href="/countries/niger.html">Niger</a> and <a href="/countries/nigeria.html">Nigeria</a></li>
-  <li><a href="/countries/guinea.html">Guinea</a>, <a href="/countries/guinea-bissau.html">Guinea-Bissau</a> and <a href="/countries/equatorial-guinea.html">Equatorial Guinea</a></li>
-  <li><a href="/countries/dominica.html">Dominica</a> and the <a href="/countries/dominican-republic.html">Dominican Republic</a></li>
-  <li><a href="/countries/austria.html">Austria</a> and <a href="/countries/australia.html">Australia</a></li>
-  <li><a href="/countries/mauritania.html">Mauritania</a> and <a href="/countries/mauritius.html">Mauritius</a></li>
+  <li><a href="/countries/slovakia">Slovakia</a> and <a href="/countries/slovenia">Slovenia</a></li>
+  <li><a href="/countries/niger">Niger</a> and <a href="/countries/nigeria">Nigeria</a></li>
+  <li><a href="/countries/guinea">Guinea</a>, <a href="/countries/guinea-bissau">Guinea-Bissau</a> and <a href="/countries/equatorial-guinea">Equatorial Guinea</a></li>
+  <li><a href="/countries/dominica">Dominica</a> and the <a href="/countries/dominican-republic">Dominican Republic</a></li>
+  <li><a href="/countries/austria">Austria</a> and <a href="/countries/australia">Australia</a></li>
+  <li><a href="/countries/mauritania">Mauritania</a> and <a href="/countries/mauritius">Mauritius</a></li>
 </ul>
 
 <p>Every one of those pairs is a genuine distinction worth holding — different continents in several cases — and each is worth more than a dozen countries you already half-know.</p>
@@ -106,7 +106,7 @@ export const ARTICLES = [
 
 <p>Recognition inflates confidence. Reading a list and thinking "yes, I know that one" tells you almost nothing about whether you could produce it unprompted. The only reliable test is one that makes you retrieve the answer before showing it to you, and that penalises a wrong answer with immediate correction.</p>
 
-<p>That is what the games here are built around: one question at a time, the correct answer shown the moment you miss, and no way to skip ahead. When a region starts feeling comfortable, the <a href="/game/mixed-quiz.html">mixed quiz</a> is the honest check, because it removes the context that makes a single-region round easier than it looks.</p>
+<p>That is what the games here are built around: one question at a time, the correct answer shown the moment you miss, and no way to skip ahead. When a region starts feeling comfortable, the <a href="/game/mixed-quiz">mixed quiz</a> is the honest check, because it removes the context that makes a single-region round easier than it looks.</p>
 `
   },
 
@@ -136,19 +136,19 @@ export const ARTICLES = [
 
 <p>In 1848, a congress in Prague adopted red, white and blue as the colours of Slavic nationhood, taken from the Russian flag — which had itself been modelled on the Dutch one. The result is that a large group of Central and Eastern European countries share a palette.</p>
 
-<p><a href="/countries/russia.html">Russia</a>, <a href="/countries/serbia.html">Serbia</a>, <a href="/countries/slovakia.html">Slovakia</a>, <a href="/countries/slovenia.html">Slovenia</a>, <a href="/countries/croatia.html">Croatia</a> and <a href="/countries/czechia.html">Czechia</a> all draw on it. Slovakia and Slovenia are near-identical at a glance — same three horizontal bands in the same order — and are distinguished only by their coats of arms and where those sit. This is the single most common confusion in flag quizzes, and it is a genuine one rather than a trick.</p>
+<p><a href="/countries/russia">Russia</a>, <a href="/countries/serbia">Serbia</a>, <a href="/countries/slovakia">Slovakia</a>, <a href="/countries/slovenia">Slovenia</a>, <a href="/countries/croatia">Croatia</a> and <a href="/countries/czechia">Czechia</a> all draw on it. Slovakia and Slovenia are near-identical at a glance — same three horizontal bands in the same order — and are distinguished only by their coats of arms and where those sit. This is the single most common confusion in flag quizzes, and it is a genuine one rather than a trick.</p>
 
 <h2>Pan-African colours: red, gold and green</h2>
 
 <p>Ethiopia was the only African state to keep its independence through the colonial period, apart from a brief Italian occupation. Its flag — green, yellow and red — became the natural reference point for independence movements across the continent, and a wave of countries adopted the same palette on gaining independence from the 1950s onward.</p>
 
-<p><a href="/countries/ghana.html">Ghana</a>, <a href="/countries/senegal.html">Senegal</a>, <a href="/countries/mali.html">Mali</a>, <a href="/countries/guinea.html">Guinea</a>, <a href="/countries/cameroon.html">Cameroon</a>, <a href="/countries/togo.html">Togo</a> and others use it. Mali and Guinea are the same three vertical bands in opposite orders — green, gold, red one way and red, gold, green the other — which makes them a reliable trap.</p>
+<p><a href="/countries/ghana">Ghana</a>, <a href="/countries/senegal">Senegal</a>, <a href="/countries/mali">Mali</a>, <a href="/countries/guinea">Guinea</a>, <a href="/countries/cameroon">Cameroon</a>, <a href="/countries/togo">Togo</a> and others use it. Mali and Guinea are the same three vertical bands in opposite orders — green, gold, red one way and red, gold, green the other — which makes them a reliable trap.</p>
 
-<p>A second and separate group uses red, black and green, drawn from the Pan-Africanist movement of the Americas rather than from Ethiopia. <a href="/countries/kenya.html">Kenya</a>, <a href="/countries/malawi.html">Malawi</a> and <a href="/countries/south-sudan.html">South Sudan</a> sit in this family.</p>
+<p>A second and separate group uses red, black and green, drawn from the Pan-Africanist movement of the Americas rather than from Ethiopia. <a href="/countries/kenya">Kenya</a>, <a href="/countries/malawi">Malawi</a> and <a href="/countries/south-sudan">South Sudan</a> sit in this family.</p>
 
 <h2>Pan-Arab colours: red, white, black and green</h2>
 
-<p>The four colours of the Arab Revolt of 1916 — each associated with a historic caliphate or dynasty — form another large family. <a href="/countries/jordan.html">Jordan</a>, <a href="/countries/palestine.html">Palestine</a>, <a href="/countries/kuwait.html">Kuwait</a>, <a href="/countries/united-arab-emirates.html">the United Arab Emirates</a>, <a href="/countries/sudan.html">Sudan</a>, <a href="/countries/syria.html">Syria</a>, <a href="/countries/iraq.html">Iraq</a>, <a href="/countries/yemen.html">Yemen</a> and <a href="/countries/egypt.html">Egypt</a> all draw on the same four.</p>
+<p>The four colours of the Arab Revolt of 1916 — each associated with a historic caliphate or dynasty — form another large family. <a href="/countries/jordan">Jordan</a>, <a href="/countries/palestine">Palestine</a>, <a href="/countries/kuwait">Kuwait</a>, <a href="/countries/united-arab-emirates">the United Arab Emirates</a>, <a href="/countries/sudan">Sudan</a>, <a href="/countries/syria">Syria</a>, <a href="/countries/iraq">Iraq</a>, <a href="/countries/yemen">Yemen</a> and <a href="/countries/egypt">Egypt</a> all draw on the same four.</p>
 
 <p>The horizontal red-white-black arrangement in particular is shared by several, differentiated only by added stars, script or an emblem in the centre. Learning to read the centre emblem rather than the bands is the only way through this group.</p>
 
@@ -156,17 +156,17 @@ export const ARTICLES = [
 
 <p>One of the most consistent families anywhere. A cross with its vertical arm shifted toward the hoist, originating with Denmark's Dannebrog — traditionally dated to 1219 and among the oldest continuously used national flags in the world.</p>
 
-<p><a href="/countries/denmark.html">Denmark</a>, <a href="/countries/sweden.html">Sweden</a>, <a href="/countries/norway.html">Norway</a>, <a href="/countries/finland.html">Finland</a> and <a href="/countries/iceland.html">Iceland</a> all use it, and here the family resemblance is a gift rather than a problem: the shape identifies the region instantly, and only the colours need to be learned. Norway and Iceland are the closest pair, being colour inversions of each other.</p>
+<p><a href="/countries/denmark">Denmark</a>, <a href="/countries/sweden">Sweden</a>, <a href="/countries/norway">Norway</a>, <a href="/countries/finland">Finland</a> and <a href="/countries/iceland">Iceland</a> all use it, and here the family resemblance is a gift rather than a problem: the shape identifies the region instantly, and only the colours need to be learned. Norway and Iceland are the closest pair, being colour inversions of each other.</p>
 
 <h2>The Union Jack in the corner</h2>
 
-<p>A canton — the upper corner nearest the flagpole — containing the British flag marks a former or current constitutional link to the United Kingdom. <a href="/countries/australia.html">Australia</a>, <a href="/countries/new-zealand.html">New Zealand</a>, <a href="/countries/fiji.html">Fiji</a> and <a href="/countries/tuvalu.html">Tuvalu</a> carry it.</p>
+<p>A canton — the upper corner nearest the flagpole — containing the British flag marks a former or current constitutional link to the United Kingdom. <a href="/countries/australia">Australia</a>, <a href="/countries/new-zealand">New Zealand</a>, <a href="/countries/fiji">Fiji</a> and <a href="/countries/tuvalu">Tuvalu</a> carry it.</p>
 
 <p>Australia and New Zealand are the classic pair. Both are blue with the Union Jack and the Southern Cross. The differences are consistent and easy once you know them: Australia has six stars, one of them a large seven-pointed Commonwealth Star beneath the canton, and its Southern Cross stars are white with varying points. New Zealand has four stars only, they are red with white borders, and there is no star beneath the canton.</p>
 
 <h2>The crescent and star</h2>
 
-<p>Associated with the Ottoman Empire and now widely used across the Muslim world, though it long predates and is not exclusive to Islam. <a href="/countries/turkey.html">Turkey</a>, <a href="/countries/tunisia.html">Tunisia</a>, <a href="/countries/pakistan.html">Pakistan</a>, <a href="/countries/algeria.html">Algeria</a>, <a href="/countries/mauritania.html">Mauritania</a>, <a href="/countries/malaysia.html">Malaysia</a> and others use the motif in different arrangements.</p>
+<p>Associated with the Ottoman Empire and now widely used across the Muslim world, though it long predates and is not exclusive to Islam. <a href="/countries/turkey">Turkey</a>, <a href="/countries/tunisia">Tunisia</a>, <a href="/countries/pakistan">Pakistan</a>, <a href="/countries/algeria">Algeria</a>, <a href="/countries/mauritania">Mauritania</a>, <a href="/countries/malaysia">Malaysia</a> and others use the motif in different arrangements.</p>
 
 <p>Turkey and Tunisia both use a red field with a white crescent and star; Tunisia places them inside a white circle, Turkey does not.</p>
 
@@ -175,18 +175,18 @@ export const ARTICLES = [
 <p>Some resemblances are close enough that they need to be studied as pairs rather than as individual flags:</p>
 
 <ul>
-  <li><strong><a href="/countries/chad.html">Chad</a> and <a href="/countries/romania.html">Romania</a></strong> — blue, yellow, red vertical bands. The difference is a slightly darker blue on Chad's. They are, in practice, the same flag, and the two governments have discussed it at the UN without resolution.</li>
-  <li><strong><a href="/countries/monaco.html">Monaco</a> and <a href="/countries/indonesia.html">Indonesia</a></strong> — red over white, differing only in proportions. <a href="/countries/poland.html">Poland</a> is the same two colours reversed.</li>
-  <li><strong><a href="/countries/ireland.html">Ireland</a> and <a href="/countries/ivory-coast.html">Ivory Coast</a></strong> — green, white, orange. Mirror images: Ireland has green at the hoist, Ivory Coast has orange.</li>
-  <li><strong><a href="/countries/netherlands.html">Netherlands</a> and <a href="/countries/luxembourg.html">Luxembourg</a></strong> — red, white, blue horizontal bands. Luxembourg's blue is noticeably lighter and its flag is longer.</li>
-  <li><strong><a href="/countries/mali.html">Mali</a> and <a href="/countries/guinea.html">Guinea</a></strong> — green, gold, red versus red, gold, green.</li>
+  <li><strong><a href="/countries/chad">Chad</a> and <a href="/countries/romania">Romania</a></strong> — blue, yellow, red vertical bands. The difference is a slightly darker blue on Chad's. They are, in practice, the same flag, and the two governments have discussed it at the UN without resolution.</li>
+  <li><strong><a href="/countries/monaco">Monaco</a> and <a href="/countries/indonesia">Indonesia</a></strong> — red over white, differing only in proportions. <a href="/countries/poland">Poland</a> is the same two colours reversed.</li>
+  <li><strong><a href="/countries/ireland">Ireland</a> and <a href="/countries/ivory-coast">Ivory Coast</a></strong> — green, white, orange. Mirror images: Ireland has green at the hoist, Ivory Coast has orange.</li>
+  <li><strong><a href="/countries/netherlands">Netherlands</a> and <a href="/countries/luxembourg">Luxembourg</a></strong> — red, white, blue horizontal bands. Luxembourg's blue is noticeably lighter and its flag is longer.</li>
+  <li><strong><a href="/countries/mali">Mali</a> and <a href="/countries/guinea">Guinea</a></strong> — green, gold, red versus red, gold, green.</li>
 </ul>
 
 <h2>What this buys you</h2>
 
 <p>The practical payoff is that you stop learning 195 separate images and start learning perhaps twenty families plus their exceptions. A flag you have never seen becomes readable: horizontal red-white-black with an emblem points at the Arab world, an off-centre cross points at the Nordic countries, green-gold-red points at post-independence Africa.</p>
 
-<p>That is a much smaller thing to hold in your head, and it degrades gracefully — even a half-remembered flag can usually be placed on the right continent. The <a href="/game/flag-quiz.html">flag quiz</a> draws its wrong answers from the same continent as the right one specifically so that this kind of reasoning is required rather than optional.</p>
+<p>That is a much smaller thing to hold in your head, and it degrades gracefully — even a half-remembered flag can usually be placed on the right continent. The <a href="/game/flag-quiz">flag quiz</a> draws its wrong answers from the same continent as the right one specifically so that this kind of reasoning is required rather than optional.</p>
 `
   },
 
@@ -231,24 +231,24 @@ export const ARTICLES = [
 <p>Several countries straddle a continental boundary, and which continent they are assigned to is a convention rather than a fact.</p>
 
 <ul>
-  <li><strong><a href="/countries/russia.html">Russia</a></strong> — about 77% of its land is in Asia, but around 75% of its population lives in the European part. This site counts it as Europe, which is the more common convention and follows where the people and the capital are.</li>
-  <li><strong><a href="/countries/turkey.html">Turkey</a></strong> — a small part around Istanbul is in Europe, the bulk in Asia. Counted here as Asia. Istanbul is the only major city in the world spanning two continents.</li>
-  <li><strong><a href="/countries/egypt.html">Egypt</a></strong> — the Sinai Peninsula is in Asia, the rest in Africa. Counted here as Africa.</li>
-  <li><strong><a href="/countries/georgia.html">Georgia</a>, <a href="/countries/armenia.html">Armenia</a>, <a href="/countries/azerbaijan.html">Azerbaijan</a> and <a href="/countries/cyprus.html">Cyprus</a></strong> — all sit on or near the boundary and are variously classified. Counted here as Asia, though all four compete in European sporting and cultural bodies.</li>
+  <li><strong><a href="/countries/russia">Russia</a></strong> — about 77% of its land is in Asia, but around 75% of its population lives in the European part. This site counts it as Europe, which is the more common convention and follows where the people and the capital are.</li>
+  <li><strong><a href="/countries/turkey">Turkey</a></strong> — a small part around Istanbul is in Europe, the bulk in Asia. Counted here as Asia. Istanbul is the only major city in the world spanning two continents.</li>
+  <li><strong><a href="/countries/egypt">Egypt</a></strong> — the Sinai Peninsula is in Asia, the rest in Africa. Counted here as Africa.</li>
+  <li><strong><a href="/countries/georgia">Georgia</a>, <a href="/countries/armenia">Armenia</a>, <a href="/countries/azerbaijan">Azerbaijan</a> and <a href="/countries/cyprus">Cyprus</a></strong> — all sit on or near the boundary and are variously classified. Counted here as Asia, though all four compete in European sporting and cultural bodies.</li>
 </ul>
 
-<p>None of these assignments is more correct than the alternative. They are conventions, and the only thing that matters is that a given source applies one consistently. The <a href="/game/continent-quiz.html">continent quiz</a> follows the list above throughout.</p>
+<p>None of these assignments is more correct than the alternative. They are conventions, and the only thing that matters is that a given source applies one consistently. The <a href="/game/continent-quiz">continent quiz</a> follows the list above throughout.</p>
 
 <h2>Countries confused with each other</h2>
 
 <p>A separate class of error, caused by names rather than maps.</p>
 
 <ul>
-  <li><strong><a href="/countries/niger.html">Niger</a> and <a href="/countries/nigeria.html">Nigeria</a></strong> — neighbours, both named after the same river, and very different. Nigeria has over 220 million people and a coastline; Niger has around 26 million and is landlocked and mostly desert.</li>
-  <li><strong><a href="/countries/slovakia.html">Slovakia</a> and <a href="/countries/slovenia.html">Slovenia</a></strong> — not neighbours, though both border Austria and Hungary. Their embassies in some capitals have reportedly met to exchange misdirected post.</li>
-  <li><strong><a href="/countries/dominica.html">Dominica</a> and the <a href="/countries/dominican-republic.html">Dominican Republic</a></strong> — two different Caribbean countries around 1,000 kilometres apart, with different languages: English in Dominica, Spanish in the Dominican Republic.</li>
-  <li><strong>The three Guineas</strong> — <a href="/countries/guinea.html">Guinea</a> and <a href="/countries/guinea-bissau.html">Guinea-Bissau</a> are neighbours in West Africa; <a href="/countries/equatorial-guinea.html">Equatorial Guinea</a> is roughly 3,000 kilometres away in Central Africa and is the only Spanish-speaking country in Africa. <a href="/countries/papua-new-guinea.html">Papua New Guinea</a> is in the Pacific and unrelated to any of them.</li>
-  <li><strong><a href="/countries/mauritania.html">Mauritania</a> and <a href="/countries/mauritius.html">Mauritius</a></strong> — a Saharan country on Africa's Atlantic coast, and an Indian Ocean island nation east of Madagascar.</li>
+  <li><strong><a href="/countries/niger">Niger</a> and <a href="/countries/nigeria">Nigeria</a></strong> — neighbours, both named after the same river, and very different. Nigeria has over 220 million people and a coastline; Niger has around 26 million and is landlocked and mostly desert.</li>
+  <li><strong><a href="/countries/slovakia">Slovakia</a> and <a href="/countries/slovenia">Slovenia</a></strong> — not neighbours, though both border Austria and Hungary. Their embassies in some capitals have reportedly met to exchange misdirected post.</li>
+  <li><strong><a href="/countries/dominica">Dominica</a> and the <a href="/countries/dominican-republic">Dominican Republic</a></strong> — two different Caribbean countries around 1,000 kilometres apart, with different languages: English in Dominica, Spanish in the Dominican Republic.</li>
+  <li><strong>The three Guineas</strong> — <a href="/countries/guinea">Guinea</a> and <a href="/countries/guinea-bissau">Guinea-Bissau</a> are neighbours in West Africa; <a href="/countries/equatorial-guinea">Equatorial Guinea</a> is roughly 3,000 kilometres away in Central Africa and is the only Spanish-speaking country in Africa. <a href="/countries/papua-new-guinea">Papua New Guinea</a> is in the Pacific and unrelated to any of them.</li>
+  <li><strong><a href="/countries/mauritania">Mauritania</a> and <a href="/countries/mauritius">Mauritius</a></strong> — a Saharan country on Africa's Atlantic coast, and an Indian Ocean island nation east of Madagascar.</li>
 </ul>
 
 <h2>Capitals that are not the largest city</h2>
@@ -259,7 +259,7 @@ export const ARTICLES = [
 
 <h2>Two countries entirely inside another</h2>
 
-<p>Three countries in the world are completely surrounded by a single other country. <a href="/countries/vatican-city.html">Vatican City</a> and <a href="/countries/san-marino.html">San Marino</a> are both enclosed by <a href="/countries/italy.html">Italy</a>, and <a href="/countries/lesotho.html">Lesotho</a> is entirely surrounded by <a href="/countries/south-africa.html">South Africa</a>.</p>
+<p>Three countries in the world are completely surrounded by a single other country. <a href="/countries/vatican-city">Vatican City</a> and <a href="/countries/san-marino">San Marino</a> are both enclosed by <a href="/countries/italy">Italy</a>, and <a href="/countries/lesotho">Lesotho</a> is entirely surrounded by <a href="/countries/south-africa">South Africa</a>.</p>
 
 <p>Lesotho is the outlier of the three by size and is the only country in the world with all of its territory above 1,000 metres.</p>
 
@@ -267,7 +267,7 @@ export const ARTICLES = [
 
 <p>What the errors have in common is that none of them is corrected by ordinary life. Nothing in a normal week tells you that Rome is level with Chicago. The Mercator distortion is invisible unless you go looking for it, because the map does not announce that it is trading area for angle.</p>
 
-<p>They are corrected by being tested and getting them wrong — which is the entire argument for quizzing yourself rather than reading. The <a href="/game/map-quiz.html">map quiz</a> and the <a href="/game/continent-quiz.html">continent quiz</a> between them surface most of the errors on this page within a few rounds.</p>
+<p>They are corrected by being tested and getting them wrong — which is the entire argument for quizzing yourself rather than reading. The <a href="/game/map-quiz">map quiz</a> and the <a href="/game/continent-quiz">continent quiz</a> between them surface most of the errors on this page within a few rounds.</p>
 `
   }
   ,
@@ -289,50 +289,50 @@ export const ARTICLES = [
 
 <p>The most common cause. When two cities are large enough that either would resent the other being chosen, the answer is often a third place that offends nobody.</p>
 
-<p><a href="/countries/australia.html">Australia</a> is the clearest example. At federation in 1901, Sydney and Melbourne both expected the capital. Neither would accept the other, and the constitution settled it by requiring a capital in New South Wales but at least 100 miles from Sydney. Canberra was built from nothing in farmland between the two, and Melbourne served as the temporary capital until 1927.</p>
+<p><a href="/countries/australia">Australia</a> is the clearest example. At federation in 1901, Sydney and Melbourne both expected the capital. Neither would accept the other, and the constitution settled it by requiring a capital in New South Wales but at least 100 miles from Sydney. Canberra was built from nothing in farmland between the two, and Melbourne served as the temporary capital until 1927.</p>
 
-<p><a href="/countries/canada.html">Canada</a> followed similar logic. Queen Victoria selected Ottawa in 1857, a modest lumber town, over the larger and more obvious Montreal, Toronto, Quebec City and Kingston. It sat on the boundary between Upper and Lower Canada, was defensible from the United States, and had the singular advantage of not being any of the cities that were arguing.</p>
+<p><a href="/countries/canada">Canada</a> followed similar logic. Queen Victoria selected Ottawa in 1857, a modest lumber town, over the larger and more obvious Montreal, Toronto, Quebec City and Kingston. It sat on the boundary between Upper and Lower Canada, was defensible from the United States, and had the singular advantage of not being any of the cities that were arguing.</p>
 
-<p><a href="/countries/united-states.html">The United States</a> did the same thing earlier. Washington was placed on the Potomac in 1790 as part of a bargain between northern and southern states, on land ceded by Maryland and Virginia, belonging to no state at all.</p>
+<p><a href="/countries/united-states">The United States</a> did the same thing earlier. Washington was placed on the Potomac in 1790 as part of a bargain between northern and southern states, on land ceded by Maryland and Virginia, belonging to no state at all.</p>
 
 <h2>Reason two: moving power away from the coast</h2>
 
 <p>Colonial capitals were almost always ports, because colonial economies faced outward. After independence, that inheritance often looks wrong: the capital sits at the edge of the country, oriented toward a former imperial power, with the interior neglected.</p>
 
-<p><a href="/countries/brazil.html">Brazil</a> acted on this most dramatically. The capital had been Rio de Janeiro, on the Atlantic coast, while the vast interior remained thinly settled. Brasília was built from nothing on the central plateau and inaugurated in 1960 — a planned city, laid out in the shape of an aeroplane, roughly 1,000 kilometres inland. The explicit aim was to pull development toward the interior.</p>
+<p><a href="/countries/brazil">Brazil</a> acted on this most dramatically. The capital had been Rio de Janeiro, on the Atlantic coast, while the vast interior remained thinly settled. Brasília was built from nothing on the central plateau and inaugurated in 1960 — a planned city, laid out in the shape of an aeroplane, roughly 1,000 kilometres inland. The explicit aim was to pull development toward the interior.</p>
 
-<p><a href="/countries/nigeria.html">Nigeria</a> moved from Lagos to Abuja in 1991, for reasons of both congestion and neutrality: Abuja sits in the centre of the country, between the largely Muslim north and largely Christian south, and belonged to no dominant ethnic group.</p>
+<p><a href="/countries/nigeria">Nigeria</a> moved from Lagos to Abuja in 1991, for reasons of both congestion and neutrality: Abuja sits in the centre of the country, between the largely Muslim north and largely Christian south, and belonged to no dominant ethnic group.</p>
 
-<p><a href="/countries/ivory-coast.html">Ivory Coast</a> designated Yamoussoukro in 1983, though Abidjan remains the economic centre and hosts most embassies. <a href="/countries/tanzania.html">Tanzania</a> made Dodoma its capital for similar reasons of centrality, with Dar es Salaam remaining much larger.</p>
+<p><a href="/countries/ivory-coast">Ivory Coast</a> designated Yamoussoukro in 1983, though Abidjan remains the economic centre and hosts most embassies. <a href="/countries/tanzania">Tanzania</a> made Dodoma its capital for similar reasons of centrality, with Dar es Salaam remaining much larger.</p>
 
 <h2>Reason three: a deliberate break with the past</h2>
 
-<p><a href="/countries/turkey.html">Turkey</a> moved its capital from Istanbul to Ankara in 1923. Istanbul had been the seat of the Ottoman Empire for centuries and of Byzantium before that; the new republic wanted a capital in the Anatolian heartland, associated with the nation rather than the empire. Istanbul remains several times larger.</p>
+<p><a href="/countries/turkey">Turkey</a> moved its capital from Istanbul to Ankara in 1923. Istanbul had been the seat of the Ottoman Empire for centuries and of Byzantium before that; the new republic wanted a capital in the Anatolian heartland, associated with the nation rather than the empire. Istanbul remains several times larger.</p>
 
-<p><a href="/countries/kazakhstan.html">Kazakhstan</a> moved from Almaty to Astana in 1997, shifting the capital north toward the centre of the country and away from a seismically active zone near the Chinese border.</p>
+<p><a href="/countries/kazakhstan">Kazakhstan</a> moved from Almaty to Astana in 1997, shifting the capital north toward the centre of the country and away from a seismically active zone near the Chinese border.</p>
 
-<p><a href="/countries/myanmar.html">Myanmar</a> made the most abrupt move of recent decades, relocating from Yangon to the purpose-built Naypyidaw in 2005 with little public explanation. The new capital is famously oversized for its population, with multi-lane highways that are usually near-empty.</p>
+<p><a href="/countries/myanmar">Myanmar</a> made the most abrupt move of recent decades, relocating from Yangon to the purpose-built Naypyidaw in 2005 with little public explanation. The new capital is famously oversized for its population, with multi-lane highways that are usually near-empty.</p>
 
 <h2>Reason four: it was never one city to begin with</h2>
 
 <p>Some countries do not have a single capital at all.</p>
 
-<p><a href="/countries/south-africa.html">South Africa</a> has three, a compromise from the 1910 union: Pretoria is the executive capital, Cape Town the legislative, and Bloemfontein the judicial. Johannesburg, the largest city, is none of them.</p>
+<p><a href="/countries/south-africa">South Africa</a> has three, a compromise from the 1910 union: Pretoria is the executive capital, Cape Town the legislative, and Bloemfontein the judicial. Johannesburg, the largest city, is none of them.</p>
 
-<p><a href="/countries/bolivia.html">Bolivia</a> has two. Sucre is the constitutional capital and seat of the judiciary; La Paz holds the executive and legislature. Santa Cruz de la Sierra is larger than either.</p>
+<p><a href="/countries/bolivia">Bolivia</a> has two. Sucre is the constitutional capital and seat of the judiciary; La Paz holds the executive and legislature. Santa Cruz de la Sierra is larger than either.</p>
 
-<p><a href="/countries/netherlands.html">The Netherlands</a> is the subtlest case: Amsterdam is the constitutional capital and the largest city, but the government, parliament, supreme court and royal residence are all in The Hague. The capital and the seat of government are simply different places.</p>
+<p><a href="/countries/netherlands">The Netherlands</a> is the subtlest case: Amsterdam is the constitutional capital and the largest city, but the government, parliament, supreme court and royal residence are all in The Hague. The capital and the seat of government are simply different places.</p>
 
 <h2>The ones that catch quiz players out</h2>
 
 <p>Beyond the size mismatches, a few capitals are wrong in a different way — the commonly cited answer is out of date or oversimplified.</p>
 
 <ul>
-  <li><strong><a href="/countries/sri-lanka.html">Sri Lanka</a></strong> — the capital is Sri Jayawardenepura Kotte, not Colombo. Colombo is the commercial centre and much better known.</li>
-  <li><strong><a href="/countries/benin.html">Benin</a></strong> — Porto-Novo is the official capital, but Cotonou is the seat of government and considerably larger.</li>
-  <li><strong><a href="/countries/switzerland.html">Switzerland</a></strong> — Bern is the seat of government, but Swiss law designates no formal capital city at all.</li>
-  <li><strong><a href="/countries/nauru.html">Nauru</a></strong> — has no official capital. Government offices are in the Yaren district, which is what most sources list.</li>
-  <li><strong><a href="/countries/eswatini.html">Eswatini</a></strong> — Mbabane is administrative, Lobamba is legislative and royal.</li>
+  <li><strong><a href="/countries/sri-lanka">Sri Lanka</a></strong> — the capital is Sri Jayawardenepura Kotte, not Colombo. Colombo is the commercial centre and much better known.</li>
+  <li><strong><a href="/countries/benin">Benin</a></strong> — Porto-Novo is the official capital, but Cotonou is the seat of government and considerably larger.</li>
+  <li><strong><a href="/countries/switzerland">Switzerland</a></strong> — Bern is the seat of government, but Swiss law designates no formal capital city at all.</li>
+  <li><strong><a href="/countries/nauru">Nauru</a></strong> — has no official capital. Government offices are in the Yaren district, which is what most sources list.</li>
+  <li><strong><a href="/countries/eswatini">Eswatini</a></strong> — Mbabane is administrative, Lobamba is legislative and royal.</li>
 </ul>
 
 <h2>Does a purpose-built capital work?</h2>
@@ -343,9 +343,9 @@ export const ARTICLES = [
 
 <p>Abuja grew rapidly and did shift administrative weight away from Lagos, though Lagos remains the economic centre by a wide margin. Canberra works, but it took decades and it is still notably smaller than the cities it was chosen to placate.</p>
 
-<p><a href="/countries/indonesia.html">Indonesia</a> is currently attempting the largest such move in progress, relocating from Jakarta — which is sinking, in places by more than ten centimetres a year — to a new city called Nusantara in Borneo. Whether it succeeds will be the best modern test of the idea.</p>
+<p><a href="/countries/indonesia">Indonesia</a> is currently attempting the largest such move in progress, relocating from Jakarta — which is sinking, in places by more than ten centimetres a year — to a new city called Nusantara in Borneo. Whether it succeeds will be the best modern test of the idea.</p>
 
-<p>If you want to find out how many of these you actually know rather than assume, the <a href="/game/capital-quiz.html">capital quiz</a> draws its wrong answers from the same continent as the right one, so guessing the biggest city in the region will not get you far.</p>
+<p>If you want to find out how many of these you actually know rather than assume, the <a href="/game/capital-quiz">capital quiz</a> draws its wrong answers from the same continent as the right one, so guessing the biggest city in the region will not get you far.</p>
 `
   },
 
@@ -406,7 +406,7 @@ export const ARTICLES = [
 
 <h2>What the map quiz here uses</h2>
 
-<p>The world map behind the <a href="/game/map-quiz.html">map quiz</a> is an equirectangular-family projection, the simplest of all: longitude maps directly to x, latitude to y. Lines of latitude and longitude form a perfect grid.</p>
+<p>The world map behind the <a href="/game/map-quiz">map quiz</a> is an equirectangular-family projection, the simplest of all: longitude maps directly to x, latitude to y. Lines of latitude and longitude form a perfect grid.</p>
 
 <p>This is not a good projection for reading area — it stretches high latitudes horizontally, which is why Greenland, northern Canada and Russia look wider than they should. It is a good projection for interaction, because the relationship between screen position and coordinates is simple and predictable.</p>
 
@@ -424,7 +424,7 @@ export const ARTICLES = [
 
 <p><strong>Use a globe when area matters.</strong> A globe is the only representation with no distortion at all. Every flat map is a compromise, and the honest question is never whether it is accurate but which inaccuracy you have agreed to accept.</p>
 
-<p>If you want to test how much of your mental map survives contact with a real one, the <a href="/game/map-quiz.html">map quiz</a> and the <a href="/game/shape-quiz.html">country shape quiz</a> are the two games here that use actual geography rather than names.</p>
+<p>If you want to test how much of your mental map survives contact with a real one, the <a href="/game/map-quiz">map quiz</a> and the <a href="/game/shape-quiz">country shape quiz</a> are the two games here that use actual geography rather than names.</p>
 `
   },
 
@@ -444,19 +444,19 @@ export const ARTICLES = [
 
 <p>Landlocked countries cluster, because the geography that produces them clusters.</p>
 
-<p><strong>Europe</strong> has the most, and they are mostly small and mountainous: <a href="/countries/austria.html">Austria</a>, <a href="/countries/switzerland.html">Switzerland</a>, <a href="/countries/hungary.html">Hungary</a>, <a href="/countries/czechia.html">Czechia</a>, <a href="/countries/slovakia.html">Slovakia</a>, <a href="/countries/belarus.html">Belarus</a>, <a href="/countries/moldova.html">Moldova</a>, <a href="/countries/serbia.html">Serbia</a>, <a href="/countries/north-macedonia.html">North Macedonia</a>, <a href="/countries/luxembourg.html">Luxembourg</a>, <a href="/countries/liechtenstein.html">Liechtenstein</a>, <a href="/countries/andorra.html">Andorra</a>, <a href="/countries/san-marino.html">San Marino</a> and <a href="/countries/vatican-city.html">Vatican City</a>.</p>
+<p><strong>Europe</strong> has the most, and they are mostly small and mountainous: <a href="/countries/austria">Austria</a>, <a href="/countries/switzerland">Switzerland</a>, <a href="/countries/hungary">Hungary</a>, <a href="/countries/czechia">Czechia</a>, <a href="/countries/slovakia">Slovakia</a>, <a href="/countries/belarus">Belarus</a>, <a href="/countries/moldova">Moldova</a>, <a href="/countries/serbia">Serbia</a>, <a href="/countries/north-macedonia">North Macedonia</a>, <a href="/countries/luxembourg">Luxembourg</a>, <a href="/countries/liechtenstein">Liechtenstein</a>, <a href="/countries/andorra">Andorra</a>, <a href="/countries/san-marino">San Marino</a> and <a href="/countries/vatican-city">Vatican City</a>.</p>
 
-<p><strong>Africa</strong> has sixteen, the largest concentration of landlocked countries with limited infrastructure anywhere: <a href="/countries/mali.html">Mali</a>, <a href="/countries/niger.html">Niger</a>, <a href="/countries/chad.html">Chad</a>, <a href="/countries/burkina-faso.html">Burkina Faso</a>, <a href="/countries/central-african-republic.html">the Central African Republic</a>, <a href="/countries/south-sudan.html">South Sudan</a>, <a href="/countries/ethiopia.html">Ethiopia</a>, <a href="/countries/uganda.html">Uganda</a>, <a href="/countries/rwanda.html">Rwanda</a>, <a href="/countries/burundi.html">Burundi</a>, <a href="/countries/zambia.html">Zambia</a>, <a href="/countries/zimbabwe.html">Zimbabwe</a>, <a href="/countries/malawi.html">Malawi</a>, <a href="/countries/botswana.html">Botswana</a>, <a href="/countries/lesotho.html">Lesotho</a> and <a href="/countries/eswatini.html">Eswatini</a>.</p>
+<p><strong>Africa</strong> has sixteen, the largest concentration of landlocked countries with limited infrastructure anywhere: <a href="/countries/mali">Mali</a>, <a href="/countries/niger">Niger</a>, <a href="/countries/chad">Chad</a>, <a href="/countries/burkina-faso">Burkina Faso</a>, <a href="/countries/central-african-republic">the Central African Republic</a>, <a href="/countries/south-sudan">South Sudan</a>, <a href="/countries/ethiopia">Ethiopia</a>, <a href="/countries/uganda">Uganda</a>, <a href="/countries/rwanda">Rwanda</a>, <a href="/countries/burundi">Burundi</a>, <a href="/countries/zambia">Zambia</a>, <a href="/countries/zimbabwe">Zimbabwe</a>, <a href="/countries/malawi">Malawi</a>, <a href="/countries/botswana">Botswana</a>, <a href="/countries/lesotho">Lesotho</a> and <a href="/countries/eswatini">Eswatini</a>.</p>
 
-<p><strong>Asia</strong> has twelve, including the whole of former Soviet Central Asia: <a href="/countries/kazakhstan.html">Kazakhstan</a>, <a href="/countries/uzbekistan.html">Uzbekistan</a>, <a href="/countries/turkmenistan.html">Turkmenistan</a>, <a href="/countries/kyrgyzstan.html">Kyrgyzstan</a>, <a href="/countries/tajikistan.html">Tajikistan</a>, <a href="/countries/afghanistan.html">Afghanistan</a>, <a href="/countries/mongolia.html">Mongolia</a>, <a href="/countries/nepal.html">Nepal</a>, <a href="/countries/bhutan.html">Bhutan</a>, <a href="/countries/laos.html">Laos</a>, <a href="/countries/armenia.html">Armenia</a> and <a href="/countries/azerbaijan.html">Azerbaijan</a>.</p>
+<p><strong>Asia</strong> has twelve, including the whole of former Soviet Central Asia: <a href="/countries/kazakhstan">Kazakhstan</a>, <a href="/countries/uzbekistan">Uzbekistan</a>, <a href="/countries/turkmenistan">Turkmenistan</a>, <a href="/countries/kyrgyzstan">Kyrgyzstan</a>, <a href="/countries/tajikistan">Tajikistan</a>, <a href="/countries/afghanistan">Afghanistan</a>, <a href="/countries/mongolia">Mongolia</a>, <a href="/countries/nepal">Nepal</a>, <a href="/countries/bhutan">Bhutan</a>, <a href="/countries/laos">Laos</a>, <a href="/countries/armenia">Armenia</a> and <a href="/countries/azerbaijan">Azerbaijan</a>.</p>
 
-<p><strong>South America</strong> has two — <a href="/countries/bolivia.html">Bolivia</a> and <a href="/countries/paraguay.html">Paraguay</a> — and <strong>North America and Oceania have none at all</strong>, which is itself a useful thing to know for a quiz.</p>
+<p><strong>South America</strong> has two — <a href="/countries/bolivia">Bolivia</a> and <a href="/countries/paraguay">Paraguay</a> — and <strong>North America and Oceania have none at all</strong>, which is itself a useful thing to know for a quiz.</p>
 
 <h2>Doubly landlocked: only two</h2>
 
 <p>A country is doubly landlocked if it has no coastline and every one of its neighbours is also landlocked — so you must cross at least two borders to reach the sea. Exactly two countries qualify.</p>
 
-<p><a href="/countries/liechtenstein.html">Liechtenstein</a> sits between Switzerland and Austria, both landlocked. <a href="/countries/uzbekistan.html">Uzbekistan</a> is bordered by Kazakhstan, Kyrgyzstan, Tajikistan, Afghanistan and Turkmenistan, all landlocked.</p>
+<p><a href="/countries/liechtenstein">Liechtenstein</a> sits between Switzerland and Austria, both landlocked. <a href="/countries/uzbekistan">Uzbekistan</a> is bordered by Kazakhstan, Kyrgyzstan, Tajikistan, Afghanistan and Turkmenistan, all landlocked.</p>
 
 <p>Uzbekistan's case comes with an asterisk that is worth understanding rather than memorising: Kazakhstan and Turkmenistan both border the Caspian Sea. Whether that counts depends on whether the Caspian is a sea or a lake — a question with real legal consequences for oil rights, and one that has been argued for decades. Under the usual reading it is an enclosed lake with no outlet to the ocean, so Uzbekistan stays doubly landlocked.</p>
 
@@ -480,7 +480,7 @@ export const ARTICLES = [
 
 <p>Countries have found various ways to soften the problem.</p>
 
-<p><strong>River access.</strong> <a href="/countries/paraguay.html">Paraguay</a> reaches the Atlantic via the Paraguay and Paraná rivers and maintains a substantial river fleet. <a href="/countries/moldova.html">Moldova</a> has a few hundred metres of Danube frontage at Giurgiulești, enough for a working river port.</p>
+<p><strong>River access.</strong> <a href="/countries/paraguay">Paraguay</a> reaches the Atlantic via the Paraguay and Paraná rivers and maintains a substantial river fleet. <a href="/countries/moldova">Moldova</a> has a few hundred metres of Danube frontage at Giurgiulești, enough for a working river port.</p>
 
 <p><strong>Treaty rights.</strong> International law provides landlocked states a right of access to the sea and freedom of transit, though implementation depends on bilateral agreements.</p>
 
@@ -490,7 +490,7 @@ export const ARTICLES = [
 
 <h2>Testing yourself</h2>
 
-<p>Landlocked status is one of the more useful things to know about a country, because it constrains so much else — trade, politics, which neighbours matter most. The <a href="/game/country-quiz.html">country quiz</a> works from clues including continent and currency, and the <a href="/game/map-quiz.html">map quiz</a> puts the geography itself in front of you, which is the fastest way to notice which countries have no way out.</p>
+<p>Landlocked status is one of the more useful things to know about a country, because it constrains so much else — trade, politics, which neighbours matter most. The <a href="/game/country-quiz">country quiz</a> works from clues including continent and currency, and the <a href="/game/map-quiz">map quiz</a> puts the geography itself in front of you, which is the fastest way to notice which countries have no way out.</p>
 `
   }
 ];

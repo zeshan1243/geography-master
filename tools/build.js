@@ -187,7 +187,7 @@ function build() {
   // One page per game
   for (const game of games) {
     write(`game/${game.slug}.html`, pages.gamePage(game, games));
-    add(`/game/${game.slug}.html`, '0.9', 'weekly');
+    add(`/game/${game.slug}`, '0.9', 'weekly');
   }
 
   // Countries
@@ -196,7 +196,7 @@ function build() {
 
   for (const country of countries) {
     write(`countries/${country.slug}.html`, pages.countryPage(country, countries, details));
-    add(`/countries/${country.slug}.html`, '0.6');
+    add(`/countries/${country.slug}`, '0.6');
   }
 
   // Continents
@@ -211,7 +211,7 @@ function build() {
   // Reference lists
   for (const list of pages.listPages(countries)) {
     write(list.path, list.html);
-    add(`/${list.path}`, '0.7');
+    add(`/${list.path.replace(/\.html$/, '')}`, '0.7');
   }
 
   // Guides
@@ -220,11 +220,11 @@ function build() {
 
   for (const article of pages.ARTICLES) {
     write(`guides/${article.slug}.html`, pages.guidePage(article));
-    add(`/guides/${article.slug}.html`, '0.8');
+    add(`/guides/${article.slug}`, '0.8');
   }
 
   write('practice.html', pages.practicePage());
-  add('/practice.html', '0.8', 'weekly');
+  add('/practice', '0.8', 'weekly');
 
   // Static pages
   write('about.html', pages.aboutPage(countries));
@@ -232,10 +232,10 @@ function build() {
   write('privacy-policy.html', pages.privacyPage());
   write('terms.html', pages.termsPage());
   write('404.html', pages.notFoundPage());
-  add('/about.html', '0.4', 'yearly');
-  add('/contact.html', '0.4', 'yearly');
-  add('/privacy-policy.html', '0.3', 'yearly');
-  add('/terms.html', '0.3', 'yearly');
+  add('/about', '0.4', 'yearly');
+  add('/contact', '0.4', 'yearly');
+  add('/privacy-policy', '0.3', 'yearly');
+  add('/terms', '0.3', 'yearly');
 
   // Site-level assets
   write('favicon.svg', favicon());

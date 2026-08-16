@@ -21,8 +21,8 @@ export const NAV = [
   { label: 'Home', href: '/' },
   { label: 'Games', href: '/games/' },
   { label: 'Countries', href: '/countries/' },
-  { label: 'Capitals', href: '/lists/countries-and-capitals.html' },
-  { label: 'Flags', href: '/lists/world-flags.html' },
+  { label: 'Capitals', href: '/lists/countries-and-capitals' },
+  { label: 'Flags', href: '/lists/world-flags' },
   { label: 'Continents', href: '/continents/' },
   { label: 'Guides', href: '/guides/' }
 ];
@@ -32,10 +32,10 @@ const FOOTER = [
     title: 'Play',
     links: [
       ['All games', '/games/'],
-      ['Country quiz', '/game/country-quiz.html'],
-      ['Capital quiz', '/game/capital-quiz.html'],
-      ['Flag quiz', '/game/flag-quiz.html'],
-      ['Mixed quiz', '/game/mixed-quiz.html']
+      ['Country quiz', '/game/country-quiz'],
+      ['Capital quiz', '/game/capital-quiz'],
+      ['Flag quiz', '/game/flag-quiz'],
+      ['Mixed quiz', '/game/mixed-quiz']
     ]
   },
   {
@@ -43,19 +43,19 @@ const FOOTER = [
     links: [
       ['All countries', '/countries/'],
       ['Continents', '/continents/'],
-      ['Countries and capitals', '/lists/countries-and-capitals.html'],
-      ['World flags', '/lists/world-flags.html'],
-      ['Largest countries', '/lists/largest-countries.html'],
+      ['Countries and capitals', '/lists/countries-and-capitals'],
+      ['World flags', '/lists/world-flags'],
+      ['Largest countries', '/lists/largest-countries'],
       ['Guides', '/guides/']
     ]
   },
   {
     title: 'Site',
     links: [
-      ['About', '/about.html'],
-      ['Contact', '/contact.html'],
-      ['Privacy policy', '/privacy-policy.html'],
-      ['Terms', '/terms.html']
+      ['About', '/about'],
+      ['Contact', '/contact'],
+      ['Privacy policy', '/privacy-policy'],
+      ['Terms', '/terms']
     ]
   }
 ];
@@ -116,6 +116,19 @@ function adsenseHead() {
   return `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}" crossorigin="anonymous"></script>`;
 }
 
+/** Google Analytics (gtag.js), once per page. */
+function analyticsHead() {
+  const id = SITE.analytics?.measurementId;
+  if (!id) return '';
+  return `<script async src="https://www.googletagmanager.com/gtag/js?id=${id}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${id}');
+</script>`;
+}
+
 function navLinks(cls) {
   return NAV.map((item) => `<a href="${item.href}">${item.label}</a>`).join(cls === 'drawer' ? '\n        ' : '\n          ');
 }
@@ -170,8 +183,8 @@ function header() {
   <div class="nav-drawer" id="nav-drawer" data-open="false">
     <nav aria-label="Mobile">
       ${navLinks('drawer')}
-      <a href="/about.html">About</a>
-      <a href="/contact.html">Contact</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
     </nav>
   </div>`;
 }
@@ -250,6 +263,7 @@ ${styles.map((href) => `<link rel="stylesheet" href="${href}">`).join('\n')}
 /* Applied before first paint so the page never flashes the wrong theme. */
 (function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
 </script>
+${analyticsHead()}
 ${adsenseHead()}
 ${headExtra}
 ${jsonLd}

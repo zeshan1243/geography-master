@@ -25,7 +25,7 @@ export function home(countries, games) {
     <h1>Play. Learn. <span class="accent">Explore.</span> 🌍</h1>
     <p class="lead">${esc(SITE.tagline)} Free geography games — no account, no download, straight into a round.</p>
     <div class="btn-row">
-      <a class="btn btn-primary btn-lg" href="/game/flag-quiz.html?difficulty=medium&amp;autostart=1" data-play-now>${icon('play')} Play Now</a>
+      <a class="btn btn-primary btn-lg" href="/game/flag-quiz?difficulty=medium&amp;autostart=1" data-play-now>${icon('play')} Play Now</a>
       <a class="btn btn-secondary btn-lg" href="/games/">${icon('grid')} Explore Games</a>
       <a class="btn btn-ghost btn-lg" href="/games/" data-random-game>${icon('dice')} Random Game</a>
     </div>
@@ -47,7 +47,7 @@ export function home(countries, games) {
       <div class="streak" data-streak-calendar></div>
       <p class="muted" data-streak-count style="margin-top:10px;font-size:.9375rem"></p>
     </div>
-    <a class="btn btn-primary btn-lg" href="/game/mixed-quiz.html?daily=1" data-daily-link data-done="false">
+    <a class="btn btn-primary btn-lg" href="/game/mixed-quiz?daily=1" data-daily-link data-done="false">
       ${icon('play', 'icon-play')}${icon('refresh', 'icon-refresh')}
       <span data-daily-label>Play Today</span>
     </a>
@@ -77,7 +77,7 @@ export function home(countries, games) {
   <div class="stat-grid" data-stats></div>
   <p class="muted" data-stats-empty hidden style="margin-top:12px">Finish a game and your score, accuracy and streak will show up here.</p>
 
-  <a class="review-callout" href="/practice.html" data-review-callout hidden>
+  <a class="review-callout" href="/practice" data-review-callout hidden>
     <span class="review-callout-icon" aria-hidden="true">🎯</span>
     <span>
       <strong data-review-callout-count>Review your mistakes</strong>
@@ -97,10 +97,10 @@ export function home(countries, games) {
   <div class="explore-grid">
     <a class="explore-link" href="/countries/"><span class="icon" aria-hidden="true">🗺️</span><span>All ${countries.length} countries<small>Capital, currency, population</small></span></a>
     <a class="explore-link" href="/continents/"><span class="icon" aria-hidden="true">🌍</span><span>Continents<small>Africa to Oceania</small></span></a>
-    <a class="explore-link" href="/lists/countries-and-capitals.html"><span class="icon" aria-hidden="true">🏛️</span><span>Countries and capitals<small>The full reference list</small></span></a>
-    <a class="explore-link" href="/lists/world-flags.html"><span class="icon" aria-hidden="true">🚩</span><span>World flags<small>Every flag by continent</small></span></a>
-    <a class="explore-link" href="/lists/largest-countries.html"><span class="icon" aria-hidden="true">📐</span><span>Largest countries<span></span><small>Ranked by area</small></span></a>
-    <a class="explore-link" href="/lists/smallest-countries.html"><span class="icon" aria-hidden="true">🔬</span><span>Smallest countries<small>From Vatican City up</small></span></a>
+    <a class="explore-link" href="/lists/countries-and-capitals"><span class="icon" aria-hidden="true">🏛️</span><span>Countries and capitals<small>The full reference list</small></span></a>
+    <a class="explore-link" href="/lists/world-flags"><span class="icon" aria-hidden="true">🚩</span><span>World flags<small>Every flag by continent</small></span></a>
+    <a class="explore-link" href="/lists/largest-countries"><span class="icon" aria-hidden="true">📐</span><span>Largest countries<span></span><small>Ranked by area</small></span></a>
+    <a class="explore-link" href="/lists/smallest-countries"><span class="icon" aria-hidden="true">🔬</span><span>Smallest countries<small>From Vatican City up</small></span></a>
   </div>
 </section>
 
@@ -115,7 +115,7 @@ export function home(countries, games) {
   <div class="card-grid">
     ${ARTICLES.slice(0, 3)
       .map(
-        (a) => `<a class="game-card" href="/guides/${a.slug}.html" data-accent="purple">
+        (a) => `<a class="game-card" href="/guides/${a.slug}" data-accent="purple">
       <h3>${esc(a.title)}</h3>
       <p>${esc(a.summary)}</p>
       <span class="play">Read</span>
@@ -130,7 +130,7 @@ export function home(countries, games) {
     <h2>How well do you know the world?</h2>
     <p>There are ${countries.length} sovereign countries on this site — 193 United Nations member states plus Vatican City and Palestine. Between them they cover six inhabited continents, ${countries.length} capital cities and every flag flown at the UN.</p>
     <p>Most people can name perhaps thirty or forty countries from memory. Getting from there to all ${countries.length} is a matter of repetition, and repetition is easier when it looks like a game. Each round here is thirty questions and shows you the right answer the moment you get one wrong — that immediate correction is what makes the facts stick.</p>
-    <p>Start with the <a href="/game/flag-quiz.html">flag quiz</a> on easy, move to <a href="/game/capital-quiz.html">capitals</a> when flags feel comfortable, and use the <a href="/game/mixed-quiz.html">mixed quiz</a> to check what has actually stuck.</p>
+    <p>Start with the <a href="/game/flag-quiz">flag quiz</a> on easy, move to <a href="/game/capital-quiz">capitals</a> when flags feel comfortable, and use the <a href="/game/mixed-quiz">mixed quiz</a> to check what has actually stuck.</p>
   </div>
 </section>`;
 
@@ -175,7 +175,7 @@ export function gamesIndex(games) {
     <div class="game-grid">
       ${inCategory
         .map(
-          (g) => `<a class="game-card" href="/game/${g.slug}.html" data-accent="${g.accent}">
+          (g) => `<a class="game-card" href="/game/${g.slug}" data-accent="${g.accent}">
         <span class="icon" aria-hidden="true">${g.icon}</span>
         <h3>${esc(g.name)}</h3>
         <p>${esc(g.tagline)}</p>
@@ -192,7 +192,7 @@ export function gamesIndex(games) {
 <section class="section wrap">
   <h1>Geography games</h1>
 
-  <a class="review-callout" href="/practice.html" data-review-callout hidden style="margin:20px 0 0">
+  <a class="review-callout" href="/practice" data-review-callout hidden style="margin:20px 0 0">
     <span class="review-callout-icon" aria-hidden="true">🎯</span>
     <span>
       <strong data-review-callout-count>Review your mistakes</strong>
@@ -209,9 +209,9 @@ export function gamesIndex(games) {
 
   <div class="article">
     <h2>Which game should you start with?</h2>
-    <p>If you are new to geography quizzes, start with the <a href="/game/continent-quiz.html">continent quiz</a>. Six answers, no memorisation required, and it builds the mental map everything else hangs off.</p>
-    <p>Once continents feel automatic, <a href="/game/flag-quiz.html">flags</a> are the most efficient next step: they are visual, so they stick faster than names, and they pull double duty when you later learn the countries themselves.</p>
-    <p><a href="/game/capital-quiz.html">Capitals</a> are the hardest of the three because there is no visual hook, so leave them until continents and flags are solid. The <a href="/game/mixed-quiz.html">mixed quiz</a> is the honest test — it draws from every category at once and will find the gaps.</p>
+    <p>If you are new to geography quizzes, start with the <a href="/game/continent-quiz">continent quiz</a>. Six answers, no memorisation required, and it builds the mental map everything else hangs off.</p>
+    <p>Once continents feel automatic, <a href="/game/flag-quiz">flags</a> are the most efficient next step: they are visual, so they stick faster than names, and they pull double duty when you later learn the countries themselves.</p>
+    <p><a href="/game/capital-quiz">Capitals</a> are the hardest of the three because there is no visual hook, so leave them until continents and flags are solid. The <a href="/game/mixed-quiz">mixed quiz</a> is the honest test — it draws from every category at once and will find the gaps.</p>
   </div>
 </section>`;
 
@@ -277,7 +277,7 @@ function playAndResultsScreens({ icon: gameIcon, name, showRelated = true }) {
       <div class="btn-row">
         <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
         <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
-        <a class="btn btn-ghost" href="/practice.html" data-review-link hidden>${icon('target')} Review your mistakes</a>
+        <a class="btn btn-ghost" href="/practice" data-review-link hidden>${icon('target')} Review your mistakes</a>
         <a class="btn btn-ghost" href="/games/">Back to Games</a>
       </div>
 
@@ -303,7 +303,7 @@ export function gamePage(game, allGames) {
   const trail = [
     { label: 'Home', href: '/' },
     { label: 'Games', href: '/games/' },
-    { label: game.name, href: `/game/${game.slug}.html` }
+    { label: game.name, href: `/game/${game.slug}` }
   ];
 
   const body = `${breadcrumbs(trail)}
@@ -337,13 +337,13 @@ ${playAndResultsScreens({ icon: game.icon, name: game.name })}
 
     <h3>Difficulty and scoring</h3>
     <p>Easy, Medium and Hard run thirty questions. Easy covers the countries most people can already name; Hard reaches the ones that need real study. A correct answer is worth 100 points, with a bonus for answering inside five seconds and further bonuses at three, five and ten in a row. A wrong answer scores nothing and resets the streak, but never ends the round.</p>
-    <p><strong>Expert is different.</strong> It has no fixed length and no second chances: questions keep coming from the hardest pool until you get one wrong, and that ends the run immediately. Your result is how many you survived. The <a href="/about.html">full scoring breakdown</a> is on the about page.</p>
+    <p><strong>Expert is different.</strong> It has no fixed length and no second chances: questions keep coming from the hardest pool until you get one wrong, and that ends the run immediately. Your result is how many you survived. The <a href="/about">full scoring breakdown</a> is on the about page.</p>
 
     <h3>Other games</h3>
     <p>${allGames
       .filter((g) => g.id !== game.id)
       .slice(0, 4)
-      .map((g) => `<a href="/game/${g.slug}.html">${esc(g.name)}</a>`)
+      .map((g) => `<a href="/game/${g.slug}">${esc(g.name)}</a>`)
       .join(' · ')}</p>
   </div>
 </section>`;
@@ -351,7 +351,7 @@ ${playAndResultsScreens({ icon: game.icon, name: game.name })}
   return page({
     title: `${game.metaTitle} | ${SITE.name}`,
     description: game.metaDescription,
-    path: `/game/${game.slug}.html`,
+    path: `/game/${game.slug}`,
     css: ['/css/games.css', '/css/game.css'],
     body,
     schema: [
@@ -360,7 +360,7 @@ ${playAndResultsScreens({ icon: game.icon, name: game.name })}
         '@type': 'Game',
         name: game.name,
         description: game.metaDescription,
-        url: new URL(`/game/${game.slug}.html`, SITE.url).href,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
         genre: 'Educational',
         gamePlatform: 'Web browser',
         numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
@@ -398,7 +398,7 @@ export function countriesIndex(countries, continents) {
   <div class="country-list" data-country-index>
     ${sorted
       .map(
-        (c) => `<a href="/countries/${c.slug}.html" data-name="${esc(c.name)}" data-capital="${esc(c.capital)}" data-continent="${esc(c.continent)}">
+        (c) => `<a href="/countries/${c.slug}" data-name="${esc(c.name)}" data-capital="${esc(c.capital)}" data-continent="${esc(c.continent)}">
       <span class="flag" aria-hidden="true">${c.flag}</span>
       <span><strong>${esc(c.name)}</strong><small>${esc(c.capital)}</small></span>
     </a>`
@@ -413,7 +413,7 @@ export function countriesIndex(countries, continents) {
     <p>The usual answer is 195: the 193 member states of the United Nations plus two permanent observer states, Vatican City and Palestine. That is the list used across this site.</p>
     <p>Other counts exist and are not wrong, just differently scoped. Some include Taiwan, Kosovo or the Cook Islands; sports federations run their own lists, which is why FIFA has more members than the UN. If a quiz answer here surprises you, the 195-country UN framing is the reason.</p>
     <h2>Ready to test yourself?</h2>
-    <p>Reading a list is not the same as knowing it. Try the <a href="/game/country-quiz.html">country quiz</a> or the <a href="/game/capital-quiz.html">capital quiz</a> and see how much of this page you can recall.</p>
+    <p>Reading a list is not the same as knowing it. Try the <a href="/game/country-quiz">country quiz</a> or the <a href="/game/capital-quiz">capital quiz</a> and see how much of this page you can recall.</p>
   </div>
 </section>`;
 
@@ -435,7 +435,7 @@ export function countryPage(country, countries, details = {}) {
   const byCode = new Map(countries.map((c) => [c.code, c]));
   const neighbours = detail.borders.map((code) => byCode.get(code)).filter(Boolean);
 
-  const linkTo = (c) => `<a href="/countries/${c.slug}.html">${esc(c.name)}</a>`;
+  const linkTo = (c) => `<a href="/countries/${c.slug}">${esc(c.name)}</a>`;
   const joinList = (items) =>
     items.length <= 1
       ? items.join('')
@@ -474,7 +474,7 @@ export function countryPage(country, countries, details = {}) {
   const trail = [
     { label: 'Home', href: '/' },
     { label: 'Countries', href: '/countries/' },
-    { label: country.name, href: `/countries/${country.slug}.html` }
+    { label: country.name, href: `/countries/${country.slug}` }
   ];
 
   const neighboursInRegion = countries
@@ -520,8 +520,8 @@ export function countryPage(country, countries, details = {}) {
   </div>
 
   <div class="btn-row" style="margin: 24px 0 8px">
-    <a class="btn btn-primary" href="/game/flag-quiz.html?difficulty=medium&amp;autostart=1">🚩 Test your flag knowledge</a>
-    <a class="btn btn-secondary" href="/game/capital-quiz.html?difficulty=medium&amp;autostart=1">🏛️ Capital quiz</a>
+    <a class="btn btn-primary" href="/game/flag-quiz?difficulty=medium&amp;autostart=1">🚩 Test your flag knowledge</a>
+    <a class="btn btn-secondary" href="/game/capital-quiz?difficulty=medium&amp;autostart=1">🏛️ Capital quiz</a>
   </div>
 
   ${adSlot()}
@@ -542,7 +542,7 @@ export function countryPage(country, countries, details = {}) {
     <div class="country-list" style="margin-top:16px">
       ${neighboursInRegion
         .map(
-          (c) => `<a href="/countries/${c.slug}.html">
+          (c) => `<a href="/countries/${c.slug}">
         <span class="flag" aria-hidden="true">${c.flag}</span>
         <span><strong>${esc(c.name)}</strong><small>${esc(c.capital)}</small></span>
       </a>`
@@ -554,10 +554,10 @@ export function countryPage(country, countries, details = {}) {
   <div class="related">
     <h2>Related geography games</h2>
     <div class="related-links">
-      <a href="/game/country-quiz.html"><span aria-hidden="true">🌎</span> Country Quiz</a>
-      <a href="/game/capital-quiz.html"><span aria-hidden="true">🏛️</span> Capital Quiz</a>
-      <a href="/game/flag-quiz.html"><span aria-hidden="true">🚩</span> Flag Quiz</a>
-      <a href="/game/continent-quiz.html"><span aria-hidden="true">🌍</span> Continent Quiz</a>
+      <a href="/game/country-quiz"><span aria-hidden="true">🌎</span> Country Quiz</a>
+      <a href="/game/capital-quiz"><span aria-hidden="true">🏛️</span> Capital Quiz</a>
+      <a href="/game/flag-quiz"><span aria-hidden="true">🚩</span> Flag Quiz</a>
+      <a href="/game/continent-quiz"><span aria-hidden="true">🌍</span> Continent Quiz</a>
     </div>
   </div>
 </section>`;
@@ -565,7 +565,7 @@ export function countryPage(country, countries, details = {}) {
   return page({
     title: `${country.name} — Capital, Flag, Population and Facts`,
     description: `${country.name}: capital ${country.capital}, ${fmt(country.population)} people, currency ${country.currency}. ${detail.facts[0] || ''}`.slice(0, 158),
-    path: `/countries/${country.slug}.html`,
+    path: `/countries/${country.slug}`,
     rail: true,
     css: ['/css/games.css', '/css/game.css'],
     body,
@@ -574,7 +574,7 @@ export function countryPage(country, countries, details = {}) {
         '@context': 'https://schema.org',
         '@type': 'Country',
         name: country.name,
-        url: new URL(`/countries/${country.slug}.html`, SITE.url).href,
+        url: new URL(`/countries/${country.slug}`, SITE.url).href,
         containedInPlace: { '@type': 'Continent', name: country.continent }
       },
       breadcrumbSchema(trail)
@@ -613,7 +613,7 @@ export function continentsIndex(continents, countries) {
     <p>It is not the only model. Some countries teach six continents by combining Europe and Asia into Eurasia; others combine the Americas. The physical world does not change — only where the line is drawn. Quiz answers here follow the seven-continent model.</p>
     <p>Only six continents have sovereign countries. Antarctica has research stations but no permanent population and no government of its own.</p>
     <h2>Test yourself</h2>
-    <p>The <a href="/game/continent-quiz.html">continent quiz</a> gives you a country and four continents to choose from. It is the fastest game on the site and the best place to start.</p>
+    <p>The <a href="/game/continent-quiz">continent quiz</a> gives you a country and four continents to choose from. It is the fastest game on the site and the best place to start.</p>
   </div>
 </section>`;
 
@@ -651,7 +651,7 @@ export function continentPage(continent, countries) {
           .map(
             (c) => `<tr>
           <td aria-hidden="true">${c.flag}</td>
-          <td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td>
+          <td><a href="/countries/${c.slug}">${esc(c.name)}</a></td>
           <td>${esc(c.capital)}</td>
           <td>${fmt(c.population)}</td>
           <td>${fmt(c.area)}</td>
@@ -693,10 +693,10 @@ export function continentPage(continent, countries) {
   <div class="related">
     <h2>Play a related game</h2>
     <div class="related-links">
-      <a href="/game/continent-quiz.html"><span aria-hidden="true">🌍</span> Continent Quiz</a>
-      <a href="/game/capital-quiz.html"><span aria-hidden="true">🏛️</span> Capital Quiz</a>
-      <a href="/game/flag-quiz.html"><span aria-hidden="true">🚩</span> Flag Quiz</a>
-      <a href="/game/mixed-quiz.html"><span aria-hidden="true">🧭</span> Mixed Quiz</a>
+      <a href="/game/continent-quiz"><span aria-hidden="true">🌍</span> Continent Quiz</a>
+      <a href="/game/capital-quiz"><span aria-hidden="true">🏛️</span> Capital Quiz</a>
+      <a href="/game/flag-quiz"><span aria-hidden="true">🚩</span> Flag Quiz</a>
+      <a href="/game/mixed-quiz"><span aria-hidden="true">🧭</span> Mixed Quiz</a>
     </div>
   </div>
 </section>`;
@@ -719,8 +719,8 @@ export function continentPage(continent, countries) {
 function listPage({ slug, title, h1, description, intro, outro, columns, rows, optionalColumn }) {
   const trail = [
     { label: 'Home', href: '/' },
-    { label: 'Lists', href: '/lists/countries-and-capitals.html' },
-    { label: h1, href: `/lists/${slug}.html` }
+    { label: 'Lists', href: '/lists/countries-and-capitals' },
+    { label: h1, href: `/lists/${slug}` }
   ];
 
   const body = `${breadcrumbs(trail)}
@@ -746,9 +746,9 @@ function listPage({ slug, title, h1, description, intro, outro, columns, rows, o
   <div class="related">
     <h2>Turn this list into a game</h2>
     <div class="related-links">
-      <a href="/game/capital-quiz.html"><span aria-hidden="true">🏛️</span> Capital Quiz</a>
-      <a href="/game/flag-quiz.html"><span aria-hidden="true">🚩</span> Flag Quiz</a>
-      <a href="/game/country-quiz.html"><span aria-hidden="true">🌎</span> Country Quiz</a>
+      <a href="/game/capital-quiz"><span aria-hidden="true">🏛️</span> Capital Quiz</a>
+      <a href="/game/flag-quiz"><span aria-hidden="true">🚩</span> Flag Quiz</a>
+      <a href="/game/country-quiz"><span aria-hidden="true">🌎</span> Country Quiz</a>
     </div>
   </div>
 </section>`;
@@ -756,7 +756,7 @@ function listPage({ slug, title, h1, description, intro, outro, columns, rows, o
   return page({
     title,
     description,
-    path: `/lists/${slug}.html`,
+    path: `/lists/${slug}`,
     rail: true,
     css: ['/css/games.css', '/css/game.css'],
     body,
@@ -777,11 +777,11 @@ export function listPages(countries) {
         h1: 'Countries and their capitals',
         description: `The complete list of all ${countries.length} countries and their capital cities, with continent and flag.`,
         intro: `<p>All ${countries.length} sovereign countries with their capital cities, sorted alphabetically. A handful are worth knowing about before you are quizzed on them: Bolivia's constitutional capital is Sucre rather than La Paz, South Africa's seat of government is Pretoria, and Sri Lanka's official capital is Sri Jayawardenepura Kotte, not Colombo.</p>`,
-        outro: `<h2>Learning them</h2><p>Capitals are the hardest of the basic geography facts because there is no visual hook — nothing about "Bishkek" points to Kyrgyzstan. What works is repeated short sessions with immediate correction, which is exactly what the <a href="/game/capital-quiz.html">capital quiz</a> does.</p>`,
+        outro: `<h2>Learning them</h2><p>Capitals are the hardest of the basic geography facts because there is no visual hook — nothing about "Bishkek" points to Kyrgyzstan. What works is repeated short sessions with immediate correction, which is exactly what the <a href="/game/capital-quiz">capital quiz</a> does.</p>`,
         columns: ['Flag', 'Country', 'Capital', 'Continent'],
         optionalColumn: 'Continent',
         rows: byName.map(
-          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td class="col-optional">${esc(c.continent)}</td></tr>`
+          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td class="col-optional">${esc(c.continent)}</td></tr>`
         )
       })
     },
@@ -793,11 +793,11 @@ export function listPages(countries) {
         h1: 'World flags',
         description: `Every one of the ${countries.length} country flags with the country, capital and continent it belongs to.`,
         intro: `<p>Every national flag on the site, with the country it belongs to. Flags are the fastest geography facts to learn because they are visual — most people can recognise a flag long before they can recall the capital.</p>`,
-        outro: `<h2>The ones that catch people out</h2><p>Chad and Romania are near-identical. Monaco and Indonesia differ only in proportions. Ireland and Ivory Coast are mirror images of each other. Australia and New Zealand both carry the Union Jack and the Southern Cross, differing in the number and colour of the stars. Those pairs are exactly the distractors the <a href="/game/flag-quiz.html">flag quiz</a> serves up at the harder levels.</p>`,
+        outro: `<h2>The ones that catch people out</h2><p>Chad and Romania are near-identical. Monaco and Indonesia differ only in proportions. Ireland and Ivory Coast are mirror images of each other. Australia and New Zealand both carry the Union Jack and the Southern Cross, differing in the number and colour of the stars. Those pairs are exactly the distractors the <a href="/game/flag-quiz">flag quiz</a> serves up at the harder levels.</p>`,
         columns: ['Flag', 'Country', 'Capital', 'Continent'],
         optionalColumn: 'Continent',
         rows: byName.map(
-          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td class="col-optional">${esc(c.continent)}</td></tr>`
+          (c) => `<tr><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}">${esc(c.name)}</a></td><td>${esc(c.capital)}</td><td class="col-optional">${esc(c.continent)}</td></tr>`
         )
       })
     },
@@ -810,10 +810,10 @@ export function listPages(countries) {
         description:
           'The largest countries in the world ranked by land area, from Russia down, with population and capital for each.',
         intro: `<p>Countries ranked by total area. Russia is larger than the next two combined and covers about an eighth of the world's inhabited land — it alone spans eleven time zones.</p>`,
-        outro: `<h2>Big is not the same as populous</h2><p>Canada is the second largest country on Earth and has fewer people than Poland. Bangladesh is smaller than Nepal and has more than five times its population. If you learn area rankings and population rankings as one list, you will get both wrong; the <a href="/game/country-quiz.html">country quiz</a> keeps them separate on purpose.</p>`,
+        outro: `<h2>Big is not the same as populous</h2><p>Canada is the second largest country on Earth and has fewer people than Poland. Bangladesh is smaller than Nepal and has more than five times its population. If you learn area rankings and population rankings as one list, you will get both wrong; the <a href="/game/country-quiz">country quiz</a> keeps them separate on purpose.</p>`,
         columns: ['#', 'Flag', 'Country', 'Area (km²)', 'Population', 'Continent'],
         rows: byArea.map(
-          (c, i) => `<tr><td>${i + 1}</td><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${fmt(c.area)}</td><td>${fmt(c.population)}</td><td>${esc(c.continent)}</td></tr>`
+          (c, i) => `<tr><td>${i + 1}</td><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}">${esc(c.name)}</a></td><td>${fmt(c.area)}</td><td>${fmt(c.population)}</td><td>${esc(c.continent)}</td></tr>`
         )
       })
     },
@@ -826,12 +826,12 @@ export function listPages(countries) {
         description:
           'The smallest countries in the world ranked by area, starting with Vatican City, with population and capital for each.',
         intro: `<p>The same ranking read from the other end. Vatican City covers less than half a square kilometre — you can walk across it in ten minutes — and Monaco, the second smallest, is about the size of a large city park.</p>`,
-        outro: `<h2>Where the expert rounds come from</h2><p>Microstates and small island nations are where most people's geography knowledge runs out: Nauru, Tuvalu, Palau, San Marino, Liechtenstein. They are exactly what the <strong>Expert</strong> difficulty draws on across the games. Start with the <a href="/game/flag-quiz.html?difficulty=expert">expert flag quiz</a> if you want to find your limit quickly.</p>`,
+        outro: `<h2>Where the expert rounds come from</h2><p>Microstates and small island nations are where most people's geography knowledge runs out: Nauru, Tuvalu, Palau, San Marino, Liechtenstein. They are exactly what the <strong>Expert</strong> difficulty draws on across the games. Start with the <a href="/game/flag-quiz?difficulty=expert">expert flag quiz</a> if you want to find your limit quickly.</p>`,
         columns: ['#', 'Flag', 'Country', 'Area (km²)', 'Population', 'Continent'],
         rows: [...byArea]
           .reverse()
           .map(
-            (c, i) => `<tr><td>${i + 1}</td><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}.html">${esc(c.name)}</a></td><td>${fmt(c.area)}</td><td>${fmt(c.population)}</td><td>${esc(c.continent)}</td></tr>`
+            (c, i) => `<tr><td>${i + 1}</td><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}">${esc(c.name)}</a></td><td>${fmt(c.area)}</td><td>${fmt(c.population)}</td><td>${esc(c.continent)}</td></tr>`
           )
       })
     }
@@ -862,7 +862,7 @@ function simplePage({ slug, title, description, h1, content }) {
 
 export function aboutPage(countries) {
   return simplePage({
-    slug: 'about.html',
+    slug: 'about',
     title: `About — ${SITE.name}`,
     description: `What ${SITE.name} is, where the data comes from and how the games are scored.`,
     h1: `About ${SITE.name}`,
@@ -880,7 +880,7 @@ export function aboutPage(countries) {
     <p>Geography is not always tidy. Some capitals are disputed or split across cities, some countries have several official languages, and continent boundaries depend on which model you were taught. Where a judgement call was needed we picked the most widely used convention and applied it consistently, so the quizzes are at least internally coherent.</p>
 
     <h2>Found a mistake?</h2>
-    <p>Corrections are welcome — see the <a href="/contact.html">contact page</a>. Data errors get fixed quickly because a quiz with wrong answers is worse than no quiz.</p>
+    <p>Corrections are welcome — see the <a href="/contact">contact page</a>. Data errors get fixed quickly because a quiz with wrong answers is worse than no quiz.</p>
 
     <h2>How scoring works</h2>
     <ul>
@@ -901,7 +901,7 @@ export function aboutPage(countries) {
 
 export function contactPage() {
   return simplePage({
-    slug: 'contact.html',
+    slug: 'contact',
     title: `Contact — ${SITE.name}`,
     description: `Get in touch with ${SITE.name} about data corrections, feedback or advertising.`,
     h1: 'Contact',
@@ -918,7 +918,7 @@ export function contactPage() {
     <p>Interactive map quizzes, timed modes and achievements are the most requested additions and are on the list. If there is something else you want to see, say so.</p>
 
     <h2>Advertising</h2>
-    <p>Advertising on the site is handled through Google AdSense. See the <a href="/privacy-policy.html">privacy policy</a> for how advertising cookies are used.</p>
+    <p>Advertising on the site is handled through Google AdSense. See the <a href="/privacy-policy">privacy policy</a> for how advertising cookies are used.</p>
 
     <h2>Response time</h2>
     <p>This is a small site run by a small team, so replies usually take a few days.</p>`
@@ -927,7 +927,7 @@ export function contactPage() {
 
 export function privacyPage() {
   return simplePage({
-    slug: 'privacy-policy.html',
+    slug: 'privacy-policy',
     title: `Privacy Policy — ${SITE.name}`,
     description: `How ${SITE.name} handles local storage, cookies, advertising and analytics.`,
     h1: 'Privacy policy',
@@ -973,7 +973,7 @@ export function privacyPage() {
 
     <h2>8. Your rights</h2>
     <p>Because we hold no personal data about you, there is generally nothing for us to export or delete on request. For data held by advertising partners, use the opt-out links in section 4, which are controlled by those partners rather than by us.</p>
-    <p>Visitors in the European Economic Area, the United Kingdom, Switzerland and California have specific rights under the GDPR, UK GDPR and CCPA respectively. Requests can be made through the <a href="/contact.html">contact page</a>.</p>
+    <p>Visitors in the European Economic Area, the United Kingdom, Switzerland and California have specific rights under the GDPR, UK GDPR and CCPA respectively. Requests can be made through the <a href="/contact">contact page</a>.</p>
 
     <h2>9. Data transfers and retention</h2>
     <p>We retain no visitor data, so there is nothing to transfer or to age out. Third parties named above operate their own retention schedules, documented in their own policies.</p>
@@ -982,13 +982,13 @@ export function privacyPage() {
     <p>If this policy changes materially, the date at the top of the page will be updated. Continued use of the site after a change means you accept the revised policy.</p>
 
     <h2>11. Contact</h2>
-    <p>Questions about privacy can be sent through the <a href="/contact.html">contact page</a>.</p>`
+    <p>Questions about privacy can be sent through the <a href="/contact">contact page</a>.</p>`
   });
 }
 
 export function termsPage() {
   return simplePage({
-    slug: 'terms.html',
+    slug: 'terms',
     title: `Terms of Use — ${SITE.name}`,
     description: `The terms under which ${SITE.name} is provided.`,
     h1: 'Terms of use',
@@ -1029,7 +1029,7 @@ export function termsPage() {
     <p>These terms may be updated. The date above shows the most recent revision.</p>
 
     <h2>10. Contact</h2>
-    <p>Questions about these terms can be sent through the <a href="/contact.html">contact page</a>.</p>`
+    <p>Questions about these terms can be sent through the <a href="/contact">contact page</a>.</p>`
   });
 }
 
@@ -1037,7 +1037,7 @@ export function notFoundPage() {
   return page({
     title: `Page not found — ${SITE.name}`,
     description: 'That page does not exist. Pick a geography game instead.',
-    path: '/404.html',
+    path: '/404',
     css: ['/css/games.css'],
     body: `<section class="section wrap" style="text-align:center">
   <h1>🧭 Lost?</h1>
@@ -1072,7 +1072,7 @@ export function guidesIndex() {
 
   <div class="card-grid" style="margin-top:32px">
     ${ARTICLES.map(
-      (a) => `<a class="game-card" href="/guides/${a.slug}.html" data-accent="blue">
+      (a) => `<a class="game-card" href="/guides/${a.slug}" data-accent="blue">
       <h3>${esc(a.title)}</h3>
       <p>${esc(a.summary)}</p>
       <span class="play">Read — ${readingTime(a.body)} min</span>
@@ -1085,7 +1085,7 @@ export function guidesIndex() {
   <div class="article">
     <h2>Why these exist</h2>
     <p>The games on this site test recall. These guides cover the things a quiz cannot: the order to learn regions in, why so many flags resemble each other, what a map projection is choosing to distort, and which widely held geographic beliefs are simply wrong.</p>
-    <p>If you are starting from scratch, <a href="/guides/how-to-memorise-every-country.html">how to memorise all 195 countries</a> is the one to read first.</p>
+    <p>If you are starting from scratch, <a href="/guides/how-to-memorise-every-country">how to memorise all 195 countries</a> is the one to read first.</p>
   </div>
 </section>`;
 
@@ -1104,7 +1104,7 @@ export function guidePage(article) {
   const trail = [
     { label: 'Home', href: '/' },
     { label: 'Guides', href: '/guides/' },
-    { label: article.title, href: `/guides/${article.slug}.html` }
+    { label: article.title, href: `/guides/${article.slug}` }
   ];
 
   const others = ARTICLES.filter((a) => a.slug !== article.slug).slice(0, 3);
@@ -1126,7 +1126,7 @@ export function guidePage(article) {
   <div class="related">
     <h2>More guides</h2>
     <div class="related-links">
-      ${others.map((a) => `<a href="/guides/${a.slug}.html">${esc(a.title)}</a>`).join('\n      ')}
+      ${others.map((a) => `<a href="/guides/${a.slug}">${esc(a.title)}</a>`).join('\n      ')}
     </div>
   </div>
 </article>`;
@@ -1134,7 +1134,7 @@ export function guidePage(article) {
   return page({
     title: `${article.metaTitle} | ${SITE.name}`,
     description: article.description,
-    path: `/guides/${article.slug}.html`,
+    path: `/guides/${article.slug}`,
     rail: true,
     css: ['/css/games.css', '/css/game.css'],
     body,
@@ -1144,7 +1144,7 @@ export function guidePage(article) {
         '@type': 'Article',
         headline: article.title,
         description: article.description,
-        url: new URL(`/guides/${article.slug}.html`, SITE.url).href,
+        url: new URL(`/guides/${article.slug}`, SITE.url).href,
         author: { '@type': 'Organization', name: SITE.name },
         publisher: { '@type': 'Organization', name: SITE.name },
         inLanguage: SITE.locale
@@ -1165,7 +1165,7 @@ export function practicePage() {
   const trail = [
     { label: 'Home', href: '/' },
     { label: 'Games', href: '/games/' },
-    { label: 'Review mistakes', href: '/practice.html' }
+    { label: 'Review mistakes', href: '/practice' }
   ];
 
   const body = `${breadcrumbs(trail)}
@@ -1209,7 +1209,7 @@ export function practicePage() {
     <p>Reviews are rebuilt from the original game, not stored as snapshots, so a flag you missed on Expert can reappear with different wrong answers beside it. The point is to re-test the fact rather than to reproduce the round it came from.</p>
 
     <h3>It stays on your device</h3>
-    <p>The review list lives in your browser's local storage alongside your scores and streak. Nothing is uploaded, and clearing your browser data clears the list. See the <a href="/privacy-policy.html">privacy policy</a> for what else is stored locally.</p>
+    <p>The review list lives in your browser's local storage alongside your scores and streak. Nothing is uploaded, and clearing your browser data clears the list. See the <a href="/privacy-policy">privacy policy</a> for what else is stored locally.</p>
   </div>
 </section>`;
 
@@ -1217,7 +1217,7 @@ export function practicePage() {
     title: `Review Your Mistakes — Practice What You Got Wrong | ${SITE.name}`,
     description:
       'Replay the geography questions you answered wrong. Every miss across all games is remembered and repeated until you get it right twice.',
-    path: '/practice.html',
+    path: '/practice',
     css: ['/css/games.css', '/css/game.css'],
     body,
     schema: breadcrumbSchema(trail)

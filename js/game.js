@@ -513,7 +513,7 @@ async function renderRelated(root, currentId) {
   const others = list.filter((g) => g.id !== currentId).sort(() => Math.random() - 0.5).slice(0, 3);
   box.innerHTML = others
     .map(
-      (g) => `<a href="${url(`game/${g.slug}.html`)}">
+      (g) => `<a href="${url(`game/${g.slug}`)}">
         <span aria-hidden="true">${g.icon}</span> ${g.name}
       </a>`
     )
@@ -618,7 +618,7 @@ export async function initGamePage() {
   if (another && !practice) {
     const all = await games();
     const pick = all.filter((g) => g.id !== type)[Math.floor(Math.random() * (all.length - 1))];
-    if (pick) another.href = `${url(`game/${pick.slug}.html`)}?difficulty=${selected}`;
+    if (pick) another.href = `${url(`game/${pick.slug}`)}?difficulty=${selected}`;
   }
 
   renderRelated(root, type);

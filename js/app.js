@@ -23,7 +23,7 @@ import {
 /* --- Game cards ---------------------------------------------------------- */
 
 function gameCard(game) {
-  return `<a class="game-card" href="${url(`game/${game.slug}.html`)}" data-accent="${game.accent}">
+  return `<a class="game-card" href="${url(`game/${game.slug}`)}" data-accent="${game.accent}">
       <span class="icon" aria-hidden="true">${game.icon}</span>
       <h3>${game.name}</h3>
       <p>${game.tagline}</p>
@@ -57,14 +57,14 @@ async function wireQuickPlay() {
     // The visitor's most-played game if there is one, otherwise the flag quiz.
     const favourite = favoriteGame();
     const target = list.find((g) => g.id === favourite) || list.find((g) => g.id === 'flags') || list[0];
-    playNow.href = `${url(`game/${target.slug}.html`)}?difficulty=medium&autostart=1`;
+    playNow.href = `${url(`game/${target.slug}`)}?difficulty=medium&autostart=1`;
   }
 
   if (random) {
     random.addEventListener('click', (event) => {
       event.preventDefault();
       const pick = list[Math.floor(Math.random() * list.length)];
-      window.location.href = `${url(`game/${pick.slug}.html`)}?difficulty=medium&autostart=1`;
+      window.location.href = `${url(`game/${pick.slug}`)}?difficulty=medium&autostart=1`;
     });
   }
 }
@@ -81,7 +81,7 @@ async function renderDaily() {
   const dateLabel = box.querySelector('[data-daily-date]');
   const state = box.querySelector('[data-daily-state]');
 
-  if (link) link.href = `${url(`game/${mixed.slug}.html`)}?daily=1`;
+  if (link) link.href = `${url(`game/${mixed.slug}`)}?daily=1`;
 
   if (dateLabel) {
     dateLabel.textContent = new Date().toLocaleDateString(undefined, {

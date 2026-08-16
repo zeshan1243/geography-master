@@ -688,7 +688,7 @@ function checkLinks() {
     for (const match of html.matchAll(/(?:href|src)="(\/[^"#?]*)/g)) {
       const target = match[1];
       linkCount += 1;
-      const candidates = [join(OUT, target), join(OUT, target, 'index.html')];
+      const candidates = [join(OUT, target), join(OUT, `${target}.html`), join(OUT, target, 'index.html')];
       if (!candidates.some((c) => existsSync(c))) {
         if (!missing.has(target)) missing.set(target, relative(ROOT, file));
       }
