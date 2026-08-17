@@ -96,6 +96,11 @@ export async function mapCoverage() {
   return fetchJSON('map-coverage');
 }
 
+/** Curated top-spoken-language lists, one entry per continent. */
+export async function topLanguages() {
+  return fetchJSON('top-languages');
+}
+
 export function formatNumber(n) {
   return new Intl.NumberFormat('en-US').format(n);
 }

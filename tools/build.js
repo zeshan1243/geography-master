@@ -149,6 +149,7 @@ function build() {
   const continents = readData('continents');
   const games = readData('games');
   const details = readDetails();
+  const topLanguageData = readData('top-languages');
 
   // Map geometry is measured once here so the browser never has to.
   const coverage = mapCoverage(countries);
@@ -210,7 +211,43 @@ function build() {
       count: countries.filter((c) => lettersOnlyLength(c.name) === length).length
     }));
 
+  // Kept in sync by hand with js/quiz.js's LANDLOCKED_CODES — the click-based
+  // landlocked games only need the per-continent count at build time, not
+  // the full set, so it is not worth importing the browser module here.
+  const LANDLOCKED_CODES = new Set([
+    'AT', 'CH', 'HU', 'CZ', 'SK', 'BY', 'MD', 'RS', 'MK', 'LU', 'LI', 'AD', 'SM', 'VA', // Europe
+    'ML', 'NE', 'TD', 'BF', 'CF', 'SS', 'ET', 'UG', 'RW', 'BI', 'ZM', 'ZW', 'MW', 'BW', 'LS', 'SZ', // Africa
+    'KZ', 'UZ', 'TM', 'KG', 'TJ', 'AF', 'MN', 'NP', 'BT', 'LA', 'AM', 'AZ', // Asia
+    'BO', 'PY' // South America (no quiz of its own, but still landlocked)
+  ]);
+
   for (const game of games) {
+    if (game.mode === 'hub') {
+      const subGames = games.filter((g) => g.hubOf === game.id);
+      write(`game/${game.slug}.html`, pages.hubPage(game, subGames));
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
+    if (game.mode === 'landlocked') {
+      const total = countries.filter((c) => c.continent === game.continent && LANDLOCKED_CODES.has(c.code)).length;
+      write(`game/${game.slug}.html`, pages.landlockedGamePage(game, games, { continent: game.continent, total }));
+      add(`/game/${game.slug}`, '0.7', 'monthly');
+      continue;
+    }
+
+    if (game.mode === 'topLanguages') {
+      const entry = topLanguageData.find((c) => c.continent === game.continent);
+      const total = entry.languages.length;
+      const seconds = timeLimitFor(total);
+      write(
+        `game/${game.slug}.html`,
+        pages.topLanguagesGamePage(game, games, { continent: game.continent, total, seconds, convention: entry.convention })
+      );
+      add(`/game/${game.slug}`, '0.7', 'monthly');
+      continue;
+    }
+
     if (game.mode === 'recall' && game.variants === 'letters') {
       const startLetters = letterStats('start');
       const endLetters = letterStats('end');

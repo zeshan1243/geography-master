@@ -1,0 +1,90 @@
+[
+  {
+    "continent": "Europe",
+    "convention": "Ranked by native speakers living in Europe. Russia counts as Europe and Turkey as Asia, matching how the rest of this site draws the line.",
+    "languages": [
+      { "name": "Russian", "speakers": "~106 million", "region": "Russia, Belarus, Ukraine, the Baltics" },
+      { "name": "German", "speakers": "~85 million", "region": "Germany, Austria, Switzerland" },
+      { "name": "French", "speakers": "~67 million", "region": "France, Belgium, Switzerland" },
+      { "name": "English", "speakers": "~67 million", "region": "United Kingdom, Ireland" },
+      { "name": "Italian", "speakers": "~60 million", "region": "Italy, Switzerland, San Marino" },
+      { "name": "Spanish", "speakers": "~40 million", "region": "Spain" },
+      { "name": "Polish", "speakers": "~39 million", "region": "Poland" },
+      { "name": "Ukrainian", "speakers": "~33 million", "region": "Ukraine" },
+      { "name": "Romanian", "speakers": "~24 million", "region": "Romania, Moldova" },
+      { "name": "Dutch", "speakers": "~23 million", "region": "Netherlands, Belgium", "aliases": ["Flemish"] }
+    ]
+  },
+  {
+    "continent": "Asia",
+    "convention": "Ranked by native speakers living in Asia. Turkey counts as Asia, matching how the rest of this site draws the line.",
+    "languages": [
+      { "name": "Mandarin Chinese", "speakers": "~980 million", "region": "China, Taiwan, Singapore", "aliases": ["Mandarin", "Chinese"] },
+      { "name": "Hindi", "speakers": "~345 million", "region": "India" },
+      { "name": "Bengali", "speakers": "~232 million", "region": "Bangladesh, eastern India", "aliases": ["Bangla"] },
+      { "name": "Arabic", "speakers": "~170 million", "region": "Saudi Arabia, Iraq, Syria, Yemen, the Gulf states" },
+      { "name": "Punjabi", "speakers": "~125 million", "region": "Pakistan, northern India" },
+      { "name": "Japanese", "speakers": "~124 million", "region": "Japan" },
+      { "name": "Vietnamese", "speakers": "~86 million", "region": "Vietnam" },
+      { "name": "Cantonese", "speakers": "~85 million", "region": "Guangdong, Hong Kong, Macau", "aliases": ["Yue Chinese"] },
+      { "name": "Turkish", "speakers": "~84 million", "region": "Turkey, Cyprus" },
+      { "name": "Marathi", "speakers": "~83 million", "region": "Western India" }
+    ]
+  },
+  {
+    "continent": "Africa",
+    "convention": "Ranked by native speakers.",
+    "languages": [
+      { "name": "Arabic", "speakers": "~170 million", "region": "Egypt, Sudan, Algeria, Morocco, Tunisia, Libya" },
+      { "name": "Hausa", "speakers": "~60 million", "region": "Nigeria, Niger" },
+      { "name": "Yoruba", "speakers": "~50 million", "region": "Nigeria, Benin, Togo" },
+      { "name": "Oromo", "speakers": "~46 million", "region": "Ethiopia, Kenya" },
+      { "name": "Fula", "speakers": "~37 million", "region": "The Sahel: Nigeria, Guinea, Senegal, Mali", "aliases": ["Fulani", "Fulfulde"] },
+      { "name": "Amharic", "speakers": "~35 million", "region": "Ethiopia" },
+      { "name": "Igbo", "speakers": "~30 million", "region": "Nigeria" },
+      { "name": "Somali", "speakers": "~18 million", "region": "Somalia, Ethiopia, Kenya, Djibouti" },
+      { "name": "Swahili", "speakers": "~18 million native (far more as a second language)", "region": "Tanzania, Kenya, coastal DR Congo" },
+      { "name": "Portuguese", "speakers": "~16 million", "region": "Angola, Mozambique" }
+    ]
+  },
+  {
+    "continent": "South America",
+    "convention": "Ranked by native speakers.",
+    "languages": [
+      { "name": "Portuguese", "speakers": "~216 million", "region": "Brazil" },
+      { "name": "Spanish", "speakers": "~214 million", "region": "Argentina, Colombia, Peru, Venezuela, Chile and most of the continent" },
+      { "name": "Quechua", "speakers": "~8 million", "region": "Peru, Bolivia, Ecuador" },
+      { "name": "English", "speakers": "~7 million", "region": "Guyana, Falkland Islands" },
+      { "name": "Guarani", "speakers": "~6 million", "region": "Paraguay, Bolivia, Argentina" },
+      { "name": "Aymara", "speakers": "~2 million", "region": "Bolivia, Peru, Chile" },
+      { "name": "German", "speakers": "~1 million", "region": "Argentina, Brazil, Paraguay, Chile" },
+      { "name": "Italian", "speakers": "~1 million", "region": "Argentina, Brazil, Uruguay" },
+      { "name": "Dutch", "speakers": "~600 thousand", "region": "Suriname" },
+      { "name": "French", "speakers": "~300 thousand", "region": "French Guiana" }
+    ]
+  },
+  {
+    "continent": "North America",
+    "convention": "Ranked by native speakers. Below the top four, sources disagree even on which specific Indigenous languages rank highest — this list stops at six rather than forcing a falsely confident top ten.",
+    "languages": [
+      { "name": "English", "speakers": "~290 million", "region": "United States, Canada, the Anglophone Caribbean" },
+      { "name": "Spanish", "speakers": "~205 million", "region": "Mexico, Central America, the US, the Spanish Caribbean" },
+      { "name": "Haitian Creole", "speakers": "~12 million", "region": "Haiti", "aliases": ["Kreyol", "Kreyol Ayisyen"] },
+      { "name": "French", "speakers": "~11 million", "region": "Canada (Quebec)" },
+      { "name": "Nahuatl", "speakers": "~2 million", "region": "Central and southern Mexico" },
+      { "name": "K'iche'", "speakers": "~1 million", "region": "Guatemala highlands", "aliases": ["Kiche", "Quiche"] }
+    ]
+  },
+  {
+    "continent": "Oceania",
+    "convention": "Ranked by native speakers. Papua New Guinea alone has around 840 languages, almost all with only a few thousand speakers, so a real top ten is not meaningful here — this list stops at six.",
+    "languages": [
+      { "name": "English", "speakers": "~24 million", "region": "Australia, New Zealand" },
+      { "name": "Tok Pisin", "speakers": "~130 thousand native (millions more as a second language)", "region": "Papua New Guinea", "aliases": ["Pidgin"] },
+      { "name": "Fijian", "speakers": "~350 thousand", "region": "Fiji" },
+      { "name": "Samoan", "speakers": "~400 thousand", "region": "Samoa, American Samoa" },
+      { "name": "Tongan", "speakers": "~180 thousand", "region": "Tonga" },
+      { "name": "Maori", "speakers": "~60 thousand fluent", "region": "New Zealand", "aliases": ["Māori", "Te Reo Maori"] }
+    ]
+  }
+]

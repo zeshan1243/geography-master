@@ -17,7 +17,7 @@ import {
   dailyDoneToday,
   accuracy,
   favoriteGame,
-  missedCount
+  reviewProgress
 } from './storage.js';
 
 /* --- Game cards ---------------------------------------------------------- */
@@ -171,11 +171,14 @@ function renderStats() {
 function renderReviewCallout() {
   const box = document.querySelector('[data-review-callout]');
   if (!box) return;
-  const due = missedCount();
+  const { due, almostDone } = reviewProgress();
   box.hidden = due === 0;
   const label = box.querySelector('[data-review-callout-count]');
   if (label) {
-    label.textContent = `Review ${due} question${due === 1 ? '' : 's'} you got wrong`;
+    label.textContent =
+      almostDone > 0
+        ? `Review ${due} question${due === 1 ? '' : 's'} — ${almostDone} need${almostDone === 1 ? 's' : ''} just one more correct answer`
+        : `Review ${due} question${due === 1 ? '' : 's'} you got wrong`;
   }
 }
 
@@ -233,6 +236,14 @@ function boot() {
 
   if (document.querySelector('[data-recall-game]')) {
     import('./recall.js').then((mod) => mod.initRecallGame());
+  }
+
+  if (document.querySelector('[data-landlocked-game]')) {
+    import('./landlocked.js').then((mod) => mod.initLandlockedGame());
+  }
+
+  if (document.querySelector('[data-top-languages-game]')) {
+    import('./topLanguages.js').then((mod) => mod.initTopLanguagesGame());
   }
 
   initAds();

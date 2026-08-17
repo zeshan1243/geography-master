@@ -28,6 +28,7 @@ import {
   recordHit,
   missedItems,
   missedCount,
+  reviewProgress,
   clearMisses
 } from './storage.js';
 import { games, url, gameUrl, mapCoverage } from './data.js';
@@ -542,14 +543,15 @@ export async function initGamePage() {
    * how much is waiting, and it refuses to start with an empty list.
    */
   const paintPractice = () => {
-    const due = missedCount();
+    const { due, almostDone } = reviewProgress();
     const countEl = root.querySelector('[data-review-count]');
     const emptyEl = root.querySelector('[data-review-empty]');
     const startBtn = root.querySelector('[data-start]');
 
     if (countEl) {
       countEl.textContent = due
-        ? `${due} question${due === 1 ? '' : 's'} waiting to be reviewed`
+        ? `${due} question${due === 1 ? '' : 's'} waiting to be reviewed` +
+          (almostDone ? ` — ${almostDone} need${almostDone === 1 ? 's' : ''} just one more correct answer` : '')
         : 'Nothing to review yet';
     }
     if (emptyEl) emptyEl.hidden = due > 0;

@@ -95,6 +95,8 @@
 
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { justify-content: center; text-align: center; }
+
+  .landlocked-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* --- Small phones ------------------------------------------------------- */

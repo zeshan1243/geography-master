@@ -92,6 +92,88 @@
     ]
   },
   {
+    "id": "landlockedCountries",
+    "slug": "landlocked-countries",
+    "name": "Landlocked Countries",
+    "icon": "🧭",
+    "accent": "green",
+    "category": "Country Games",
+    "tagline": "Click every landlocked country, continent by continent",
+    "description": "Every country in a continent, in one list. Click only the landlocked ones — sudden death, one wrong click ends the run.",
+    "metaTitle": "Landlocked Countries Quiz — Europe, Africa & Asia",
+    "metaDescription": "Test what you know about the world's landlocked countries. Pick Europe, Africa or Asia, then click every landlocked one before a wrong click ends the run.",
+    "popular": false,
+    "mode": "hub",
+    "guide": [
+      "Forty-four of the world's countries have no coastline, and all but two of them are in Europe, Africa or Asia. Each continent below is its own quiz, because the countries involved — and how well most people know them — are different enough that lumping them together would just mean more coastal-Europe questions and fewer real ones about Central Asia.",
+      "The exceptions are South America, which has only two landlocked countries, and North America and Oceania, which have none at all — worth knowing, but not enough material for a quiz of their own.",
+      "Every country in the continent is on screen at once. Click the ones you think are landlocked; a correct click marks it and keeps you going, a wrong click ends the round immediately. Your score is how many you found before the mistake — or all of them, if you clear the whole list."
+    ]
+  },
+  {
+    "id": "landlockedEurope",
+    "slug": "landlocked-europe-quiz",
+    "name": "Landlocked Countries: Europe",
+    "icon": "🧭",
+    "accent": "green",
+    "category": "Country Games",
+    "hubOf": "landlockedCountries",
+    "mode": "landlocked",
+    "continent": "Europe",
+    "tagline": "Click every landlocked country — one wrong click ends it",
+    "description": "Every country in Europe, in one list. Click only the landlocked ones — sudden death, one wrong click ends the run.",
+    "metaTitle": "Landlocked Countries in Europe Quiz — Sudden Death",
+    "metaDescription": "Can you click all 14 of Europe's landlocked countries without a single mistake? Free sudden-death geography quiz — one wrong click ends the run.",
+    "popular": false,
+    "guide": [
+      "Fourteen of Europe's countries have no coastline — more than any other continent — and they cluster in two bands: the Alps (Switzerland, Austria, Liechtenstein), the old Soviet and Yugoslav interior (Hungary, Czechia, Slovakia, Belarus, Moldova, Serbia, North Macedonia), plus three of the world's smallest states, Luxembourg, Andorra, San Marino and Vatican City.",
+      "Liechtenstein is one of only two countries on Earth that are doubly landlocked — surrounded entirely by other landlocked countries, Switzerland and Austria — so reaching the sea from Vaduz means crossing at least two borders.",
+      "Being landlocked here is no handicap: Switzerland, Austria and Luxembourg are among the wealthiest countries in the world, proof that the real cost is about market access rather than coastline as such."
+    ]
+  },
+  {
+    "id": "landlockedAfrica",
+    "slug": "landlocked-africa-quiz",
+    "name": "Landlocked Countries: Africa",
+    "icon": "🧭",
+    "accent": "amber",
+    "category": "Country Games",
+    "hubOf": "landlockedCountries",
+    "mode": "landlocked",
+    "continent": "Africa",
+    "tagline": "Click every landlocked country — one wrong click ends it",
+    "description": "Every country in Africa, in one list. Click only the landlocked ones — sudden death, one wrong click ends the run.",
+    "metaTitle": "Landlocked Countries in Africa Quiz — Sudden Death",
+    "metaDescription": "Can you click all 16 of Africa's landlocked countries without a single mistake? Free sudden-death geography quiz — one wrong click ends the run.",
+    "popular": false,
+    "guide": [
+      "Africa has sixteen landlocked countries, the largest concentration on Earth, running from the Sahel — Mali, Niger, Chad, Burkina Faso, the Central African Republic — down through South Sudan and Ethiopia to a cluster in Central and Southern Africa: Uganda, Rwanda, Burundi, Zambia, Zimbabwe, Malawi, Botswana, Lesotho and Eswatini.",
+      "Ethiopia is the largest population anywhere in the world without a coastline. It lost its own coast when Eritrea became independent in 1993, and its trade has depended on the port of Djibouti ever since.",
+      "Lesotho is entirely enclosed by South Africa — one of only three such enclaves in the world, alongside Vatican City and San Marino inside Italy."
+    ]
+  },
+  {
+    "id": "landlockedAsia",
+    "slug": "landlocked-asia-quiz",
+    "name": "Landlocked Countries: Asia",
+    "icon": "🧭",
+    "accent": "blue",
+    "category": "Country Games",
+    "hubOf": "landlockedCountries",
+    "mode": "landlocked",
+    "continent": "Asia",
+    "tagline": "Click every landlocked country — one wrong click ends it",
+    "description": "Every country in Asia, in one list. Click only the landlocked ones — sudden death, one wrong click ends the run.",
+    "metaTitle": "Landlocked Countries in Asia Quiz — Sudden Death",
+    "metaDescription": "Can you click all 12 of Asia's landlocked countries without a single mistake? Free sudden-death geography quiz — one wrong click ends the run.",
+    "popular": false,
+    "guide": [
+      "Asia's twelve landlocked countries are mostly former Soviet Central Asia and its neighbours: Kazakhstan, Uzbekistan, Turkmenistan, Kyrgyzstan and Tajikistan, plus Afghanistan, Mongolia, Nepal, Bhutan, Laos, Armenia and Azerbaijan.",
+      "Uzbekistan is the world's other doubly landlocked country — every one of its five neighbours is itself landlocked, so its goods cross at least two borders before reaching open water.",
+      "Whether Kazakhstan and Turkmenistan actually give Uzbekistan a way out depends on whether the Caspian Sea counts as a sea at all — a genuine, decades-old legal argument, since under the usual reading it is an enclosed lake with no outlet to the ocean."
+    ]
+  },
+  {
     "id": "capitalToCountry",
     "slug": "reverse-capital-quiz",
     "name": "Reverse Capital Quiz",
@@ -251,6 +333,151 @@
       "Oceans and seas are the part of the map most quizzes skip entirely, which is odd given that water covers most of the planet. This game covers the five oceans and twenty-five of the major seas.",
       "Each question describes a body of water and asks you to name it. That framing rewards understanding over rote recall — knowing that a sea is almost enclosed, or that it connects two others through a narrow strait, is more useful than memorising a list.",
       "A few are worth knowing before you start: the Caspian is the largest inland body of water on Earth and has no outlet to the ocean, and the Southern Ocean was only formally recognised as distinct in 2000."
+    ]
+  },
+  {
+    "id": "topLanguages",
+    "slug": "top-languages",
+    "name": "Top Spoken Languages",
+    "icon": "🗣️",
+    "accent": "purple",
+    "category": "World Games",
+    "tagline": "Name a continent's most-spoken languages from memory",
+    "description": "Type as many of a continent's top languages by native speakers as you can before time runs out. Pick a continent to start.",
+    "metaTitle": "Top Spoken Languages Quiz — By Continent",
+    "metaDescription": "Can you name the most-spoken languages on each continent? Free typing quiz, ranked by native speakers, for Europe, Asia, Africa and more.",
+    "popular": false,
+    "mode": "hub",
+    "guide": [
+      "Each continent's list is ranked by native speakers, not by where a language is officially recognised or how many people speak it as a second language — that single rule is what makes six very different lists comparable to each other.",
+      "That convention produces some genuinely surprising results. Swahili is understood by well over a hundred million people across East Africa but ranks low here, because almost all of them learned it as a second language rather than a first.",
+      "Some continents give a full top ten; North America and Oceania stop at six, because beyond that point sources disagree even on which languages belong on the list, not just their order — a shorter, honest list beats a longer, made-up one."
+    ]
+  },
+  {
+    "id": "topLanguagesEurope",
+    "slug": "top-languages-europe",
+    "name": "Top Spoken Languages: Europe",
+    "icon": "🗣️",
+    "accent": "green",
+    "category": "World Games",
+    "hubOf": "topLanguages",
+    "mode": "topLanguages",
+    "continent": "Europe",
+    "tagline": "Name Europe's most-spoken languages from memory",
+    "description": "Europe's top 10 languages by native speakers. Type as many as you can before time runs out.",
+    "metaTitle": "Top 10 Spoken Languages in Europe Quiz",
+    "metaDescription": "Can you name the 10 most-spoken languages in Europe by native speakers? Free typing quiz — race the clock before time runs out.",
+    "popular": false,
+    "guide": [
+      "Russian tops this list, which surprises people who forget how much of Russia's population is west of the Urals and therefore counted as Europe on most maps, including this site's. German, French and English follow closely, all in the 65–85 million range.",
+      "Spanish and Italian both sit in the 40–60 million band — Spanish counted here only for Spain itself, since the huge Spanish-speaking population of the Americas is on a different continent.",
+      "Polish, Ukrainian, Romanian and Dutch round out the list. Notably absent: Turkish, spoken by tens of millions, but overwhelmingly in Turkey — which this site, like most conventions, counts as Asia."
+    ]
+  },
+  {
+    "id": "topLanguagesAsia",
+    "slug": "top-languages-asia",
+    "name": "Top Spoken Languages: Asia",
+    "icon": "🗣️",
+    "accent": "amber",
+    "category": "World Games",
+    "hubOf": "topLanguages",
+    "mode": "topLanguages",
+    "continent": "Asia",
+    "tagline": "Name Asia's most-spoken languages from memory",
+    "description": "Asia's top 10 languages by native speakers. Type as many as you can before time runs out.",
+    "metaTitle": "Top 10 Spoken Languages in Asia Quiz",
+    "metaDescription": "Can you name the 10 most-spoken languages in Asia by native speakers? Free typing quiz — race the clock before time runs out.",
+    "popular": false,
+    "guide": [
+      "Mandarin Chinese leads by a wide margin, with close to a billion native speakers — more than the next three languages on this list combined.",
+      "Hindi and Bengali follow, both concentrated in South Asia, ahead of Arabic, Punjabi and Japanese. Cantonese, Turkish and Marathi round out the bottom of the ten, all within a few million of each other.",
+      "The bottom of this list is genuinely close: Telugu, Korean, Tamil and Urdu are all within a few million speakers of the countries that made the cut, so a slightly different source could reorder the last two or three places."
+    ]
+  },
+  {
+    "id": "topLanguagesAfrica",
+    "slug": "top-languages-africa",
+    "name": "Top Spoken Languages: Africa",
+    "icon": "🗣️",
+    "accent": "blue",
+    "category": "World Games",
+    "hubOf": "topLanguages",
+    "mode": "topLanguages",
+    "continent": "Africa",
+    "tagline": "Name Africa's most-spoken languages from memory",
+    "description": "Africa's top 10 languages by native speakers. Type as many as you can before time runs out.",
+    "metaTitle": "Top 10 Spoken Languages in Africa Quiz",
+    "metaDescription": "Can you name the 10 most-spoken languages in Africa by native speakers? Free typing quiz — race the clock before time runs out.",
+    "popular": false,
+    "guide": [
+      "Arabic leads Africa's list too, spread across Egypt, Sudan and the whole of North Africa. Hausa, Yoruba and Igbo follow — all three concentrated in and around Nigeria, the continent's most populous country by a wide margin.",
+      "Swahili is the list's odd entry: as a native language it ranks near the bottom here, but as a second language it is understood by well over a hundred million people across East and Central Africa, arguably the continent's most useful lingua franca.",
+      "Portuguese closes out the list on the strength of Angola alone, where it has become a first language for a fast-growing share of the urban population."
+    ]
+  },
+  {
+    "id": "topLanguagesSouthAmerica",
+    "slug": "top-languages-south-america",
+    "name": "Top Spoken Languages: South America",
+    "icon": "🗣️",
+    "accent": "red",
+    "category": "World Games",
+    "hubOf": "topLanguages",
+    "mode": "topLanguages",
+    "continent": "South America",
+    "tagline": "Name South America's most-spoken languages from memory",
+    "description": "South America's top 10 languages by native speakers. Type as many as you can before time runs out.",
+    "metaTitle": "Top 10 Spoken Languages in South America Quiz",
+    "metaDescription": "Can you name the 10 most-spoken languages in South America by native speakers? Free typing quiz — race the clock before time runs out.",
+    "popular": false,
+    "guide": [
+      "Portuguese and Spanish are almost tied at the top, both around 215 million — Portuguese carried entirely by Brazil, Spanish spread across the other twelve countries.",
+      "Everything after that is a steep drop: Quechua, the largest Indigenous language, has around 8 million speakers, less than 4% of Portuguese's total.",
+      "Guarani is the rare Indigenous language with genuine official status alongside Spanish, in Paraguay, where most of the population speaks it. German, Italian and Dutch survive here as immigrant-community languages in Argentina, Brazil and Suriname."
+    ]
+  },
+  {
+    "id": "topLanguagesNorthAmerica",
+    "slug": "top-languages-north-america",
+    "name": "Top Spoken Languages: North America",
+    "icon": "🗣️",
+    "accent": "purple",
+    "category": "World Games",
+    "hubOf": "topLanguages",
+    "mode": "topLanguages",
+    "continent": "North America",
+    "tagline": "Name North America's most-spoken languages from memory",
+    "description": "North America's top languages by native speakers. Type as many as you can before time runs out.",
+    "metaTitle": "Top Spoken Languages in North America Quiz",
+    "metaDescription": "Can you name North America's most-spoken languages by native speakers? Free typing quiz — race the clock before time runs out.",
+    "popular": false,
+    "guide": [
+      "English and Spanish dominate this list, together accounting for the overwhelming majority of the continent's population, from Canada down through Mexico and Central America.",
+      "Haitian Creole and French are a distant third and fourth, carried by Haiti and Quebec respectively, ahead of Nahuatl and K'iche' — the two largest Indigenous languages, spoken across central Mexico and the Guatemalan highlands.",
+      "This list stops at six rather than ten. Beyond K'iche', a long tail of Mayan and other Indigenous languages are all genuinely spoken by real communities, but sources disagree enough on their relative size that ranking them further would be guesswork dressed up as data."
+    ]
+  },
+  {
+    "id": "topLanguagesOceania",
+    "slug": "top-languages-oceania",
+    "name": "Top Spoken Languages: Oceania",
+    "icon": "🗣️",
+    "accent": "amber",
+    "category": "World Games",
+    "hubOf": "topLanguages",
+    "mode": "topLanguages",
+    "continent": "Oceania",
+    "tagline": "Name Oceania's most-spoken languages from memory",
+    "description": "Oceania's top languages by native speakers. Type as many as you can before time runs out.",
+    "metaTitle": "Top Spoken Languages in Oceania Quiz",
+    "metaDescription": "Can you name Oceania's most-spoken languages by native speakers? Free typing quiz — race the clock before time runs out.",
+    "popular": false,
+    "guide": [
+      "English leads, carried by Australia and New Zealand, ahead of Tok Pisin, Fijian, Samoan, Tongan and Maori.",
+      "Papua New Guinea alone is home to roughly 840 languages — more than any other country on Earth — but almost all of them have only a few thousand speakers, so none individually cracks a continent-wide top list the way a single Nigerian or Indian language can.",
+      "This list stops at six rather than ten for the same reason North America's does: past this point the ranking stops reflecting anything real and starts reflecting which obscure language a particular source happened to measure."
     ]
   },
   {

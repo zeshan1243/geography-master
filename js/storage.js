@@ -215,6 +215,17 @@ export function missedCount(profile = load()) {
   return Object.keys(profile.misses || {}).length;
 }
 
+/**
+ * A miss clears after two correct answers (see recordHit), not one — a lucky
+ * guess right after seeing the answer proves little. `almostDone` is how many
+ * are one correct answer away, so the UI can say so instead of just repeating
+ * the same count after every review pass.
+ */
+export function reviewProgress(profile = load()) {
+  const items = missedItems(profile);
+  return { due: items.length, almostDone: items.filter((item) => (item.strength || 0) >= 1).length };
+}
+
 export function clearMisses() {
   update((p) => {
     p.misses = {};

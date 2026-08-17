@@ -178,7 +178,9 @@ export function gamesIndex(games) {
 
   const sections = categories
     .map((category) => {
-      const inCategory = games.filter((g) => g.category === category);
+      // hubOf games (e.g. the three landlocked-continent quizzes) are reached
+      // through their hub's own card, not listed a second time here.
+      const inCategory = games.filter((g) => g.category === category && !g.hubOf);
       return `<section class="game-category">
     <h2>${esc(category)}</h2>
     <p>${inCategory.length} ${inCategory.length === 1 ? 'game' : 'games'}</p>
@@ -342,7 +344,7 @@ ${playAndResultsScreens({ icon: game.icon, name: game.name })}
 
 <section class="section wrap">
   <div class="article">
-    <h2>About the ${esc(game.name.toLowerCase())}</h2>
+    <h2>About ${esc(game.name)}</h2>
     ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
 
     <h3>Difficulty and scoring</h3>
@@ -652,6 +654,314 @@ export function recallHubPage(game, allGames, { startLetters, endLetters, length
       { label: 'Games', href: '/games/' },
       { label: game.name, href: `/game/${game.slug}/` }
     ])
+  });
+}
+
+/**
+ * A plain landing page for a game whose own category card should stand for
+ * several real quizzes rather than one — "Landlocked Countries" fans out
+ * into Europe/Africa/Asia, each already a complete, ordinary quiz page
+ * (`gamePage`), just no longer listed as its own card in the directory.
+ * Unlike the recall hub, there is no shared engine to parameterise: this is
+ * only a menu, so the page stays flat at `/game/${game.slug}` rather than a
+ * directory.
+ */
+export function hubPage(game, subGames) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const body = `${breadcrumbs(trail)}
+<section class="section wrap">
+  <div class="game-icon" aria-hidden="true" style="text-align:center;font-size:3.5rem;margin-bottom:12px">${game.icon}</div>
+  <h1 style="text-align:center">${esc(game.name)}</h1>
+  <p class="lead" style="text-align:center;max-width:60ch;margin:0 auto 32px">${esc(game.description)}</p>
+
+  <div class="game-grid">
+    ${subGames
+      .map(
+        (g) => `<a class="game-card" href="${gameHref(g)}" data-accent="${g.accent}">
+      <span class="icon" aria-hidden="true">${g.icon}</span>
+      <h3>${esc(g.name.replace(`${game.name}: `, ''))}</h3>
+      <p>${esc(g.tagline)}</p>
+      <span class="play">Play</span>
+    </a>`
+      )
+      .join('\n    ')}
+  </div>
+
+  ${adSlot()}
+
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css'],
+    body,
+    schema: breadcrumbSchema([
+      { label: 'Home', href: '/' },
+      { label: 'Games', href: '/games/' },
+      { label: game.name, href: `/game/${game.slug}` }
+    ])
+  });
+}
+
+/**
+ * A landlocked-countries game: every country in one continent, shown at
+ * once. There is no difficulty picker — this is one mode, sudden death, so
+ * the setup screen skips straight from description to a bare Start button.
+ */
+export function landlockedGamePage(game, allGames, { continent, total }) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: 'Landlocked Countries', href: '/game/landlocked-countries' },
+    { label: continent }
+  ];
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-landlocked-game data-continent="${esc(continent)}" data-game-id="${game.id}">
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">Click only the landlocked ones. One wrong click and the run is over — get all ${total} for a clean sweep.</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden aria-live="polite">
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+      </div>
+
+      <p class="landlocked-warning"><strong>Sudden Death.</strong> Clicking a wrong answer ends the quiz!</p>
+
+      <div class="recall-count" data-count>0 / ${total} found</div>
+
+      <div class="progress-track" role="progressbar" aria-label="Landlocked countries found">
+        <div class="progress-fill" data-progress></div>
+      </div>
+
+      <div class="landlocked-grid" data-grid role="group" aria-label="Countries in ${esc(continent)}"></div>
+    </section>
+
+    <section class="game-screen results" data-screen="results" hidden>
+      <h2 class="results-title"><span data-result-icon>${icon('flag')}</span> <span data-result-title>Run over</span></h2>
+      <div class="results-score" data-result-score>0</div>
+      <div class="results-score-label">Countries found</div>
+      <div class="results-stars" data-result-stars aria-hidden="true"></div>
+      <p class="results-summary" data-result-summary></p>
+      <p class="results-summary muted" data-result-verdict></p>
+      <p class="results-best" data-result-best></p>
+      <p class="results-new-best" data-result-new-best hidden>${icon('trophy')} New personal best!</p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
+        <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
+        <a class="btn btn-ghost" href="/games/">Back to Games</a>
+      </div>
+
+      <div class="review">
+        <h2>Countries you missed</h2>
+        <ul data-result-missed></ul>
+      </div>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>Your score is how many of the ${total} landlocked countries you click before you make a mistake. There is no timer and no difficulty to choose — every country in ${esc(continent)} is on screen from the start, and the round ends the instant you click one with a coastline.</p>
+
+    <h3>More ways to play</h3>
+    <p>
+      <a href="/game/landlocked-countries">${icon('grid')} All continents</a>
+      · ${allGames
+        .filter((g) => g.id !== game.id && !g.hubOf)
+        .slice(0, 3)
+        .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+        .join(' · ')}
+    </p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
+  });
+}
+
+/**
+ * A "Top Spoken Languages" game: type as many of a continent's top
+ * languages by native speakers as you can before time runs out. Same
+ * free-recall shape as recall.js's UI (timer, typed input, live found
+ * chips) but no map — a language does not have one obvious place to
+ * highlight the way a country does.
+ */
+export function topLanguagesGamePage(game, allGames, { continent, total, seconds, convention }) {
+  const clockLabel = formatSeconds(seconds);
+  const minutes = seconds / 60;
+
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: 'Top Spoken Languages', href: '/game/top-languages' },
+    { label: continent }
+  ];
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-top-languages-game data-continent="${esc(continent)}" data-game-id="${game.id}" data-time-limit="${seconds}">
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">Just start typing — a language is added the moment it's recognised, no need to press Enter. ${esc(convention)}</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start — ${clockLabel} on the clock</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden aria-live="polite">
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="recall-timer" data-timer>${clockLabel}</span>
+      </div>
+
+      <div class="recall-count" data-count>0 / ${total} found</div>
+
+      <div class="progress-track" role="progressbar" aria-label="Languages found">
+        <div class="progress-fill" data-progress></div>
+      </div>
+
+      <form class="recall-form" data-form>
+        <label class="sr-only" for="top-languages-input">Type a language name</label>
+        <input id="top-languages-input" data-input type="text" placeholder="Start typing a language…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
+      </form>
+
+      <p class="recall-feedback" data-feedback hidden></p>
+
+      <div class="recall-found" data-found aria-label="Languages found so far"></div>
+
+      <button class="btn btn-ghost btn-block" type="button" data-stop>Stop and see results</button>
+    </section>
+
+    <section class="game-screen results" data-screen="results" hidden>
+      <h2 class="results-title"><span data-result-icon>${icon('flag')}</span> <span data-result-title>Time's up!</span></h2>
+      <div class="results-score" data-result-score>0</div>
+      <div class="results-score-label">Languages found</div>
+      <div class="results-stars" data-result-stars aria-hidden="true"></div>
+      <p class="results-summary" data-result-summary></p>
+      <p class="results-summary muted" data-result-verdict></p>
+      <p class="results-best" data-result-best></p>
+      <p class="results-new-best" data-result-new-best hidden>${icon('trophy')} New personal best!</p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
+        <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
+        <a class="btn btn-ghost" href="/games/">Back to Games</a>
+      </div>
+
+      <div class="review">
+        <h2>The full ranking</h2>
+        <ul data-result-reveal></ul>
+      </div>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>Your score is how many of the ${total} languages you name correctly before the ${minutes} minute${minutes === 1 ? '' : 's'} run${minutes === 1 ? 's' : ''} out. ${esc(convention)} Duplicates are ignored rather than counted twice, and stopping early locks in whatever you have found so far.</p>
+
+    <h3>More ways to play</h3>
+    <p>
+      <a href="/game/top-languages">${icon('grid')} All continents</a>
+      · ${allGames
+        .filter((g) => g.id !== game.id && !g.hubOf)
+        .slice(0, 3)
+        .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+        .join(' · ')}
+    </p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
   });
 }
 

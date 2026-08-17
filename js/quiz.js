@@ -77,6 +77,20 @@ function sample(list, count, rng) {
 }
 
 /**
+ * Like `sample`, but once a pool is too small to fill a round uniquely (South
+ * America has only two landlocked countries), it cycles through fresh
+ * shuffles instead of capping the round at the pool size. Each pass is
+ * reshuffled, and the distractors built from each item still vary, so a
+ * repeated target does not produce an identical question.
+ */
+function sampleWithRepeats(list, count, rng) {
+  if (list.length >= count) return sample(list, count, rng);
+  const out = [];
+  while (out.length < count) out.push(...shuffle(list, rng));
+  return out.slice(0, count);
+}
+
+/**
  * Three wrong answers, preferring items that are plausible (same continent /
  * same pool) before falling back to the full dataset.
  */
@@ -177,6 +191,19 @@ function continentQuestion(country, _pool, _all, rng, index, continentNames) {
     explanation: `${country.name} is in ${country.continent}.`
   };
 }
+
+/**
+ * ISO codes of the world's 44 landlocked countries, curated from the site's
+ * own landlocked-countries guide (see articles.js) — none in North America
+ * or Oceania. Used by js/landlocked.js, the click-based sudden-death game
+ * for Europe/Africa/Asia (the only continents with enough of them for one).
+ */
+export const LANDLOCKED_CODES = new Set([
+  'AT', 'CH', 'HU', 'CZ', 'SK', 'BY', 'MD', 'RS', 'MK', 'LU', 'LI', 'AD', 'SM', 'VA', // Europe
+  'ML', 'NE', 'TD', 'BF', 'CF', 'SS', 'ET', 'UG', 'RW', 'BI', 'ZM', 'ZW', 'MW', 'BW', 'LS', 'SZ', // Africa
+  'KZ', 'UZ', 'TM', 'KG', 'TJ', 'AF', 'MN', 'NP', 'BT', 'LA', 'AM', 'AZ', // Asia
+  'BO', 'PY' // South America
+]);
 
 function landmarkQuestion(landmark, pool, allCountries, rng, index) {
   const sameContinent = allCountries.filter(
@@ -544,7 +571,7 @@ export async function buildRound({ type, difficulty: difficultyId, count = DEFAU
   }
 
   const { pool, build, subjectOf } = await roundContext(type, tiers);
-  return sample(pool, count, rng).map((item, i) => ({
+  return sampleWithRepeats(pool, count, rng).map((item, i) => ({
     ...build(item, i, rng),
     subject: subjectOf(item)
   }));

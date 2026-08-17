@@ -607,6 +607,18 @@
 .review li .mark[data-ok="false"] { color: var(--error); }
 .review li .q { color: var(--text-secondary); }
 
+/* Top Spoken Languages: the full ranked answer key, found vs missed. */
+.review li .rank {
+  flex-shrink: 0;
+  width: 28px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+.review li[data-found="true"] .mark { color: var(--success); }
+.review li[data-found="false"] .mark { color: var(--error); }
+.review li .meta { display: block; color: var(--text-secondary); font-size: .8125rem; margin-top: 2px; }
+
 /* --- Related games ------------------------------------------------------ */
 .related {
   margin-top: 40px;
@@ -641,6 +653,62 @@
   text-align: center;
   padding: 60px 20px;
   color: var(--text-secondary);
+}
+
+/* --- Landlocked Countries (click-based sudden death) --------------------- */
+.landlocked-warning {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.landlocked-warning strong { color: var(--error); }
+
+.landlocked-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.landlocked-option {
+  padding: 14px 12px;
+  min-height: 48px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: .9375rem;
+  cursor: pointer;
+  transition: transform .1s ease, border-color .15s ease, background-color .15s ease;
+}
+
+.landlocked-option:hover:not(:disabled) {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.landlocked-option:disabled { cursor: default; }
+
+.landlocked-option[data-result="correct"] {
+  background: var(--success-soft);
+  border-color: var(--success);
+  color: var(--success);
+  font-weight: 700;
+}
+
+.landlocked-option[data-result="wrong"] {
+  background: var(--error-soft);
+  border-color: var(--error);
+  color: var(--error);
+  font-weight: 700;
+}
+
+/* Landlocked countries the player never got to before the mistake — shown
+   for a beat so the round ends with an answer, not just a dead end. */
+.landlocked-option[data-result="missed"] {
+  border-color: var(--warning);
+  color: var(--warning);
 }
 
 /* --- Name the Countries (free recall) ------------------------------------ */
