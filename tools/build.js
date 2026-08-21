@@ -231,8 +231,13 @@ function build() {
 
     if (game.mode === 'landlocked') {
       const total = countries.filter((c) => c.continent === game.continent && LANDLOCKED_CODES.has(c.code)).length;
-      write(`game/${game.slug}.html`, pages.landlockedGamePage(game, games, { continent: game.continent, total }));
-      add(`/game/${game.slug}`, '0.7', 'monthly');
+      // Playable, linked from its hub, but kept out of the index: the three
+      // continent variants are the same game with a different filter, and
+      // submitting near-identical pages is what thin-content review flags.
+      write(
+        `game/${game.slug}.html`,
+        pages.landlockedGamePage(game, games, { continent: game.continent, total, noindex: true })
+      );
       continue;
     }
 
@@ -242,9 +247,14 @@ function build() {
       const seconds = timeLimitFor(total);
       write(
         `game/${game.slug}.html`,
-        pages.topLanguagesGamePage(game, games, { continent: game.continent, total, seconds, convention: entry.convention })
+        pages.topLanguagesGamePage(game, games, {
+          continent: game.continent,
+          total,
+          seconds,
+          convention: entry.convention,
+          noindex: true
+        })
       );
-      add(`/game/${game.slug}`, '0.7', 'monthly');
       continue;
     }
 
@@ -296,11 +306,12 @@ function build() {
               title: `Countries That ${label} ${letter}`,
               metaTitle: `Countries That ${label} ${letter} — Name Them All`,
               metaDescription: `Can you name all ${count} countries that ${verb} with the letter ${letter}? Free geography quiz — race the clock before time runs out.`,
+              noindex: true,
               breadcrumbLabel: `${label} ${letter}`,
               intro: `Every one of the ${count} ${count === 1 ? 'country' : 'countries'} whose name ${verb}s with ${letter}. ${minutes} minute${minutes === 1 ? '' : 's'} on the clock — shorter than the full round, because there is a lot less ground to cover.`
             })
           );
-          add(`/game/${game.slug}/${urlSlug}`, '0.6');
+
         }
       }
 
@@ -317,11 +328,12 @@ function build() {
             title: `Countries With ${length} Letters`,
             metaTitle: `Countries With ${length} Letters — Name Them All`,
             metaDescription: `Can you name all ${count} countries whose name has exactly ${length} letters? Free geography quiz — race the clock before time runs out.`,
+            noindex: true,
             breadcrumbLabel: `${length} Letters`,
             intro: `Every one of the ${count} ${count === 1 ? 'country' : 'countries'} whose name is exactly ${length} letters long, spaces and hyphens not counted. ${minutes} minute${minutes === 1 ? '' : 's'} on the clock.`
           })
         );
-        add(`/game/${game.slug}/${slug}`, '0.6');
+
       }
       continue;
     }
@@ -377,6 +389,15 @@ function build() {
     add(`/guides/${article.slug}`, '0.8');
   }
 
+  // Blog
+  write('blog/index.html', pages.blogIndex());
+  add('/blog/', '0.9', 'weekly');
+
+  for (const post of pages.POSTS) {
+    write(`blog/${post.slug}.html`, pages.blogPost(post));
+    add(`/blog/${post.slug}`, '0.8');
+  }
+
   write('practice.html', pages.practicePage());
   add('/practice', '0.8', 'weekly');
 
@@ -406,6 +427,7 @@ function build() {
   console.log(`  ${continents.length} continent pages`);
   console.log(`  ${games.length} game pages`);
   console.log(`  ${pages.ARTICLES.length} guides`);
+  console.log(`  ${pages.POSTS.length} blog posts`);
   console.log(`  ${urls.length} URLs in sitemap.xml`);
   console.log(`  map coverage: ${playable.shape} shape / ${playable.locate} locate countries`);
 }

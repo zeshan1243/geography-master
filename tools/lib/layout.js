@@ -24,7 +24,8 @@ export const NAV = [
   { label: 'Capitals', href: '/lists/countries-and-capitals' },
   { label: 'Flags', href: '/lists/world-flags' },
   { label: 'Continents', href: '/continents/' },
-  { label: 'Guides', href: '/guides/' }
+  { label: 'Guides', href: '/guides/' },
+  { label: 'Blog', href: '/blog/' }
 ];
 
 const FOOTER = [
@@ -46,7 +47,8 @@ const FOOTER = [
       ['Countries and capitals', '/lists/countries-and-capitals'],
       ['World flags', '/lists/world-flags'],
       ['Largest countries', '/lists/largest-countries'],
-      ['Guides', '/guides/']
+      ['Guides', '/guides/'],
+      ['Blog', '/blog/']
     ]
   },
   {
@@ -232,7 +234,8 @@ export function page({
   css = [],
   schema = null,
   headExtra = '',
-  rail = false
+  rail = false,
+  noindex = false
 }) {
   const canonical = new URL(path, SITE.url).href;
   const styles = ['/css/main.css', ...css, '/css/responsive.css'];
@@ -247,7 +250,14 @@ export function page({
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${canonical}">
+<link rel="canonical" href="${canonical}">${
+  noindex
+    ? // Filter variants of one game: real pages for players, but near-identical
+      // to each other, so they are deliberately kept out of the index rather
+      // than submitted as separate thin content.
+      '\n<meta name="robots" content="noindex, follow">'
+    : ''
+}
 <meta property="og:type" content="website">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">

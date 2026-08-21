@@ -449,11 +449,12 @@ function htmlFiles(dir = OUT, found = []) {
 }
 
 async function checkGuides() {
-  section('Guides');
+  section('Long-form content');
   const { ARTICLES } = await import('./lib/articles.js');
+  const { POSTS } = await import('./lib/blog.js');
 
   const slugs = new Set();
-  for (const a of ARTICLES) {
+  for (const a of [...ARTICLES, ...POSTS]) {
     ok(!slugs.has(a.slug), `duplicate guide slug: ${a.slug}`);
     slugs.add(a.slug);
 
@@ -464,14 +465,27 @@ async function checkGuides() {
     ok(a.description.length <= 165, `guide "${a.slug}": meta description too long`);
     ok((a.body.match(/<h2>/g) || []).length >= 4, `guide "${a.slug}": needs more structure`);
     ok(!/<h1[ >]/.test(a.body), `guide "${a.slug}": body must not contain its own <h1>`);
-    ok(existsSync(join(OUT, 'guides', `${a.slug}.html`)), `guide "${a.slug}" was not generated`);
+    const isPost = POSTS.includes(a);
+    ok(
+      existsSync(join(OUT, isPost ? 'blog' : 'guides', `${a.slug}.html`)),
+      `${isPost ? 'post' : 'guide'} "${a.slug}" was not generated`
+    );
   }
 
-  const total = ARTICLES.reduce(
-    (n, a) => n + a.body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length,
-    0
+  const words = (list) =>
+    list.reduce((n, a) => n + a.body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length, 0);
+
+  // Guides and blog posts must stay editorially distinct, not two thin halves
+  // of one section.
+  const guideSlugs = new Set(ARTICLES.map((a) => a.slug));
+  for (const post of POSTS) {
+    ok(!guideSlugs.has(post.slug), `blog post "${post.slug}" duplicates a guide slug`);
+  }
+
+  console.log(
+    `  ${ARTICLES.length} guides (${words(ARTICLES)} words) + ` +
+      `${POSTS.length} blog posts (${words(POSTS)} words)`
   );
-  console.log(`  ${ARTICLES.length} guides, ${total} words total`);
 }
 
 /**
@@ -668,6 +682,55 @@ function checkModuleImports() {
   return calls;
 }
 
+/**
+ * Filter variants of one game are legitimate pages to play but must never be
+ * submitted for indexing — near-identical pages are exactly what thin-content
+ * review penalises. This asserts the two signals agree.
+ */
+function checkIndexability() {
+  section('Indexability');
+
+  const files = htmlFiles();
+  const sitemap = readFileSync(join(OUT, 'sitemap.xml'), 'utf8');
+
+  let noindexed = 0;
+  for (const file of files) {
+    const html = readFileSync(file, 'utf8');
+    const rel = relative(OUT, file);
+    const isNoindex = /name="robots"\s+content="noindex/.test(html);
+    if (!isNoindex) continue;
+    noindexed += 1;
+
+    // The canonical path of a noindexed page must not appear in the sitemap.
+    const canonical = /rel="canonical" href="([^"]+)"/.exec(html)?.[1];
+    ok(
+      canonical && !sitemap.includes(`<loc>${canonical}</loc>`),
+      `${rel} is noindexed but still listed in sitemap.xml`
+    );
+  }
+
+  // Pages that carry the site's real content must stay indexable.
+  const mustIndex = [
+    'index.html',
+    'game/name-the-countries/index.html',
+    'game/name-the-countries/all.html',
+    'game/flag-quiz.html',
+    'countries/japan.html',
+    'guides/why-flags-look-alike.html'
+  ];
+  for (const rel of mustIndex) {
+    const full = join(OUT, rel);
+    if (!existsSync(full)) continue;
+    ok(
+      !/name="robots"\s+content="noindex/.test(readFileSync(full, 'utf8')),
+      `${rel} must stay indexable`
+    );
+  }
+
+  const listed = (sitemap.match(/<loc>/g) || []).length;
+  console.log(`  ${files.length - noindexed} indexable pages, ${noindexed} noindexed, ${listed} in sitemap`);
+}
+
 function checkLinks() {
   section('Generated pages and links');
 
@@ -708,6 +771,7 @@ checkDetails();
 checkMapCoverage();
 await checkEngine();
 checkAds();
+checkIndexability();
 checkModuleImports();
 checkLayoutTraps();
 await checkGuides();

@@ -49,18 +49,19 @@ Games whose wrong answers must satisfy a constraint need their own check. The bo
 
 | Path | What it is |
 | --- | --- |
-| `data/` | All content: 195 countries, 60 landmarks, 30 oceans and seas, 7 continents, 15 games |
+| `data/` | All content: 195 countries, 60 landmarks, 30 oceans and seas, 7 continents, 27 game entries |
 | `data/details/` | Per-country borders, cities, highest point and facts — one file per continent, build-time only |
 | `assets/world.svg` | World map, one path per country keyed by ISO code — see [assets/README.md](assets/README.md) |
 | `js/app.js` | Single entry point loaded by every page |
-| `js/game.js` | The reusable quiz engine — one engine drives all fifteen games |
+| `js/game.js` | The reusable quiz engine — drives the multiple-choice games |
 | `js/worldmap.js` | Loads and frames `assets/world.svg` for the map and shape quizzes |
 | `js/quiz.js` | Turns datasets into rounds; seeded RNG for the daily challenge |
 | `js/score.js` | Scoring rules, stars, verdicts |
 | `js/storage.js` | localStorage profile: best scores, stats, day streaks |
 | `js/theme.js`, `js/navigation.js`, `js/data.js` | Theme toggle, mobile drawer and search, dataset loading |
 | `css/` | `main.css` (design system), `games.css`, `game.css`, `responsive.css` |
-| `tools/lib/articles.js` | The long-form guides — prose, build-time only |
+| `tools/lib/articles.js` | The long-form guides (how to learn) — prose, build-time only |
+| `tools/lib/blog.js` | The blog posts (the subject itself) — prose, build-time only |
 | `tools/` | Build, dev server and verification — never shipped to the browser |
 | `site.config.json` | Site name, tagline and canonical URL used by the build |
 
@@ -72,9 +73,20 @@ On Vercel this is already configured in `vercel.json` (`buildCommand: npm run bu
 
 `public/` is gitignored on purpose. It is pure derived output, the host rebuilds it on every deploy, and committing it only creates drift between the data and the pages.
 
-Links are root-relative, so the site must be served from a domain root rather than a subdirectory. Do **not** enable "clean URLs" style rewrites: internal links, canonical tags and `sitemap.xml` all use explicit `.html`, and a host-level redirect to extensionless URLs would fight the canonicals.
+Links are root-relative, so the site must be served from a domain root rather than a subdirectory.
 
-Before going live, set `url` in `site.config.json` to the real domain and rebuild — it feeds the canonical tags, Open Graph URLs and `sitemap.xml`.
+`vercel.json` sets `cleanUrls: true`, and the build emits extensionless internal links, canonicals and sitemap entries to match. The three must stay in agreement: if clean URLs are turned off, the generated links have to go back to `.html`, or every canonical will point at a URL that redirects.
+
+Before going live, set `url` in `site.config.json` to the real domain and rebuild — it feeds the canonical tags, Open Graph URLs, `og:url` and `sitemap.xml`.
+
+**It must be the exact host that serves the site, including `www` or its absence.** `zehum.com` 307-redirects to `www.zehum.com` on this deployment, so a config of `https://zehum.com` made every canonical tag and every sitemap entry point at a URL that redirects — a site-wide defect that is invisible locally, because the dev server has no redirect. Check it against production after any DNS or domain change:
+
+```bash
+curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' https://your-domain/
+curl -s https://your-host/countries/japan | grep -o 'rel="canonical" href="[^"]*"'
+```
+
+The canonical must return 200, not 3xx.
 
 ## Adverts
 
@@ -100,11 +112,11 @@ The `rail` unit only renders at ≥1240px, in a 300px sticky column on country, 
 
 ## Verification
 
-`npm run check` runs about 9,700 assertions:
+`npm run check` runs about 28,500 assertions:
 
 - **Data** — 195 countries, unique names/codes/slugs, valid continents and tiers, landmarks referencing real countries, continent counts matching the country list.
 - **Engine** — every game type at every difficulty, asserting four unique options, the answer present among them, no repeated questions in a round, and that the daily challenge is reproducible from its date seed but differs between days.
-- **Guides** — each is at least 800 words, has real section structure, unique metadata, and no stray `<h1>` in its body.
+- **Long-form content** — guides and blog posts: each is at least 800 words, has real section structure, unique metadata, and no stray `<h1>` in its body.
 - **Country detail** — all 195 have three or more facts, cities, a region and a highest point; no fact is reused on two pages; and every land border is mutual (a one-sided border is always a mistake in one of the two entries).
 - **Map coverage** — every country has a path in `world.svg`, anything marked playable clears the size and area thresholds, and each difficulty has enough countries to fill a round.
 - **Module imports** — a function called in `js/` but never imported. ES modules make this silent: the name resolves to a missing global and only throws when that path first runs. One such bug shipped before this check existed. The scanner blanks comments and string bodies first, keeping `${…}` interpolations, so it does not cry wolf.
@@ -132,6 +144,14 @@ Two datasets are smaller than a full round and cap rather than repeat: the **lan
 - **Retiring takes two correct answers** (`RETIRE_AT`). Getting something right immediately after being shown the answer proves very little. Missing it again resets progress to zero.
 - **A correct answer on a never-missed item is ignored**, so ordinary rounds cost nothing.
 - The list is capped at `MAX_MISSES` (400), dropping least-recently-seen entries, and lives in the same localStorage profile as scores and streaks.
+
+## Indexability: variants are noindexed on purpose
+
+Three games expand into filter variants — `name-the-countries` by starting letter, ending letter and name length (60 pages), plus per-continent versions of the landlocked and top-languages games (9 pages). They are fine pages to *play* and are linked from their hubs, but they are near-identical to each other: differing by one letter in the title, description and H1.
+
+Submitting 69 pages like that for indexing is what thin-content review penalises, and it is what an AdSense review flagged. So they carry `<meta name="robots" content="noindex, follow">` and are left out of `sitemap.xml`, while the hubs and the "all" rounds stay indexable. `page({ noindex: true })` is how a page opts in.
+
+`npm run check` asserts the two signals agree: no noindexed page may appear in the sitemap, and a list of content-bearing pages must stay indexable. Adding a new filter family without noindexing it will not fail the build — that is a judgement call, so if you add one, noindex it deliberately.
 
 ## Icons
 

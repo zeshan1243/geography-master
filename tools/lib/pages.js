@@ -9,6 +9,7 @@
 
 import { page, adSlot, breadcrumbs, breadcrumbSchema, esc, icon, SITE } from './layout.js';
 import { ARTICLES } from './articles.js';
+import { POSTS } from './blog.js';
 import { fmt, approx, ordinal } from './util.js';
 
 const GAME_SCREEN_HEIGHT_NOTE =
@@ -403,6 +404,7 @@ function formatSeconds(totalSeconds) {
  * `variant.letter` is null for the "play all 195" version.
  */
 export function recallGamePage(game, allGames, variant) {
+  const { noindex = false } = variant;
   const {
     letter,
     letterPosition = 'start',
@@ -537,6 +539,7 @@ export function recallGamePage(game, allGames, variant) {
     title: `${metaTitle} | ${SITE.name}`,
     description: metaDescription,
     path: `/${path}`,
+    noindex,
     css: ['/css/games.css', '/css/game.css'],
     body,
     schema: [
@@ -719,7 +722,7 @@ export function hubPage(game, subGames) {
  * once. There is no difficulty picker — this is one mode, sudden death, so
  * the setup screen skips straight from description to a bare Start button.
  */
-export function landlockedGamePage(game, allGames, { continent, total }) {
+export function landlockedGamePage(game, allGames, { continent, total, noindex = false }) {
   const trail = [
     { label: 'Home', href: '/' },
     { label: 'Games', href: '/games/' },
@@ -813,6 +816,7 @@ export function landlockedGamePage(game, allGames, { continent, total }) {
     title: `${game.metaTitle} | ${SITE.name}`,
     description: game.metaDescription,
     path: `/game/${game.slug}`,
+    noindex,
     css: ['/css/games.css', '/css/game.css'],
     body,
     schema: [
@@ -839,7 +843,7 @@ export function landlockedGamePage(game, allGames, { continent, total }) {
  * chips) but no map — a language does not have one obvious place to
  * highlight the way a country does.
  */
-export function topLanguagesGamePage(game, allGames, { continent, total, seconds, convention }) {
+export function topLanguagesGamePage(game, allGames, { continent, total, seconds, convention, noindex = false }) {
   const clockLabel = formatSeconds(seconds);
   const minutes = seconds / 60;
 
@@ -946,6 +950,7 @@ export function topLanguagesGamePage(game, allGames, { continent, total, seconds
     title: `${game.metaTitle} | ${SITE.name}`,
     description: game.metaDescription,
     path: `/game/${game.slug}`,
+    noindex,
     css: ['/css/games.css', '/css/game.css'],
     body,
     schema: [
@@ -1817,3 +1822,102 @@ export function practicePage() {
     schema: breadcrumbSchema(trail)
   });
 }
+
+
+/* ========================================================================== */
+/*  Blog                                                                      */
+/* ========================================================================== */
+
+export function blogIndex() {
+  const trail = [{ label: 'Home', href: '/' }, { label: 'Blog', href: '/blog/' }];
+
+  const body = `${breadcrumbs(trail)}
+<section class="section wrap">
+  <h1>Blog</h1>
+  <p class="lead">Writing about the world itself — how borders came to be where they are, which countries changed their names, and the places that do not fit on a list.</p>
+
+  <div class="card-grid" style="margin-top:32px">
+    ${POSTS.map(
+      (a) => `<a class="game-card" href="/blog/${a.slug}" data-accent="green">
+      <h3>${esc(a.title)}</h3>
+      <p>${esc(a.summary)}</p>
+      <span class="play">Read — ${readingTime(a.body)} min</span>
+    </a>`
+    ).join('\n    ')}
+  </div>
+
+  ${adSlot()}
+
+  <div class="article">
+    <h2>Blog or guides?</h2>
+    <p>Two sections, and the split is real rather than decorative. The <a href="/guides/">guides</a> are about <em>how to learn</em> this material — the order to take regions in, why flags come before capitals, what a map projection is hiding from you. They are method.</p>
+    <p>The blog is about the subject. Why Africa has straight borders and Europe does not, which countries are countries and which only behave like them, why China runs on one time zone across five. No practice required.</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `Blog — Writing About World Geography | ${SITE.name}`,
+    description:
+      'Essays on world geography: country name changes, unrecognised states, how borders get drawn, the strangest borders on the map and why time zones are odd.',
+    path: '/blog/',
+    css: ['/css/games.css'],
+    body,
+    schema: breadcrumbSchema(trail)
+  });
+}
+
+export function blogPost(post) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Blog', href: '/blog/' },
+    { label: post.title, href: `/blog/${post.slug}` }
+  ];
+
+  const others = POSTS.filter((a) => a.slug !== post.slug).slice(0, 3);
+
+  const body = `${breadcrumbs(trail)}
+<article class="section wrap">
+  <header style="margin-bottom:24px">
+    <h1>${esc(post.title)}</h1>
+    <p class="lead" style="margin-top:12px">${esc(post.summary)}</p>
+    <p class="muted" style="font-size:.875rem;margin-top:12px">${readingTime(post.body)} min read · Updated ${esc(post.updated)}</p>
+  </header>
+
+  <div class="article">
+    ${post.body.trim()}
+  </div>
+
+  ${adSlot()}
+
+  <div class="related">
+    <h2>More from the blog</h2>
+    <div class="related-links">
+      ${others.map((a) => `<a href="/blog/${a.slug}">${esc(a.title)}</a>`).join('\n      ')}
+    </div>
+  </div>
+</article>`;
+
+  return page({
+    title: `${post.metaTitle} | ${SITE.name}`,
+    description: post.description,
+    path: `/blog/${post.slug}`,
+    rail: true,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.description,
+        url: new URL(`/blog/${post.slug}`, SITE.url).href,
+        author: { '@type': 'Organization', name: SITE.name },
+        publisher: { '@type': 'Organization', name: SITE.name },
+        inLanguage: SITE.locale
+      },
+      breadcrumbSchema(trail)
+    ]
+  });
+}
+
+export { POSTS };
