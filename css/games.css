@@ -188,38 +188,40 @@
 .game-card[data-accent="purple"] .icon { background: color-mix(in srgb, var(--purple) 18%, transparent); }
 .game-card[data-accent="red"] .icon    { background: var(--error-soft); }
 
-/* --- Name the Countries hub: one card per starting letter ---------------- */
+/* --- Name the Countries hub: quick links to the letter/length variants ---
+   Deliberately a compact wrapped row of small pills rather than a grid of
+   full-size cards. Sixty of these rendered as individually-styled "product"
+   cards is exactly what reads as scaled/templated content to both a human
+   reviewer and a crawler; a plain wrapped list of short links reads as a
+   filter control on one game, which is what it actually is. */
 .letter-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
-  gap: 12px;
-  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
 }
 
 .letter-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 16px 8px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 6px 12px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 999px;
   color: var(--text);
-  text-align: center;
-  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  font-size: .875rem;
+  transition: border-color .15s ease, background-color .15s ease;
 }
 
 .letter-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-sm);
   border-color: var(--primary);
+  background: var(--primary-soft);
   text-decoration: none;
 }
 
 .letter-card-letter {
-  font-size: 1.75rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--primary);
 }
 

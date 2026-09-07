@@ -112,9 +112,38 @@ function adsTxt() {
   return `google.com, ${publisher}, DIRECT, f08c47fec0942fa0\n`;
 }
 
+/**
+ * The "Name the Countries" letter and length variants (60 pages: 26 starting
+ * letters, 18 ending letters, 18 lengths) are the most template-boilerplate
+ * content on the site — same game, one word swapped, a short generated
+ * paragraph. `noindex` keeps them out of search, but it does not stop
+ * AdSense's own site-quality review from crawling them, and an AdSense
+ * "low value / scaled content" rejection is about exactly this kind of page.
+ * Disallowing them here removes them from crawl scope entirely rather than
+ * just from the search index. The hub, "all 195 countries", and the
+ * landlocked/top-languages continent pages stay open — those each carry
+ * genuinely distinct written content, not a single swapped variable.
+ */
+function disallowedNameTheCountriesPaths() {
+  // Robots.txt matches by prefix, so an unanchored "/a" would also block
+  // "/all" — every entry needs the "$" end-anchor to match only itself.
+  const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+  const paths = [
+    ...letters.map((l) => `/game/name-the-countries/${l}$`),
+    ...letters.map((l) => `/game/name-the-countries/ends-${l}$`)
+  ];
+  for (let n = 1; n <= 30; n += 1) paths.push(`/game/name-the-countries/length-${n}$`);
+  return paths;
+}
+
 function robots() {
+  const disallow = disallowedNameTheCountriesPaths()
+    .map((path) => `Disallow: ${path}`)
+    .join('\n');
+
   return `User-agent: *
 Allow: /
+${disallow}
 
 Sitemap: ${new URL('/sitemap.xml', SITE.url).href}
 `;
