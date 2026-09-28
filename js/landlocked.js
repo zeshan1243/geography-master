@@ -11,6 +11,7 @@ import { countries, games, gameUrl } from './data.js';
 import { LANDLOCKED_CODES } from './quiz.js';
 import { recordGame, bestScore } from './storage.js';
 import { icon } from './icons.js';
+import { wireShare, siteName } from './share.js';
 
 const DIFFICULTY = 'default';
 /** How long the grid shows which ones you missed before the results screen. */
@@ -178,6 +179,15 @@ export async function initLandlockedGame() {
 
   el('start')?.addEventListener('click', start);
   el('play-again')?.addEventListener('click', start);
+
+  wireShare(root, () => {
+    const gameName = document.querySelector('h1')?.textContent?.trim() || siteName();
+    return {
+      title: siteName(),
+      text: `I found ${found?.size ?? 0}/${total} on ${gameName} — can you beat me?`,
+      url: window.location.href
+    };
+  });
 
   const another = root.querySelector('[data-another-game]');
   if (another) {

@@ -583,6 +583,36 @@
 
 .results .btn-row { flex-direction: column; }
 
+/* --- Share your result --------------------------------------------------- */
+.share-block {
+  margin: 4px 0 16px;
+}
+
+.share-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.share-panel button {
+  padding: 8px 16px;
+  background: var(--surface-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: .8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+
+.share-panel button:hover {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
 .review {
   margin-top: 32px;
   text-align: left;

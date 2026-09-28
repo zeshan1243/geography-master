@@ -55,7 +55,9 @@ export const ICONS = {
     '<circle cx="12" cy="12" r="8.6"/><circle cx="12" cy="12" r="4.4"/>' +
     '<circle class="solid" cx="12" cy="12" r="1.5"/>',
 
-  dot: '<circle class="solid" cx="12" cy="12" r="6.4"/>'
+  dot: '<circle class="solid" cx="12" cy="12" r="6.4"/>',
+
+  share: '<path d="M12 15V4M12 4L8 8M12 4l4 4"/><path d="M5 12v6.4A1.6 1.6 0 0 0 6.6 20h10.8a1.6 1.6 0 0 0 1.6-1.6V12"/>'
 };
 
 /**

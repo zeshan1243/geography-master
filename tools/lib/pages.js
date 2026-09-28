@@ -25,6 +25,26 @@ function gameHref(game) {
   return game.mode === 'recall' && game.variants === 'letters' ? `/game/${game.slug}/` : `/game/${game.slug}`;
 }
 
+/**
+ * The share control on a results screen: a single button that opens the
+ * device's native share sheet where available, falling back to this panel
+ * of direct links (see js/share.js, which wires the actual behaviour).
+ * Shared across every game engine's results screen rather than rebuilt once
+ * per engine.
+ */
+function shareBlock() {
+  return `<div class="share-block">
+        <button class="btn btn-ghost" type="button" data-share>${icon('share')} Share your result</button>
+        <div class="share-panel" data-share-panel hidden>
+          <button type="button" data-share-action="whatsapp">WhatsApp</button>
+          <button type="button" data-share-action="x">X</button>
+          <button type="button" data-share-action="facebook">Facebook</button>
+          <button type="button" data-share-action="reddit">Reddit</button>
+          <button type="button" data-share-action="copy">Copy link</button>
+        </div>
+      </div>`;
+}
+
 /* ========================================================================== */
 /*  Homepage                                                                  */
 /* ========================================================================== */
@@ -293,6 +313,7 @@ function playAndResultsScreens({ icon: gameIcon, name, showRelated = true }) {
         <a class="btn btn-ghost" href="/practice" data-review-link hidden>${icon('target')} Review your mistakes</a>
         <a class="btn btn-ghost" href="/games/">Back to Games</a>
       </div>
+      ${shareBlock()}
 
       <div class="review">
         <h2>Your answers</h2>
@@ -497,6 +518,7 @@ export function recallGamePage(game, allGames, variant) {
         <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
         <a class="btn btn-ghost" href="/games/">Back to Games</a>
       </div>
+      ${shareBlock()}
 
       <div class="review">
         <h2>Countries you missed</h2>
@@ -775,6 +797,7 @@ export function landlockedGamePage(game, allGames, { continent, total, noindex =
         <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
         <a class="btn btn-ghost" href="/games/">Back to Games</a>
       </div>
+      ${shareBlock()}
 
       <div class="review">
         <h2>Countries you missed</h2>
@@ -909,6 +932,7 @@ export function topLanguagesGamePage(game, allGames, { continent, total, seconds
         <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
         <a class="btn btn-ghost" href="/games/">Back to Games</a>
       </div>
+      ${shareBlock()}
 
       <div class="review">
         <h2>The full ranking</h2>

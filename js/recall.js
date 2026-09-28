@@ -20,6 +20,7 @@ import { recordGame, bestScore } from './storage.js';
 import { recallStars, recallVerdict, stars, verdict } from './score.js';
 import { icon } from './icons.js';
 import { interactiveMap, makeZoomable } from './worldmap.js';
+import { wireShare, siteName } from './share.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const GAME_TYPE = 'nameCountries';
@@ -421,6 +422,15 @@ export async function initRecallGame() {
   el('start')?.addEventListener('click', start);
   el('play-again')?.addEventListener('click', start);
   el('stop')?.addEventListener('click', () => finish());
+
+  wireShare(root, () => {
+    const gameName = document.querySelector('h1')?.textContent?.trim() || siteName();
+    return {
+      title: siteName(),
+      text: `I named ${found?.length ?? 0}/${list.length} on ${gameName} — can you beat me?`,
+      url: window.location.href
+    };
+  });
 
   const another = root.querySelector('[data-another-game]');
   if (another) {

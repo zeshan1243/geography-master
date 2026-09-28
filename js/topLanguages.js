@@ -12,6 +12,7 @@
 import { topLanguages, slugify, games, gameUrl } from './data.js';
 import { recordGame, bestScore } from './storage.js';
 import { icon } from './icons.js';
+import { wireShare, siteName } from './share.js';
 
 function formatClock(totalSeconds) {
   const clamped = Math.max(totalSeconds, 0);
@@ -264,6 +265,15 @@ export async function initTopLanguagesGame() {
   el('start')?.addEventListener('click', start);
   el('play-again')?.addEventListener('click', start);
   el('stop')?.addEventListener('click', () => finish(false));
+
+  wireShare(root, () => {
+    const gameName = document.querySelector('h1')?.textContent?.trim() || siteName();
+    return {
+      title: siteName(),
+      text: `I named ${found?.length ?? 0}/${total} on ${gameName} — can you beat me?`,
+      url: window.location.href
+    };
+  });
 
   const another = root.querySelector('[data-another-game]');
   if (another) {

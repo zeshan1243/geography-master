@@ -33,6 +33,7 @@ import {
 } from './storage.js';
 import { games, url, gameUrl, mapCoverage } from './data.js';
 import { icon } from './icons.js';
+import { wireShare, siteName } from './share.js';
 import { shapeOf, fitShape, interactiveMap, zoomWindow } from './worldmap.js';
 
 const ADVANCE_DELAY = { correct: 1300, wrong: 2300 };
@@ -587,8 +588,14 @@ export async function initGamePage() {
   }
   paintBest();
 
-  const launch = () =>
-    startGame({
+  // `startGame` resolves to the round's live state object almost immediately
+  // (it does not wait for the round to finish), and keeps mutating that same
+  // object in place — so the reference captured here still reflects the
+  // final score by the time the player reaches the results screen and clicks
+  // share.
+  let currentState = null;
+  const launch = async () => {
+    currentState = await startGame({
       root,
       type,
       difficulty: selected,
@@ -596,6 +603,16 @@ export async function initGamePage() {
       daily: isDaily,
       seed: isDaily ? dailySeed(todayKey()) : null
     });
+  };
+
+  wireShare(root, () => {
+    const gameName = document.querySelector('h1')?.textContent?.trim() || siteName();
+    const s = currentState;
+    const line = s?.survival
+      ? `I survived ${s.correct} ${s.correct === 1 ? 'question' : 'questions'} on ${gameName}`
+      : `I scored ${s?.correct ?? 0}/${s?.totalQuestions ?? 0} on ${gameName}`;
+    return { title: siteName(), text: `${line} — can you beat me?`, url: window.location.href };
+  });
 
   root.querySelector('[data-start]')?.addEventListener('click', launch);
   root.querySelector('[data-play-again]')?.addEventListener('click', () => {
