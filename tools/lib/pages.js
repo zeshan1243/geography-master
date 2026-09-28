@@ -1029,10 +1029,11 @@ export function countriesIndex(countries, continents) {
   });
 }
 
-export function countryPage(country, countries, details = {}) {
+export function countryPage(country, countries, details = {}, comparisons = []) {
   const detail = details[country.code] || { borders: [], cities: [], facts: [] };
   const byCode = new Map(countries.map((c) => [c.code, c]));
   const neighbours = detail.borders.map((code) => byCode.get(code)).filter(Boolean);
+  const ownComparisons = comparisons.filter((c) => c.countries.includes(country.name));
 
   const linkTo = (c) => `<a href="/countries/${c.slug}">${esc(c.name)}</a>`;
   const joinList = (items) =>
@@ -1150,6 +1151,22 @@ export function countryPage(country, countries, details = {}) {
     </div>
   </section>
 
+  ${
+    ownComparisons.length
+      ? `<div class="related">
+    <h2>Compare ${esc(country.name)}</h2>
+    <div class="related-links">
+      ${ownComparisons
+        .map((c) => {
+          const other = c.countries.find((name) => name !== country.name);
+          return `<a href="/compare/${c.slug}">${esc(country.name)} vs ${esc(other)}</a>`;
+        })
+        .join('\n      ')}
+    </div>
+  </div>`
+      : ''
+  }
+
   <div class="related">
     <h2>Related geography games</h2>
     <div class="related-links">
@@ -1178,6 +1195,144 @@ export function countryPage(country, countries, details = {}) {
       },
       breadcrumbSchema(trail)
     ]
+  });
+}
+
+/* ========================================================================== */
+/*  Country comparisons                                                      */
+/* ========================================================================== */
+
+/**
+ * A curated set of country-vs-country pages (see data/comparisons.json), not
+ * a generator over every possible pair. With 195 countries there are over
+ * 18,000 combinations — publishing all of them would be exactly the kind of
+ * thin programmatic content that got this site's early AdSense attempts
+ * rejected. Every entry here carries genuinely written comparative analysis,
+ * not just a swapped-in data table.
+ */
+export function comparisonPage(comparison, countries, allComparisons) {
+  const byName = new Map(countries.map((c) => [c.name, c]));
+  const [a, b] = comparison.countries.map((name) => byName.get(name));
+
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Compare', href: '/compare/' },
+    { label: `${a.name} vs ${b.name}` }
+  ];
+
+  const row = (label, va, vb) => `<tr><th scope="row">${esc(label)}</th><td>${va}</td><td>${vb}</td></tr>`;
+
+  const table = `<div class="table-wrap">
+  <table class="compare-table">
+    <thead><tr><th scope="col"></th><th scope="col">${a.flag} ${esc(a.name)}</th><th scope="col">${b.flag} ${esc(b.name)}</th></tr></thead>
+    <tbody>
+      ${row('Capital', esc(a.capital), esc(b.capital))}
+      ${row('Continent', esc(a.continent), esc(b.continent))}
+      ${row('Population', fmt(a.population), fmt(b.population))}
+      ${row('Area', `${fmt(a.area)} km²`, `${fmt(b.area)} km²`)}
+      ${row('Currency', esc(a.currency), esc(b.currency))}
+      ${row('Main language', esc(a.language), esc(b.language))}
+    </tbody>
+  </table>
+</div>`;
+
+  const larger = a.population >= b.population ? a : b;
+  const smaller = larger === a ? b : a;
+  const ratio = Math.round(larger.population / smaller.population);
+  const scaleLine =
+    ratio >= 2
+      ? `${esc(larger.name)}'s population is roughly ${ratio}× ${esc(smaller.name)}'s.`
+      : `The two countries are close in population — within a factor of two of each other.`;
+
+  const others = allComparisons
+    .filter((c) => c.slug !== comparison.slug)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 3);
+
+  const body = `${breadcrumbs(trail)}
+<section class="section wrap">
+  <h1>${esc(a.name)} vs ${esc(b.name)}</h1>
+  <p class="lead">${esc(comparison.intro)}</p>
+
+  ${table}
+
+  <div class="article">
+    <p>${scaleLine}</p>
+    ${comparison.paragraphs.map((p) => `<p>${esc(p)}</p>`).join('\n    ')}
+  </div>
+
+  ${adSlot()}
+
+  <div class="btn-row" style="margin: 24px 0 8px">
+    <a class="btn btn-primary" href="/countries/${a.slug}">${a.flag} About ${esc(a.name)}</a>
+    <a class="btn btn-primary" href="/countries/${b.slug}">${b.flag} About ${esc(b.name)}</a>
+  </div>
+
+  <div class="related">
+    <h2>Test your knowledge</h2>
+    <div class="related-links">
+      <a href="/game/country-quiz"><span aria-hidden="true">🌎</span> Country Quiz</a>
+      <a href="/game/capital-quiz"><span aria-hidden="true">🏛️</span> Capital Quiz</a>
+      <a href="/game/flag-quiz"><span aria-hidden="true">🚩</span> Flag Quiz</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Other comparisons</h2>
+    <div class="related-links">
+      ${others.map((c) => `<a href="/compare/${c.slug}">${c.countries.join(' vs ')}</a>`).join('\n      ')}
+    </div>
+  </div>
+</section>`;
+
+  return page({
+    title: `${a.name} vs ${b.name}: Country Comparison | ${SITE.name}`,
+    description: `${a.name} vs ${b.name}: capitals, population, area, currency and language compared, plus ${comparison.intro.slice(0, 100)}`.slice(0, 158),
+    path: `/compare/${comparison.slug}`,
+    css: ['/css/games.css'],
+    body,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: `${a.name} vs ${b.name}`,
+        url: new URL(`/compare/${comparison.slug}`, SITE.url).href
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/compare/${comparison.slug}` })))
+    ]
+  });
+}
+
+export function comparisonsIndex(comparisons, countries) {
+  const byName = new Map(countries.map((c) => [c.name, c]));
+
+  const body = `${breadcrumbs([{ label: 'Home', href: '/' }, { label: 'Compare' }])}
+<section class="section wrap">
+  <h1>Country comparisons</h1>
+  <p class="lead">Side-by-side facts and genuine analysis for ${comparisons.length} pairs of countries worth comparing — neighbours, rivals, and the ones people mix up by name.</p>
+
+  <div class="game-grid">
+    ${comparisons
+      .map((c) => {
+        const [a, b] = c.countries.map((name) => byName.get(name));
+        return `<a class="game-card" href="/compare/${c.slug}">
+      <span class="icon" aria-hidden="true">${a.flag}${b.flag}</span>
+      <h3>${esc(a.name)} vs ${esc(b.name)}</h3>
+      <p>${esc(c.intro.slice(0, 90))}${c.intro.length > 90 ? '…' : ''}</p>
+      <span class="play">Compare</span>
+    </a>`;
+      })
+      .join('\n    ')}
+  </div>
+</section>`;
+
+  return page({
+    title: `Country Comparisons — Side by Side | ${SITE.name}`,
+    description: `Compare countries side by side: capitals, population, area, currency and language, plus genuine analysis of ${comparisons.length} country pairs worth knowing.`,
+    path: '/compare/',
+    css: ['/css/games.css'],
+    body,
+    schema: breadcrumbSchema([{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare/' }])
   });
 }
 

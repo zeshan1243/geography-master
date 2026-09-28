@@ -47,6 +47,7 @@ const FOOTER = [
       ['Countries and capitals', '/lists/countries-and-capitals'],
       ['World flags', '/lists/world-flags'],
       ['Largest countries', '/lists/largest-countries'],
+      ['Compare countries', '/compare/'],
       ['Guides', '/guides/'],
       ['Blog', '/blog/']
     ]

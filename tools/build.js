@@ -179,6 +179,7 @@ function build() {
   const games = readData('games');
   const details = readDetails();
   const topLanguageData = readData('top-languages');
+  const comparisons = readData('comparisons');
 
   // Map geometry is measured once here so the browser never has to.
   const coverage = mapCoverage(countries);
@@ -213,6 +214,16 @@ function build() {
 
   write('games/index.html', pages.gamesIndex(games));
   add('/games/', '0.9', 'weekly');
+
+  // Country comparisons: a curated set (see data/comparisons.json), not a
+  // generator over every possible pair — see the comment in pages.js for why.
+  write('compare/index.html', pages.comparisonsIndex(comparisons, countries));
+  add('/compare/', '0.8', 'monthly');
+
+  for (const comparison of comparisons) {
+    write(`compare/${comparison.slug}.html`, pages.comparisonPage(comparison, countries, comparisons));
+    add(`/compare/${comparison.slug}`, '0.6');
+  }
 
   // One page per game. "Name the Countries" expands into a hub — play all
   // 195, or one shorter round per starting or ending letter — rather than a
@@ -390,7 +401,7 @@ function build() {
   add('/countries/', '0.8', 'monthly');
 
   for (const country of countries) {
-    write(`countries/${country.slug}.html`, pages.countryPage(country, countries, details));
+    write(`countries/${country.slug}.html`, pages.countryPage(country, countries, details, comparisons));
     add(`/countries/${country.slug}`, '0.6');
   }
 
