@@ -113,6 +113,54 @@ function adsTxt() {
 }
 
 /**
+ * One consolidated index for the header search box, so it can search
+ * countries, games, guides, blog posts and comparisons without five separate
+ * fetches. hubOf games are left out — they're the letter/length/continent
+ * variants deliberately de-emphasised elsewhere on the site, and resurfacing
+ * dozens of them in search would undo that.
+ */
+const truncate = (text, max = 90) => (text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text);
+
+function searchIndex(countries, games, comparisons) {
+  const entries = [];
+
+  for (const c of countries) {
+    entries.push({
+      type: 'country',
+      title: c.name,
+      subtitle: `${c.capital} · ${c.continent}`,
+      url: `/countries/${c.slug}`,
+      icon: c.flag
+    });
+  }
+
+  for (const g of games) {
+    if (g.hubOf) continue;
+    entries.push({ type: 'game', title: g.name, subtitle: g.tagline, url: pages.gameHref(g), icon: g.icon });
+  }
+
+  for (const a of pages.ARTICLES) {
+    entries.push({ type: 'guide', title: a.title, subtitle: truncate(a.summary), url: `/guides/${a.slug}`, icon: '📖' });
+  }
+
+  for (const p of pages.POSTS) {
+    entries.push({ type: 'blog', title: p.title, subtitle: truncate(p.summary), url: `/blog/${p.slug}`, icon: '📰' });
+  }
+
+  for (const c of comparisons) {
+    entries.push({
+      type: 'compare',
+      title: `${c.countries[0]} vs ${c.countries[1]}`,
+      subtitle: truncate(c.intro),
+      url: `/compare/${c.slug}`,
+      icon: '⚖️'
+    });
+  }
+
+  return entries;
+}
+
+/**
  * The "Name the Countries" letter and length variants (60 pages: 26 starting
  * letters, 18 ending letters, 18 lengths) are the most template-boilerplate
  * content on the site — same game, one word swapped, a short generated
@@ -459,6 +507,11 @@ function build() {
   const ads = adsTxt();
   if (ads) write('ads.txt', ads);
   write('sitemap.xml', sitemap(urls));
+
+  // Written into the source data/ directory, like map-coverage.json and
+  // borders.json above, so copyStatic() below picks it up along with every
+  // other data/*.json file.
+  writeFileSync(join(ROOT, 'data', 'search-index.json'), `${JSON.stringify(searchIndex(countries, games, comparisons))}\n`);
 
   copyStatic();
 

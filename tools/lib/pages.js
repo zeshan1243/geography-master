@@ -21,7 +21,7 @@ const GAME_SCREEN_HEIGHT_NOTE =
  * variants), so linking to it needs the trailing slash to land on its own
  * canonical URL rather than bouncing through a redirect.
  */
-function gameHref(game) {
+export function gameHref(game) {
   return game.mode === 'recall' && game.variants === 'letters' ? `/game/${game.slug}/` : `/game/${game.slug}`;
 }
 

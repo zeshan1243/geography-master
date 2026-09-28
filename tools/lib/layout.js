@@ -149,12 +149,12 @@ function header() {
       </nav>
       <div class="nav-actions">
         <div class="search">
-          <label class="sr-only" for="site-search">Search countries</label>
+          <label class="sr-only" for="site-search">Search countries, games and guides</label>
           <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <circle cx="10.5" cy="10.5" r="6.75"/>
             <path d="M15.5 15.5 20.5 20.5"/>
           </svg>
-          <input id="site-search" type="search" placeholder="Search a country…"
+          <input id="site-search" type="search" placeholder="Search countries, games, guides…"
                  autocomplete="off" data-country-search="site-search-results">
           <div class="search-results" id="site-search-results" role="listbox" aria-label="Search results"></div>
         </div>

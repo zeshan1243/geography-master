@@ -1,10 +1,21 @@
 /**
- * navigation.js — mobile drawer, active link highlighting and country search.
+ * navigation.js — mobile drawer, active link highlighting and site search.
  */
 
-import { countries, url, slugify } from './data.js';
+import { searchIndex, slugify } from './data.js';
 
-const MAX_RESULTS = 6;
+const MAX_RESULTS = 8;
+const MAX_PER_GROUP = 4;
+
+const GROUP_LABELS = {
+  country: 'Countries',
+  game: 'Games',
+  guide: 'Guides',
+  blog: 'Blog',
+  compare: 'Compare'
+};
+/** Search groups render in this fixed order regardless of match count. */
+const GROUP_ORDER = ['country', 'game', 'guide', 'blog', 'compare'];
 
 function initDrawer() {
   const toggle = document.querySelector('[data-nav-toggle]');
@@ -46,18 +57,33 @@ function markCurrentLink() {
 
 function renderResults(box, matches) {
   if (!matches.length) {
-    box.innerHTML = '<p class="empty">No country matches that search.</p>';
+    box.innerHTML = '<p class="empty">No results for that search.</p>';
     return;
   }
-  box.innerHTML = matches
+
+  const groups = new Map();
+  for (const m of matches) {
+    if (!groups.has(m.type)) groups.set(m.type, []);
+    groups.get(m.type).push(m);
+  }
+
+  box.innerHTML = GROUP_ORDER.filter((type) => groups.has(type))
     .map(
-      (c) => `<a href="${url(`countries/${c.slug}`)}">
-        <span class="flag" aria-hidden="true">${c.flag}</span>
-        <span>
-          <strong>${c.name}</strong>
-          <span class="meta">${c.capital} · ${c.continent}</span>
-        </span>
-      </a>`
+      (type) => `<div class="search-group">
+        <h3>${GROUP_LABELS[type] || type}</h3>
+        ${groups
+          .get(type)
+          .map(
+            (m) => `<a href="${m.url}">
+          <span class="flag" aria-hidden="true">${m.icon}</span>
+          <span>
+            <strong>${m.title}</strong>
+            <span class="meta">${m.subtitle}</span>
+          </span>
+        </a>`
+          )
+          .join('')}
+      </div>`
     )
     .join('');
 }
@@ -68,7 +94,7 @@ function initSearch() {
 
   let index = null;
   const ensureIndex = async () => {
-    if (!index) index = await countries();
+    if (!index) index = await searchIndex();
     return index;
   };
 
@@ -83,19 +109,27 @@ function initSearch() {
         return;
       }
       const list = await ensureIndex();
-      const matches = list
-        .filter(
-          (c) =>
-            c.name.toLowerCase().includes(query) ||
-            c.capital.toLowerCase().includes(query) ||
-            c.continent.toLowerCase().includes(query)
-        )
+      const sorted = list
+        .filter((m) => m.title.toLowerCase().includes(query) || m.subtitle.toLowerCase().includes(query))
         .sort((a, b) => {
-          const aStarts = a.name.toLowerCase().startsWith(query) ? 0 : 1;
-          const bStarts = b.name.toLowerCase().startsWith(query) ? 0 : 1;
-          return aStarts - bStarts || a.name.localeCompare(b.name);
-        })
-        .slice(0, MAX_RESULTS);
+          const aStarts = a.title.toLowerCase().startsWith(query) ? 0 : 1;
+          const bStarts = b.title.toLowerCase().startsWith(query) ? 0 : 1;
+          return aStarts - bStarts || a.title.localeCompare(b.title);
+        });
+
+      // Capped per group first, so 195 country matches cannot crowd out
+      // games, guides and everything else, then capped overall so the
+      // dropdown stays a glance-able list rather than a full page.
+      const perType = new Map();
+      const matches = [];
+      for (const m of sorted) {
+        const count = perType.get(m.type) || 0;
+        if (count >= MAX_PER_GROUP) continue;
+        perType.set(m.type, count + 1);
+        matches.push(m);
+        if (matches.length >= MAX_RESULTS) break;
+      }
+
       renderResults(box, matches);
     };
 

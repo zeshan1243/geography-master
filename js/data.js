@@ -101,6 +101,11 @@ export async function topLanguages() {
   return fetchJSON('top-languages');
 }
 
+/** The header search box's index — countries, games, guides, blog posts and comparisons in one list. */
+export async function searchIndex() {
+  return fetchJSON('search-index');
+}
+
 export function formatNumber(n) {
   return new Intl.NumberFormat('en-US').format(n);
 }

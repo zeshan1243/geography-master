@@ -482,6 +482,23 @@ body[data-nav-open="true"] { overflow: hidden; }
 .search-results .meta { font-size: .8125rem; color: var(--text-secondary); }
 .search-results .empty { padding: 14px; color: var(--text-secondary); font-size: .9375rem; }
 
+.search-group h3 {
+  padding: 8px 14px 4px;
+  font-size: .6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--text-secondary);
+}
+
+.search-group + .search-group { border-top: 1px solid var(--border); }
+.search-group .meta {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 /* --- Buttons ------------------------------------------------------------ */
 .btn {
   display: inline-flex;
