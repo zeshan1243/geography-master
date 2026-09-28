@@ -166,6 +166,29 @@ function renderStats() {
   if (empty) empty.hidden = profile.gamesPlayed > 0;
 }
 
+/* --- Achievements --------------------------------------------------------- */
+
+function renderAchievements(getBadges) {
+  const box = document.querySelector('[data-achievements]');
+  if (!box) return;
+
+  const badges = getBadges(load());
+  const unlockedCount = badges.filter((b) => b.unlocked).length;
+
+  box.innerHTML = badges
+    .map(
+      (b) => `<div class="badge" data-unlocked="${b.unlocked}">
+        <span class="badge-icon" aria-hidden="true">${b.unlocked ? b.icon : '🔒'}</span>
+        <strong>${b.name}</strong>
+        <span class="badge-desc">${b.description}</span>
+      </div>`
+    )
+    .join('');
+
+  const progress = document.querySelector('[data-badge-progress]');
+  if (progress) progress.textContent = `${unlockedCount} / ${badges.length} unlocked`;
+}
+
 /* --- Review prompt ------------------------------------------------------- */
 
 function renderReviewCallout() {
@@ -244,6 +267,10 @@ function boot() {
 
   if (document.querySelector('[data-top-languages-game]')) {
     import('./topLanguages.js').then((mod) => mod.initTopLanguagesGame());
+  }
+
+  if (document.querySelector('[data-achievements]')) {
+    import('./achievements.js').then((mod) => renderAchievements(mod.computeAchievements));
   }
 
   initAds();

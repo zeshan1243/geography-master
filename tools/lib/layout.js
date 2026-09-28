@@ -36,7 +36,8 @@ const FOOTER = [
       ['Country quiz', '/game/country-quiz'],
       ['Capital quiz', '/game/capital-quiz'],
       ['Flag quiz', '/game/flag-quiz'],
-      ['Mixed quiz', '/game/mixed-quiz']
+      ['Mixed quiz', '/game/mixed-quiz'],
+      ['Achievements', '/achievements']
     ]
   },
   {

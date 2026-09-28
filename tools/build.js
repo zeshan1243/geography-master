@@ -489,6 +489,9 @@ function build() {
   write('practice.html', pages.practicePage());
   add('/practice', '0.8', 'weekly');
 
+  write('achievements.html', pages.achievementsPage());
+  add('/achievements', '0.7', 'monthly');
+
   // Static pages
   write('about.html', pages.aboutPage(countries));
   write('contact.html', pages.contactPage());

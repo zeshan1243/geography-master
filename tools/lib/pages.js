@@ -107,6 +107,7 @@ export function home(countries, games) {
   </div>
   <div class="stat-grid" data-stats></div>
   <p class="muted" data-stats-empty hidden style="margin-top:12px">Finish a game and your score, accuracy and streak will show up here.</p>
+  <p style="margin-top:12px"><a href="/achievements">🏅 View all achievements →</a></p>
 
   <a class="review-callout" href="/practice" data-review-callout hidden>
     <span class="review-callout-icon" aria-hidden="true">🎯</span>
@@ -2002,6 +2003,55 @@ export function practicePage() {
   });
 }
 
+/* ========================================================================== */
+/*  Achievements                                                             */
+/* ========================================================================== */
+
+/**
+ * Every badge here is computed client-side from the same local profile the
+ * stats block and streak calendar already read (see js/achievements.js) —
+ * the page itself is static; a script fills in which badges are unlocked
+ * once it runs, same pattern as the homepage's "Your progress" section.
+ */
+export function achievementsPage() {
+  const trail = [{ label: 'Home', href: '/' }, { label: 'Achievements' }];
+
+  const body = `${breadcrumbs(trail)}
+<section class="section wrap">
+  <h1>Achievements</h1>
+  <p class="lead">Badges for the games you have actually played, computed from your own local progress — nothing is sent anywhere, and there is no account to lose them from.</p>
+
+  <p class="badge-progress" data-badge-progress></p>
+
+  <div class="badge-grid" data-achievements></div>
+
+  ${adSlot()}
+
+  <div class="article">
+    <h2>How this works</h2>
+    <p>Every badge threshold here is read from the same local profile that powers the homepage's "Your progress" panel and the streak calendar — games played, questions answered, your longest daily streak, your best answer streak in a single round, and how many different games you have tried. Nothing new is tracked to build this page, and nothing leaves your device.</p>
+    <p>Because it is entirely local, badges are specific to this browser on this device. Clearing your browser data or switching devices starts the count over — there is no account to sign into that would carry them across.</p>
+  </div>
+
+  <div class="related">
+    <h2>Keep going</h2>
+    <div class="related-links">
+      <a href="/games/"><span aria-hidden="true">🎮</span> All games</a>
+      <a href="/practice"><span aria-hidden="true">🎯</span> Review your mistakes</a>
+      <a href="/"><span aria-hidden="true">🏠</span> Home</a>
+    </div>
+  </div>
+</section>`;
+
+  return page({
+    title: `Achievements — Track Your Geography Progress | ${SITE.name}`,
+    description: 'See which geography-learning badges you have unlocked, from your first game to a 100-day streak — all tracked locally, no account required.',
+    path: '/achievements',
+    css: ['/css/games.css'],
+    body,
+    schema: breadcrumbSchema(trail)
+  });
+}
 
 /* ========================================================================== */
 /*  Blog                                                                      */
