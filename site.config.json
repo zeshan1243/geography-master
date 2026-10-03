@@ -2,9 +2,9 @@
   "name": "World Geography Games",
   "shortName": "Geography",
   "tagline": "Test your knowledge of countries, capitals, flags and the world.",
-  "url": "https://www.zehum.com",
+  "url": "https://www.geoatlas.online",
   "locale": "en",
-  "contactEmail": "info@zehum.com",
+  "contactEmail": "info@geoatlas.online",
   "adsense": {
     "client": "ca-pub-3366385543056829",
     "slots": {
@@ -13,6 +13,6 @@
     }
   },
   "analytics": {
-    "measurementId": "G-50LK0WQGKD"
+    "measurementId": "G-Z23MYS3ERM"
   }
 }

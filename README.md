@@ -79,7 +79,7 @@ Links are root-relative, so the site must be served from a domain root rather th
 
 Before going live, set `url` in `site.config.json` to the real domain and rebuild — it feeds the canonical tags, Open Graph URLs, `og:url` and `sitemap.xml`.
 
-**It must be the exact host that serves the site, including `www` or its absence.** `zehum.com` 307-redirects to `www.zehum.com` on this deployment, so a config of `https://zehum.com` made every canonical tag and every sitemap entry point at a URL that redirects — a site-wide defect that is invisible locally, because the dev server has no redirect. Check it against production after any DNS or domain change:
+**It must be the exact host that serves the site, including `www` or its absence.** On Vercel the apex (`geoatlas.online`) redirects to `www.geoatlas.online` by default, so a config of `https://geoatlas.online` would make every canonical tag and every sitemap entry point at a URL that redirects — a site-wide defect that is invisible locally, because the dev server has no redirect. Check it against production after any DNS or domain change:
 
 ```bash
 curl -s -o /dev/null -w '%{http_code} %{redirect_url}\n' https://your-domain/
