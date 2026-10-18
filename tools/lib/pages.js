@@ -173,6 +173,7 @@ export function home(countries, games) {
     path: '/',
     css: ['/css/games.css'],
     body,
+    rail: true,
     schema: [
       {
         '@context': 'https://schema.org',
