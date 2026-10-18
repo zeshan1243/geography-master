@@ -389,6 +389,7 @@ ${playAndResultsScreens({ icon: game.icon, name: game.name })}
     path: `/game/${game.slug}`,
     css: ['/css/games.css', '/css/game.css'],
     body,
+    rail: true,
     schema: [
       {
         '@context': 'https://schema.org',
@@ -565,6 +566,7 @@ export function recallGamePage(game, allGames, variant) {
     noindex,
     css: ['/css/games.css', '/css/game.css'],
     body,
+    rail: true,
     schema: [
       {
         '@context': 'https://schema.org',
@@ -843,6 +845,7 @@ export function landlockedGamePage(game, allGames, { continent, total, noindex =
     noindex,
     css: ['/css/games.css', '/css/game.css'],
     body,
+    rail: true,
     schema: [
       {
         '@context': 'https://schema.org',
@@ -978,6 +981,7 @@ export function topLanguagesGamePage(game, allGames, { continent, total, seconds
     noindex,
     css: ['/css/games.css', '/css/game.css'],
     body,
+    rail: true,
     schema: [
       {
         '@context': 'https://schema.org',
@@ -1999,6 +2003,7 @@ export function practicePage() {
     path: '/practice',
     css: ['/css/games.css', '/css/game.css'],
     body,
+    rail: true,
     schema: breadcrumbSchema(trail)
   });
 }

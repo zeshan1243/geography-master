@@ -127,17 +127,22 @@ export function adSlot(name = 'default') {
 }
 
 /**
- * The sticky side rail, shown only on wide screens.
+ * The sticky side rail(s), shown only on wide screens — one on the right at
+ * the normal wide breakpoint, a second on the left once the viewport is wide
+ * enough that a second 300px column doesn't crush the content between them
+ * (see the `has-rail` / `has-rail-dual` CSS).
  *
  * A responsive AdSense unit takes its shape from the width of its container,
  * not from whatever it was named in AdSense, so a tall ad needs a narrow
  * column. Below the breakpoint this element is display:none and no <ins> is
  * ever created for it — see js/ads.js for why that matters. The Adsterra
  * skyscraper is a fixed 160×600 instead, just centred in that same column.
+ * Both sides render the same unit — Adsterra has only given us one rail-sized
+ * key — so this is one ad zone shown twice, not two distinct placements.
  */
-export function adRail() {
+function railMarkup(side) {
   if (SITE.adsterra?.rail) {
-    return `<aside class="ad-rail" aria-label="Advertisement">
+    return `<aside class="ad-rail ad-rail-${side}" aria-label="Advertisement">
     <div class="ad-rail-sticky">
       <span class="ad-label">Advertisement</span>
       <div class="ad-container ad-container-rail ad-container-adsterra">${adsterraUnit(SITE.adsterra.rail)}</div>
@@ -149,12 +154,20 @@ export function adRail() {
   const client = SITE.adsense?.client;
   if (!client || !slot) return '';
 
-  return `<aside class="ad-rail" aria-label="Advertisement">
+  return `<aside class="ad-rail ad-rail-${side}" aria-label="Advertisement">
     <div class="ad-rail-sticky">
       <span class="ad-label">Advertisement</span>
       <div class="ad-container ad-container-rail" data-ad data-ad-slot-id="${slot}"></div>
     </div>
   </aside>`;
+}
+
+export function adRail() {
+  return railMarkup('right');
+}
+
+export function adRailLeft() {
+  return railMarkup('left');
 }
 
 /** The loader script, once per page — skipped while Adsterra is the active network. */
@@ -331,6 +344,7 @@ ${header()}
 ${
   rail && adRail()
     ? `<div class="wrap has-rail">
+${adRailLeft()}
 <div class="has-rail-main">
 ${body}
 </div>

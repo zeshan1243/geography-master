@@ -732,7 +732,11 @@ tbody tr:hover { background: var(--surface-secondary); }
     padding-inline: 0;
   }
 
-  .ad-rail { display: block; }
+  /* Only the right rail at this width — the left one needs a wider viewport
+     (see below) so a second 300px column never crushes the content between
+     them. It stays display:none until then, so the grid above lays out as
+     just [content][right rail], same as a single-rail page always has. */
+  .ad-rail-right { display: block; }
 
   .ad-rail-sticky {
     position: sticky;
@@ -766,6 +770,19 @@ tbody tr:hover { background: var(--surface-secondary); }
     display: flex;
     justify-content: center;
   }
+}
+
+/* A second rail on the left needs real room either side of the content, not
+   just the single 300px column above — otherwise the centre column gets
+   crushed on an ordinary laptop. Scoped to `.wrap.has-rail` alone so it
+   doesn't change the reading width of non-rail pages at this breakpoint. */
+@media (min-width: 1680px) {
+  .wrap.has-rail {
+    --wrap: 1600px;
+    grid-template-columns: 300px minmax(0, 1fr) 300px;
+  }
+
+  .ad-rail-left { display: block; }
 }
 
 /* --- Footer ------------------------------------------------------------- */
