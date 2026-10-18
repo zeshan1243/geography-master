@@ -688,6 +688,26 @@ tbody tr:hover { background: var(--surface-secondary); }
    Over-reserving costs whitespace; under-reserving costs CLS, which is the
    one that hurts rankings. */
 
+/* Adsterra units are fixed-size, so the box is sized to the exact banner
+   instead of the taller AdSense reservation above, and only one of the two
+   breakpoint variants is ever in the DOM's visible flow at a time. */
+.ad-container-adsterra {
+  min-height: 0;
+  border: 0;
+  background: transparent;
+  padding-top: 4px;
+}
+
+.adsterra-unit { margin: 0 auto; }
+
+.adsterra-desktop { display: flex; justify-content: center; }
+.adsterra-mobile { display: none; }
+
+@media (max-width: 640px) {
+  .adsterra-desktop { display: none; }
+  .adsterra-mobile { display: flex; justify-content: center; }
+}
+
 /* --- Side rail ----------------------------------------------------------- */
 /* A responsive unit takes its shape from its container, so the tall ad needs
    a narrow column. Only wide screens have room for one. */
@@ -740,6 +760,11 @@ tbody tr:hover { background: var(--surface-secondary); }
   .ad-container-rail .adsbygoogle {
     min-height: 600px;
     width: 300px;
+  }
+
+  .ad-container-rail.ad-container-adsterra {
+    display: flex;
+    justify-content: center;
   }
 }
 

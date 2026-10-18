@@ -74,15 +74,49 @@ export function esc(value) {
 }
 
 /**
+ * One Adsterra direct-banner unit: a synchronous `atOptions` assignment
+ * immediately followed by that unit's own script. Both run in document order,
+ * exactly as the network's integration snippet requires — reordering or
+ * deferring either tag lets a later unit's `atOptions` overwrite this one's
+ * before its script reads it.
+ */
+function adsterraUnit({ key, width, height }) {
+  return `<div class="adsterra-unit" style="width:${width}px;height:${height}px">
+<script>
+  atOptions = {
+    'key' : '${key}',
+    'format' : 'iframe',
+    'height' : ${height},
+    'width' : ${width},
+    'params' : {}
+  };
+</script>
+<script src="https://bauval.org/22/${key}"></script>
+</div>`;
+}
+
+/**
  * An ad placement.
  *
- * With no AdSense client configured this stays a grey placeholder, so local
- * development reserves exactly the same space the live ad will occupy. The
- * `push()` call deliberately does NOT go here — see js/ads.js. Some slots (the
- * one on the game results screen) start inside a hidden section, and pushing an
- * ad into a display:none container makes it measure zero width and never fill.
+ * While `site.config.json` has an `adsterra` block, it is the active network —
+ * AdSense stays configured underneath but idle, so flipping back later is just
+ * removing that block. With neither configured this stays a grey placeholder,
+ * so local development reserves exactly the same space the live ad will
+ * occupy. The AdSense `push()` call deliberately does NOT go here — see
+ * js/ads.js. Some slots (the one on the game results screen) start inside a
+ * hidden section, and pushing an ad into a display:none container makes it
+ * measure zero width and never fill.
  */
 export function adSlot(name = 'default') {
+  if (name === 'default' && SITE.adsterra?.default) {
+    const { desktop, mobile } = SITE.adsterra.default;
+    return `<div class="ad-container ad-container-adsterra" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="adsterra-desktop">${adsterraUnit(desktop)}</div>
+    <div class="adsterra-mobile">${adsterraUnit(mobile)}</div>
+  </div>`;
+  }
+
   const slot = SITE.adsense?.slots?.[name] || SITE.adsense?.slots?.default;
   const client = SITE.adsense?.client;
   const live = client && slot ? ` data-ad data-ad-slot-id="${slot}"` : '';
@@ -95,12 +129,22 @@ export function adSlot(name = 'default') {
 /**
  * The sticky side rail, shown only on wide screens.
  *
- * A responsive unit takes its shape from the width of its container, not from
- * whatever it was named in AdSense, so a tall ad needs a narrow column. Below
- * the breakpoint this element is display:none and no <ins> is ever created for
- * it — see js/ads.js for why that matters.
+ * A responsive AdSense unit takes its shape from the width of its container,
+ * not from whatever it was named in AdSense, so a tall ad needs a narrow
+ * column. Below the breakpoint this element is display:none and no <ins> is
+ * ever created for it — see js/ads.js for why that matters. The Adsterra
+ * skyscraper is a fixed 160×600 instead, just centred in that same column.
  */
 export function adRail() {
+  if (SITE.adsterra?.rail) {
+    return `<aside class="ad-rail" aria-label="Advertisement">
+    <div class="ad-rail-sticky">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-container ad-container-rail ad-container-adsterra">${adsterraUnit(SITE.adsterra.rail)}</div>
+    </div>
+  </aside>`;
+  }
+
   const slot = SITE.adsense?.slots?.rail;
   const client = SITE.adsense?.client;
   if (!client || !slot) return '';
@@ -113,10 +157,10 @@ export function adRail() {
   </aside>`;
 }
 
-/** The loader script, once per page. */
+/** The loader script, once per page — skipped while Adsterra is the active network. */
 function adsenseHead() {
   const client = SITE.adsense?.client;
-  if (!client) return '';
+  if (!client || SITE.adsterra) return '';
   return `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}" crossorigin="anonymous"></script>`;
 }
 

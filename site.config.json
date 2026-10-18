@@ -12,6 +12,14 @@
       "rail": "7250058413"
     }
   },
+  "adsterra": {
+    "default": {
+      "desktop": { "key": "f4ce8019471e621316e9798a057fe8bc", "width": 468, "height": 60 },
+      "mobile": { "key": "51475b2c1e5189866d3f8b440540f7fe", "width": 320, "height": 50 }
+    },
+    "rail": { "key": "0a84d10d61ee900f3e662bb1ad06529d", "width": 160, "height": 600 },
+    "spare": { "key": "5b60872f432a6290568caa2e851ede0b", "width": 160, "height": 300 }
+  },
   "analytics": {
     "measurementId": "G-50LK0WQGKD"
   }
