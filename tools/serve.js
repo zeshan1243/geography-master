@@ -85,5 +85,5 @@ createServer(async (req, res) => {
     res.end(await readFile(join(ROOT, '404.html')).catch(() => 'Not found'));
   }
 }).listen(PORT, () => {
-  console.log(`World Geography Games running at http://localhost:${PORT}`);
+  console.log(`GeoAtlas running at http://localhost:${PORT}`);
 });

@@ -182,7 +182,7 @@
     "category": "Capital Games",
     "tagline": "Name the country from its capital city",
     "description": "The capital quiz backwards. You get a city — Bishkek, Asunción, Lusaka — and have to name the country it governs.",
-    "metaTitle": "Reverse Capital Quiz — Name the Country from Its Capital",
+    "metaTitle": "Reverse Capital Quiz — Name the Country",
     "metaDescription": "Play a free reverse capital quiz. Given a capital city, name the country it belongs to, from easy to expert.",
     "popular": false,
     "guide": [
@@ -200,7 +200,7 @@
     "category": "Capital Games",
     "tagline": "Guess the capital city of a country",
     "description": "One country, four cities, thirty questions. Capitals are the fastest route to knowing a map, and the wrong answers come from the same region to keep it honest.",
-    "metaTitle": "Capital Cities Quiz — Guess the Capital of Every Country",
+    "metaTitle": "Capital Cities Quiz — Guess Every Capital",
     "metaDescription": "Play a free world capitals quiz. Guess the capital city of countries from every continent, from easy to expert difficulty.",
     "popular": true,
     "guide": [
@@ -308,7 +308,7 @@
     "category": "World Games",
     "tagline": "Random questions from every category",
     "description": "Flags, capitals, continents, landmarks and oceans shuffled into one round. The closest thing on the site to a general geography test.",
-    "metaTitle": "Mixed Geography Quiz — Flags, Capitals, Countries and More",
+    "metaTitle": "Mixed Geography Quiz — Flags, Capitals & More",
     "metaDescription": "Play a free mixed geography quiz combining flags, capitals, countries, continents, landmarks and oceans in one round.",
     "popular": true,
     "guide": [
@@ -489,7 +489,7 @@
     "category": "Landmark Games",
     "tagline": "Pick the landmark that belongs to a country",
     "description": "The landmark quiz reversed: you get a country and choose which of four famous sites is actually there.",
-    "metaTitle": "Landmarks by Country — Which Landmark Is in Each Country?",
+    "metaTitle": "Landmarks by Country Quiz",
     "metaDescription": "Play a free landmarks quiz in reverse. Given a country, pick which famous landmark is found there, with a fact for every answer.",
     "popular": false,
     "guide": [

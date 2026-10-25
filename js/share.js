@@ -12,7 +12,7 @@
 
 /** The site's own name, read from the header rather than hardcoded here. */
 export function siteName() {
-  return document.querySelector('.brand-full')?.textContent?.trim() || 'World Geography Games';
+  return document.querySelector('.brand-full')?.textContent?.trim() || 'GeoAtlas';
 }
 
 function buildLinks({ text, url }) {

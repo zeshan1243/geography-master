@@ -1736,12 +1736,11 @@ export function privacyPage() {
     <h2>3. Cookies</h2>
     <p>We set no cookies of our own. Third-party services described below may set cookies in your browser.</p>
 
-    <h2>4. Advertising and Google AdSense</h2>
-    <p>This site displays advertising to cover its running costs. Advertising is served by Google AdSense.</p>
+    <h2>4. Advertising</h2>
+    <p>This site displays advertising to cover its running costs. Advertising is currently served through a third-party ad network (Adsterra), and this may change as our monetisation setup evolves.</p>
     <ul>
-      <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this and other websites.</li>
-      <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this and/or other sites on the internet.</li>
-      <li>You may opt out of personalised advertising by visiting <a href="https://www.google.com/settings/ads" rel="nofollow noopener" target="_blank">Google Ads Settings</a>.</li>
+      <li>Ad scripts are loaded from our advertising partner's own servers, which may set cookies in your browser to measure ad performance and limit how often you see the same ad.</li>
+      <li>Serving an ad requires your browser to contact our advertising partner's servers directly, which can see information such as your browser type, approximate location (from your IP address) and the page you are viewing.</li>
       <li>You can opt out of third-party vendor cookies for personalised advertising at <a href="https://www.aboutads.info/choices/" rel="nofollow noopener" target="_blank">aboutads.info/choices</a>.</li>
     </ul>
     <p>Where required by law, we ask for your consent before non-essential cookies are set, and you can withdraw that consent at any time through your browser settings.</p>
@@ -1750,7 +1749,7 @@ export function privacyPage() {
     <p>We may use a privacy-respecting analytics service to count page views and understand which games are played. Any such analytics is configured to record aggregate usage only — no attempt is made to identify individual visitors or to combine analytics data with advertising data.</p>
 
     <h2>6. Third-party services</h2>
-    <p>Beyond advertising and analytics, the site is deliberately plain: there are no social widgets, no embedded videos, no comment system, no external fonts and no content delivery networks loading third-party scripts. Pages are static HTML, CSS and JavaScript served from our own host.</p>
+    <p>Beyond advertising and analytics, the site is deliberately plain: there are no social widgets, no embedded videos, no comment system and no external fonts. The advertising network named in section 4 loads its own script from its own servers to display ads — see that section for what it does.</p>
 
     <h2>7. Children</h2>
     <p>The site is suitable for all ages and is used in classrooms. We do not knowingly collect personal information from anyone, including children. If you believe a child has sent us personal information by email, contact us and we will delete it.</p>

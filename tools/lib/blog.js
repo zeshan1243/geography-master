@@ -86,7 +86,7 @@ export const POSTS = [
   {
     slug: 'countries-that-dont-exist',
     title: 'The countries that do not exist',
-    metaTitle: 'The Countries That Do Not Exist — Taiwan, Kosovo, Somaliland',
+    metaTitle: 'Countries That Do Not Exist — Taiwan, Kosovo',
     description:
       'Taiwan, Kosovo, Somaliland and Northern Cyprus all govern territory and none is a UN member. What actually makes a country a country.',
     updated: '21 August 2026',
@@ -158,7 +158,7 @@ export const POSTS = [
   {
     slug: 'how-borders-get-drawn',
     title: 'How borders get drawn',
-    metaTitle: 'How Borders Get Drawn — Straight Lines, Rivers and Watersheds',
+    metaTitle: 'How Borders Get Drawn — Lines, Rivers, Watersheds',
     description:
       'Why Africa has straight borders and Europe does not, what happens when a border river moves, and the five-week line that divided India and Pakistan.',
     updated: '21 August 2026',
@@ -226,7 +226,7 @@ export const POSTS = [
   {
     slug: 'the-worlds-strangest-borders',
     title: 'The world’s strangest borders',
-    metaTitle: 'The World’s Strangest Borders — Enclaves, Exclaves and No Man’s Land',
+    metaTitle: 'The World’s Strangest Borders Explained',
     description:
       'A town split into 30 pieces, a US village reachable only through Canada, a border across the summit of Everest, and a patch of desert nobody wants.',
     updated: '21 August 2026',
@@ -296,7 +296,7 @@ export const POSTS = [
   {
     slug: 'why-time-zones-are-strange',
     title: 'Why time zones are stranger than you think',
-    metaTitle: 'Why Time Zones Are Strange — China, Nepal and the Date Line',
+    metaTitle: 'Why Time Zones Are Strange — China and Nepal',
     description:
       'China runs on one time zone across five. Nepal is 45 minutes off. Kiribati moved the date line. Why clock time and solar time stopped agreeing.',
     updated: '21 August 2026',

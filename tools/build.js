@@ -365,8 +365,9 @@ function build() {
           seconds: 15 * 60,
           path: `game/${game.slug}/all`,
           title: game.name,
-          metaTitle: game.metaTitle,
-          metaDescription: game.metaDescription,
+          metaTitle: 'Play All 195 Countries — Name the Countries Quiz',
+          metaDescription:
+            'Name all 195 countries from memory in fifteen minutes — the full free-recall challenge, no multiple choice. Prefer a shorter round? Pick a single starting letter instead.',
           breadcrumbLabel: 'All 195 Countries',
           intro: game.description
         })

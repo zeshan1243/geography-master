@@ -14,7 +14,7 @@ export const ARTICLES = [
   {
     slug: 'how-to-memorise-every-country',
     title: 'How to memorise all 195 countries',
-    metaTitle: 'How to Memorise All 195 Countries — A Method That Works',
+    metaTitle: 'How to Memorise All 195 Countries',
     description:
       'A practical method for learning every country in the world: the order to learn them in, why flags come before capitals, and how long it actually takes.',
     updated: '11 August 2026',
@@ -113,7 +113,7 @@ export const ARTICLES = [
   {
     slug: 'why-flags-look-alike',
     title: 'Why so many national flags look alike',
-    metaTitle: 'Why So Many National Flags Look Alike — Patterns Explained',
+    metaTitle: 'Why So Many National Flags Look Alike',
     description:
       'Tricolours, Pan-African and Pan-Arab colours and Nordic crosses: the design families behind the world flags, and how to tell the confusable pairs apart.',
     updated: '11 August 2026',
@@ -352,7 +352,7 @@ export const ARTICLES = [
   {
     slug: 'map-projections-explained',
     title: 'How to read a world map',
-    metaTitle: 'Map Projections Explained — Why Every World Map Is Wrong',
+    metaTitle: 'Map Projections Explained — Every Map Is Wrong',
     description:
       'Every flat world map distorts something. What Mercator, Gall-Peters and Winkel Tripel each preserve, what they sacrifice, and how to read around it.',
     updated: '11 August 2026',
@@ -431,7 +431,7 @@ export const ARTICLES = [
   {
     slug: 'landlocked-countries',
     title: 'The landlocked countries, and why it matters',
-    metaTitle: 'Landlocked Countries Explained — The Full List and Why It Matters',
+    metaTitle: 'Landlocked Countries Explained — Full List',
     description:
       'Forty-four countries have no coastline and two are surrounded entirely by other landlocked countries. What being landlocked actually costs.',
     updated: '11 August 2026',
