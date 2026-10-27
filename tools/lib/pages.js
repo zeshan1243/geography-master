@@ -53,8 +53,8 @@ export function home(countries, games) {
   const body = `
 <section class="hero">
   <div class="wrap">
-    <h1>Play. Learn. <span class="accent">Explore.</span> 🌍</h1>
-    <p class="lead">${esc(SITE.tagline)} Free geography games — no account, no download, straight into a round.</p>
+    <h1>Play Free Geography Games <span class="accent">🌍</span></h1>
+    <p class="lead">Play free geography games — ${esc(SITE.tagline).toLowerCase()} No account, no download, straight into a round.</p>
     <div class="btn-row">
       <a class="btn btn-primary btn-lg" href="/game/flag-quiz?difficulty=medium&amp;autostart=1" data-play-now>${icon('play')} Play Now</a>
       <a class="btn btn-secondary btn-lg" href="/games/">${icon('grid')} Explore Games</a>
@@ -167,7 +167,7 @@ export function home(countries, games) {
 </section>`;
 
   return page({
-    title: `${SITE.name} — Country, Capital & Flag Quizzes`,
+    title: 'Play Free Geography Games — GeoAtlas',
     description:
       'Play free geography games and quizzes about countries, capitals, flags, continents, landmarks and oceans. No account needed.',
     path: '/',
@@ -1125,7 +1125,7 @@ export function countryPage(country, countries, details = {}, comparisons = []) 
   </header>
 
   <div class="article">
-    <p>${esc(country.name)} is a country in ${esc(country.continent)}. Its capital city is ${esc(country.capital)}, the official currency is the ${esc(country.currency)}, and the main language is ${esc(country.language)}.</p>
+    <p>${esc(country.name)} is a country located in ${esc(country.continent)}. Its capital city is ${esc(country.capital)}, the official currency is the ${esc(country.currency)}, and the main language is ${esc(country.language)}.</p>
     <p>With a population of roughly ${approx(country.population)} people spread over ${fmt(country.area)} km², ${esc(country.name)} is the ${ordinal(country.populationRank)} most populous country in the world and the ${ordinal(country.areaRank)} largest by area. That works out at about ${fmt(density)} people per square kilometre.</p>
     <p>${bordersProse} ${citiesProse} ${highestProse}</p>
     <p>${scaleProse}</p>
@@ -1557,10 +1557,10 @@ export function listPages(countries) {
       path: 'lists/countries-and-capitals.html',
       html: listPage({
         slug: 'countries-and-capitals',
-        title: `Countries and Their Capitals — All ${countries.length} | ${SITE.name}`,
+        title: `Countries and Capitals — Full List of All ${countries.length} | ${SITE.name}`,
         h1: 'Countries and their capitals',
-        description: `The complete list of all ${countries.length} countries and their capital cities, with continent and flag.`,
-        intro: `<p>All ${countries.length} sovereign countries with their capital cities, sorted alphabetically. A handful are worth knowing about before you are quizzed on them: Bolivia's constitutional capital is Sucre rather than La Paz, South Africa's seat of government is Pretoria, and Sri Lanka's official capital is Sri Jayawardenepura Kotte, not Colombo.</p>`,
+        description: `The complete list of all ${countries.length} countries and their capital cities, with continent and flag — a world capitals list you can also turn into a quiz.`,
+        intro: `<p>A complete list of all ${countries.length} countries and capitals, sorted alphabetically. A handful are worth knowing about before you are quizzed on them: Bolivia's constitutional capital is Sucre rather than La Paz, South Africa's seat of government is Pretoria, and Sri Lanka's official capital is Sri Jayawardenepura Kotte, not Colombo.</p>`,
         outro: `<h2>Learning them</h2><p>Capitals are the hardest of the basic geography facts because there is no visual hook — nothing about "Bishkek" points to Kyrgyzstan. What works is repeated short sessions with immediate correction, which is exactly what the <a href="/game/capital-quiz">capital quiz</a> does.</p>`,
         columns: ['Flag', 'Country', 'Capital', 'Continent'],
         optionalColumn: 'Continent',
@@ -1573,10 +1573,10 @@ export function listPages(countries) {
       path: 'lists/world-flags.html',
       html: listPage({
         slug: 'world-flags',
-        title: `World Flags — All ${countries.length} Country Flags | ${SITE.name}`,
-        h1: 'World flags',
-        description: `Every one of the ${countries.length} country flags with the country, capital and continent it belongs to.`,
-        intro: `<p>Every national flag on the site, with the country it belongs to. Flags are the fastest geography facts to learn because they are visual — most people can recognise a flag long before they can recall the capital.</p>`,
+        title: `Flags of the World — All ${countries.length} Country Flags | ${SITE.name}`,
+        h1: 'Flags of the world',
+        description: `All ${countries.length} flags of the world, listed with the country, capital and continent each one belongs to.`,
+        intro: `<p>Every flag of the world, one per country, listed alphabetically with the country it belongs to. Flags are the fastest geography facts to learn because they are visual — most people can recognise a flag long before they can recall the capital.</p>`,
         outro: `<h2>The ones that catch people out</h2><p>Chad and Romania are near-identical. Monaco and Indonesia differ only in proportions. Ireland and Ivory Coast are mirror images of each other. Australia and New Zealand both carry the Union Jack and the Southern Cross, differing in the number and colour of the stars. Those pairs are exactly the distractors the <a href="/game/flag-quiz">flag quiz</a> serves up at the harder levels.</p>`,
         columns: ['Flag', 'Country', 'Capital', 'Continent'],
         optionalColumn: 'Continent',
