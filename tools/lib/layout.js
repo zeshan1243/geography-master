@@ -309,6 +309,7 @@ export function page({
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
+<meta name="p:domain_verify" content="856c598a08210bcce5995be518cbbbaf">
 <link rel="canonical" href="${canonical}">${
   noindex
     ? // Filter variants of one game: real pages for players, but near-identical
