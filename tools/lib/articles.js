@@ -492,5 +492,207 @@ export const ARTICLES = [
 
 <p>Landlocked status is one of the more useful things to know about a country, because it constrains so much else — trade, politics, which neighbours matter most. The <a href="/game/country-quiz">country quiz</a> works from clues including continent and currency, and the <a href="/game/map-quiz">map quiz</a> puts the geography itself in front of you, which is the fastest way to notice which countries have no way out.</p>
 `
+  },
+
+  {
+    slug: 'currencies-of-the-world',
+    title: 'Why some countries share a currency, and others use someone else’s',
+    metaTitle: 'Why Some Countries Share a Currency',
+    description:
+      'Twenty countries use the euro without a shared government, eight African nations share a franc none of them controls, and Panama prints no paper money at all.',
+    updated: '28 October 2026',
+    summary:
+      'A currency border and a national border are two different maps. Plenty of fully independent countries have no say at all in the money they use every day.',
+    body: `
+<p>Every country on this site has a currency field, and it quietly implies something that is not true: that each of the 195 countries has its own money. A large number of them do not, and the reasons split into a few distinct patterns worth knowing separately.</p>
+
+<h2>A currency union is not a political union</h2>
+
+<p>The clearest case is the euro. Around twenty countries use it, and using it requires no other form of integration — Montenegro and Kosovo both use the euro unilaterally without being EU members at all, while <a href="/countries/san-marino">San Marino</a>, <a href="/countries/vatican-city">Vatican City</a>, <a href="/countries/monaco">Monaco</a> and Andorra each use it under individual monetary agreements. Not every EU member uses it either: Denmark and Sweden have stayed out, by opt-out and by choice respectively, and several newer members are still working toward joining.</p>
+
+<p>The Eastern Caribbean dollar is a smaller, less-discussed version of the same idea. Six independent countries — Antigua and Barbuda, Dominica, Grenada, Saint Kitts and Nevis, Saint Lucia and Saint Vincent and the Grenadines — share it, each with its own government, none with a vote over the others' fiscal policy. The currency is fixed to the US dollar and managed by a regional central bank.</p>
+
+<h2>Two francs that are not interchangeable</h2>
+
+<p>Fourteen African countries use a currency called the CFA franc, and there are two of them. The West African CFA franc circulates in <a href="/countries/senegal">Senegal</a>, <a href="/countries/mali">Mali</a>, <a href="/countries/ivory-coast">Ivory Coast</a>, Burkina Faso, Niger, Togo, Benin and Guinea-Bissau. The Central African CFA franc circulates in <a href="/countries/cameroon">Cameroon</a>, Gabon, Chad, the Republic of the Congo, the Central African Republic and Equatorial Guinea. Both are pegged to the euro at the same fixed rate and both grew out of the former French colonial currency, but they are issued by two separate central banks and a banknote from one zone is not legal tender in the other, despite the identical name and nearly identical design.</p>
+
+<h2>Using someone else's currency outright</h2>
+
+<p><a href="/countries/ecuador">Ecuador</a> replaced its own currency with the US dollar in 2000, after a banking collapse made the sucre worthless almost overnight. El Salvador did the same in 2001, and added Bitcoin as a second legal tender in 2021, becoming the first country to do either.</p>
+
+<p><a href="/countries/panama">Panama</a> is the oldest and strangest case. Its official currency, the balboa, is pegged one-to-one with the dollar and the two are used interchangeably — but Panama has never printed its own paper money. Only coins carry the balboa; every banknote in circulation is a US dollar bill.</p>
+
+<p>None of these countries has a seat at the US Federal Reserve. Interest rates set in Washington for American conditions apply directly to their economies, with no local lever to offset them. It is full monetary dependence without even the limited voice a currency union provides.</p>
+
+<h2>Independent, but still not their own money</h2>
+
+<p><a href="/countries/liechtenstein">Liechtenstein</a> is a fully sovereign state and has used the Swiss franc since a currency treaty with Switzerland in 1980, rather than issue one of its own. <a href="/countries/kiribati">Kiribati</a>, <a href="/countries/tuvalu">Tuvalu</a> and <a href="/countries/nauru">Nauru</a> use the Australian dollar. <a href="/countries/palau">Palau</a>, the Marshall Islands and <a href="/countries/micronesia">Micronesia</a> use the US dollar. All six are UN member states with their own governments, flags and foreign policy — just no central bank of their own, usually because a domestic currency would be too small and too thinly traded to be worth maintaining.</p>
+
+<h2>What happens when a currency fails</h2>
+
+<p><a href="/countries/zimbabwe">Zimbabwe</a> is the clearest illustration of the alternative. Hyperinflation in the late 2000s destroyed the Zimbabwean dollar so completely that the country abandoned it altogether in 2009 and ran on foreign currencies, mostly the US dollar, for most of the following decade. It has since tried more than once to reintroduce a domestic currency, with mixed results — a reminder that a currency only works for as long as people trust it, and that trust, once broken at that scale, is slow to rebuild.</p>
+
+<p>Currency, in other words, is one of the few things on a country's data sheet that is not really a fact about that country alone. The <a href="/game/country-quiz">country quiz</a> uses currency as one of its clues precisely because it groups countries in ways that borders and flags do not.</p>
+`
+  },
+
+  {
+    slug: 'population-density-explained',
+    title: 'The world’s most crowded countries, and the emptiest',
+    metaTitle: 'Population Density Explained — Most Crowded',
+    description:
+      'Monaco packs roughly 19,000 people into every square kilometre. Mongolia has about two. What population density actually measures, and why it misleads as often as it informs.',
+    updated: '28 October 2026',
+    summary:
+      'Density is just population divided by area, which makes it the simplest statistic on this site and one of the easiest to misread.',
+    body: `
+<p>Population density is population divided by area, and nothing more complicated than that. It is also one of the more misleading simple numbers in geography, because a single figure for an entire country can hide almost everything interesting about how people in it actually live.</p>
+
+<h2>The most crowded sovereign states</h2>
+
+<p><a href="/countries/monaco">Monaco</a> is the extreme case: a population in the tens of thousands packed into about two square kilometres, giving a density in the range of 19,000 people per square kilometre — entirely urban, with nowhere in the country that is not city. <a href="/countries/singapore">Singapore</a> is the clearest case at real scale: a single city-state of around six million people in under 750 square kilometres, with a density in the thousands per square kilometre and essentially no rural land left at all. <a href="/countries/bahrain">Bahrain</a> and a handful of other small, heavily urbanised states sit in the same range.</p>
+
+<p>What these have in common is not wealth or poverty — Monaco and Singapore are both prosperous, but plenty of dense places are not — it is simply that none of them has much spare land. A small area with any significant population will produce a high density almost automatically.</p>
+
+<h2>The emptiest</h2>
+
+<p><a href="/countries/mongolia">Mongolia</a> holds the opposite record among sovereign states not covered mostly by ice: roughly two people per square kilometre, across a country larger than Western Europe. <a href="/countries/namibia">Namibia</a> sits in similar territory, much of it desert. <a href="/countries/australia">Australia</a> is the case people find most surprising — a developed, urbanised country with a national density among the lowest in the world, because its 26 million people are overwhelmingly concentrated in a handful of coastal cities and the interior is close to empty.</p>
+
+<h2>Why "empty" countries can still have crowded cities</h2>
+
+<p>This is the real trap in reading a national density figure: it is an average over land that is rarely used evenly. Australia's national density is low; Sydney's is not. Canada's national density is one of the lowest among large countries, and the great majority of Canadians live within a couple of hundred kilometres of the US border — most of the country's land mass holds almost nobody.</p>
+
+<p>The reverse happens too. <a href="/countries/bangladesh">Bangladesh</a> has one of the highest national densities of any country of real size, and unlike Monaco or Singapore it is not one city — it is a densely farmed river delta, with people spread fairly evenly across agricultural land rather than concentrated in a capital. The same density figure describes two completely different ways of living.</p>
+
+<h2>Area can distort it in the other direction</h2>
+
+<p><a href="/countries/russia">Russia</a> has a national density that looks low, which obscures that most Russians live in the western, European part of the country; Siberia is enormous and nearly empty, and it is doing almost all of the work of pulling the national average down. A country's total area is not evidence of how much of it people actually occupy.</p>
+
+<h2>What density is actually useful for</h2>
+
+<p>Despite the caveats, density is a genuinely useful shorthand for one thing: how much pressure there is on land, housing and infrastructure in a given area, which is exactly why planners use it even knowing it averages over a lot of local variation. It is a starting question, not a finished answer — the follow-up question, always, is whether the population is spread out or concentrated, and that is the part a single number cannot tell you.</p>
+
+<p>If you want to get a feel for which countries are large and which are populous — two different rankings that density connects — the <a href="/lists/largest-countries">largest countries list</a> and the <a href="/game/country-quiz">country quiz</a> are the fastest way to separate the two in your own head.</p>
+`
+  },
+
+  {
+    slug: 'official-languages-explained',
+    title: 'Why some countries have a dozen official languages, and others have none',
+    metaTitle: 'Official Languages of the World Explained',
+    description:
+      'South Africa recognises twelve official languages, the United States has none at federal level, and Singapore’s national language is one most of its citizens rarely speak at home.',
+    updated: '28 October 2026',
+    summary:
+      '"Official language" is a legal status a government grants, not a measurement of how many people actually speak it. The two line up far less often than most people assume.',
+    body: `
+<p>The language field on a country page here lists one main language, for the practical reason that a quiz needs a single answer. The real picture, almost everywhere, is more layered than one line can show.</p>
+
+<h2>Official is a legal status, not a popularity contest</h2>
+
+<p>A language becomes official because a constitution, a law or a founding treaty says so — not because of how many people speak it. That distinction explains most of what looks strange on this subject: a country can have an official language spoken by a small fraction of its people, and no official status at all for the language almost everyone actually uses.</p>
+
+<h2>Countries with a great many official languages</h2>
+
+<p><a href="/countries/south-africa">South Africa</a> currently recognises twelve official languages, after South African Sign Language was added in 2023 to a list that already ran to eleven under the 1996 constitution — a deliberate response to apartheid-era policy, which had enforced only two. <a href="/countries/india">India</a> recognises 22 languages under its constitution's Eighth Schedule, though contrary to common belief it has no single constitutional "national language" — Hindi and English are the two official languages of the central government, and each state can set its own additional official languages on top. <a href="/countries/switzerland">Switzerland</a> has four national languages — German, French, Italian and Romansh — reflecting its cantons rather than a single national identity. <a href="/countries/papua-new-guinea">Papua New Guinea</a> has four official languages, including a sign language added in 2015, sitting on top of more than 800 distinct living languages spoken across the country — the most linguistically diverse place on Earth by a wide margin.</p>
+
+<h2>Countries with no official language at all</h2>
+
+<p>The reverse case is just as real. <a href="/countries/united-states">The United States</a> has no official language at the federal level — English is dominant in practice but has never been legislated as official nationally, though some individual states have done so. <a href="/countries/united-kingdom">The United Kingdom</a> and <a href="/countries/australia">Australia</a> are the same: English is the de facto national language in both, with no law making it official. The usual reason is simply that it has never needed to be said — one language is so dominant that formalising it felt unnecessary, right up until a government decided otherwise.</p>
+
+<h2>When the official language is not the one people actually use</h2>
+
+<p><a href="/countries/singapore">Singapore</a> is the clearest case of the split. It has four official languages — English, Malay, Mandarin and Tamil — but Malay alone is designated the national language for ceremonial purposes, including the national anthem, despite being a first language for only a small minority of Singaporeans today. English is the working language of government, business and schooling. The ceremonial designation reflects Singapore's history and its relationship with Malaysia at independence, not the language most Singaporeans actually grow up speaking.</p>
+
+<h2>A widely spoken language with almost no official status</h2>
+
+<p>Swahili is understood across most of East Africa and is official in <a href="/countries/tanzania">Tanzania</a> and <a href="/countries/kenya">Kenya</a>, but across much of the rest of the region it functions as a trade language and lingua franca with no official standing at all — spoken as a confident second language by tens of millions of people for whom it has no legal status whatsoever where they live. It is the mirror image of Singapore's Malay: enormous practical reach, inconsistent legal recognition.</p>
+
+<h2>What this means for a quiz answer</h2>
+
+<p>"The main language of X" is doing real work to compress a genuinely more complicated situation into one line, and in a handful of countries any single answer is a simplification. That is exactly the territory the <a href="/game/top-languages">top spoken languages quiz</a> is built for — it ranks languages by native speakers per continent rather than by official status, which produces a noticeably different, and arguably more honest, picture of who actually speaks what.</p>
+`
+  },
+
+  {
+    slug: 'why-country-shapes-vary-so-much',
+    title: 'Why country shapes vary so much',
+    metaTitle: 'Why Some Countries Are Such Odd Shapes',
+    description:
+      'Chile is over 4,300 km long and rarely 180 km wide. Gambia’s border was drawn around a river. The history and geography behind the world’s most unusual outlines.',
+    updated: '28 October 2026',
+    summary:
+      'A country’s shape is rarely an accident. It is usually the fossil record of whatever drew the border — a river, a coastline, a treaty line, or an empire’s idea of where its influence should reach.',
+    body: `
+<p>Most quiz players can place a country faster from its outline than from almost anything else, which is exactly what the <a href="/game/shape-quiz">shape quiz</a> relies on. Some outlines are unmistakable for a reason: a handful of countries have shapes extreme enough that the silhouette alone tells the whole story.</p>
+
+<h2>Compact, elongated and fragmented</h2>
+
+<p>Geographers sometimes describe a country's shape on a scale from compact — closer to a circle or a square, where every point is relatively close to the centre — to elongated or fragmented, where distance from one part of the country to another becomes a problem in its own right. Compact countries tend to govern and defend themselves more easily, simply because nothing is very far from anything else. Elongated and fragmented ones face the opposite problem by construction.</p>
+
+<h2>Chile: the extreme case of elongation</h2>
+
+<p><a href="/countries/chile">Chile</a> is the standard example: over 4,300 kilometres from north to south, and rarely more than 180 kilometres wide. It is worth clearing up a common assumption about what that produces: a country that long does not necessarily span many time zones, because time zones follow longitude — east to west — and Chile's length runs almost entirely in the other direction, north to south. Despite its extraordinary length, mainland Chile uses a single time zone. Length on a map and time zone count are two different things entirely, and a country can have a lot of one with almost none of the other.</p>
+
+<h2>Gambia: a border drawn around a river</h2>
+
+<p><a href="/countries/gambia">Gambia</a> is the opposite kind of oddity — not long out of ambition, but thin because it was defined by a single geographic feature. Its territory follows the Gambia River for its entire length and is surrounded on three sides by <a href="/countries/senegal">Senegal</a>, with only a short Atlantic coastline. The popular account is that nineteenth-century British territorial claims extended roughly as far up each bank as a gunboat on the river could shell — a story repeated often enough that its precision should be taken with some caution, but the resulting shape is not in dispute: a country that is essentially a river with land on either side of it.</p>
+
+<h2>Vietnam's narrow waist</h2>
+
+<p><a href="/countries/vietnam">Vietnam</a> runs roughly 1,650 kilometres along the South China Sea in a shallow S-curve, narrowing to only about 50 kilometres wide at its tightest point near Dong Hoi. The shape follows the coastline and the Annamite mountain range running parallel to it, which is also why Vietnam's population and infrastructure are so heavily concentrated along the coast rather than spread evenly across the country's width.</p>
+
+<h2>Archipelago states: more sea than land</h2>
+
+<p><a href="/countries/indonesia">Indonesia</a> is made up of more than 17,000 islands, of which only around 6,000 are inhabited, scattered across a maritime territory roughly the width of the continental United States. <a href="/countries/philippines">The Philippines</a> is built from more than 7,000 islands in a similar pattern. Both countries have land areas that look modest next to their true geographic footprint, because so much of what they govern is water and the islands scattered across it — a shape a flat map badly undersells.</p>
+
+<h2>The coastline paradox</h2>
+
+<p><a href="/countries/norway">Norway</a>'s coastline, cut by thousands of fjords, illustrates a genuinely strange mathematical fact: a coastline's measured length depends on the scale of the ruler used to measure it. Zoom in further and more inlets and bends appear, and the total length keeps growing — a phenomenon formalised by Lewis Fry Richardson and later popularised by Benoit Mandelbrot as the coastline paradox. It is part of why published coastline lengths vary so widely between sources, and it is most dramatic for exactly the kind of deeply indented coast Norway has.</p>
+
+<h2>Does shape actually matter?</h2>
+
+<p>Beyond the trivia, shape has real consequences. Elongated and fragmented countries generally face higher costs connecting their own territory — more road and rail per person, more regional variation in climate and culture, more difficulty projecting central authority evenly. Compact countries do not solve every problem by being compact, but they start from an easier position on this one specific axis.</p>
+
+<p>The <a href="/game/shape-quiz">shape quiz</a> tests exactly this kind of recognition with nothing but an outline, and the <a href="/game/map-quiz">map quiz</a> does the same with position rather than shape — between the two, they cover most of what a flat map can actually tell you about a country before you read a single word about it.</p>
+`
+  },
+
+  {
+    slug: 'oceans-and-seas-explained',
+    title: 'Why there are only five oceans, and dozens of seas',
+    metaTitle: 'Oceans and Seas Explained — Five Oceans',
+    description:
+      'The Pacific alone is larger than every continent combined, the Southern Ocean has only been drawn on maps since 2000, and the Caspian Sea is not technically a sea at all.',
+    updated: '28 October 2026',
+    summary:
+      'There is only one connected body of salt water on Earth. Oceans, seas, gulfs and bays are names drawn on top of it for convenience, not separate things.',
+    body: `
+<p>Water covers most of the planet, and almost all of it is one continuous, connected body. "Ocean" and "sea" are names drawn on top of that single body for convenience — useful, but somewhat arbitrary, which is why the exact count has changed even in living memory.</p>
+
+<h2>Five oceans, by current convention</h2>
+
+<p>The Pacific, Atlantic, Indian, Southern and Arctic are the five recognised oceans. The Pacific is by far the largest — at roughly 165 million square kilometres, it covers more area than every continent on Earth combined, and is wider at its widest point than the Moon is far from Earth. The Arctic, by contrast, is the smallest and shallowest, much of it covered in sea ice for part of the year.</p>
+
+<h2>The newest ocean on the list</h2>
+
+<p>The Southern Ocean, encircling Antarctica, is the most recently formalised of the five. The International Hydrographic Organization drafted a definition recognising it as distinct in 2000, defined by the Antarctic Circumpolar Current rather than by any coastline, since Antarctica is the only continent with open ocean on every side. That draft was never formally ratified by all member states, and the boundary remains debated among hydrographers. The idea reached wider public recognition in 2021, when National Geographic began showing it as a fifth ocean on its maps — a reminder that even something as apparently fixed as "how many oceans are there" is still, in part, a live question rather than a settled fact.</p>
+
+<h2>What turns part of an ocean into a "sea"</h2>
+
+<p>A sea is generally smaller than an ocean and partly enclosed by land, usually connected to the open ocean through a strait rather than opening directly onto it. The Mediterranean Sea connects to the Atlantic only through the narrow Strait of Gibraltar; the South China Sea and the Caribbean Sea are similarly semi-enclosed arms of the Pacific and Atlantic respectively. There is no precise cutoff in size or enclosure that separates a sea from an ocean — it is a matter of convention and usage built up over centuries, not a measured threshold.</p>
+
+<h2>The sea that is not a sea</h2>
+
+<p>The Caspian is the largest inland body of water on Earth, and despite its name it has no outlet to any ocean at all, which makes it technically a lake rather than a sea under most definitions. The distinction is not just semantic: whether the Caspian counts as a sea or a lake affects how its enormous oil and gas reserves are legally divided among the five countries on its shore, which is a genuine, long-running dispute rather than an academic one. It is also the reason <a href="/guides/landlocked-countries">Uzbekistan's status as doubly landlocked</a> survives scrutiny — its Caspian-bordering neighbours do not get credit for ocean access, because the Caspian is not connected to one.</p>
+
+<p>The Dead Sea and the Sea of Galilee carry the same naming quirk in miniature: both are lakes, named "sea" in translation from older usage, with no connection to any ocean whatsoever.</p>
+
+<h2>Gulfs, bays and straits</h2>
+
+<p>A gulf or a bay is a body of water partly enclosed by land, generally considered a step smaller and more enclosed than a sea — the Gulf of Mexico and the Bay of Bengal, the latter the largest bay in the world, are both effectively large inlets off larger seas or oceans. A strait is narrower still: a channel connecting two larger bodies of water, often a geographic chokepoint of real strategic importance — the Strait of Gibraltar, the Strait of Malacca and the Bering Strait all fall into this category, each one a narrow link that a huge volume of shipping, or in the Bering Strait's case, a day's difference in the calendar, depends on.</p>
+
+<p>If you want to see how much of this sticks, the <a href="/game/ocean-quiz">oceans and seas quiz</a> covers all five oceans and twenty-five of the major seas, each one described rather than named outright — which rewards understanding the pattern over memorising a list.</p>
+`
   }
 ];
