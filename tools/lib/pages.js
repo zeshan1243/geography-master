@@ -236,7 +236,7 @@ export function gamesIndex(games) {
     <span class="review-callout-go" aria-hidden="true">→</span>
   </a>
 
-  <p class="lead">${games.length} ways to test your geography knowledge. Most games have four difficulty levels — Easy, Medium and Hard run thirty questions, Expert is sudden death — and one is a straight fifteen-minute race against the clock.</p>
+  <p class="lead">${games.length} free online geography games covering countries, capitals, flags, maps, continents, landmarks and oceans. Most have four difficulty levels — Easy, Medium and Hard run thirty questions, Expert is sudden death — and one is a straight fifteen-minute race against the clock.</p>
 
   ${sections}
 
