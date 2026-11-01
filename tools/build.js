@@ -157,6 +157,14 @@ function searchIndex(countries, games, comparisons) {
     });
   }
 
+  entries.push({
+    type: 'tool',
+    title: 'Country Size Comparison',
+    subtitle: 'Compare any two countries by true land area and population.',
+    url: '/tools/country-size-comparison',
+    icon: '📏'
+  });
+
   return entries;
 }
 
@@ -272,6 +280,13 @@ function build() {
     write(`compare/${comparison.slug}.html`, pages.comparisonPage(comparison, countries, comparisons));
     add(`/compare/${comparison.slug}`, '0.6');
   }
+
+  // Tools
+  write('tools/index.html', pages.toolsIndex());
+  add('/tools/', '0.7', 'monthly');
+
+  write('tools/country-size-comparison.html', pages.countrySizeComparisonPage(countries));
+  add('/tools/country-size-comparison', '0.8', 'weekly');
 
   // One page per game. "Name the Countries" expands into a hub — play all
   // 195, or one shorter round per starting or ending letter — rather than a

@@ -133,6 +133,7 @@ export function home(countries, games) {
     <a class="explore-link" href="/lists/world-flags"><span class="icon" aria-hidden="true">🚩</span><span>World flags<small>Every flag by continent</small></span></a>
     <a class="explore-link" href="/lists/largest-countries"><span class="icon" aria-hidden="true">📐</span><span>Largest countries<span></span><small>Ranked by area</small></span></a>
     <a class="explore-link" href="/lists/smallest-countries"><span class="icon" aria-hidden="true">🔬</span><span>Smallest countries<small>From Vatican City up</small></span></a>
+    <a class="explore-link" href="/tools/country-size-comparison"><span class="icon" aria-hidden="true">📏</span><span>Compare country sizes<small>Any two countries, true scale</small></span></a>
   </div>
 </section>
 
@@ -1354,6 +1355,14 @@ export function comparisonsIndex(comparisons, countries) {
       })
       .join('\n    ')}
   </div>
+
+  <div class="callout">
+    <div>
+      <h2>Want a pair that isn't on this list?</h2>
+      <p>The <a href="/tools/country-size-comparison">country size comparison tool</a> compares any two of the ${countries.length} countries on the site, scaled to true land area rather than how they look on a map.</p>
+    </div>
+    <a class="btn btn-secondary" href="/tools/country-size-comparison">Open the tool →</a>
+  </div>
 </section>`;
 
   return page({
@@ -1363,6 +1372,174 @@ export function comparisonsIndex(comparisons, countries) {
     css: ['/css/games.css'],
     body,
     schema: breadcrumbSchema([{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare/' }])
+  });
+}
+
+/* ========================================================================== */
+/*  Tools                                                                     */
+/* ========================================================================== */
+
+const TOOLS = [
+  {
+    slug: 'country-size-comparison',
+    icon: '📏',
+    name: 'Country Size Comparison',
+    tagline: 'Compare any two countries by true land area, population and continent.'
+  }
+];
+
+export function toolsIndex() {
+  const body = `${breadcrumbs([{ label: 'Home', href: '/' }, { label: 'Tools' }])}
+<section class="section wrap">
+  <h1>Geography tools</h1>
+  <p class="lead">Practical, interactive tools for working with the ${SITE.name} country data directly, rather than as a quiz.</p>
+
+  <div class="game-grid">
+    ${TOOLS.map(
+      (t) => `<a class="game-card" href="/tools/${t.slug}">
+      <span class="icon" aria-hidden="true">${t.icon}</span>
+      <h3>${esc(t.name)}</h3>
+      <p>${esc(t.tagline)}</p>
+      <span class="play">Open →</span>
+    </a>`
+    ).join('\n    ')}
+  </div>
+</section>`;
+
+  return page({
+    title: `Geography Tools | ${SITE.name}`,
+    description: 'Interactive geography tools: compare country sizes, populations and more, built on the same country data as the quizzes.',
+    path: '/tools/',
+    css: ['/css/games.css'],
+    body,
+    schema: breadcrumbSchema([{ label: 'Home', href: '/' }, { label: 'Tools', href: '/tools/' }])
+  });
+}
+
+/**
+ * The interactive comparison itself is rendered client-side by js/compareSize.js
+ * — with 195 countries there are over 18,000 possible pairs, far too many to
+ * pre-render, which is exactly the kind of thin programmatic content the
+ * curated /compare/ pages above are deliberately not. This page instead ships
+ * genuine static content (the explainer sections and FAQ) around a JS-driven
+ * picker, so there is something to read and something to crawl either way.
+ */
+export function countrySizeComparisonPage(countries) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Tools', href: '/tools/' },
+    { label: 'Country Size Comparison' }
+  ];
+
+  const faqs = [
+    {
+      q: 'How is "how many times bigger" calculated?',
+      a: 'We divide the larger country’s total land area by the smaller one’s, both in square kilometres. A ratio of 3 means the larger country could fit the smaller one inside it roughly three times over.'
+    },
+    {
+      q: 'Why do countries look a different size here than on a classroom wall map?',
+      a: 'Most flat world maps use a Mercator-style projection, which inflates land the further it sits from the equator. That is why Greenland often looks about the same size as Africa, even though Africa is roughly fourteen times larger. This tool ignores the map projection and scales each outline to the country’s real land area instead.'
+    },
+    {
+      q: 'Does the area include water, or just land?',
+      a: 'Area figures follow standard national statistics, which typically count inland water such as major lakes and rivers alongside land. They do not include a country’s territorial waters out at sea.'
+    },
+    {
+      q: 'What is the largest and smallest country in the world?',
+      a: 'Russia is the largest country by area, at roughly 17.1 million km². Vatican City is the smallest, at under half a square kilometre — small enough to fit inside most capital cities many times over.'
+    },
+    {
+      q: 'Can I compare more than two countries at once?',
+      a: 'Not yet — this tool is deliberately head-to-head so the numbers stay easy to read. For full rankings, see the largest and smallest countries lists.'
+    }
+  ];
+
+  const body = `${breadcrumbs(trail)}
+<section class="section wrap compare-size-tool" data-compare-size>
+  <h1>Country Size Comparison Tool</h1>
+  <p class="lead">Pick any two of the ${countries.length} countries on this site to compare their true land area, population and continent — scaled to size, not to how they look on a flat map. Try Qatar vs Bahrain, or Canada vs Russia.</p>
+
+  <form class="compare-picker" data-compare-form>
+    <div class="compare-picker-field">
+      <label for="compare-input-a">First country</label>
+      <input id="compare-input-a" type="text" list="compare-size-countries" data-compare-input="a" autocomplete="off" placeholder="e.g. United States">
+    </div>
+    <button type="button" class="compare-picker-swap" data-compare-swap aria-label="Swap the two countries">⇄</button>
+    <div class="compare-picker-field">
+      <label for="compare-input-b">Second country</label>
+      <input id="compare-input-b" type="text" list="compare-size-countries" data-compare-input="b" autocomplete="off" placeholder="e.g. China">
+    </div>
+    <datalist id="compare-size-countries" data-compare-datalist></datalist>
+    <button type="submit" class="btn btn-primary">Compare</button>
+  </form>
+  <p class="compare-error" data-compare-error role="alert" hidden></p>
+
+  <div class="compare-chips" data-compare-chips aria-label="Popular comparisons"></div>
+
+  <div class="compare-results" data-compare-results hidden></div>
+
+  <noscript>
+    <p class="muted">This tool needs JavaScript to compare countries live. In the meantime, see the <a href="/lists/largest-countries">largest countries</a> and <a href="/lists/smallest-countries">smallest countries</a> lists, or browse the <a href="/compare/">curated country comparisons</a>.</p>
+  </noscript>
+
+  ${adSlot()}
+
+  <div class="article">
+    <h2>How to compare country sizes</h2>
+    <p>Type a country into each box, or tap one of the popular pairs above, and the tool fills in area, population, continent and a true-to-scale outline for both. The outlines are sized by real land area in square kilometres, not by how large each country happens to look on the world map below — which is the detail most size comparisons get wrong.</p>
+    <p>It is a useful sanity check before travelling (is Vietnam really as big as it looks on a map?), for schoolwork, or for settling an argument about whether Texas is bigger than France (it is not, at roughly 696,000 km² to France’s 551,695 km² — but it is closer than most people expect).</p>
+
+    <h2>Why country sizes look distorted on world maps</h2>
+    <p>Almost every flat world map is a projection — a way of stretching a curved surface flat — and every projection distorts something. The Mercator projection, still the default on most wall maps and web maps, preserves angles and shapes at the cost of area: it inflates land dramatically the further that land sits from the equator. Russia, Canada and Greenland all look far larger relative to Africa, India and Brazil than they really are.</p>
+    <p>The scaled outlines above sidestep that problem by sizing each country’s silhouette directly from its land area, so a country twice the size of another is drawn with roughly twice the outline area — regardless of latitude.</p>
+
+    <h2>Popular country size comparisons</h2>
+    <p>Some of the most frequently compared pairs: Qatar vs Bahrain, India vs Pakistan, the United States vs China, Australia vs India, the United Kingdom vs Germany, and Canada vs Russia. Use the buttons above to load any of them instantly, or type in your own.</p>
+  </div>
+
+  <div class="related">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      ${faqs
+        .map(
+          (f) => `<details class="faq-item">
+        <summary>${esc(f.q)}</summary>
+        <p>${esc(f.a)}</p>
+      </details>`
+        )
+        .join('\n      ')}
+    </div>
+  </div>
+
+  <div class="related">
+    <h2>Explore further</h2>
+    <div class="related-links">
+      <a href="/lists/largest-countries"><span aria-hidden="true">📐</span> Largest Countries</a>
+      <a href="/lists/smallest-countries"><span aria-hidden="true">🔬</span> Smallest Countries</a>
+      <a href="/compare/"><span aria-hidden="true">⚖️</span> Country Comparisons</a>
+      <a href="/game/country-quiz"><span aria-hidden="true">🌎</span> Country Quiz</a>
+    </div>
+  </div>
+</section>`;
+
+  return page({
+    title: `Country Size Comparison Tool | ${SITE.name}`,
+    description: 'Compare the size of any two countries side by side — true land area, population and an accurately scaled outline, not a distorted map view.',
+    path: '/tools/country-size-comparison',
+    css: ['/css/games.css'],
+    body,
+    schema: [
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || '/tools/country-size-comparison' }))),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a }
+        }))
+      }
+    ]
   });
 }
 

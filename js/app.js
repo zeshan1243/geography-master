@@ -273,6 +273,10 @@ function boot() {
     import('./achievements.js').then((mod) => renderAchievements(mod.computeAchievements));
   }
 
+  if (document.querySelector('[data-compare-size]')) {
+    import('./compareSize.js').then((mod) => mod.initCompareSize());
+  }
+
   initAds();
 
   document.querySelectorAll('[data-year]').forEach((node) => {

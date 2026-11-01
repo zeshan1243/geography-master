@@ -12,10 +12,11 @@ const GROUP_LABELS = {
   game: 'Games',
   guide: 'Guides',
   blog: 'Blog',
-  compare: 'Compare'
+  compare: 'Compare',
+  tool: 'Tools'
 };
 /** Search groups render in this fixed order regardless of match count. */
-const GROUP_ORDER = ['country', 'game', 'guide', 'blog', 'compare'];
+const GROUP_ORDER = ['country', 'game', 'guide', 'blog', 'compare', 'tool'];
 
 function initDrawer() {
   const toggle = document.querySelector('[data-nav-toggle]');

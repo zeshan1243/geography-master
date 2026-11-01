@@ -49,6 +49,7 @@ const FOOTER = [
       ['World flags', '/lists/world-flags'],
       ['Largest countries', '/lists/largest-countries'],
       ['Compare countries', '/compare/'],
+      ['Compare country size', '/tools/country-size-comparison'],
       ['Guides', '/guides/'],
       ['Blog', '/blog/']
     ]
