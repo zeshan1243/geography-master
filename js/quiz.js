@@ -13,7 +13,8 @@ import {
   continents as continentData,
   mapCoverage,
   borders as borderData,
-  coffee
+  coffee,
+  continentFacts
 } from './data.js';
 
 export const DIFFICULTIES = [
@@ -443,6 +444,24 @@ function countryToLandmarkQuestion(landmark, pool, allCountries, rng, index) {
   };
 }
 
+/**
+ * "Click the Correct Continent" — a curated trivia fact, answered against all
+ * seven continents every time rather than three sampled distractors. With
+ * only seven possible answers in total, showing a random subset would just
+ * hide the right one some of the time for no benefit.
+ */
+function continentFactQuestion(entry, rng, index, allContinentNames) {
+  return {
+    id: `continentFacts-${index}-${entry.id}`,
+    kind: 'continentFacts',
+    prompt: entry.clue,
+    visual: { kind: 'subject', value: '🧭', icon: '🌍', sub: 'Click the correct continent' },
+    options: shuffle(allContinentNames, rng),
+    answer: entry.continent,
+    explanation: entry.explanation
+  };
+}
+
 /** `entry` carries `.flag` and `.continent`, filled in once by roundContext below. */
 function coffeeQuestion(entry, pool, rng, index) {
   const sameContinent = pool.filter((e) => e.country !== entry.country && e.continent === entry.continent);
@@ -531,6 +550,19 @@ async function roundContext(type, tiers) {
       pool,
       subjectOf: (w) => w.name,
       build: (item, i, rng) => waterQuestion(item, pool, all, rng, i)
+    };
+  }
+
+  if (type === 'continentFacts') {
+    const [all, continentList] = await Promise.all([continentFacts(), continentData()]);
+    // All 7, including Antarctica — unlike continentQuestion's country-facing
+    // list, which excludes continents with no countries to ask about.
+    const allContinentNames = continentList.map((c) => c.name);
+    const pool = poolFor(all, tiers);
+    return {
+      pool,
+      subjectOf: (e) => e.id,
+      build: (item, i, rng) => continentFactQuestion(item, rng, i, allContinentNames)
     };
   }
 

@@ -1,0 +1,135 @@
+[
+  {
+    "id": "largest-area",
+    "clue": "Largest continent by area",
+    "continent": "Asia",
+    "explanation": "Asia covers about 44.5 million km² — roughly a third of the world's land area, and more than four times the size of Europe.",
+    "tier": 1
+  },
+  {
+    "id": "largest-population",
+    "clue": "Largest continent by population",
+    "continent": "Asia",
+    "explanation": "Asia is home to roughly 60% of the world's population — China and India alone account for close to a third of everyone alive.",
+    "tier": 1
+  },
+  {
+    "id": "costa-rica",
+    "clue": "Continent which Costa Rica is part of",
+    "continent": "North America",
+    "explanation": "Costa Rica is in Central America, which is part of the North American continent, not a continent of its own.",
+    "tier": 1
+  },
+  {
+    "id": "basketball",
+    "clue": "Where basketball was invented",
+    "continent": "North America",
+    "explanation": "James Naismith invented basketball in 1891 in Springfield, Massachusetts, USA.",
+    "tier": 1
+  },
+  {
+    "id": "moscow",
+    "clue": "Contains the city of Moscow",
+    "continent": "Europe",
+    "explanation": "Moscow sits in European Russia, west of the Ural Mountains that mark the conventional border with Asia.",
+    "tier": 1
+  },
+  {
+    "id": "oldest-median-age",
+    "clue": "Oldest median age of residents",
+    "continent": "Europe",
+    "explanation": "Europe's median age is around 42–43 — the oldest of any continent, ahead of North America.",
+    "tier": 2
+  },
+  {
+    "id": "youngest-median-age",
+    "clue": "Youngest median age of residents",
+    "continent": "Africa",
+    "explanation": "Africa's median age is around 19–20, by far the youngest of any continent.",
+    "tier": 2
+  },
+  {
+    "id": "sheep",
+    "clue": "Has more sheep than people",
+    "continent": "Oceania",
+    "explanation": "Australia alone has roughly 70 million sheep against about 26 million people — more than two sheep per person.",
+    "tier": 2
+  },
+  {
+    "id": "marsupials",
+    "clue": "Has the most marsupial species",
+    "continent": "Oceania",
+    "explanation": "Australia has well over 200 marsupial species — kangaroos, koalas and wombats among them — far more than the opossums of the Americas.",
+    "tier": 2
+  },
+  {
+    "id": "tornadoes",
+    "clue": "Most tornadoes",
+    "continent": "North America",
+    "explanation": "The United States alone records more tornadoes than any other country, concentrated in the central \"Tornado Alley\" region.",
+    "tier": 2
+  },
+  {
+    "id": "potatoes",
+    "clue": "Where potatoes come from originally",
+    "continent": "South America",
+    "explanation": "Potatoes were first domesticated in the Andes, in what is now Peru and Bolivia, thousands of years ago.",
+    "tier": 2
+  },
+  {
+    "id": "driest",
+    "clue": "Least precipitation",
+    "continent": "Antarctica",
+    "explanation": "Antarctica's interior receives less than 50mm of precipitation a year, making it the driest continent on Earth despite all its ice.",
+    "tier": 3
+  },
+  {
+    "id": "windiest",
+    "clue": "Highest average wind speed",
+    "continent": "Antarctica",
+    "explanation": "Antarctica's katabatic winds, which pour downhill off the ice sheet, make it the windiest continent on average.",
+    "tier": 3
+  },
+  {
+    "id": "landlocked-two",
+    "clue": "Has exactly 2 landlocked countries",
+    "continent": "South America",
+    "explanation": "Bolivia and Paraguay are South America's only landlocked countries — every other continent with landlocked countries has more than two.",
+    "tier": 3
+  },
+  {
+    "id": "lakes",
+    "clue": "Has the most area covered by lakes",
+    "continent": "North America",
+    "explanation": "Canada alone holds roughly 60% of the world's lakes, and together with the Great Lakes it gives North America more lake area than any other continent.",
+    "tier": 3
+  },
+  {
+    "id": "gdp",
+    "clue": "Greatest amount of economic production",
+    "continent": "Asia",
+    "explanation": "Asia's combined GDP — led by China, Japan and India — is now the largest of any continent, especially by purchasing power.",
+    "tier": 3
+  },
+  {
+    "id": "birds",
+    "clue": "Has the most bird species",
+    "continent": "South America",
+    "explanation": "South America has around 3,500 recorded bird species — more than any other continent — with Colombia, Peru and Brazil leading the count.",
+    "tier": 4
+  },
+  {
+    "id": "olympics",
+    "clue": "Most Olympic gold medals won",
+    "continent": "Europe",
+    "explanation": "European nations have won well over half of all Summer Olympic gold medals in history, far ahead of any other continent.",
+    "tier": 4
+  },
+  {
+    "id": "marathoners",
+    "clue": "Birthplace of most of the world's top 100 marathoners",
+    "continent": "Africa",
+    "explanation": "East African countries — above all Kenya and Ethiopia — produce the overwhelming majority of the world's fastest marathon runners.",
+    "tier": 4
+  }
+]

@@ -283,6 +283,24 @@
     ]
   },
   {
+    "id": "continentFacts",
+    "slug": "click-the-continent",
+    "name": "Click the Correct Continent",
+    "icon": "🧭",
+    "accent": "purple",
+    "category": "World Games",
+    "tagline": "One surprising fact, seven continents, one right answer",
+    "description": "A fact about the world — oldest median age, most bird species, where basketball was invented — and all seven continents to choose from. No countries involved, just the continents themselves.",
+    "metaTitle": "Click the Correct Continent — Continent Trivia Quiz",
+    "metaDescription": "Play a free continent trivia quiz. Read a fact about the world and click the continent it describes, from population records to where potatoes come from.",
+    "popular": false,
+    "guide": [
+      "Every other continent game on this site works through countries — pick the right one, place it on the right continent. This one skips countries entirely: each question is a standalone fact about the world, and the seven continents themselves are the answers.",
+      "Some are straightforward (Asia is both the largest continent and the most populous), and some are genuinely surprising — Antarctica is the driest continent on Earth despite being covered in ice, and Australia has more than two sheep for every person.",
+      "Costa Rica's continent catches people out the same way it does on the main continent quiz: Central America counts as North America, not a continent of its own."
+    ]
+  },
+  {
     "id": "currencies",
     "slug": "currency-quiz",
     "name": "Currency Quiz",

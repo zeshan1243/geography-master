@@ -75,6 +75,11 @@ export async function usStateAliases() {
   return fetchJSON('us-state-aliases');
 }
 
+/** Curated "click the correct continent" trivia facts. */
+export async function continentFacts() {
+  return fetchJSON('continent-facts');
+}
+
 export async function waters() {
   return fetchJSON('oceans');
 }
