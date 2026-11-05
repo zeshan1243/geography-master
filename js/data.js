@@ -59,6 +59,22 @@ export async function landmarks() {
   return fetchJSON('landmarks');
 }
 
+/** Top coffee-producing countries by green coffee output, FAO 2023. */
+export async function coffee() {
+  return fetchJSON('coffee');
+}
+
+/** The 50 US states, for the free-recall "Name All 50 States" game. */
+export async function usStates() {
+  const list = await fetchJSON('us-states');
+  return list.map((s) => ({ ...s, flag: '🇺🇸', slug: slugify(s.name) }));
+}
+
+/** Postal abbreviations and a few common nicknames -> state slug. */
+export async function usStateAliases() {
+  return fetchJSON('us-state-aliases');
+}
+
 export async function waters() {
   return fetchJSON('oceans');
 }

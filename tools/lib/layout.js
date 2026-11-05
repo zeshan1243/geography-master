@@ -48,6 +48,7 @@ const FOOTER = [
       ['Countries and capitals', '/lists/countries-and-capitals'],
       ['World flags', '/lists/world-flags'],
       ['Largest countries', '/lists/largest-countries'],
+      ['Countries by population', '/lists/countries-by-population'],
       ['Compare countries', '/compare/'],
       ['Compare country size', '/tools/country-size-comparison'],
       ['Guides', '/guides/'],

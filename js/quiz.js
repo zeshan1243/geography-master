@@ -12,7 +12,8 @@ import {
   waters,
   continents as continentData,
   mapCoverage,
-  borders as borderData
+  borders as borderData,
+  coffee
 } from './data.js';
 
 export const DIFFICULTIES = [
@@ -442,6 +443,25 @@ function countryToLandmarkQuestion(landmark, pool, allCountries, rng, index) {
   };
 }
 
+/** `entry` carries `.flag` and `.continent`, filled in once by roundContext below. */
+function coffeeQuestion(entry, pool, rng, index) {
+  const sameContinent = pool.filter((e) => e.country !== entry.country && e.continent === entry.continent);
+  const options = shuffle(
+    [entry.country, ...distractors(entry, [sameContinent, pool], (e) => e.country, rng)],
+    rng
+  );
+  const tonnes = entry.tonnes.toLocaleString('en-US');
+  return {
+    id: `coffee-${index}-${entry.country}`,
+    kind: 'coffee',
+    prompt: `Which country produced about ${tonnes} tonnes of coffee in 2023?`,
+    visual: { kind: 'subject', value: `${tonnes} t`, icon: '☕', sub: '2023 green coffee production' },
+    options,
+    answer: entry.country,
+    explanation: `${entry.flag ? `${entry.flag} ` : ''}${entry.country} produced about ${tonnes} tonnes of coffee in 2023, according to FAO data.`
+  };
+}
+
 /* --- Round assembly ------------------------------------------------------ */
 
 const COUNTRY_BUILDERS = {
@@ -511,6 +531,21 @@ async function roundContext(type, tiers) {
       pool,
       subjectOf: (w) => w.name,
       build: (item, i, rng) => waterQuestion(item, pool, all, rng, i)
+    };
+  }
+
+  if (type === 'coffee') {
+    const [rawEntries, allCountries] = await Promise.all([coffee(), countries()]);
+    const byName = new Map(allCountries.map((c) => [c.name, c]));
+    const decorated = rawEntries.map((entry) => {
+      const country = byName.get(entry.country);
+      return { ...entry, flag: country?.flag, continent: country?.continent };
+    });
+    const pool = poolFor(decorated, tiers);
+    return {
+      pool,
+      subjectOf: (e) => e.country,
+      build: (item, i, rng) => coffeeQuestion(item, pool, rng, i)
     };
   }
 

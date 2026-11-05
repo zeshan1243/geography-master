@@ -1,21 +1,26 @@
 /**
- * recall.js — "Name the Countries": a free-recall race against the clock.
+ * recall.js — free-recall races against the clock: "Name the Countries" and
+ * "Name All 50 States".
  *
  * Unlike the multiple-choice engine in game.js, nothing here is asked —
  * the player types whatever comes to mind and it is checked against every
- * country's slug plus a table of common aliases (USA, Burma, Czechia, ...).
- * A country is added the instant it is typed, with one exception: some
- * countries are a prefix of another (Niger/Nigeria, Guinea/Guinea-Bissau,
- * Dominica/Dominican Republic) — for those a short pause decides whether the
+ * item's slug plus a table of common aliases (USA, Burma, Czechia, ... or,
+ * for states, postal codes like CA and NY). An item is added the instant
+ * it is typed, with one exception: some are a prefix of another (Niger/
+ * Nigeria, Michigan/Minnesota) — for those a short pause decides whether the
  * player meant the short name or was still typing the long one.
  *
- * The same engine also powers the per-letter variants ("Countries That Start
- * With S") — the page just sets `data-letter` and `data-time-limit` on the
- * game root; everything else (matching, the map, hint dots) works the same
- * against whatever subset of the list that letter leaves.
+ * The same engine also powers the per-letter variants of "Name the
+ * Countries" ("Countries That Start With S") — the page just sets
+ * `data-letter` and `data-time-limit` on the game root; everything else
+ * (matching, the map, hint dots) works the same against whatever subset of
+ * the list that letter leaves. The states game sets `data-recall-source
+ * ="states"` instead, which swaps the dataset and skips the map entirely —
+ * there is no states map asset, so `[data-map]` is simply absent from that
+ * page's markup and every map-related block below becomes a no-op.
  */
 
-import { countries, aliases, games, mapCoverage, slugify, gameUrl } from './data.js';
+import { countries, aliases, usStates, usStateAliases, games, mapCoverage, slugify, gameUrl } from './data.js';
 import { recordGame, bestScore } from './storage.js';
 import { recallStars, recallVerdict, stars, verdict } from './score.js';
 import { icon } from './icons.js';
@@ -23,7 +28,6 @@ import { interactiveMap, makeZoomable } from './worldmap.js';
 import { wireShare, siteName } from './share.js';
 
 const SVG_NS = 'http://www.w3.org/2000/svg';
-const GAME_TYPE = 'nameCountries';
 const DEFAULT_TIME_LIMIT = 15 * 60;
 /** Radius of a "where is this country" hint dot, in the map's own SVG units. */
 const HINT_DOT_RADIUS = 2.6;
@@ -67,6 +71,15 @@ export async function initRecallGame() {
   const TIME_LIMIT = Number(root.dataset.timeLimit) || DEFAULT_TIME_LIMIT;
   const DIFFICULTY = letter ? `${letterPosition}-${letter}` : nameLength ? `length-${nameLength}` : 'all';
 
+  const source = root.dataset.recallSource === 'states' ? 'states' : 'countries';
+  const GAME_TYPE = source === 'states' ? 'nameStates' : 'nameCountries';
+  const itemNoun = source === 'states' ? 'state' : 'country';
+  const itemNounPlural = source === 'states' ? 'states' : 'countries';
+  // The 150+/100+/... thresholds behind recallStars/recallVerdict are
+  // calibrated for the full 195-country round; a 50-item list (or a short
+  // letter round) needs the ordinary percentage-based scale instead.
+  const usePercentageScoring = Boolean(letter) || source === 'states';
+
   const el = (name) => root.querySelector(`[data-${name}]`);
   const screens = {
     setup: root.querySelector('[data-screen="setup"]'),
@@ -85,12 +98,13 @@ export async function initRecallGame() {
     if (!bestLine) return;
     const best = bestScore(GAME_TYPE, DIFFICULTY);
     bestLine.textContent = best
-      ? `Your best: ${best} countries named`
+      ? `Your best: ${best} ${itemNounPlural} named`
       : 'No score yet — see how many you know.';
   };
   paintBest();
 
-  const [everyCountry, aliasMap] = await Promise.all([countries(), aliases()]);
+  const [everyCountry, aliasMap] =
+    source === 'states' ? await Promise.all([usStates(), usStateAliases()]) : await Promise.all([countries(), aliases()]);
   const edgeLetter = (name) => (letterPosition === 'end' ? name[name.length - 1] : name[0]).toUpperCase();
   const lettersOnlyLength = (name) => name.replace(/[^A-Za-z]/g, '').length;
   const list = letter
@@ -286,7 +300,7 @@ export async function initRecallGame() {
 
     const slug = resolve(raw);
     if (!slug) {
-      flash('wrong', `"${raw}" did not match a country`);
+      flash('wrong', `"${raw}" did not match a ${itemNoun}`);
       return;
     }
     if (!remaining.has(slug)) {
@@ -344,7 +358,7 @@ export async function initRecallGame() {
       ? missed
           .map((c) => `<li><span aria-hidden="true">${c.flag}</span> ${c.name}</li>`)
           .join('')
-      : '<li>You named every country. Nothing missed.</li>';
+      : `<li>You named every ${itemNoun}. Nothing missed.</li>`;
   }
 
   function finish() {
@@ -372,11 +386,11 @@ export async function initRecallGame() {
     set('result-title', remaining.size === 0 ? 'All found!' : "Time's up!");
 
     // The full 195-country round is calibrated on raw counts (150+ is
-    // exceptional); a 3-country letter round would never earn a star on that
-    // scale, so letter rounds fall back to the ordinary percentage-based
-    // scoring the multiple-choice games already use.
-    const starCount = letter ? stars(found.length, list.length) : recallStars(found.length);
-    const verdictText = letter ? verdict(found.length, list.length) : recallVerdict(found.length);
+    // exceptional); a 3-country letter round, or the 50-item states round,
+    // would never earn a star on that scale, so both fall back to the
+    // ordinary percentage-based scoring the multiple-choice games already use.
+    const starCount = usePercentageScoring ? stars(found.length, list.length) : recallStars(found.length);
+    const verdictText = usePercentageScoring ? verdict(found.length, list.length) : recallVerdict(found.length);
 
     set('result-score', found.length);
     const starsEl = el('result-stars');
@@ -385,7 +399,7 @@ export async function initRecallGame() {
         icon(i < starCount ? 'star' : 'starOutline')
       ).join('');
     }
-    set('result-summary', `${found.length} / ${list.length} countries named`);
+    set('result-summary', `${found.length} / ${list.length} ${itemNounPlural} named`);
     set('result-verdict', verdictText);
     set('result-best', `Personal best: ${best} of ${list.length} · ${streakDays} day streak`);
 

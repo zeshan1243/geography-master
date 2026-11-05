@@ -20,6 +20,25 @@
     ]
   },
   {
+    "id": "usStates",
+    "slug": "us-states-quiz",
+    "name": "Name All 50 States",
+    "icon": "🇺🇸",
+    "accent": "red",
+    "category": "Country Games",
+    "tagline": "Type every US state you can remember before time runs out",
+    "description": "Type as many of the 50 US states as you can from memory in five minutes — no multiple choice, just what you actually know. Postal abbreviations like CA and NY work too.",
+    "metaTitle": "US States Quiz — Name All 50 States From Memory",
+    "metaDescription": "Free US states quiz: type as many of the 50 states as you can from memory before the five-minute clock runs out. Postal abbreviations accepted.",
+    "popular": false,
+    "mode": "usStates",
+    "guide": [
+      "The same free-recall format as Name the Countries, scaled down to the 50 US states: a blank box and a clock, and nothing comes up unless you can actually produce it from memory. Postal abbreviations are accepted as shortcuts — type CA, NY or TX and they count the same as the full name.",
+      "Most people clear thirty to forty states quickly and then stall on the ones that rarely come up outside a map — Rhode Island, both Dakotas, West Virginia versus Virginia. Five minutes is enough time to find out exactly which ones those are for you.",
+      "Spelling matters less than you would think: close variants and the two-letter postal code for every state are both recognised, so a state is only missed if it genuinely did not come to mind."
+    ]
+  },
+  {
     "id": "borders",
     "slug": "border-quiz",
     "name": "Border Quiz",
@@ -333,6 +352,24 @@
       "Oceans and seas are the part of the map most quizzes skip entirely, which is odd given that water covers most of the planet. This game covers the five oceans and twenty-five of the major seas.",
       "Each question describes a body of water and asks you to name it. That framing rewards understanding over rote recall — knowing that a sea is almost enclosed, or that it connects two others through a narrow strait, is more useful than memorising a list.",
       "A few are worth knowing before you start: the Caspian is the largest inland body of water on Earth and has no outlet to the ocean, and the Southern Ocean was only formally recognised as distinct in 2000."
+    ]
+  },
+  {
+    "id": "coffee",
+    "slug": "coffee-quiz",
+    "name": "Coffee Quiz",
+    "icon": "☕",
+    "accent": "amber",
+    "category": "World Games",
+    "tagline": "Guess the country from its coffee output",
+    "description": "See a production figure in tonnes, name the country that grew it. Covers the 36 biggest coffee producers, from Brazil down to Malawi.",
+    "metaTitle": "Coffee Quiz — Guess the Country by Coffee Production",
+    "metaDescription": "Play a free coffee quiz. Match green coffee production figures, from FAO 2023 data, to the country that grew them — Brazil to Malawi.",
+    "popular": false,
+    "guide": [
+      "Coffee is grown commercially in roughly 70 countries, almost all of them within the \"bean belt\" between the Tropics of Cancer and Capricorn, and production is wildly concentrated: Brazil alone grows close to a third of the world's coffee, and the top eight producers account for the large majority of it.",
+      "Each question gives a production figure in tonnes, from FAO's 2023 figures, and asks which country it belongs to. The options are drawn from countries on the same continent where possible, so Ethiopia's figure is not just an easy process of elimination against South American totals.",
+      "Scale is the thing to learn here: Brazil alone grows more than Vietnam, Indonesia and Colombia — the next three biggest producers — combined, and most people wildly underestimate how far out in front it is."
     ]
   },
   {

@@ -198,5 +198,35 @@
       "Kenya's capital Nairobi is East Africa's largest commercial and financial hub, and Kenya's economy leans more heavily on services, finance and tech than most of its neighbours. Tanzania is larger in land area and includes Mount Kilimanjaro, Africa's highest peak, along with Zanzibar, a semi-autonomous archipelago with its own centuries-old Swahili and Omani-influenced culture.",
       "Swahili is a national language in both countries and serves as the region's main lingua franca, though English remains widely used in Kenyan business and government in particular."
     ]
+  },
+  {
+    "slug": "united-kingdom-vs-united-states",
+    "countries": ["United Kingdom", "United States"],
+    "kind": "global",
+    "intro": "The United States began as thirteen British colonies and broke away by revolution in 1776, and the two countries have spent the two and a half centuries since drifting apart in almost everything except the language they still, mostly, share.",
+    "paragraphs": [
+      "The scale gap is large and one-sided: the US has roughly five times the UK's population and an economy several times larger, built on a land area more than forty times bigger. Despite that, the \"special relationship\" — a term British leaders use more often than American ones — has shaped modern history through two world wars, NATO, the Cold War and the intelligence-sharing Five Eyes alliance.",
+      "Plenty of everyday things never converged: the UK drives on the left and uses the metric system almost everywhere except pints and miles on road signs, while the US does the reverse on both counts. Healthcare is the starkest split — the UK's NHS is free at the point of use and funded through taxation, while the US runs on private insurance — and the UK keeps a hereditary monarch as head of state, a job the American revolution was fought specifically to get rid of."
+    ]
+  },
+  {
+    "slug": "india-vs-china",
+    "countries": ["India", "China"],
+    "kind": "global",
+    "intro": "India and China are the only two countries in history with more than a billion people each, together holding over a third of humanity, and in 2023 India overtook China to become the more populous of the two for the first time.",
+    "paragraphs": [
+      "China's land area is nearly three times India's, giving it far more room to spread out a similar-sized population, and China industrialised and urbanised a generation earlier, which still shows up in infrastructure and manufacturing output. India's growth has leaned more on services and software, and its working-age population is still growing while China's has already started to shrink.",
+      "The two share a long, poorly defined Himalayan border — the Line of Actual Control — that triggered a brief war in 1962 and still produces occasional deadly clashes, most recently in the Galwan Valley in 2020. Politically they are near-opposites: China is a one-party state, India the world's largest democracy by population, and both sit together in groupings like BRICS despite the rivalry underneath."
+    ]
+  },
+  {
+    "slug": "mexico-vs-united-states",
+    "countries": ["Mexico", "United States"],
+    "kind": "global",
+    "intro": "Mexico and the United States share roughly 3,145 km of border, one of the busiest in the world for both legal trade and migration, and each country is among the other's largest trading partners under the USMCA agreement.",
+    "paragraphs": [
+      "The US has about two and a half times Mexico's population and a far larger economy, but the two are deeply intertwined — American factories rely on Mexican supply chains, and remittances sent home by Mexicans working in the US are a major part of Mexico's economy. Spanish is now the second most spoken language in the United States, and Mexican food, music and culture have become part of mainstream American life, particularly across the southwestern states.",
+      "Much of that southwest — including present-day California, Texas, Arizona and New Mexico — was Mexican territory until the Mexican–American War of 1846–48, after which Mexico ceded roughly half its land under the Treaty of Guadalupe Hidalgo. That history still echoes in place names, land disputes and the two countries' long-running, often tense negotiations over immigration and border security."
+    ]
   }
 ]

@@ -132,6 +132,7 @@ export function home(countries, games) {
     <a class="explore-link" href="/lists/countries-and-capitals"><span class="icon" aria-hidden="true">🏛️</span><span>Countries and capitals<small>The full reference list</small></span></a>
     <a class="explore-link" href="/lists/world-flags"><span class="icon" aria-hidden="true">🚩</span><span>World flags<small>Every flag by continent</small></span></a>
     <a class="explore-link" href="/lists/largest-countries"><span class="icon" aria-hidden="true">📐</span><span>Largest countries<span></span><small>Ranked by area</small></span></a>
+    <a class="explore-link" href="/lists/countries-by-population"><span class="icon" aria-hidden="true">👥</span><span>Countries by population<small>India and China down to Vatican City</small></span></a>
     <a class="explore-link" href="/lists/smallest-countries"><span class="icon" aria-hidden="true">🔬</span><span>Smallest countries<small>From Vatican City up</small></span></a>
     <a class="explore-link" href="/tools/country-size-comparison"><span class="icon" aria-hidden="true">📏</span><span>Compare country sizes<small>Any two countries, true scale</small></span></a>
   </div>
@@ -582,6 +583,137 @@ export function recallGamePage(game, allGames, variant) {
         isAccessibleForFree: true
       },
       breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/${path}` })))
+    ]
+  });
+}
+
+/**
+ * "Name All 50 States" — the same free-recall engine as recallGamePage()
+ * above, minus the map (there is no US-states map asset, so this page
+ * renders no `[data-map]` element at all and js/recall.js's map-building
+ * code simply never runs) and without the hub/letter-variant machinery,
+ * since this is a single flat game rather than a 195-entry recall split
+ * across 60 pages.
+ */
+export function usStatesGamePage(game, allGames) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+  const seconds = 5 * 60;
+  const clockLabel = formatSeconds(seconds);
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-recall-game data-recall-source="states" data-time-limit="${seconds}">
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">Just start typing — a state is added the moment it's recognised, no need to press Enter. Postal abbreviations work too (try "CA" or "NY").</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start — ${clockLabel} on the clock</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden aria-live="polite">
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="recall-timer" data-timer>${clockLabel}</span>
+      </div>
+
+      <div class="recall-count" data-count>0 / 50 found</div>
+
+      <div class="progress-track" role="progressbar" aria-label="States found">
+        <div class="progress-fill" data-progress></div>
+      </div>
+
+      <form class="recall-form" data-form>
+        <label class="sr-only" for="recall-input">Type a state name</label>
+        <input id="recall-input" data-input type="text" placeholder="Start typing a state…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
+      </form>
+
+      <p class="recall-feedback" data-feedback hidden></p>
+
+      <div class="recall-found" data-found aria-label="States found so far"></div>
+
+      <button class="btn btn-ghost btn-block" type="button" data-stop>Stop and see results</button>
+    </section>
+
+    <section class="game-screen results" data-screen="results" hidden>
+      <h2 class="results-title"><span data-result-icon>${icon('flag')}</span> <span data-result-title>Time's up!</span></h2>
+      <div class="results-score" data-result-score>0</div>
+      <div class="results-score-label">States named</div>
+      <div class="results-stars" data-result-stars aria-hidden="true"></div>
+      <p class="results-summary" data-result-summary></p>
+      <p class="results-summary muted" data-result-verdict></p>
+      <p class="results-best" data-result-best></p>
+      <p class="results-new-best" data-result-new-best hidden>${icon('trophy')} New personal best!</p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
+        <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
+        <a class="btn btn-ghost" href="/games/">Back to Games</a>
+      </div>
+      ${shareBlock()}
+
+      <div class="review">
+        <h2>States you missed</h2>
+        <ul data-result-missed></ul>
+      </div>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>Your score is how many of the 50 states you name correctly before the ${seconds / 60}-minute clock runs out. There is no penalty for an unrecognised entry beyond the time it costs you to type it, and duplicates are ignored rather than counted twice. Stopping early locks in whatever you have found so far.</p>
+
+    <h3>More ways to play</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    rail: true,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
     ]
   });
 }
@@ -1728,6 +1860,7 @@ function listPage({ slug, title, h1, description, intro, outro, columns, rows, o
 export function listPages(countries) {
   const byName = [...countries].sort((a, b) => a.name.localeCompare(b.name));
   const byArea = [...countries].sort((a, b) => b.area - a.area);
+  const byPopulation = [...countries].sort((a, b) => b.population - a.population);
 
   return [
     {
@@ -1775,6 +1908,21 @@ export function listPages(countries) {
         columns: ['#', 'Flag', 'Country', 'Area (km²)', 'Population', 'Continent'],
         rows: byArea.map(
           (c, i) => `<tr><td>${i + 1}</td><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}">${esc(c.name)}</a></td><td>${fmt(c.area)}</td><td>${fmt(c.population)}</td><td>${esc(c.continent)}</td></tr>`
+        )
+      })
+    },
+    {
+      path: 'lists/countries-by-population.html',
+      html: listPage({
+        slug: 'countries-by-population',
+        title: `Countries by Population — Ranked List | ${SITE.name}`,
+        h1: 'Countries by population',
+        description: `All ${countries.length} countries ranked by population, from India and China down to Vatican City, with area and continent for each.`,
+        intro: `<p>Every country ranked by population, most to fewest. India recently overtook China as the world's most populous country, and together the two hold close to a third of everyone alive.</p>`,
+        outro: `<h2>Population is not the same as size</h2><p>Russia and Canada are the two largest countries by area and nowhere near the top of this list; Bangladesh is one of the smallest countries by area and one of the most densely populated places on Earth. Rank them by area instead on the <a href="/lists/largest-countries">largest countries</a> list, or test which fact you actually know with the <a href="/game/country-quiz">country quiz</a>.</p>`,
+        columns: ['#', 'Flag', 'Country', 'Population', 'Area (km²)', 'Continent'],
+        rows: byPopulation.map(
+          (c, i) => `<tr><td>${i + 1}</td><td aria-hidden="true">${c.flag}</td><td><a href="/countries/${c.slug}">${esc(c.name)}</a></td><td>${fmt(c.population)}</td><td>${fmt(c.area)}</td><td>${esc(c.continent)}</td></tr>`
         )
       })
     },
