@@ -14,10 +14,10 @@
     "tier": 1
   },
   {
-    "id": "costa-rica",
-    "clue": "Continent which Costa Rica is part of",
-    "continent": "North America",
-    "explanation": "Costa Rica is in Central America, which is part of the North American continent, not a continent of its own.",
+    "id": "smallest-area",
+    "clue": "Smallest continent by area",
+    "continent": "Oceania",
+    "explanation": "Oceania — Australia plus the Pacific islands — covers roughly 8.5 million km², smaller than every other continent, including Europe.",
     "tier": 1
   },
   {
