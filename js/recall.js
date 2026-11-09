@@ -266,10 +266,10 @@ export async function initRecallGame() {
     if (!feedback) return;
     feedback.textContent = message;
     feedback.dataset.kind = kind;
-    feedback.hidden = false;
     clearTimeout(feedback._wggTimer);
     feedback._wggTimer = setTimeout(() => {
-      feedback.hidden = true;
+      feedback.textContent = '';
+      feedback.removeAttribute('data-kind');
     }, 1400);
   }
 
@@ -424,7 +424,7 @@ export async function initRecallGame() {
       timerEl.textContent = formatClock(TIME_LIMIT);
       timerEl.classList.remove('is-low');
     }
-    if (feedback) feedback.hidden = true;
+    if (feedback) { feedback.textContent = ''; feedback.removeAttribute('data-kind'); }
     if (input) input.value = '';
 
     show('play');

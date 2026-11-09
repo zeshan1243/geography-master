@@ -289,6 +289,14 @@ function boot() {
     import('./hintAnswer.js').then((mod) => mod.initHintAnswer());
   }
 
+  if (document.querySelector('[data-higher-lower]')) {
+    import('./higherLower.js').then((mod) => mod.initHigherLower());
+  }
+
+  if (document.querySelector('[data-daily-globe]')) {
+    import('./dailyGlobe.js').then((mod) => mod.initDailyGlobe());
+  }
+
   initAds();
 
   document.querySelectorAll('[data-year]').forEach((node) => {

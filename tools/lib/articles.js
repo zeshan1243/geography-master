@@ -694,5 +694,83 @@ export const ARTICLES = [
 
 <p>If you want to see how much of this sticks, the <a href="/game/ocean-quiz">oceans and seas quiz</a> covers all five oceans and twenty-five of the major seas, each one described rather than named outright — which rewards understanding the pattern over memorising a list.</p>
 `
+  },
+
+  {
+    slug: 'how-many-continents-are-there',
+    title: 'How many continents are there, really?',
+    metaTitle: 'How Many Continents Are There? 4 to 7, Explained',
+    description:
+      'Four, five, six or seven — the number you learned in school says more about which country taught you than about anything that changed on the planet.',
+    updated: '9 November 2026',
+    summary:
+      'There is no single correct number of continents. Geographers reasonably defend models with four, five, six or seven, and the difference always comes down to one question: where do you draw the line between landmasses that are technically joined?',
+    body: `
+<p>Ask how many continents there are and most people answer without hesitating — then discover, usually in an argument with someone who went to school in a different country, that the other person is just as certain of a different number. Both of you are right. There is no single internationally agreed count, and the number taught depends on which tradition of geography a country's schools follow, not on anything that changed about the physical world.</p>
+
+<p>This site, like most English-language sources, uses the seven-continent model. It is worth knowing what the alternatives actually are, because each one is a real, defensible convention rather than a mistake.</p>
+
+<h2>Seven continents — the model used here</h2>
+
+<p><a href="/continents/africa">Africa</a>, Antarctica, <a href="/continents/asia">Asia</a>, <a href="/continents/europe">Europe</a>, <a href="/continents/north-america">North America</a>, <a href="/continents/oceania">Oceania</a> and <a href="/continents/south-america">South America</a> are treated as seven separate landmasses. It is the model most commonly taught in the United States, the United Kingdom, Australia and much of the English-speaking world, and it is the one behind every continent-based game on this site, from the <a href="/game/continent-quiz">continent quiz</a> to <a href="/game/click-the-continent">Click the Correct Continent</a>.</p>
+
+<p>The awkward part of this model is that Europe and Asia are not actually separated by water anywhere — the Europe/Asia line runs down the Ural Mountains and the Bosphorus, a border drawn by historical and cultural convention rather than geography. Treated purely as a landmass, Europe and Asia are one continuous piece of land. Every other model on this page starts from noticing that.</p>
+
+<h2>Six continents, two different ways</h2>
+
+<p>Two distinct six-continent models exist, and they disagree with each other about which merger to make.</p>
+
+<p>One combines Europe and Asia into a single continent, <strong>Eurasia</strong>, while keeping the Americas as two. This is the model generally taught in Russia and much of Eastern Europe, where the Europe/Asia line runs through enough of the country's own territory that treating it as one landmass makes more practical sense.</p>
+
+<p>The other combines <strong>North and South America</strong> into a single continent, often just called "America", while keeping Europe and Asia separate. This is the model taught in Greece and in many Spanish- and Portuguese-speaking countries, and it is also why the Olympic flag's five rings are usually explained as representing five inhabited continents rather than six or seven — under this convention, the Americas count as one.</p>
+
+<h2>Five continents</h2>
+
+<p>Combine both mergers — Europe and Asia into Eurasia, and North and South America into one America — and keep Africa, Oceania and Antarctica separate, and the count drops to five. This version appears in some Western European and Latin American curricula.</p>
+
+<p>A different, more casual "five continents" appears constantly in everyday language and in Olympic symbolism: Africa, the Americas, Asia, Europe and Oceania, with Antarctica left off the list entirely because nobody lives there permanently. That is a statement about population, not landmass, so it is really a separate classification that happens to land on the same number.</p>
+
+<h2>Four continents</h2>
+
+<p>Push the landmass logic as far as it goes and you get four. Africa, Europe and Asia are connected by continuous land (interrupted only by the artificial <a href="/countries/egypt">Suez Canal</a>), so under a strict "a continent is a landmass surrounded by water" rule they form a single continent, sometimes called <strong>Afro-Eurasia</strong> or the Old World. Add the Americas, Australia and Antarctica as the other three, and the total is four.</p>
+
+<p>This model is rarely taught as the default anywhere, but it is the one geologists and geographers reach for when the question is specifically about landmasses rather than inherited cultural boundaries — it is the most literal possible answer to "how many pieces of land are there that you cannot walk between."</p>
+
+<h2>So which is correct?</h2>
+
+<p>All of them, depending on what the model is for. A geologist mapping tectonic plates, a Russian schoolchild, a Greek schoolchild and an Olympic flag designer are each using a completely consistent system — they are just answering slightly different questions with the same word. The seven-continent model used across this site is a convention, not a law of nature, and that is exactly why the line between Europe and Asia can run wherever historical custom puts it rather than wherever the land happens to end.</p>
+`
+  },
+
+  {
+    slug: 'why-countries-drive-on-the-left',
+    title: 'Why do some countries drive on the left?',
+    metaTitle: 'Why Some Countries Drive on the Left, Explained',
+    description:
+      'Around a third of the world’s countries drive on the left, Sweden switched sides overnight in 1967, and the pattern still roughly traces the old British Empire.',
+    updated: '9 November 2026',
+    summary:
+      'Driving side looks like a trivial detail until you notice it splits the world almost perfectly along old imperial lines. Britain, Japan, India, Australia and most of the Caribbean drive on the left; most of the rest of the world drives on the right.',
+    body: `
+<p>Roughly a third of the world's countries drive on the left — Britain, Ireland, Japan, India, Australia, South Africa, Thailand, Indonesia and most of the Caribbean among them — while the rest drive on the right. The two sides are not randomly scattered across the map; they cluster unmistakably along old colonial and imperial lines, which is the real story here more than any single clever explanation.</p>
+
+<h2>The old explanation: keeping a sword arm free</h2>
+
+<p>The most commonly repeated origin story is that in a largely right-handed world, travellers on horseback or on foot tended to keep to the left so that their right hand — the sword hand — stayed free and faced oncoming strangers. Historians generally treat this as a plausible contributing factor rather than a settled, provable cause; record-keeping from that far back is thin, and several other local customs likely played a role too. What is better documented is that, by the 18th century, keeping left was already the established custom across much of Britain and its growing empire.</p>
+
+<h2>Napoleon and the spread of the right</h2>
+
+<p>Continental Europe's shift toward the right is often credited to Napoleon, though historians disagree on exactly how much weight to give him personally versus the French Revolution's broader push to flatten aristocratic customs (one of which, on some accounts, was travelling on the left). What is clearer is the pattern that followed: countries and regions under French influence or occupation during the Napoleonic period generally ended up on the right, while Britain — never occupied — kept to the left and carried the custom to its colonies, from India and Australia to large parts of Africa and the Caribbean.</p>
+
+<h2>Sweden's overnight switch</h2>
+
+<p>Not every country has stayed with its historical side. <a href="/countries/sweden">Sweden</a> drove on the left until 3 September 1967, despite sharing a border with right-hand-driving Norway and Finland and despite most Swedish cars already being built for right-hand traffic. At 5:00 a.m. that day, in a coordinated change known as Dagen H ("H Day" — H for <em>högertrafik</em>, right-hand traffic), the entire country switched sides at once. Every vehicle on every road came to a stop, moved across, and continued — a logistical exercise large enough that it remains one of the most-cited examples of a government changing an entire population's daily habit on a single morning.</p>
+
+<h2>The pattern today</h2>
+
+<p>The modern map is, in effect, a map of the former British Empire plus a scattering of independent exceptions. <a href="/countries/japan">Japan</a> drives on the left despite never being a British colony, a custom usually traced to its own feudal-era travel norms and later reinforced by British engineers who helped build its early railways. Most of the Americas, continental Europe and China drive on the right, tracing a mix of French, Spanish, Portuguese and Soviet-era influence rather than any single cause.</p>
+
+<p>Whichever side a country ended up on, the choice is now effectively permanent — Sweden's experience is a reminder of just how disruptive a switch is, which is exactly why almost nobody attempts one.</p>
+`
   }
 ];

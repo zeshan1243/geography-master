@@ -357,5 +357,73 @@ export const POSTS = [
 
 <p>None of this is on a standard world map, which is part of why time zones are such a good demonstration that political geography and physical geography are different subjects. If you want to test the physical half, the <a href="/game/map-quiz">map quiz</a> and the <a href="/guides/map-projections-explained">guide to map projections</a> are the places to start.</p>
 `
+  },
+
+  {
+    slug: 'closest-and-loneliest-capital-cities',
+    title: "The world's closest (and loneliest) capital cities",
+    metaTitle: "World's Closest and Most Remote Capital Cities",
+    description:
+      'Two national capitals sit about 8km apart across a river, in full view of each other. Others are so remote that their nearest neighbour is an ocean away.',
+    updated: '9 November 2026',
+    summary:
+      'Most capital cities are hundreds of kilometres from the nearest other one. A handful are the exact opposite — close enough to see, or so remote that "nearest neighbour" barely means anything.',
+    body: `
+<p>Before the real answer, the obvious cheat: <a href="/countries/vatican-city">Vatican City</a> sits entirely inside Rome, so the distance between the two capitals is effectively zero. It is a fair bit of trivia, but it is really one city containing a tiny sovereign enclave, not two capitals that happen to have ended up close together. The genuine closest pair is a better story.</p>
+
+<h2>Kinshasa and Brazzaville</h2>
+
+<p><a href="/countries/dr-congo">DR Congo</a>'s capital, Kinshasa, and the <a href="/countries/congo">Republic of the Congo</a>'s capital, Brazzaville, face each other directly across the Congo River — about 8km apart at their city centres, and roughly half that at their closest points on either bank. They are, by a wide margin, the closest two national capitals on Earth that are genuinely in two different countries, each a short boat ride from the other, close enough that each skyline is clearly visible from the other side. Getting between them by land, however, is a different matter: there is still no road or rail bridge across this stretch of the river, so a direct crossing means a ferry, even though the distance is shorter than many daily commutes.</p>
+
+<p>It is also a coincidence of naming as much as geography — two countries that both took their name from the same river and the same pre-colonial Kongo Kingdom, now separated only by the water that name describes.</p>
+
+<h2>The other end of the scale</h2>
+
+<p>Working out the single most isolated capital is harder than it sounds, because it depends entirely on what you are measuring — distance to the nearest other capital, distance to the nearest city of any size, or distance to the nearest other country altogether all give different answers. With that caveat, a few places come up again and again in the conversation:</p>
+
+<ul>
+  <li><strong><a href="/countries/new-zealand">Wellington</a></strong> is the most commonly cited answer, sitting roughly 2,000km from Canberra across the Tasman Sea, with nothing but ocean in several other directions.</li>
+  <li><strong><a href="/countries/iceland">Reykjavik</a></strong> is the world's northernmost capital and sits on an island in the middle of the North Atlantic, hundreds of kilometres from the nearest other national capital in any direction.</li>
+  <li><strong><a href="/countries/mongolia">Ulaanbaatar</a></strong> is landlocked and remote in a different way: it is separated from its nearest neighbouring capitals, Beijing and Moscow, by vast stretches of steppe and desert rather than ocean.</li>
+</ul>
+
+<p>None of these has a single authoritative distance that settles the question outright, which is itself the more honest answer: "most isolated" is a judgement call, while "closest" is something you can point at on a map and measure in one obvious way. If you want to test how well you know which capital goes with which country, the <a href="/game/capital-quiz">capital quiz</a> and its <a href="/game/reverse-capital-quiz">reverse</a> version both cover the full list.</p>
+`
+  },
+
+  {
+    slug: 'countries-with-more-than-one-capital',
+    title: 'The countries with more than one capital',
+    metaTitle: 'Countries With More Than One Capital City',
+    description:
+      'South Africa has three. Bolivia, the Netherlands, Sri Lanka and Eswatini each formally split the job between two cities, usually for the same handful of reasons.',
+    updated: '9 November 2026',
+    summary:
+      'A capital city is usually a single, uncontested fact about a country. A handful of countries have deliberately split the role across two or even three cities instead, almost always to balance competing branches of government.',
+    body: `
+<p>Most countries have exactly one capital, and it is usually also the seat of every branch of government. A small group of countries have deliberately split that role across more than one city — not by accident, and not because of an unresolved dispute, but as a permanent arrangement that balances power or history between places that each have a claim to it.</p>
+
+<h2>South Africa: three capitals, three branches of government</h2>
+
+<p><a href="/countries/south-africa">South Africa</a> is the clearest case, splitting its government across three cities entirely on purpose: Pretoria holds the executive branch and most foreign embassies, Cape Town holds Parliament, and Bloemfontein holds the Supreme Court of Appeal. The arrangement dates to the formation of the Union of South Africa in 1910, when it was adopted specifically to avoid any one of the country's four founding provinces feeling shut out of the capital.</p>
+
+<h2>Bolivia: constitutional capital versus seat of government</h2>
+
+<p><a href="/countries/bolivia">Bolivia</a>'s constitutional capital is Sucre, home to the judiciary, but the executive and legislative branches both sit in La Paz, which functions as the country's de facto capital in almost every practical sense — including being the highest-altitude seat of government in the world. The split dates to a brief civil war in 1899 that ended with the government relocating to La Paz while Sucre kept its constitutional status on paper.</p>
+
+<h2>The Netherlands: a capital that isn't where the government sits</h2>
+
+<p>Amsterdam is the Netherlands' constitutional capital, named as such in the constitution and home to the monarch's official coronation, but the government, parliament, supreme court and the King's actual residence are all in The Hague. Almost nothing of day-to-day governance happens in the city that holds the official title.</p>
+
+<h2>Sri Lanka: commercial capital versus administrative capital</h2>
+
+<p><a href="/countries/sri-lanka">Sri Lanka</a> moved its administrative capital from Colombo to the purpose-built Sri Jayawardenepura Kotte in 1985, mainly to ease congestion in Colombo, which remains the country's largest city, main port and commercial centre. Most people, inside and outside the country, still think of Colombo as "the" capital, which makes this one of the most commonly missed facts on any capitals quiz.</p>
+
+<h2>Eswatini and Benin: royal versus administrative, and official versus practical</h2>
+
+<p><a href="/countries/eswatini">Eswatini</a> splits the role between Mbabane, the administrative capital, and Lobamba, the royal and legislative capital and the monarchy's traditional seat. <a href="/countries/benin">Benin</a> has a similar but differently shaped split: Porto-Novo is the official constitutional capital, while the much larger Cotonou is the seat of government and the country's main economic centre.</p>
+
+<p>The common thread across every example here is the same: a capital city is not one single fact so much as a bundle of roles — executive, legislative, judicial, ceremonial — and most countries simply give every role to the same city. The ones on this list decided, for reasons of history, politics or geography, not to. The full <a href="/lists/countries-and-capitals">list of countries and capitals</a> notes each of these exceptions, and the <a href="/game/capital-quiz">capital quiz</a> only ever tests the one answer that actually matters for each.</p>
+`
   }
 ];

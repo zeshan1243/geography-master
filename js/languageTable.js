@@ -72,10 +72,10 @@ export function initLanguageTable() {
     if (!feedback) return;
     feedback.textContent = message;
     feedback.dataset.kind = kind;
-    feedback.hidden = false;
     clearTimeout(feedback._wggTimer);
     feedback._wggTimer = setTimeout(() => {
-      feedback.hidden = true;
+      feedback.textContent = '';
+      feedback.removeAttribute('data-kind');
     }, 1400);
   }
 
@@ -189,7 +189,7 @@ export function initLanguageTable() {
       banner.hidden = true;
       banner.innerHTML = '';
     }
-    if (feedback) feedback.hidden = true;
+    if (feedback) { feedback.textContent = ''; feedback.removeAttribute('data-kind'); }
     if (input) input.value = '';
     paintCount();
 

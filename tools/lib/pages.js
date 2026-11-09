@@ -501,7 +501,7 @@ export function recallGamePage(game, allGames, variant) {
         <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
       </form>
 
-      <p class="recall-feedback" data-feedback hidden></p>
+      <p class="recall-feedback" data-feedback></p>
 
       <div class="recall-found" data-found aria-label="Countries found so far"></div>
 
@@ -637,7 +637,7 @@ export function usStatesGamePage(game, allGames) {
         <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
       </form>
 
-      <p class="recall-feedback" data-feedback hidden></p>
+      <p class="recall-feedback" data-feedback></p>
 
       <div class="recall-found" data-found aria-label="States found so far"></div>
 
@@ -801,7 +801,7 @@ export function languageTableGamePage(game, allGames, countries) {
         <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
       </form>
 
-      <p class="recall-feedback" data-lang-feedback hidden></p>
+      <p class="recall-feedback" data-lang-feedback></p>
 
       <div class="table-wrap">
         <table class="lang-table">
@@ -963,7 +963,7 @@ export function biggestByContinentGamePage(game, allGames, countries) {
         <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
       </form>
 
-      <p class="recall-feedback" data-rank-feedback hidden></p>
+      <p class="recall-feedback" data-rank-feedback></p>
 
       <div class="rank-grid">
       ${columns}
@@ -1087,7 +1087,7 @@ export function hintAnswerGamePage(game, allGames, entries) {
         <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
       </form>
 
-      <p class="recall-feedback" data-hint-feedback hidden></p>
+      <p class="recall-feedback" data-hint-feedback></p>
 
       <div class="table-wrap">
         <table class="lang-table">
@@ -1118,6 +1118,261 @@ export function hintAnswerGamePage(game, allGames, entries) {
 
     <h3>Scoring</h3>
     <p>There is no clock and no difficulty setting — just ${entries.length} hints to solve. Give up at any point to reveal whatever you have not found yet.</p>
+
+    <h3>More ways to play</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    rail: true,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
+  });
+}
+
+/**
+ * "Higher or Lower" — a chain game, not a round of fixed questions: one
+ * country is shown with its real value, a challenger is shown hidden, and
+ * the player guesses higher or lower. Correct keeps the streak going with a
+ * new challenger; one miss ends it. Powers both the population and area
+ * variants off the same template and client module, parameterised by
+ * `game.stat`.
+ */
+export function higherLowerGamePage(game, allGames) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const statLabel = game.stat === 'area' ? 'Area' : 'Population';
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-higher-lower data-stat="${esc(game.stat)}">
+
+    <div class="game-status" data-status hidden></div>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">No fixed round and no difficulty levels — keep going until you miss one.</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden>
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="hl-streak" data-hl-streak>Streak: 0</span>
+      </div>
+
+      <div class="hl-stack">
+        <div class="hl-card" data-hl-current>
+          <span class="hl-flag" data-hl-current-flag aria-hidden="true"></span>
+          <h2 data-hl-current-name></h2>
+          <p class="hl-value" data-hl-current-value></p>
+        </div>
+
+        <div class="hl-vs" aria-hidden="true">${statLabel}?</div>
+
+        <div class="hl-card hl-card-challenger" data-hl-challenger>
+          <span class="hl-flag" data-hl-challenger-flag aria-hidden="true"></span>
+          <h2 data-hl-challenger-name></h2>
+          <p class="hl-value" data-hl-challenger-value hidden></p>
+          <div class="hl-guess-buttons" data-hl-buttons>
+            <button class="btn btn-primary btn-lg" type="button" data-hl-guess="higher"><span aria-hidden="true">⬆</span> Higher</button>
+            <button class="btn btn-primary btn-lg" type="button" data-hl-guess="lower"><span aria-hidden="true">⬇</span> Lower</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="recall-feedback" data-hl-feedback></p>
+    </section>
+
+    <section class="game-screen results" data-screen="results" hidden>
+      <h2 class="results-title"><span data-result-icon>${icon('flag')}</span> <span data-result-title>Streak over</span></h2>
+      <div class="results-score" data-result-score>0</div>
+      <div class="results-score-label">Correct in a row</div>
+      <div class="results-stars" data-result-stars aria-hidden="true"></div>
+      <p class="results-summary muted" data-result-verdict></p>
+      <p class="results-best" data-result-best></p>
+      <p class="results-new-best" data-result-new-best hidden>${icon('trophy')} New personal best!</p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary btn-lg" type="button" data-play-again>${icon('refresh')} Play Again</button>
+        <a class="btn btn-secondary btn-lg" href="/games/" data-another-game>${icon('dice')} Try Another Game</a>
+        <a class="btn btn-ghost" href="/games/">Back to Games</a>
+      </div>
+      ${shareBlock()}
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>There is no fixed round and no difficulty setting — your score is the length of your streak before the first wrong guess. A tie between the two countries' ${statLabel.toLowerCase()} counts as correct either way.</p>
+
+    <h3>More ways to play</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    rail: true,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
+  });
+}
+
+/**
+ * "Daily Globe" — a Wordle-style daily puzzle: one mystery country, the same
+ * for everyone on a given day, six guesses, a new hint unlocked after each
+ * wrong one. The mystery country itself is never present in this page's
+ * markup — it is picked client-side from the same date-seeded RNG the daily
+ * mixed quiz already uses (see js/quiz.js's dailySeed/makeRng), entirely in
+ * js/dailyGlobe.js, specifically so the answer can never leak through
+ * view-source.
+ */
+export function dailyGlobeGamePage(game, allGames) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const HINT_LABELS = ['Continent', 'Population', 'Area', 'Capital', 'First letter', 'Flag'];
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-daily-globe>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules" data-dg-date></p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Play Today's Globe</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden>
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="dg-guess-count" data-dg-guess-count>Guess 1 of 6</span>
+      </div>
+
+      <dl class="dg-hints" data-dg-hints>
+        ${HINT_LABELS.map(
+          (label, i) => `<div class="dg-hint" data-dg-hint="${i}" hidden>
+          <dt>${esc(label)}</dt>
+          <dd data-dg-hint-value></dd>
+        </div>`
+        ).join('\n        ')}
+      </dl>
+
+      <form class="recall-form" data-dg-form>
+        <label class="sr-only" for="dg-input">Type a country name</label>
+        <input id="dg-input" data-dg-input type="text" placeholder="Guess a country…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Guess</button>
+      </form>
+
+      <p class="recall-feedback" data-dg-feedback></p>
+
+      <ul class="dg-history" data-dg-history aria-label="Previous guesses"></ul>
+    </section>
+
+    <section class="game-screen results" data-screen="results" hidden>
+      <h2 class="results-title"><span data-result-icon>${icon('flag')}</span> <span data-result-title>Solved!</span></h2>
+      <div class="results-score" data-result-score>🌍</div>
+      <div class="results-score-label" data-result-score-label>Today's country</div>
+      <p class="results-summary" data-result-summary></p>
+      <p class="results-summary muted" data-result-verdict></p>
+      <p class="results-best" data-result-best></p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary btn-lg" type="button" data-dg-copy>${icon('share')} Copy Result</button>
+        <a class="btn btn-secondary btn-lg" href="/games/">${icon('dice')} Try Another Game</a>
+        <a class="btn btn-ghost" href="/games/">Back to Games</a>
+      </div>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>There is no score in points — just how many of your six guesses it took. The same country is used for everyone until midnight, so results are comparable across the whole day.</p>
 
     <h3>More ways to play</h3>
     <p>${allGames

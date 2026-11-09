@@ -344,6 +344,18 @@ function build() {
       continue;
     }
 
+    if (game.mode === 'higherLower') {
+      write(`game/${game.slug}.html`, pages.higherLowerGamePage(game, games));
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
+    if (game.mode === 'dailyGlobe') {
+      write(`game/${game.slug}.html`, pages.dailyGlobeGamePage(game, games));
+      add(`/game/${game.slug}`, '0.9', 'daily');
+      continue;
+    }
+
     if (game.mode === 'usStates') {
       write(`game/${game.slug}.html`, pages.usStatesGamePage(game, games));
       add(`/game/${game.slug}`, '0.85', 'weekly');

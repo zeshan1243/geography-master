@@ -627,5 +627,64 @@
       "That gap is common and worth closing. Plenty of people can picture Angkor Wat without being able to name Cambodia, or the Great Mosque of Djenné without placing Mali.",
       "Every answer comes with a fact about the landmark, so a round doubles as a short tour. The 60 sites here span all six inhabited continents."
     ]
+  },
+  {
+    "id": "higherLowerPopulation",
+    "slug": "higher-or-lower-population",
+    "name": "Higher or Lower: Population",
+    "icon": "📈",
+    "accent": "green",
+    "category": "Daily & Streak Games",
+    "tagline": "Guess higher or lower, build a streak, no fixed round",
+    "description": "One country's population is shown, the next is hidden — guess whether it's higher or lower and keep the streak going. One miss ends it.",
+    "metaTitle": "Higher or Lower: Country Population Game",
+    "metaDescription": "Free higher-or-lower geography game. Guess whether the next country's population is bigger or smaller and build the longest streak you can.",
+    "popular": false,
+    "mode": "higherLower",
+    "stat": "population",
+    "guide": [
+      "There is no fixed round here and no difficulty setting — one country is shown with its real population, the next is hidden, and you guess higher or lower. Get it right and the hidden country becomes the new visible one, with a fresh challenger behind it. Get it wrong and the streak ends.",
+      "Population surprises people more than area does. Bangladesh has more people than Russia despite being smaller than most US states, and the Democratic Republic of Congo now has more people than most of Western Europe.",
+      "A tie between the two countries counts as correct either way, though with real population figures that almost never actually happens."
+    ]
+  },
+  {
+    "id": "higherLowerArea",
+    "slug": "higher-or-lower-area",
+    "name": "Higher or Lower: Area",
+    "icon": "📐",
+    "accent": "green",
+    "category": "Daily & Streak Games",
+    "tagline": "Guess higher or lower, build a streak, no fixed round",
+    "description": "One country's land area is shown, the next is hidden — guess whether it's bigger or smaller and keep the streak going. One miss ends it.",
+    "metaTitle": "Higher or Lower: Country Area Game",
+    "metaDescription": "Free higher-or-lower geography game. Guess whether the next country's land area is bigger or smaller and build the longest streak you can.",
+    "popular": false,
+    "mode": "higherLower",
+    "stat": "area",
+    "guide": [
+      "Same chain mechanic as the population version: one country's area is shown, the next is hidden, guess bigger or smaller and keep the streak alive. No fixed round, no difficulty setting — just how far you can get.",
+      "Area rewards different instincts than population does. Kazakhstan is bigger than every country in Western Europe combined, and Algeria is the largest country in Africa by a wide margin despite the Sahara covering most of it.",
+      "A tie between the two countries counts as correct either way, though with real area figures that almost never actually happens."
+    ]
+  },
+  {
+    "id": "dailyGlobe",
+    "slug": "daily-globe",
+    "name": "Daily Globe",
+    "icon": "🌐",
+    "accent": "amber",
+    "category": "Daily & Streak Games",
+    "tagline": "One mystery country a day, six guesses, hints as you go",
+    "description": "A new mystery country every day, the same one for everyone. Six guesses, and each wrong one reveals another hint — continent, population, area, capital, first letter, flag.",
+    "metaTitle": "Daily Globe — Daily Mystery Country Game",
+    "metaDescription": "A new mystery country every day. Six guesses, hints revealed as you go, and a shareable result — the same puzzle for everyone, every day.",
+    "popular": true,
+    "mode": "dailyGlobe",
+    "guide": [
+      "One mystery country, the same for every player on a given day, changing at midnight. You get six guesses, and each wrong one reveals a new hint, starting with the least revealing (continent) and ending with the most (its flag).",
+      "The daily seed means there is no advantage to playing later in the day, and no way to reroll a hard one — today's country is today's country for everyone, which is exactly what makes a good result worth sharing.",
+      "Playing Daily Globe counts toward the same day-streak as every other game on the site, shown on the homepage — it does not need to be the only thing you play today, just one of them."
+    ]
   }
 ]

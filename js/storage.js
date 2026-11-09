@@ -270,6 +270,15 @@ export function bestScore(type, difficulty, profile = load()) {
   return profile.bestScores[`${type}:${difficulty}`] || 0;
 }
 
+/**
+ * Whether a score key exists at all, distinct from bestScore()'s 0 default —
+ * needed where 0 is itself a valid recorded score (e.g. Daily Globe records
+ * 0 for a day it was played but lost, which must still read as "played").
+ */
+export function hasScore(type, difficulty, profile = load()) {
+  return Object.prototype.hasOwnProperty.call(profile.bestScores, `${type}:${difficulty}`);
+}
+
 export function bestRun(type, profile = load()) {
   return (profile.bestRuns || {})[type] || 0;
 }
