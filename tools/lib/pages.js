@@ -866,6 +866,163 @@ export function languageTableGamePage(game, allGames, countries) {
   });
 }
 
+/** The 6 continents that actually hold countries, biggest 5 by area each, computed at build time. */
+function biggestByContinent(countries) {
+  const byContinent = new Map();
+  for (const c of countries) {
+    if (!byContinent.has(c.continent)) byContinent.set(c.continent, []);
+    byContinent.get(c.continent).push(c);
+  }
+  return [...byContinent.entries()]
+    .map(([continent, list]) => ({
+      continent,
+      top5: [...list].sort((a, b) => b.area - a.area).slice(0, 5)
+    }))
+    .sort((a, b) => a.continent.localeCompare(b.continent));
+}
+
+const CONTINENT_ACCENT = {
+  Africa: 'purple',
+  Asia: 'red',
+  Europe: 'blue',
+  'North America': 'amber',
+  Oceania: 'teal',
+  'South America': 'green'
+};
+
+/**
+ * "Five Biggest Countries by Continent" — six columns, five blanks each,
+ * filled in by typing, like languageTableGamePage() above. Reuses the same
+ * build-time-computed, reveal-on-type pattern, just split across six
+ * independently-tracked groups instead of one flat list. The answer data
+ * (area rankings) comes straight from the site's own country data, same as
+ * every other list/comparison page — not copied from any external quiz.
+ */
+export function biggestByContinentGamePage(game, allGames, countries) {
+  const groups = biggestByContinent(countries);
+
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const columns = groups
+    .map(({ continent, top5 }) => {
+      const accent = CONTINENT_ACCENT[continent] || 'blue';
+      const rows = top5
+        .map((country, i) => {
+          const answer = slugify(country.name);
+          return `<li data-rank-row data-answer="${answer}" data-country="${esc(country.name)}" data-area="${fmt(country.area)} km²">
+            <span class="rank-num">${i + 1}</span>
+            <span class="rank-cell" data-rank-cell><span class="lang-blank" data-rank-blank aria-label="Not yet guessed">?</span></span>
+          </li>`;
+        })
+        .join('\n          ');
+      return `<div class="rank-col" data-accent="${accent}">
+        <h2 class="rank-col-head">${esc(continent)}</h2>
+        <ul class="rank-col-list">
+          ${rows}
+        </ul>
+      </div>`;
+    })
+    .join('\n      ');
+
+  const totalAnswers = groups.reduce((sum, g) => sum + g.top5.length, 0);
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-rank-table>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">No timer and no difficulty levels — ${totalAnswers} countries across 6 continents, five biggest per continent by area.</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden>
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="recall-count" data-rank-count>0 / ${totalAnswers} found</span>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-label="Countries found">
+        <div class="progress-fill" data-rank-progress></div>
+      </div>
+
+      <div class="lang-banner" data-rank-banner hidden></div>
+
+      <form class="recall-form" data-rank-form>
+        <label class="sr-only" for="rank-input">Type a country name</label>
+        <input id="rank-input" data-rank-input type="text" placeholder="Type a country…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
+      </form>
+
+      <p class="recall-feedback" data-rank-feedback hidden></p>
+
+      <div class="rank-grid">
+      ${columns}
+      </div>
+
+      <button class="btn btn-ghost btn-block" type="button" data-rank-giveup>Give up and reveal answers</button>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>There is no clock and no difficulty setting — just ${totalAnswers} countries to identify, five per continent, ranked by area. Give up at any point to reveal whatever you have not found yet.</p>
+
+    <h3>More ways to play</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    rail: true,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
+  });
+}
+
 /**
  * The hub page at /game/name-the-countries/ — the single card that shows in
  * the games directory expands here into "play all 195" plus one link per

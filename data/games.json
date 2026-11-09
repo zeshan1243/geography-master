@@ -356,6 +356,25 @@
     ]
   },
   {
+    "id": "biggestByContinent",
+    "slug": "biggest-countries-by-continent",
+    "name": "Five Biggest Countries by Continent",
+    "icon": "📐",
+    "accent": "blue",
+    "category": "Country Games",
+    "tagline": "Fill in all 30 — no clock, no difficulty levels",
+    "description": "Six continents, five biggest countries by area each — 30 blanks to fill in by typing. No multiple choice, no timer, no difficulty levels.",
+    "metaTitle": "Five Biggest Countries by Continent — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the five biggest countries by area on each continent, Africa to South America. 30 blanks, no timer, no difficulty levels.",
+    "popular": false,
+    "mode": "biggestByContinent",
+    "guide": [
+      "Six columns, one per inhabited continent, five blanks each — type a country and it fills into its own spot, in whatever order you think of them. There is no clock and no difficulty setting; it is one fixed set of 30 answers.",
+      "A few are easy once you see the pattern: Russia dwarfs the rest of Europe, China and India lead Asia, and Canada edges out the United States for North America's top spot despite having roughly a tenth of the population.",
+      "Oceania and South America are the shortest reaches — Oceania only has 14 countries in total, so getting all five there mostly comes down to knowing the Pacific island nations, not just Australia and New Zealand."
+    ]
+  },
+  {
     "id": "mixed",
     "slug": "mixed-quiz",
     "name": "Mixed Geography Quiz",

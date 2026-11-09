@@ -331,6 +331,12 @@ function build() {
       continue;
     }
 
+    if (game.mode === 'biggestByContinent') {
+      write(`game/${game.slug}.html`, pages.biggestByContinentGamePage(game, games, countries));
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
     if (game.mode === 'usStates') {
       write(`game/${game.slug}.html`, pages.usStatesGamePage(game, games));
       add(`/game/${game.slug}`, '0.85', 'weekly');

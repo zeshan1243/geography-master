@@ -281,6 +281,10 @@ function boot() {
     import('./languageTable.js').then((mod) => mod.initLanguageTable());
   }
 
+  if (document.querySelector('[data-rank-table]')) {
+    import('./biggestByContinent.js').then((mod) => mod.initBiggestByContinent());
+  }
+
   initAds();
 
   document.querySelectorAll('[data-year]').forEach((node) => {

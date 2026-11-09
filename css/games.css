@@ -720,4 +720,63 @@
   text-align: center;
 }
 .lang-banner .btn-row { justify-content: center; margin-top: 12px; }
+
+/* --- Five-biggest-by-continent fill-in grid -------------------------------- */
+.rank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.rank-col {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.rank-col-head {
+  margin: 0;
+  padding: 12px 16px;
+  color: #fff;
+  font-size: 1.0625rem;
+  text-align: center;
+}
+
+.rank-col[data-accent="purple"] .rank-col-head { background: var(--purple); }
+.rank-col[data-accent="red"] .rank-col-head { background: var(--error); }
+.rank-col[data-accent="blue"] .rank-col-head { background: var(--primary); }
+.rank-col[data-accent="amber"] .rank-col-head { background: var(--warning); }
+.rank-col[data-accent="green"] .rank-col-head { background: var(--success); }
+.rank-col[data-accent="teal"] .rank-col-head { background: #0d9488; }
+
+.rank-col-list { list-style: none; margin: 0; padding: 0; }
+
+.rank-col-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.rank-col-list li[data-found="true"] { background: var(--success-soft); }
+
+.rank-num {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--surface-secondary);
+  color: var(--text-secondary);
+  font-size: .8125rem;
+  font-weight: 700;
+}
+
+.rank-cell { font-weight: 700; }
+.rank-cell .lang-answer-area { display: block; font-weight: 500; color: var(--text-secondary); font-size: .8125rem; }
 .review-callout-go { margin-left: auto; color: var(--primary); font-weight: 800; font-size: 1.25rem; }
