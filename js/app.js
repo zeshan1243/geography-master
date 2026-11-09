@@ -277,6 +277,10 @@ function boot() {
     import('./compareSize.js').then((mod) => mod.initCompareSize());
   }
 
+  if (document.querySelector('[data-language-table]')) {
+    import('./languageTable.js').then((mod) => mod.initLanguageTable());
+  }
+
   initAds();
 
   document.querySelectorAll('[data-year]').forEach((node) => {

@@ -10,7 +10,7 @@
 import { page, adSlot, breadcrumbs, breadcrumbSchema, esc, icon, SITE } from './layout.js';
 import { ARTICLES } from './articles.js';
 import { POSTS } from './blog.js';
-import { fmt, approx, ordinal } from './util.js';
+import { fmt, approx, ordinal, slugify } from './util.js';
 
 const GAME_SCREEN_HEIGHT_NOTE =
   'Thirty questions a round, or survive as long as you can on Expert.';
@@ -684,6 +684,154 @@ export function usStatesGamePage(game, allGames) {
 
     <h3>Scoring</h3>
     <p>Your score is how many of the 50 states you name correctly before the ${seconds / 60}-minute clock runs out. There is no penalty for an unrecognised entry beyond the time it costs you to type it, and duplicates are ignored rather than counted twice. Stopping early locks in whatever you have found so far.</p>
+
+    <h3>More ways to play</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    rail: true,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
+  });
+}
+
+/**
+ * Groups every country by its `language` field and keeps only the languages
+ * shared by 2+ countries — a language only one country speaks is not
+ * meaningfully "shared by the most countries", which is the whole premise of
+ * the quiz. Computed at build time so the ranked table (counts, example
+ * countries) ships as real static content; only the language name itself is
+ * blanked out for the client to fill in.
+ */
+function languageGroups(countries) {
+  const byLanguage = new Map();
+  for (const c of countries) {
+    if (!byLanguage.has(c.language)) byLanguage.set(c.language, []);
+    byLanguage.get(c.language).push(c.name);
+  }
+  return [...byLanguage.entries()]
+    .map(([language, names]) => ({ language, names: names.sort(), count: names.length }))
+    .filter((g) => g.count >= 2)
+    .sort((a, b) => b.count - a.count);
+}
+
+/**
+ * "Languages Spoken by the Most Countries" — a fill-in-the-table free-recall
+ * game, not a multiple-choice round, and deliberately not difficulty-tiered:
+ * there are only 13 rows, so splitting them into Easy/Medium/Hard would just
+ * mean a handful of questions per level. The table's counts and example
+ * countries are genuine static content; only the language column is blanked
+ * out and filled in by js/languageTable.js as the player types.
+ */
+export function languageTableGamePage(game, allGames, countries) {
+  const groups = languageGroups(countries);
+
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const rows = groups
+    .map((g, i) => {
+      const shown = g.names.length <= 6 ? g.names : g.names.slice(0, 3);
+      const suffix = g.names.length <= 6 ? '' : `, +${g.names.length - shown.length} more`;
+      const answer = slugify(g.language);
+      return `<tr data-lang-row data-answer="${answer}" data-language="${esc(g.language)}">
+        <td>${i + 1}</td>
+        <td>${esc(shown.join(', '))}${suffix}</td>
+        <td class="lang-cell" data-lang-cell><span class="lang-blank" data-lang-blank aria-label="Not yet guessed">?</span></td>
+      </tr>`;
+    })
+    .join('\n      ');
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-language-table>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">No timer and no difficulty levels — just ${groups.length} languages to name, ranked by how many countries speak them.</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden>
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="recall-count" data-lang-count>0 / ${groups.length} found</span>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-label="Languages found">
+        <div class="progress-fill" data-lang-progress></div>
+      </div>
+
+      <div class="lang-banner" data-lang-banner hidden></div>
+
+      <form class="recall-form" data-lang-form>
+        <label class="sr-only" for="lang-input">Type a language name</label>
+        <input id="lang-input" data-lang-input type="text" placeholder="Type a language…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
+      </form>
+
+      <p class="recall-feedback" data-lang-feedback hidden></p>
+
+      <div class="table-wrap">
+        <table class="lang-table">
+          <thead><tr><th>#</th><th>Countries</th><th>Language</th></tr></thead>
+          <tbody>
+      ${rows}
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-ghost btn-block" type="button" data-lang-giveup>Give up and reveal answers</button>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>There is no clock and no difficulty setting — just ${groups.length} languages to identify, each shared by at least two of the ${countries.length} countries on this site. Give up at any point to reveal whatever you have not found yet.</p>
 
     <h3>More ways to play</h3>
     <p>${allGames

@@ -325,6 +325,12 @@ function build() {
   ]);
 
   for (const game of games) {
+    if (game.mode === 'languageTable') {
+      write(`game/${game.slug}.html`, pages.languageTableGamePage(game, games, countries));
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
     if (game.mode === 'usStates') {
       write(`game/${game.slug}.html`, pages.usStatesGamePage(game, games));
       add(`/game/${game.slug}`, '0.85', 'weekly');

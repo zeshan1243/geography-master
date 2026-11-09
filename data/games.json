@@ -337,6 +337,25 @@
     ]
   },
   {
+    "id": "languagesByCountry",
+    "slug": "languages-by-country-count",
+    "name": "Languages Spoken by the Most Countries",
+    "icon": "🌐",
+    "accent": "purple",
+    "category": "World Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "A ranked table of languages, from the one spoken by the most countries down to the one spoken by just two. Type the language to fill in each row — no multiple choice, no timer.",
+    "metaTitle": "Languages Spoken by the Most Countries — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the language shared by the most countries, then the next, then the next. A ranked table, no timer, no difficulty levels.",
+    "popular": false,
+    "mode": "languageTable",
+    "guide": [
+      "Each row lists a language's rank and a sample of the countries that speak it as their main language; your job is to type the language itself. There is no clock and no difficulty setting here — it is one flat table, easiest row at the top.",
+      "English tops the list by a wide margin, spoken across every inhabited continent from a shared colonial and settlement history. Spanish, Arabic and French follow, each the result of a different empire's reach, and the table gets much harder once you are past the top four.",
+      "This uses the same one-main-language-per-country data as the main Language Quiz, so a language spoken as a second or regional language in a country is not counted there — see that game's guide for the detail on why."
+    ]
+  },
+  {
     "id": "mixed",
     "slug": "mixed-quiz",
     "name": "Mixed Geography Quiz",
