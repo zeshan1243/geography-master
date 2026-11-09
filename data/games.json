@@ -375,6 +375,25 @@
     ]
   },
   {
+    "id": "hintAnswer",
+    "slug": "only-geography-trivia",
+    "name": "Only Geography",
+    "icon": "🧩",
+    "accent": "amber",
+    "category": "World Games",
+    "tagline": "20 hints, one answer each — no clock, no difficulty levels",
+    "description": "20 standalone geography hints, from \"largest hot desert in the world\" to a flag you have to recognise. Type the answer to each — no multiple choice, no timer.",
+    "metaTitle": "Only Geography — Hint and Answer Trivia Quiz",
+    "metaDescription": "Free geography trivia quiz: 20 standalone hints, type the answer to each. No multiple choice, no timer, no difficulty levels.",
+    "popular": false,
+    "mode": "hintAnswer",
+    "guide": [
+      "Each row is a standalone clue — a fact, a flag, a connection to the row above it — and your job is to type the one thing it is pointing at. There is no clock and no difficulty setting; it is twenty hints, solve them in any order.",
+      "A couple of rows deliberately accept more than one right answer. \"A Central American country\" takes any of the seven, and the British Overseas Territory in the South Atlantic takes the Falklands, South Georgia or Saint Helena — there is more than one genuinely correct answer, so all of them count.",
+      "Two pairs of clues are chained on purpose: one hint's answer is the subject of the next (\"the previous island\", \"the above\"), the same way a crossword clue can lean on an earlier answer."
+    ]
+  },
+  {
     "id": "mixed",
     "slug": "mixed-quiz",
     "name": "Mixed Geography Quiz",

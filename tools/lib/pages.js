@@ -10,7 +10,7 @@
 import { page, adSlot, breadcrumbs, breadcrumbSchema, esc, icon, SITE } from './layout.js';
 import { ARTICLES } from './articles.js';
 import { POSTS } from './blog.js';
-import { fmt, approx, ordinal, slugify } from './util.js';
+import { fmt, approx, ordinal, slugify, flagOf } from './util.js';
 
 const GAME_SCREEN_HEIGHT_NOTE =
   'Thirty questions a round, or survive as long as you can on Expert.';
@@ -989,6 +989,135 @@ export function biggestByContinentGamePage(game, allGames, countries) {
 
     <h3>Scoring</h3>
     <p>There is no clock and no difficulty setting — just ${totalAnswers} countries to identify, five per continent, ranked by area. Give up at any point to reveal whatever you have not found yet.</p>
+
+    <h3>More ways to play</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    rail: true,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
+  });
+}
+
+/**
+ * "Only Geography" — a curated hint/answer trivia table, same reveal-on-type
+ * pattern as the two games above. Unlike those, a handful of rows here
+ * genuinely accept more than one correct answer (a Central American country
+ * — any of seven; a South Atlantic British Overseas Territory — any of
+ * several) rather than one canonical slug, so each row carries a *list* of
+ * accepted answers instead of a single one.
+ */
+export function hintAnswerGamePage(game, allGames, entries) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const titleCase = (s) => s.replace(/\b\w/g, (c) => c.toUpperCase());
+
+  const rows = entries
+    .map((entry) => {
+      const slugs = entry.answers.map((a) => slugify(a)).join('|');
+      const labels = entry.answers.map((a) => titleCase(a)).join('|');
+      const hintBody = entry.flagCode
+        ? `${esc(entry.hint)}<br><span class="hint-flag" role="img" aria-label="Flag">${flagOf(entry.flagCode)}</span>`
+        : esc(entry.hint);
+      return `<tr data-hint-row data-answer="${slugs}" data-labels="${esc(labels)}" data-display="${esc(entry.display)}">
+        <td>${hintBody}</td>
+        <td class="lang-cell" data-hint-cell><span class="lang-blank" data-hint-blank aria-label="Not yet guessed">?</span></td>
+      </tr>`;
+    })
+    .join('\n      ');
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-hint-table>
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">No timer and no difficulty levels — ${entries.length} hints, one answer each. A few hints accept more than one correct answer.</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden>
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="recall-count" data-hint-count>0 / ${entries.length} found</span>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-label="Hints solved">
+        <div class="progress-fill" data-hint-progress></div>
+      </div>
+
+      <div class="lang-banner" data-hint-banner hidden></div>
+
+      <form class="recall-form" data-hint-form>
+        <label class="sr-only" for="hint-input">Type your answer</label>
+        <input id="hint-input" data-hint-input type="text" placeholder="Type your answer…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
+      </form>
+
+      <p class="recall-feedback" data-hint-feedback hidden></p>
+
+      <div class="table-wrap">
+        <table class="lang-table">
+          <thead><tr><th>Hint</th><th>Answer</th></tr></thead>
+          <tbody>
+      ${rows}
+          </tbody>
+        </table>
+      </div>
+
+      <button class="btn btn-ghost btn-block" type="button" data-hint-giveup>Give up and reveal answers</button>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>There is no clock and no difficulty setting — just ${entries.length} hints to solve. Give up at any point to reveal whatever you have not found yet.</p>
 
     <h3>More ways to play</h3>
     <p>${allGames

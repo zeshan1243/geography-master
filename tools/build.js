@@ -236,6 +236,7 @@ function build() {
   const details = readDetails();
   const topLanguageData = readData('top-languages');
   const comparisons = readData('comparisons');
+  const hintAnswers = readData('hint-answer');
 
   // Map geometry is measured once here so the browser never has to.
   const coverage = mapCoverage(countries);
@@ -333,6 +334,12 @@ function build() {
 
     if (game.mode === 'biggestByContinent') {
       write(`game/${game.slug}.html`, pages.biggestByContinentGamePage(game, games, countries));
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
+    if (game.mode === 'hintAnswer') {
+      write(`game/${game.slug}.html`, pages.hintAnswerGamePage(game, games, hintAnswers));
       add(`/game/${game.slug}`, '0.85', 'weekly');
       continue;
     }

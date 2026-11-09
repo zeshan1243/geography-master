@@ -285,6 +285,10 @@ function boot() {
     import('./biggestByContinent.js').then((mod) => mod.initBiggestByContinent());
   }
 
+  if (document.querySelector('[data-hint-table]')) {
+    import('./hintAnswer.js').then((mod) => mod.initHintAnswer());
+  }
+
   initAds();
 
   document.querySelectorAll('[data-year]').forEach((node) => {

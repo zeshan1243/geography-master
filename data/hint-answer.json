@@ -1,0 +1,32 @@
+[
+  { "id": "sahara", "hint": "Largest hot desert in the world", "answers": ["sahara", "the sahara", "sahara desert"], "display": "Sahara" },
+  { "id": "japan", "hint": "Known as Nihon in its native language", "answers": ["japan"], "display": "Japan" },
+  {
+    "id": "central-america",
+    "hint": "A Central American country (any one)",
+    "answers": ["belize", "costa rica", "el salvador", "guatemala", "honduras", "nicaragua", "panama"],
+    "display": "Any Central American country"
+  },
+  { "id": "java", "hint": "Most populous island in the world", "answers": ["java"], "display": "Java" },
+  { "id": "jakarta", "hint": "Most populous city on the previous island (Java)", "answers": ["jakarta"], "display": "Jakarta" },
+  { "id": "alabama", "hint": "U.S. state located between Mississippi and Georgia", "answers": ["alabama"], "display": "Alabama" },
+  { "id": "qatar", "hint": "Country whose flag is this:", "flagCode": "QA", "answers": ["qatar"], "display": "Qatar" },
+  { "id": "madagascar", "hint": "Largest island in the Indian Ocean", "answers": ["madagascar"], "display": "Madagascar" },
+  { "id": "dakar", "hint": "Westernmost capital city of mainland Africa", "answers": ["dakar"], "display": "Dakar" },
+  { "id": "bahamas", "hint": "The first country in the New World visited by Columbus in 1492", "answers": ["bahamas", "the bahamas"], "display": "The Bahamas" },
+  { "id": "ghana", "hint": "Country between Ivory Coast and Togo", "answers": ["ghana"], "display": "Ghana" },
+  { "id": "accra", "hint": "Capital and largest city of the above (Ghana)", "answers": ["accra"], "display": "Accra" },
+  { "id": "alps", "hint": "Mountain range in which you'd find Mont Blanc and the Matterhorn", "answers": ["alps", "the alps"], "display": "The Alps" },
+  { "id": "caracas", "hint": "Birthplace of Simón Bolívar and Nicolás Maduro", "answers": ["caracas", "venezuela"], "display": "Caracas, Venezuela" },
+  { "id": "dallas", "hint": "City where JFK was assassinated in 1963", "answers": ["dallas"], "display": "Dallas" },
+  { "id": "aral-sea", "hint": "Central Asian \"sea\" that has shrunk to 10% of its 1960s size", "answers": ["aral sea", "the aral sea"], "display": "Aral Sea" },
+  { "id": "la-paz", "hint": "De facto national capital sitting at an elevation of 3,650 m (11,980 ft)", "answers": ["la paz"], "display": "La Paz" },
+  { "id": "ankara", "hint": "Middle East city once known as Angora", "answers": ["ankara"], "display": "Ankara" },
+  {
+    "id": "south-atlantic-bot",
+    "hint": "British Overseas Territory in the South Atlantic Ocean (any one)",
+    "answers": ["falkland islands", "the falkland islands", "falklands", "south georgia", "south georgia and the south sandwich islands", "saint helena", "st helena", "ascension island", "tristan da cunha"],
+    "display": "Falkland Islands, South Georgia, or Saint Helena"
+  },
+  { "id": "warsaw", "hint": "European capital served by Chopin Airport", "answers": ["warsaw"], "display": "Warsaw" }
+]

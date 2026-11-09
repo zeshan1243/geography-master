@@ -779,4 +779,7 @@
 
 .rank-cell { font-weight: 700; }
 .rank-cell .lang-answer-area { display: block; font-weight: 500; color: var(--text-secondary); font-size: .8125rem; }
+
+/* --- Hint/answer trivia table ---------------------------------------------- */
+.hint-flag { display: inline-block; font-size: 2.5rem; line-height: 1; margin-top: 6px; }
 .review-callout-go { margin-left: auto; color: var(--primary); font-weight: 800; font-size: 1.25rem; }
