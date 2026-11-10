@@ -725,6 +725,13 @@ tbody tr:hover { background: var(--surface-secondary); }
     align-items: start;
   }
 
+  /* Pinned explicitly rather than left to source-order auto-placement: an ad
+     blocker hiding `.ad-rail` removes it from the grid item list entirely
+     (display:none items don't just go invisible, they stop occupying a
+     track), which would otherwise shuffle this into the narrow rail column
+     instead of leaving the wide one alone. */
+  .has-rail-main { grid-column: 1; }
+
   /* The page bodies carry their own .wrap elements; inside the grid column
      they must not re-apply a max-width or a second gutter. */
   .has-rail-main .wrap {
@@ -736,7 +743,7 @@ tbody tr:hover { background: var(--surface-secondary); }
      (see below) so a second 300px column never crushes the content between
      them. It stays display:none until then, so the grid above lays out as
      just [content][right rail], same as a single-rail page always has. */
-  .ad-rail-right { display: block; }
+  .ad-rail-right { display: block; grid-column: 2; }
 
   .ad-rail-sticky {
     position: sticky;
@@ -782,7 +789,11 @@ tbody tr:hover { background: var(--surface-secondary); }
     grid-template-columns: 300px minmax(0, 1fr) 300px;
   }
 
-  .ad-rail-left { display: block; }
+  /* The columns gain a third track here, so every child needs its slot
+     re-pinned — same reasoning as the 1240px breakpoint above. */
+  .ad-rail-left { display: block; grid-column: 1; }
+  .has-rail-main { grid-column: 2; }
+  .ad-rail-right { grid-column: 3; }
 }
 
 /* --- Footer ------------------------------------------------------------- */
