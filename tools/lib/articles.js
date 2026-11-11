@@ -772,5 +772,47 @@ export const ARTICLES = [
 
 <p>Whichever side a country ended up on, the choice is now effectively permanent — Sweden's experience is a reminder of just how disruptive a switch is, which is exactly why almost nobody attempts one.</p>
 `
+  },
+
+  {
+    slug: 'coldest-and-hottest-countries',
+    title: 'Why some countries are so much colder than others',
+    metaTitle: "The World's Coldest and Hottest Countries, Explained",
+    description:
+      'Latitude is only the start of it. Distance from the ocean and elevation decide just as much of a country’s average temperature, which is why Kazakhstan is colder than you’d guess and Malta is warmer.',
+    updated: '11 November 2026',
+    summary:
+      'Average annual temperature is a single number standing in for an entire country, and three forces decide it: how far north or south it sits, how far it sits from the ocean, and how high it sits above sea level.',
+    body: `
+<p>A country's average annual temperature is a strange statistic. It compresses a whole year, every region, every elevation, into one number — and the three forces that set that number are not equally obvious. Latitude is the one everybody reaches for first, and it matters, but it is often the smallest of the three.</p>
+
+<h2>Distance from the ocean does more than you'd think</h2>
+
+<p>Water heats up and cools down slowly; land does both quickly. A coastline moderates the climate behind it, holding summers cooler and winters milder than the latitude alone would predict. Move far enough inland and that moderating effect disappears — summers get hotter, winters get colder, and the yearly average usually drops, because the heat gained in summer does not fully offset the cold lost in winter.</p>
+
+<p>This is called continentality, and it is the single best explanation for why Central Asia and the Caucasus dominate the coldest end of the ranking once <a href="/countries/russia">Russia</a> and <a href="/countries/mongolia">Mongolia</a> are accounted for. <a href="/countries/tajikistan">Tajikistan</a>, <a href="/countries/kyrgyzstan">Kyrgyzstan</a> and <a href="/countries/kazakhstan">Kazakhstan</a> sit at latitudes not far removed from much of Western Europe, but they are about as far from a moderating ocean as anywhere on Earth, and it shows in their averages. The reverse of the same effect is one reason Western Europe runs warmer than its own latitude suggests — the <a href="/guides/countries-people-misplace">countries people most often misplace</a> guide covers that side of it in more detail.</p>
+
+<h2>Elevation quietly overrides everything else</h2>
+
+<p>Temperature drops by roughly 6.5°C for every 1,000 metres of elevation gain, a figure consistent enough that meteorologists treat it as close to a constant. A country does not need to be near either pole to post a cold average — it just needs enough of its land sitting high enough.</p>
+
+<p><a href="/countries/bhutan">Bhutan</a> and <a href="/countries/nepal">Nepal</a> are the clearest cases: both sit at a latitude that would otherwise suggest a mild, even subtropical climate, and both post average temperatures well below what that latitude implies, dragged down by the Himalayas occupying a large share of their land area. Nepal is the more extreme case of the two — its country-wide average blends genuinely cold high-altitude terrain against a much warmer southern lowland, the Terai, and the number that results belongs fully to neither part.</p>
+
+<h2>Why small coastal countries win the "hottest" ranking</h2>
+
+<p>Flip the question around and a different pattern shows up. The hottest-ranked European countries by average temperature are not the ones you'd name first on instinct — they're small: <a href="/countries/malta">Malta</a>, <a href="/countries/vatican-city">Vatican City</a>, <a href="/countries/san-marino">San Marino</a> and <a href="/countries/monaco">Monaco</a> all post warmer country-wide averages than much larger countries at similar latitudes.</p>
+
+<p>The reason is almost mechanical. A country's average temperature is, in effect, an average over its own territory, and a microstate has very little territory to average over. There is no cold interior, no high mountain range, no northern region to drag the number down — the entire country is close to one coastline, so the whole country shares that coastline's mild climate. <a href="/countries/spain">Spain</a> and <a href="/countries/portugal">Portugal</a> rank a little lower despite having genuinely hot summers, because both also have real interior and mountain regions where winters are properly cold, and the national average has to answer for those too.</p>
+
+<h2>Why the number can still mislead</h2>
+
+<p>Because average annual temperature folds an entire country and an entire year into one figure, two countries can post the same number for completely different reasons. <a href="/countries/china">China</a> and <a href="/countries/georgia">Georgia</a> can land close together in a ranking despite China containing both subarctic forest and subtropical coastline, because the figure describes the average, not the range. A country with one mild, consistent climate and a country with two extreme ones that happen to cancel out can end up looking identical on paper.</p>
+
+<p>That is worth remembering before treating any single-number ranking as the whole truth about a place — it is a genuinely useful summary, not a full description.</p>
+
+<h2>Try it yourself</h2>
+
+<p>The <a href="/game/coldest-asian-countries">coldest Asian countries</a> and <a href="/game/hottest-european-countries">hottest European countries</a> quizzes use real average-temperature data in exactly this ranked form — type the country for each temperature row, continentality and elevation included, no multiple choice and no clock.</p>
+`
   }
 ];

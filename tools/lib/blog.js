@@ -425,5 +425,47 @@ export const POSTS = [
 
 <p>The common thread across every example here is the same: a capital city is not one single fact so much as a bundle of roles — executive, legislative, judicial, ceremonial — and most countries simply give every role to the same city. The ones on this list decided, for reasons of history, politics or geography, not to. The full <a href="/lists/countries-and-capitals">list of countries and capitals</a> notes each of these exceptions, and the <a href="/game/capital-quiz">capital quiz</a> only ever tests the one answer that actually matters for each.</p>
 `
+  },
+
+  {
+    slug: 'why-biggest-city-rankings-disagree',
+    title: 'Why "the biggest city in the world" never has one answer',
+    metaTitle: 'Why Biggest-City Rankings Never Agree',
+    description:
+      'City proper, urban area, metropolitan area — three genuinely different measurements hiding behind one casual question, and they rank cities in a different order.',
+    updated: '11 November 2026',
+    summary:
+      'Ask ten sources which city is the biggest in the world and you will get several different answers, and none of them is wrong. They are answering three different questions that happen to share a name.',
+    body: `
+<p>"What's the biggest city in the world?" sounds like a question with one answer. It has at least three, and they disagree with each other, because "city" quietly means three different things depending on who is doing the counting.</p>
+
+<h2>Three different questions wearing one name</h2>
+
+<p><strong>City proper</strong> counts only the people living inside a city's official administrative boundary — the line a city council or national government actually draws on a map. <strong>Urban area</strong> ignores administrative lines entirely and counts the continuous built-up footprint — buildings, roads, suburbs — wherever it physically stops being a city. <strong>Metropolitan area</strong> goes wider still, counting the city plus the surrounding towns that function as one economy, commuting and all, whether or not the built-up area is technically continuous.</p>
+
+<p>Three different lines drawn around the same place, three different totals. None of the three is the "real" one — they measure different things on purpose.</p>
+
+<h2>The clearest example: London</h2>
+
+<p>The <strong>City of London</strong> — the historic one-square-mile financial district, not the city most people mean when they say "London" — had a resident population of just 8,583 at the 2021 census, rising to a 2025 estimate of around 15,600. That makes it, by official boundary, one of the smallest districts in England by population, despite sitting at the centre of one of the largest cities on Earth and employing over half a million people who simply do not live there.</p>
+
+<p>Step out to Greater <a href="/countries/united-kingdom">London</a> — the 32 boroughs plus the City — and the population jumps to roughly 9 million. Step out again to the built-up urban area or the wider metropolitan region, and it is larger again. Three numbers, three correct answers, one city.</p>
+
+<h2>Tokyo depends entirely on which line you draw</h2>
+
+<p><a href="/countries/japan">Tokyo</a>'s 23 special wards — the closest thing it has to a "city proper" — held around 9.9 million people as of early 2024. The Greater Tokyo Area, the wider metropolitan region that functions as a single labour market, is usually put in the high 30 millions, commonly cited around 37 to 38 million, which would make it the largest metropolitan area on the planet by most counts.</p>
+
+<p>Both figures describe "Tokyo." Neither is more correct than the other; they are simply answering "how many people live in the 23 wards" versus "how many people live somewhere that functions economically as Tokyo," and those are different questions with a roughly fourfold difference in answer.</p>
+
+<h2>Why Guangzhou-Shenzhen sometimes tops the list</h2>
+
+<p>Some urban-area rankings put a combined Guangzhou-Shenzhen region, in <a href="/countries/china">China</a>'s Pearl River Delta, at the top of the world by population — commonly cited in the region of 70 million, ahead of Tokyo. The methodology behind that figure treats the delta's built-up area as one continuous urban footprint rather than as separate administrative cities, which is a genuinely different way of drawing the line than counting Guangzhou and Shenzhen individually, where national statistics list each in the high teens to high twenties of millions. Which total is "right" depends entirely on whether a contiguous built-up area or an administrative city line is the thing being measured — this is one of the more contested corners of urban demography, and different trackers land in different places.</p>
+
+<h2>There is no single correct ranking</h2>
+
+<p>Once you know to look for it, almost every "biggest city" surprise turns out to be a definitions mismatch rather than a factual dispute. A ranking by city-proper population and a ranking by urban-area population will put different cities first, and both rankings can be completely accurate at the same time.</p>
+
+<p>The <a href="/game/biggest-world-cities">biggest cities in the world quiz</a> ranks by urban-area population — the built-up footprint rather than the administrative boundary — which is why some less-famous names sit above cities most people would guess first.</p>
+`
   }
 ];
