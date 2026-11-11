@@ -1,0 +1,52 @@
+[
+  {
+    "celsius": 20.3,
+    "fahrenheit": 68.5,
+    "answer": "Malta"
+  },
+  {
+    "celsius": 16.8,
+    "fahrenheit": 62.2,
+    "answer": "Vatican City"
+  },
+  {
+    "celsius": 16.1,
+    "fahrenheit": 61.0,
+    "answer": "Portugal"
+  },
+  {
+    "celsius": 15.8,
+    "fahrenheit": 60.4,
+    "answer": "Greece"
+  },
+  {
+    "celsius": 14.6,
+    "fahrenheit": 58.3,
+    "answer": "Italy"
+  },
+  {
+    "celsius": 14.2,
+    "fahrenheit": 57.6,
+    "answer": "Spain"
+  },
+  {
+    "celsius": 14.2,
+    "fahrenheit": 57.6,
+    "answer": "San Marino"
+  },
+  {
+    "celsius": 13.9,
+    "fahrenheit": 57.0,
+    "answer": "Monaco"
+  },
+  {
+    "celsius": 12.9,
+    "fahrenheit": 55.1,
+    "answer": "Albania"
+  },
+  {
+    "celsius": 12.4,
+    "fahrenheit": 54.2,
+    "answer": "Croatia"
+  }
+]

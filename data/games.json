@@ -686,5 +686,65 @@
       "The daily seed means there is no advantage to playing later in the day, and no way to reroll a hard one — today's country is today's country for everyone, which is exactly what makes a good result worth sharing.",
       "Playing Daily Globe counts toward the same day-streak as every other game on the site, shown on the homepage — it does not need to be the only thing you play today, just one of them."
     ]
+  },
+  {
+    "id": "coldestAsia",
+    "slug": "coldest-asian-countries",
+    "name": "Top 10 Coldest Asian Countries",
+    "icon": "❄️",
+    "accent": "blue",
+    "category": "World Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "A ranked table of Asia's coldest countries by average annual temperature, in °C and °F. The coldest is given for free — type the other ten to fill in the rest.",
+    "metaTitle": "Top 10 Coldest Asian Countries — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each average-temperature row, coldest first. Asia's ten coldest countries, no timer, no difficulty levels.",
+    "popular": false,
+    "mode": "tempTable",
+    "dataFile": "coldest-asia",
+    "guide": [
+      "Each row gives a country's average annual temperature in both °C and °F, ranked from coldest to least cold; your job is to type the country. Russia tops the list and is filled in for you as an example — the other ten are what you actually have to find.",
+      "Central Asia and the Caucasus dominate the list once Russia and Mongolia are out of the way: Tajikistan, Kyrgyzstan and Kazakhstan are all landlocked, mountainous, and far enough from any ocean's moderating effect to stay cold on average despite summers that get genuinely hot.",
+      "Average annual temperature flattens out a lot of variation a single season would show — Nepal's 10°C average, for instance, blends Himalayan peaks against a much warmer southern lowland, and ranks here only because the country-wide average pulls it down."
+    ]
+  },
+  {
+    "id": "hottestEurope",
+    "slug": "hottest-european-countries",
+    "name": "Hottest European Countries",
+    "icon": "🌡️",
+    "accent": "red",
+    "category": "World Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "A ranked table of Europe's hottest countries by average annual temperature, in °C and °F. Type the country to fill in each of the ten rows.",
+    "metaTitle": "Hottest European Countries — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each average-temperature row, hottest first. Europe's ten hottest countries, no timer, no difficulty levels.",
+    "popular": false,
+    "mode": "tempTable",
+    "dataFile": "hottest-europe",
+    "guide": [
+      "Each row gives a country's average annual temperature in both °C and °F, ranked hottest first; your job is to type the country. Unlike the Asia version of this quiz, there's no freebie here — all ten rows are blank from the start.",
+      "Southern Europe's microstates do well on a national average the same way they do on most per-country rankings: Malta, Vatican City and San Marino are all small enough that one coastline or one hill can set the whole country's climate, with nothing colder further inland to drag the average down.",
+      "Spain and Portugal round out the list despite both having genuinely cold mountain regions — the Mediterranean and Atlantic coastlines where most of each country's population actually lives pull the national average up far enough to outrank most of the Balkans."
+    ]
+  },
+  {
+    "id": "biggestCities",
+    "slug": "biggest-world-cities",
+    "name": "Biggest Cities in the World",
+    "icon": "🏙️",
+    "accent": "green",
+    "category": "World Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "A ranked table of the world's biggest urban areas by population. Rhine-Ruhr is given as an example — type the other fifty to fill in the rest.",
+    "metaTitle": "Biggest Cities in the World — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the city for each urban-area population row, biggest first. 50 of the world's biggest cities, no timer, no difficulty levels.",
+    "popular": false,
+    "mode": "cityPopulation",
+    "dataFile": "biggest-cities",
+    "guide": [
+      "Each row gives an urban area's population in millions, ranked biggest first; your job is to type the city. Rhine-Ruhr is filled in for you as an example — it's the odd one out on this list, a single urban area spanning several German cities (Dortmund, Essen, Duisburg and others) rather than one city with one obvious name.",
+      "This ranks by urban area, not by city-proper population or metro area — three different ways of drawing the same city's boundary that produce noticeably different rankings. Urban area means the actual built-up footprint, which is why sprawling, polycentric regions like Guangzhou–Shenzhen top the list ahead of cities most people would guess first.",
+      "China and India between them account for a large share of this list, simply because they hold two of the three largest national populations and have urbanised enormous numbers of people into a relatively small number of very large cities rather than spreading growth evenly across many mid-sized ones."
+    ]
   }
 ]

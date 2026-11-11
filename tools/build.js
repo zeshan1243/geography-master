@@ -344,6 +344,42 @@ function build() {
       continue;
     }
 
+    // Ranked fill-in-the-blank tables: one identifier column blanked out,
+    // real stat columns alongside it, split across a few side-by-side
+    // tables. Each mode here is just a different column layout over the
+    // same template and client module — see rankedFillTablePage().
+    if (game.mode === 'tempTable') {
+      write(
+        `game/${game.slug}.html`,
+        pages.rankedFillTablePage(game, games, readData(game.dataFile), {
+          columns: [
+            { header: '°C', render: (e) => `${e.celsius}°C` },
+            pages.BLANK_COLUMN,
+            { header: '°F', render: (e) => `${e.fahrenheit}°F` }
+          ],
+          splitInto: 2,
+          itemNoun: 'countries',
+          rankedBy: 'average annual temperature'
+        })
+      );
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
+    if (game.mode === 'cityPopulation') {
+      write(
+        `game/${game.slug}.html`,
+        pages.rankedFillTablePage(game, games, readData(game.dataFile), {
+          columns: [{ header: 'Population', render: (e) => e.population }, pages.BLANK_COLUMN],
+          splitInto: 3,
+          itemNoun: 'cities',
+          rankedBy: 'urban-area population'
+        })
+      );
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
     if (game.mode === 'higherLower') {
       write(`game/${game.slug}.html`, pages.higherLowerGamePage(game, games));
       add(`/game/${game.slug}`, '0.85', 'weekly');

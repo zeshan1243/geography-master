@@ -783,6 +783,24 @@
 /* --- Hint/answer trivia table ---------------------------------------------- */
 .hint-flag { display: inline-block; font-size: 2.5rem; line-height: 1; margin-top: 6px; }
 
+/* --- Ranked fill-in table (coldest Asia, hottest Europe, biggest cities) --- */
+.fill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.fill-table .fill-stat { text-align: center; white-space: nowrap; }
+
+.fill-table .fill-cell { font-weight: 700; }
+.fill-table tr[data-found="true"] { background: var(--success-soft); }
+
+/* A free example row (used by some variants, not others) is shaded so it
+   reads as "already solved" rather than as a blank to fill in. */
+.fill-table tr[data-fill-given-row] { background: var(--surface-secondary); }
+.fill-table tr[data-fill-given-row] .fill-cell { font-weight: 700; }
+
 /* --- Higher or Lower -------------------------------------------------------- */
 .hl-streak {
   font-weight: 700;

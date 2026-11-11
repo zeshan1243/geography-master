@@ -1,0 +1,58 @@
+[
+  {
+    "celsius": -3.8,
+    "fahrenheit": 25.2,
+    "given": true,
+    "answer": "Russia"
+  },
+  {
+    "celsius": 0.8,
+    "fahrenheit": 33.4,
+    "answer": "Mongolia"
+  },
+  {
+    "celsius": 2.6,
+    "fahrenheit": 36.7,
+    "answer": "Tajikistan"
+  },
+  {
+    "celsius": 2.8,
+    "fahrenheit": 37.0,
+    "answer": "Kyrgyzstan"
+  },
+  {
+    "celsius": 5.7,
+    "fahrenheit": 42.3,
+    "answer": "Bhutan"
+  },
+  {
+    "celsius": 7.2,
+    "fahrenheit": 45.0,
+    "answer": "North Korea"
+  },
+  {
+    "celsius": 7.3,
+    "fahrenheit": 45.1,
+    "answer": "Kazakhstan"
+  },
+  {
+    "celsius": 7.9,
+    "fahrenheit": 46.2,
+    "answer": "China"
+  },
+  {
+    "celsius": 8.1,
+    "fahrenheit": 46.6,
+    "answer": "Georgia"
+  },
+  {
+    "celsius": 8.6,
+    "fahrenheit": 47.5,
+    "answer": "Armenia"
+  },
+  {
+    "celsius": 10.0,
+    "fahrenheit": 50.0,
+    "answer": "Nepal"
+  }
+]

@@ -1152,6 +1152,173 @@ export function hintAnswerGamePage(game, allGames, entries) {
   });
 }
 
+/** Sentinel marking where the fill-in-the-blank column sits in a `columns` list — see rankedFillTablePage(). */
+export const BLANK_COLUMN = Symbol('blank-column');
+
+/**
+ * A ranked fill-in table split across several side-by-side tables, one
+ * identifier column (country, city…) blanked out and one or more real stat
+ * columns shown alongside it. Powers "Top 10 Coldest Asian Countries",
+ * "Hottest European Countries" (both: °C column, blank, °F column, split
+ * two ways) and "Biggest Cities in the World" (one population column, blank,
+ * split three ways) off the same template and client module — call sites
+ * configure the column layout and split count, everything else is shared.
+ *
+ * An entry's first row can be `given: true` to show it already filled in and
+ * shaded, the way the source quiz shows its first answer as an example; that
+ * row is plain markup, never added to the set of rows the client script
+ * tracks. `entry.answer` is what the player must type (falls back to
+ * `entry.display` if omitted) and `entry.display` is what's shown once
+ * solved (falls back to `entry.answer`).
+ */
+export function rankedFillTablePage(
+  game,
+  allGames,
+  entries,
+  { columns, splitInto = 2, itemNoun = 'countries', rankedBy = 'population' }
+) {
+  const trail = [
+    { label: 'Home', href: '/' },
+    { label: 'Games', href: '/games/' },
+    { label: game.name }
+  ];
+
+  const headerRow = `<tr>${columns
+    .map((col) =>
+      col === BLANK_COLUMN
+        ? `<th>${esc(itemNoun === 'cities' ? 'City' : 'Country')}</th>`
+        : `<th class="fill-stat">${esc(col.header)}</th>`
+    )
+    .join('')}</tr>`;
+
+  const cell = (entry, isGiven) =>
+    isGiven
+      ? `<td class="fill-cell" data-fill-given>${esc(entry.display || entry.answer)}</td>`
+      : `<td class="fill-cell" data-fill-cell><span class="lang-blank" data-fill-blank aria-label="Not yet guessed">?</span></td>`;
+
+  const row = (entry) => {
+    const given = entry.given === true;
+    const display = entry.display || entry.answer;
+    const cells = columns
+      .map((col) => (col === BLANK_COLUMN ? cell(entry, given) : `<td class="fill-stat">${col.render(entry)}</td>`))
+      .join('\n        ');
+    return `<tr${given ? ' data-fill-given-row' : ' data-fill-row'} data-answer="${slugify(entry.answer)}" data-display="${esc(display)}">
+        ${cells}
+      </tr>`;
+  };
+
+  const perTable = Math.ceil(entries.length / splitInto);
+  const tables = Array.from({ length: splitInto }, (_, i) => {
+    const slice = entries.slice(i * perTable, (i + 1) * perTable);
+    if (!slice.length) return '';
+    return `<div class="table-wrap">
+          <table class="fill-table">
+            <thead>${headerRow}</thead>
+            <tbody>
+        ${slice.map(row).join('\n        ')}
+            </tbody>
+          </table>
+        </div>`;
+  })
+    .filter(Boolean)
+    .join('\n        ');
+
+  const toSolve = entries.filter((e) => !e.given).length;
+  const hasGiven = entries.some((e) => e.given);
+
+  const body = `${breadcrumbs(trail)}
+<div class="wrap">
+  <div class="game-shell" data-fill-table data-game-id="${game.id}" data-item-noun="${esc(itemNoun)}">
+
+    <section class="game-screen setup" data-screen="setup">
+      <div class="game-icon" aria-hidden="true">${game.icon}</div>
+      <h1>${esc(game.name)}</h1>
+      <p>${esc(game.description)}</p>
+      <p class="recall-rules">No timer and no difficulty levels — ${toSolve} ${itemNoun} to name, ranked by ${rankedBy}.${hasGiven ? ' The first is given for free.' : ''}</p>
+
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start</button>
+      <p class="setup-best" data-best></p>
+    </section>
+
+    <section class="game-screen" data-screen="play" hidden>
+      <div class="game-top">
+        <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
+        <span class="recall-count" data-fill-count>0 / ${toSolve} found</span>
+      </div>
+
+      <div class="progress-track" role="progressbar" aria-label="${esc(itemNoun)} found">
+        <div class="progress-fill" data-fill-progress></div>
+      </div>
+
+      <div class="lang-banner" data-fill-banner hidden></div>
+
+      <form class="recall-form" data-fill-form>
+        <label class="sr-only" for="fill-input">Type an answer</label>
+        <input id="fill-input" data-fill-input type="text" placeholder="Type an answer…"
+               autocomplete="off" autocapitalize="words" spellcheck="false">
+        <button class="btn btn-primary" type="submit">${icon('check')} Add</button>
+      </form>
+
+      <p class="recall-feedback" data-fill-feedback></p>
+
+      <div class="fill-grid">
+        ${tables}
+      </div>
+
+      <button class="btn btn-ghost btn-block" type="button" data-fill-giveup>Give up and reveal answers</button>
+
+      ${adSlot()}
+
+      <div class="related">
+        <h2>You might also like</h2>
+        <div class="related-links" data-related></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="article">
+    <h2>About ${esc(game.name)}</h2>
+    ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+
+    <h3>Scoring</h3>
+    <p>There is no clock and no difficulty setting — just ${toSolve} ${itemNoun} to identify, ranked by ${rankedBy}. Give up at any point to reveal whatever you have not found yet.</p>
+
+    <h3>More ways to play</h3>
+    <p>${allGames
+      .filter((g) => g.id !== game.id)
+      .slice(0, 4)
+      .map((g) => `<a href="${gameHref(g)}">${esc(g.name)}</a>`)
+      .join(' · ')}</p>
+  </div>
+</section>`;
+
+  return page({
+    title: `${game.metaTitle} | ${SITE.name}`,
+    description: game.metaDescription,
+    path: `/game/${game.slug}`,
+    css: ['/css/games.css', '/css/game.css'],
+    body,
+    rail: true,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'Game',
+        name: game.name,
+        description: game.metaDescription,
+        url: new URL(`/game/${game.slug}`, SITE.url).href,
+        genre: 'Educational',
+        gamePlatform: 'Web browser',
+        numberOfPlayers: { '@type': 'QuantitativeValue', value: 1 },
+        isAccessibleForFree: true
+      },
+      breadcrumbSchema(trail.map((t) => ({ ...t, href: t.href || `/game/${game.slug}` })))
+    ]
+  });
+}
+
 /**
  * "Higher or Lower" — a chain game, not a round of fixed questions: one
  * country is shown with its real value, a challenger is shown hidden, and

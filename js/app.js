@@ -297,6 +297,10 @@ function boot() {
     import('./dailyGlobe.js').then((mod) => mod.initDailyGlobe());
   }
 
+  if (document.querySelector('[data-fill-table]')) {
+    import('./fillTable.js').then((mod) => mod.initFillTable());
+  }
+
   initAds();
 
   document.querySelectorAll('[data-year]').forEach((node) => {
