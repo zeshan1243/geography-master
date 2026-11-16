@@ -1170,12 +1170,16 @@ export const BLANK_COLUMN = Symbol('blank-column');
  * tracks. `entry.answer` is what the player must type (falls back to
  * `entry.display` if omitted) and `entry.display` is what's shown once
  * solved (falls back to `entry.answer`).
+ *
+ * `timeLimit` (seconds) turns on a countdown, starting the moment the
+ * player clicks Start — "Countries with the Most Rail Travel per Capita"
+ * uses it, the untimed quizzes above simply omit it.
  */
 export function rankedFillTablePage(
   game,
   allGames,
   entries,
-  { columns, splitInto = 2, itemNoun = 'countries', rankedBy = 'population' }
+  { columns, splitInto = 2, itemNoun = 'countries', rankedBy = 'population', timeLimit = null }
 ) {
   const trail = [
     { label: 'Home', href: '/' },
@@ -1225,26 +1229,35 @@ export function rankedFillTablePage(
 
   const toSolve = entries.filter((e) => !e.given).length;
   const hasGiven = entries.some((e) => e.given);
+  const hasTimer = Boolean(timeLimit);
+  const clockLabel = hasTimer ? formatSeconds(timeLimit) : null;
+  const minutes = hasTimer ? timeLimit / 60 : null;
+  const minutesLabel = hasTimer ? `${minutes} minute${minutes === 1 ? '' : 's'}` : null;
 
   const body = `${breadcrumbs(trail)}
 <div class="wrap">
-  <div class="game-shell" data-fill-table data-game-id="${game.id}" data-item-noun="${esc(itemNoun)}">
+  <div class="game-shell" data-fill-table data-game-id="${game.id}" data-item-noun="${esc(itemNoun)}"${hasTimer ? ` data-time-limit="${timeLimit}"` : ''}>
 
     <section class="game-screen setup" data-screen="setup">
       <div class="game-icon" aria-hidden="true">${game.icon}</div>
       <h1>${esc(game.name)}</h1>
       <p>${esc(game.description)}</p>
-      <p class="recall-rules">No timer and no difficulty levels — ${toSolve} ${itemNoun} to name, ranked by ${rankedBy}.${hasGiven ? ' The first is given for free.' : ''}</p>
+      <p class="recall-rules">${
+        hasTimer
+          ? `${toSolve} ${itemNoun} to name, ranked by ${rankedBy} — ${minutesLabel} on the clock once you start.`
+          : `No timer and no difficulty levels — ${toSolve} ${itemNoun} to name, ranked by ${rankedBy}.${hasGiven ? ' The first is given for free.' : ''}`
+      }</p>
 
-      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} Start</button>
+      <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} ${hasTimer ? `Start — ${clockLabel} on the clock` : 'Start'}</button>
       <p class="setup-best" data-best></p>
     </section>
 
     <section class="game-screen" data-screen="play" hidden>
       <div class="game-top">
         <span class="game-title"><span aria-hidden="true">${game.icon}</span> ${esc(game.name)}</span>
-        <span class="recall-count" data-fill-count>0 / ${toSolve} found</span>
+        ${hasTimer ? `<span class="recall-timer" data-fill-timer>${clockLabel}</span>` : `<span class="recall-count" data-fill-count>0 / ${toSolve} found</span>`}
       </div>
+      ${hasTimer ? `<div class="recall-count" data-fill-count>0 / ${toSolve} found</div>` : ''}
 
       <div class="progress-track" role="progressbar" aria-label="${esc(itemNoun)} found">
         <div class="progress-fill" data-fill-progress></div>
@@ -1284,7 +1297,11 @@ export function rankedFillTablePage(
     ${(game.guide || []).map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
 
     <h3>Scoring</h3>
-    <p>There is no clock and no difficulty setting — just ${toSolve} ${itemNoun} to identify, ranked by ${rankedBy}. Give up at any point to reveal whatever you have not found yet.</p>
+    <p>${
+      hasTimer
+        ? `You have ${minutesLabel} to identify ${toSolve} ${itemNoun}, ranked by ${rankedBy}. The clock starts the moment you click Start, and whatever is still blank when it hits zero is marked as missed.`
+        : `There is no clock and no difficulty setting — just ${toSolve} ${itemNoun} to identify, ranked by ${rankedBy}. Give up at any point to reveal whatever you have not found yet.`
+    }</p>
 
     <h3>More ways to play</h3>
     <p>${allGames

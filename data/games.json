@@ -746,5 +746,25 @@
       "This ranks by urban area, not by city-proper population or metro area — three different ways of drawing the same city's boundary that produce noticeably different rankings. Urban area means the actual built-up footprint, which is why sprawling, polycentric regions like Guangzhou–Shenzhen top the list ahead of cities most people would guess first.",
       "China and India between them account for a large share of this list, simply because they hold two of the three largest national populations and have urbanised enormous numbers of people into a relatively small number of very large cities rather than spreading growth evenly across many mid-sized ones."
     ]
+  },
+  {
+    "id": "railTravel",
+    "slug": "rail-travel-per-capita",
+    "name": "Countries with the Most Rail Travel per Capita",
+    "icon": "🚆",
+    "accent": "purple",
+    "category": "World Games",
+    "tagline": "Fill in the table — 4 minutes on the clock",
+    "description": "A ranked table of the countries whose residents travel the most by rail each year, in kilometres per person. Type the country to fill in each of the twenty rows before the clock runs out.",
+    "metaTitle": "Countries with the Most Rail Travel per Capita — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each rail-travel row, highest first. Twenty countries, 4 minutes on the clock once you start.",
+    "popular": false,
+    "mode": "railPerCapita",
+    "dataFile": "rail-travel-per-capita",
+    "guide": [
+      "Each row gives how many kilometres the average resident of a country travels by rail each year, ranked highest first; your job is to type the country. This isn't the size of a country's rail network — it's how much people actually use trains, which is a different question entirely.",
+      "Japan and Switzerland lead by a wide margin for the same underlying reason: dense populations living along heavily built-up rail corridors, where a train is genuinely the fastest way to get between major cities, not just a subsidised alternative to driving.",
+      "You have 4 minutes once you click Start, and whatever is still blank when the clock hits zero gets marked as missed, so it pays to work through the countries you're confident about first and come back to the guesses later."
+    ]
   }
 ]

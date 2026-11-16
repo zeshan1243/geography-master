@@ -18,7 +18,7 @@ import {
 } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { SITE, ROOT } from './lib/layout.js';
-import { decorate } from './lib/util.js';
+import { decorate, fmt } from './lib/util.js';
 import { mapCoverage } from './lib/mapgeo.js';
 import * as pages from './lib/pages.js';
 
@@ -374,6 +374,21 @@ function build() {
           splitInto: 3,
           itemNoun: 'cities',
           rankedBy: 'urban-area population'
+        })
+      );
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
+    if (game.mode === 'railPerCapita') {
+      write(
+        `game/${game.slug}.html`,
+        pages.rankedFillTablePage(game, games, readData(game.dataFile), {
+          columns: [{ header: 'km', render: (e) => fmt(e.km) }, pages.BLANK_COLUMN],
+          splitInto: 3,
+          itemNoun: 'countries',
+          rankedBy: 'rail travel per capita',
+          timeLimit: 4 * 60
         })
       );
       add(`/game/${game.slug}`, '0.85', 'weekly');

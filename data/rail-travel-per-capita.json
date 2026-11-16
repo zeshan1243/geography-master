@@ -1,0 +1,22 @@
+[
+  { "km": 3284, "answer": "Japan" },
+  { "km": 2565, "answer": "Switzerland" },
+  { "km": 1847, "answer": "South Korea" },
+  { "km": 1643, "answer": "Austria" },
+  { "km": 1583, "answer": "France" },
+  { "km": 1526, "answer": "Hungary" },
+  { "km": 1342, "answer": "Germany" },
+  { "km": 1307, "answer": "Sweden" },
+  { "km": 1121, "answer": "China" },
+  { "km": 1102, "answer": "Denmark" },
+  { "km": 1036, "answer": "Netherlands" },
+  { "km": 1031, "answer": "Taiwan" },
+  { "km": 1014, "answer": "Russia" },
+  { "km": 1002, "answer": "Belgium" },
+  { "km": 977, "answer": "Czech Republic" },
+  { "km": 960, "answer": "Finland" },
+  { "km": 927, "answer": "Italy" },
+  { "km": 926, "answer": "United Kingdom" },
+  { "km": 829, "answer": "Luxembourg" },
+  { "km": 798, "answer": "Slovakia" }
+]

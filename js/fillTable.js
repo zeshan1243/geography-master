@@ -7,6 +7,12 @@
  * given-for-free row (used by some variants, not others) is plain markup
  * with no `data-fill-row`, so it never enters `rows` and can't be typed,
  * duplicated, or counted toward the total.
+ *
+ * A variant can also set `data-time-limit` (seconds) — "Countries with the
+ * Most Rail Travel per Capita" does — in which case the clock starts on
+ * Start and running out finishes the round the same way Give Up does:
+ * whatever is still blank is revealed as missed. See recall.js for the same
+ * countdown pattern used by the free-recall games.
  */
 
 import { slugify, games, gameUrl } from './data.js';
@@ -14,6 +20,13 @@ import { recordGame, bestScore } from './storage.js';
 import { siteName } from './share.js';
 
 const DIFFICULTY = 'all';
+
+function formatClock(totalSeconds) {
+  const clamped = Math.max(totalSeconds, 0);
+  const m = Math.floor(clamped / 60);
+  const s = clamped % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
 
 async function renderRelated(root, gameType) {
   const box = root.querySelector('[data-related]');
@@ -31,6 +44,7 @@ export function initFillTable() {
 
   const GAME_TYPE = root.dataset.gameId;
   const itemNoun = root.dataset.itemNoun || 'countries';
+  const TIME_LIMIT = Number(root.dataset.timeLimit) || null;
 
   const el = (name) => root.querySelector(`[data-${name}]`);
   const screens = {
@@ -63,10 +77,13 @@ export function initFillTable() {
   const progressFill = el('fill-progress');
   const banner = el('fill-banner');
   const giveUpBtn = el('fill-giveup');
+  const timerEl = el('fill-timer');
 
   let remaining;
   let found;
   let running = false;
+  let timeLeft;
+  let timer = null;
 
   function paintCount() {
     if (countEl) countEl.textContent = `${found} / ${total} found`;
@@ -92,9 +109,25 @@ export function initFillTable() {
     row.dataset.found = 'true';
   }
 
+  function tick() {
+    timeLeft -= 1;
+    if (timerEl) {
+      timerEl.textContent = formatClock(timeLeft);
+      timerEl.classList.toggle('is-low', timeLeft <= 30);
+    }
+    if (timeLeft <= 0) {
+      for (const row of rows) {
+        if (row.dataset.found !== 'true') reveal(row, { guessed: false });
+      }
+      remaining = new Set();
+      finish();
+    }
+  }
+
   function finish() {
     if (!running) return;
     running = false;
+    clearInterval(timer);
     input?.blur();
     if (giveUpBtn) giveUpBtn.hidden = true;
     if (form) form.hidden = true;
@@ -182,6 +215,7 @@ export function initFillTable() {
     remaining = new Set(byAnswer.keys());
     found = 0;
     running = true;
+    timeLeft = TIME_LIMIT;
 
     for (const row of rows) {
       row.dataset.found = 'false';
@@ -197,6 +231,15 @@ export function initFillTable() {
     if (feedback) { feedback.textContent = ''; feedback.removeAttribute('data-kind'); }
     if (input) input.value = '';
     paintCount();
+
+    clearInterval(timer);
+    if (TIME_LIMIT) {
+      if (timerEl) {
+        timerEl.textContent = formatClock(TIME_LIMIT);
+        timerEl.classList.remove('is-low');
+      }
+      timer = setInterval(tick, 1000);
+    }
 
     show('play');
     input?.focus();
