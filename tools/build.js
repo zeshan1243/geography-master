@@ -417,7 +417,8 @@ function build() {
           columns: [{ header: 'Length', render: (e) => `${fmt(e.km)} km` }, pages.BLANK_COLUMN],
           splitInto: game.splitInto || 2,
           itemNoun: 'countries',
-          rankedBy: 'shared border length'
+          rankedBy: 'shared border length',
+          timeLimit: 90
         })
       );
       add(`/game/${game.slug}`, '0.85', 'weekly');
