@@ -395,6 +395,35 @@ function build() {
       continue;
     }
 
+    if (game.mode === 'borderList') {
+      write(
+        `game/${game.slug}.html`,
+        pages.rankedFillTablePage(game, games, readData(game.dataFile), {
+          columns: [pages.BLANK_COLUMN],
+          splitInto: 1,
+          itemNoun: 'countries',
+          order: 'in alphabetical order',
+          timeLimit: 90
+        })
+      );
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
+    if (game.mode === 'borderLength') {
+      write(
+        `game/${game.slug}.html`,
+        pages.rankedFillTablePage(game, games, readData(game.dataFile), {
+          columns: [{ header: 'Length', render: (e) => `${fmt(e.km)} km` }, pages.BLANK_COLUMN],
+          splitInto: game.splitInto || 2,
+          itemNoun: 'countries',
+          rankedBy: 'shared border length'
+        })
+      );
+      add(`/game/${game.slug}`, '0.85', 'weekly');
+      continue;
+    }
+
     if (game.mode === 'higherLower') {
       write(`game/${game.slug}.html`, pages.higherLowerGamePage(game, games));
       add(`/game/${game.slug}`, '0.85', 'weekly');

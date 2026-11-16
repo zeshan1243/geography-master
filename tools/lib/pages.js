@@ -417,6 +417,15 @@ function formatSeconds(totalSeconds) {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
+/** Seconds -> "4 minutes" / "90 seconds" / "1 minute 30 seconds", for prose. */
+function describeDuration(totalSeconds) {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  if (!s) return `${m} minute${m === 1 ? '' : 's'}`;
+  if (!m) return `${s} second${s === 1 ? '' : 's'}`;
+  return `${m} minute${m === 1 ? '' : 's'} ${s} second${s === 1 ? '' : 's'}`;
+}
+
 /**
  * "Name the Countries" is a free-recall game — a text input and a clock,
  * not a question-and-four-answers round — so it gets its own body rather
@@ -1174,12 +1183,17 @@ export const BLANK_COLUMN = Symbol('blank-column');
  * `timeLimit` (seconds) turns on a countdown, starting the moment the
  * player clicks Start — "Countries with the Most Rail Travel per Capita"
  * uses it, the untimed quizzes above simply omit it.
+ *
+ * `columns` can be just `[BLANK_COLUMN]` with no stat column at all — "Countries
+ * Bordering D.R. Congo" is a plain list, not a ranking, so it also passes
+ * `order` ("in alphabetical order") instead of the default `rankedBy`
+ * phrasing, which assumes a ranked stat.
  */
 export function rankedFillTablePage(
   game,
   allGames,
   entries,
-  { columns, splitInto = 2, itemNoun = 'countries', rankedBy = 'population', timeLimit = null }
+  { columns, splitInto = 2, itemNoun = 'countries', rankedBy = 'population', order = null, timeLimit = null }
 ) {
   const trail = [
     { label: 'Home', href: '/' },
@@ -1231,8 +1245,8 @@ export function rankedFillTablePage(
   const hasGiven = entries.some((e) => e.given);
   const hasTimer = Boolean(timeLimit);
   const clockLabel = hasTimer ? formatSeconds(timeLimit) : null;
-  const minutes = hasTimer ? timeLimit / 60 : null;
-  const minutesLabel = hasTimer ? `${minutes} minute${minutes === 1 ? '' : 's'}` : null;
+  const durationLabel = hasTimer ? describeDuration(timeLimit) : null;
+  const orderPhrase = order || `ranked by ${rankedBy}`;
 
   const body = `${breadcrumbs(trail)}
 <div class="wrap">
@@ -1244,8 +1258,8 @@ export function rankedFillTablePage(
       <p>${esc(game.description)}</p>
       <p class="recall-rules">${
         hasTimer
-          ? `${toSolve} ${itemNoun} to name, ranked by ${rankedBy} — ${minutesLabel} on the clock once you start.`
-          : `No timer and no difficulty levels — ${toSolve} ${itemNoun} to name, ranked by ${rankedBy}.${hasGiven ? ' The first is given for free.' : ''}`
+          ? `${toSolve} ${itemNoun} to name, ${orderPhrase} — ${durationLabel} on the clock once you start.`
+          : `No timer and no difficulty levels — ${toSolve} ${itemNoun} to name, ${orderPhrase}.${hasGiven ? ' The first is given for free.' : ''}`
       }</p>
 
       <button class="btn btn-primary btn-lg btn-block" type="button" data-start>${icon('play')} ${hasTimer ? `Start — ${clockLabel} on the clock` : 'Start'}</button>
@@ -1299,8 +1313,8 @@ export function rankedFillTablePage(
     <h3>Scoring</h3>
     <p>${
       hasTimer
-        ? `You have ${minutesLabel} to identify ${toSolve} ${itemNoun}, ranked by ${rankedBy}. The clock starts the moment you click Start, and whatever is still blank when it hits zero is marked as missed.`
-        : `There is no clock and no difficulty setting — just ${toSolve} ${itemNoun} to identify, ranked by ${rankedBy}. Give up at any point to reveal whatever you have not found yet.`
+        ? `You have ${durationLabel} to identify ${toSolve} ${itemNoun}, ${orderPhrase}. The clock starts the moment you click Start, and whatever is still blank when it hits zero is marked as missed.`
+        : `There is no clock and no difficulty setting — just ${toSolve} ${itemNoun} to identify, ${orderPhrase}. Give up at any point to reveal whatever you have not found yet.`
     }</p>
 
     <h3>More ways to play</h3>

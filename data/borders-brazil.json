@@ -1,0 +1,12 @@
+[
+  { "km": 3423, "answer": "Bolivia" },
+  { "km": 2995, "answer": "Peru" },
+  { "km": 2200, "answer": "Venezuela" },
+  { "km": 1644, "answer": "Colombia" },
+  { "km": 1606, "answer": "Guyana" },
+  { "km": 1365, "answer": "Paraguay" },
+  { "km": 1261, "answer": "Argentina" },
+  { "km": 1068, "answer": "Uruguay" },
+  { "km": 730, "answer": "France", "display": "France (French Guiana)" },
+  { "km": 593, "answer": "Suriname" }
+]

@@ -766,5 +766,151 @@
       "Japan and Switzerland lead by a wide margin for the same underlying reason: dense populations living along heavily built-up rail corridors, where a train is genuinely the fastest way to get between major cities, not just a subsidised alternative to driving.",
       "You have 4 minutes once you click Start, and whatever is still blank when the clock hits zero gets marked as missed, so it pays to work through the countries you're confident about first and come back to the guesses later."
     ]
+  },
+  {
+    "id": "drcBorders",
+    "slug": "countries-bordering-drc",
+    "name": "Countries Bordering D.R. Congo",
+    "icon": "🌍",
+    "accent": "amber",
+    "category": "Border Games",
+    "tagline": "Fill in the list — 1:30 on the clock",
+    "description": "The Democratic Republic of the Congo borders more countries than almost anywhere else in Africa. Type all nine, listed alphabetically, before the 90-second clock runs out.",
+    "metaTitle": "Countries Bordering D.R. Congo — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: name all nine countries that border the Democratic Republic of the Congo. 90 seconds on the clock once you start.",
+    "popular": false,
+    "mode": "borderList",
+    "dataFile": "drc-borders",
+    "guide": [
+      "The Democratic Republic of the Congo borders nine other countries — only Russia and China have more, and Germany and Brazil tie it at nine. That count comes from sheer size and a central position straddling the Congo Basin, not from unusually jagged borders.",
+      "Two of the nine are easy to mix up with each other: the Republic of the Congo (capital Brazzaville, on the opposite bank of the Congo River from Kinshasa) is a separate, smaller country from the Democratic Republic of the Congo itself.",
+      "The border with Tanzania runs down the middle of Lake Tanganyika rather than over dry land, which is why it's easy to forget even though it is every bit as real as the other eight."
+    ]
+  },
+  {
+    "id": "bordersGermany",
+    "slug": "countries-bordering-germany",
+    "name": "Countries Bordering Germany",
+    "icon": "🇩🇪",
+    "accent": "blue",
+    "category": "Border Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "Germany shares a land border with nine countries. Type each one to fill in the table, ranked by how many kilometres of border it shares with Germany.",
+    "metaTitle": "Countries Bordering Germany — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each shared-border-length row. Germany's nine neighbours, longest border first, no timer.",
+    "popular": false,
+    "mode": "borderLength",
+    "dataFile": "borders-germany",
+    "splitInto": 2,
+    "guide": [
+      "Each row gives the length of Germany's shared border with another country in kilometres, longest first; your job is to type the country. Nine countries touch Germany, more than touch any other country in Western Europe.",
+      "The Czech Republic tops the list despite being one of Germany's smaller neighbours by area — its border with Germany simply runs along the full length of the Ore Mountains and the Bohemian Forest, a genuinely long, winding frontier rather than a short, direct one.",
+      "Denmark sits at the bottom with a border only 68 km long, a reminder that border length tracks the shape and terrain of a frontier, not the size of either country on either side of it."
+    ]
+  },
+  {
+    "id": "bordersFrance",
+    "slug": "countries-bordering-france",
+    "name": "Countries Bordering France",
+    "icon": "🇫🇷",
+    "accent": "purple",
+    "category": "Border Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "Mainland France shares a land border with eight countries. Type each one to fill in the table, ranked by how many kilometres of border it shares with France.",
+    "metaTitle": "Countries Bordering France — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each shared-border-length row. Mainland France's eight neighbours, longest border first, no timer.",
+    "popular": false,
+    "mode": "borderLength",
+    "dataFile": "borders-france",
+    "splitInto": 2,
+    "guide": [
+      "Each row gives the length of mainland France's shared border with another country in kilometres, longest first; your job is to type the country. This counts only mainland France — French Guiana also has land borders, with Brazil and Suriname, but those sit on another continent entirely.",
+      "Monaco is the shortest and smallest border on the list by a wide margin: a 6 km line around a city-state that could fit inside most Paris arrondissements, on the Mediterranean coast near Nice.",
+      "Spain's border, the longest, runs almost entirely along the ridgeline of the Pyrenees — one of the few borders in Western Europe still defined mostly by mountains rather than rivers or straight survey lines."
+    ]
+  },
+  {
+    "id": "bordersRussia",
+    "slug": "countries-bordering-russia",
+    "name": "Countries Bordering Russia",
+    "icon": "🇷🇺",
+    "accent": "red",
+    "category": "Border Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "Russia shares a land border with fourteen countries, tied with China for the most of any country on Earth. Type each one to fill in the table, ranked by shared border length.",
+    "metaTitle": "Countries Bordering Russia — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each shared-border-length row. Russia's fourteen neighbours, longest border first, no timer.",
+    "popular": false,
+    "mode": "borderLength",
+    "dataFile": "borders-russia",
+    "splitInto": 3,
+    "guide": [
+      "Each row gives the length of Russia's shared border with another country in kilometres, longest first; your job is to type the country. Russia's land border totals more than 22,000 km, longer than any other country's, split across fourteen neighbours.",
+      "Kazakhstan's border alone is over 7,500 km — the longest continuous land border between any two countries anywhere in the world — which is why it dwarfs every other row on this list several times over.",
+      "North Korea sits at the opposite extreme: a 17 km border along the lower Tumen River, the shortest international border Russia has, and one most people forget exists at all."
+    ]
+  },
+  {
+    "id": "bordersChina",
+    "slug": "countries-bordering-china",
+    "name": "Countries Bordering China",
+    "icon": "🇨🇳",
+    "accent": "amber",
+    "category": "Border Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "China shares a land border with fourteen countries, tied with Russia for the most of any country on Earth. Type each one to fill in the table, ranked by shared border length.",
+    "metaTitle": "Countries Bordering China — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each shared-border-length row. China's fourteen neighbours, longest border first, no timer.",
+    "popular": false,
+    "mode": "borderLength",
+    "dataFile": "borders-china",
+    "splitInto": 3,
+    "guide": [
+      "Each row gives the length of China's shared border with another country in kilometres, longest first; your job is to type the country. Fourteen countries touch China's borders, spanning everything from Central Asian steppe to Himalayan high passes to Southeast Asian jungle.",
+      "Mongolia's border is the longest on the list, a legacy of how much of the historic Mongol-Chinese frontier runs through open, sparsely populated desert and steppe where there was little to dispute and little reason to draw a short, direct line.",
+      "The China–India border, the third longest here, is also the least settled: it's officially described as the Line of Actual Control rather than a fully demarcated border, and both countries draw it somewhat differently on their own maps."
+    ]
+  },
+  {
+    "id": "bordersBrazil",
+    "slug": "countries-bordering-brazil",
+    "name": "Countries Bordering Brazil",
+    "icon": "🇧🇷",
+    "accent": "green",
+    "category": "Border Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "Brazil shares a land border with every South American country except Chile and Ecuador. Type each one to fill in the table, ranked by shared border length.",
+    "metaTitle": "Countries Bordering Brazil — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each shared-border-length row. Brazil's ten neighbours, longest border first, no timer.",
+    "popular": false,
+    "mode": "borderLength",
+    "dataFile": "borders-brazil",
+    "splitInto": 2,
+    "guide": [
+      "Each row gives the length of Brazil's shared border with another country or territory in kilometres, longest first; your job is to type the country. Brazil borders ten different neighbours — every South American country except Chile and Ecuador, the two on the Pacific side of the continent.",
+      "One row is France, not a South American country at all: French Guiana, on Brazil's northern edge, is an overseas department of France rather than an independent state, so the border is genuinely a Brazil–France border by law.",
+      "Bolivia's border is the longest on the list, largely because it traces the edge of the Amazon basin and the Pantanal wetlands — low, flat, sparsely populated terrain where there was little reason to draw anything but a long, simple line."
+    ]
+  },
+  {
+    "id": "bordersIndia",
+    "slug": "countries-bordering-india",
+    "name": "Countries Bordering India",
+    "icon": "🇮🇳",
+    "accent": "teal",
+    "category": "Border Games",
+    "tagline": "Fill in the table — no clock, no difficulty levels",
+    "description": "India shares a land border with six other sovereign countries. Type each one to fill in the table, ranked by shared border length.",
+    "metaTitle": "Countries Bordering India — Fill-In Quiz",
+    "metaDescription": "Free geography quiz: type the country for each shared-border-length row. India's six neighbours, longest border first, no timer.",
+    "popular": false,
+    "mode": "borderLength",
+    "dataFile": "borders-india",
+    "splitInto": 2,
+    "guide": [
+      "Each row gives the length of India's shared border with another country in kilometres, longest first; your job is to type the country. This list covers the six neighbours India fully controls a border with — Bangladesh, China, Pakistan, Nepal, Myanmar and Bhutan.",
+      "India also claims a short stretch of border with Afghanistan, but that claim runs through Gilgit-Baltistan, territory administered by Pakistan since 1947 and claimed by India as part of Kashmir — contested enough that it's left off this list rather than stated as settled fact.",
+      "Bangladesh's border is both the longest on the list and one of the most convoluted in the world: it loops around dozens of small enclaves on each side, a legacy of old feudal land deals that outlived the empires that made them."
+    ]
   }
 ]
