@@ -76,33 +76,9 @@ export function esc(value) {
 }
 
 /**
- * One Adsterra direct-banner unit: a synchronous `atOptions` assignment
- * immediately followed by that unit's own script. Both run in document order,
- * exactly as the network's integration snippet requires — reordering or
- * deferring either tag lets a later unit's `atOptions` overwrite this one's
- * before its script reads it.
- */
-function adsterraUnit({ key, width, height }) {
-  return `<div class="adsterra-unit" style="width:${width}px;height:${height}px">
-<script>
-  atOptions = {
-    'key' : '${key}',
-    'format' : 'iframe',
-    'height' : ${height},
-    'width' : ${width},
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/${key}"></script>
-</div>`;
-}
-
-/**
  * An ad placement.
  *
- * While `site.config.json` has an `adsterra` block, it is the active network —
- * AdSense stays configured underneath but idle, so flipping back later is just
- * removing that block. With neither configured this stays a grey placeholder,
+ * With no AdSense client configured this stays a grey placeholder,
  * so local development reserves exactly the same space the live ad will
  * occupy. The AdSense `push()` call deliberately does NOT go here — see
  * js/ads.js. Some slots (the one on the game results screen) start inside a
@@ -110,15 +86,6 @@ function adsterraUnit({ key, width, height }) {
  * measure zero width and never fill.
  */
 export function adSlot(name = 'default') {
-  if (name === 'default' && SITE.adsterra?.default) {
-    const { desktop, mobile } = SITE.adsterra.default;
-    return `<div class="ad-container ad-container-adsterra" role="complementary" aria-label="Advertisement">
-    <span class="ad-label">Advertisement</span>
-    <div class="adsterra-desktop">${adsterraUnit(desktop)}</div>
-    <div class="adsterra-mobile">${adsterraUnit(mobile)}</div>
-  </div>`;
-  }
-
   const slot = SITE.adsense?.slots?.[name] || SITE.adsense?.slots?.default;
   const client = SITE.adsense?.client;
   const live = client && slot ? ` data-ad data-ad-slot-id="${slot}"` : '';
@@ -137,21 +104,9 @@ export function adSlot(name = 'default') {
  * A responsive AdSense unit takes its shape from the width of its container,
  * not from whatever it was named in AdSense, so a tall ad needs a narrow
  * column. Below the breakpoint this element is display:none and no <ins> is
- * ever created for it — see js/ads.js for why that matters. The Adsterra
- * skyscraper is a fixed 160×600 instead, just centred in that same column.
- * Both sides render the same unit — Adsterra has only given us one rail-sized
- * key — so this is one ad zone shown twice, not two distinct placements.
+ * ever created for it — see js/ads.js for why that matters.
  */
 function railMarkup(side) {
-  if (SITE.adsterra?.rail) {
-    return `<aside class="ad-rail ad-rail-${side}" aria-label="Advertisement">
-    <div class="ad-rail-sticky">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-container ad-container-rail ad-container-adsterra">${adsterraUnit(SITE.adsterra.rail)}</div>
-    </div>
-  </aside>`;
-  }
-
   const slot = SITE.adsense?.slots?.rail;
   const client = SITE.adsense?.client;
   if (!client || !slot) return '';
@@ -172,11 +127,16 @@ export function adRailLeft() {
   return railMarkup('left');
 }
 
-/** The loader script, once per page — skipped while Adsterra is the active network. */
+/**
+ * The AdSense account meta tag plus the loader script, once per page. The meta
+ * tag is what AdSense's site review uses to verify ownership; the loader also
+ * serves Google's consent message (Privacy & messaging) to EEA/UK/CH visitors.
+ */
 function adsenseHead() {
   const client = SITE.adsense?.client;
-  if (!client || SITE.adsterra) return '';
-  return `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}" crossorigin="anonymous"></script>`;
+  if (!client) return '';
+  return `<meta name="google-adsense-account" content="${client}">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}" crossorigin="anonymous"></script>`;
 }
 
 /** Google Analytics (gtag.js), once per page. */

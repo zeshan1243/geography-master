@@ -532,6 +532,12 @@ export const ARTICLES = [
 
 <p><a href="/countries/zimbabwe">Zimbabwe</a> is the clearest illustration of the alternative. Hyperinflation in the late 2000s destroyed the Zimbabwean dollar so completely that the country abandoned it altogether in 2009 and ran on foreign currencies, mostly the US dollar, for most of the following decade. It has since tried more than once to reintroduce a domestic currency, with mixed results — a reminder that a currency only works for as long as people trust it, and that trust, once broken at that scale, is slow to rebuild.</p>
 
+<h2>Keeping your own money, but tying it to someone else's</h2>
+
+<p>Between full independence and using another country's currency outright sits a large middle ground: issuing your own money but fixing its value to a bigger one. Denmark keeps the krone but holds it in a narrow band against the euro under the European exchange rate mechanism, so Danish interest rates closely track the eurozone's anyway. Saudi Arabia, the United Arab Emirates, Qatar, Oman and Bahrain all peg their currencies to the US dollar, a natural choice for economies whose main export, oil, is priced in dollars.</p>
+
+<p>Some pegs go further and let two currencies circulate side by side. <a href="/countries/brunei">Brunei</a> and <a href="/countries/singapore">Singapore</a> have honoured each other's dollars at par since 1967, so either note is accepted in both countries. In southern Africa, <a href="/countries/lesotho">Lesotho</a>, <a href="/countries/namibia">Namibia</a> and <a href="/countries/eswatini">Eswatini</a> issue their own currencies at a fixed one-to-one rate with the South African rand, and the rand itself is widely used in their shops. A peg keeps a national name and design on the banknotes, but much of the real monetary decision-making happens somewhere else.</p>
+
 <p>Currency, in other words, is one of the few things on a country's data sheet that is not really a fact about that country alone. The <a href="/game/country-quiz">country quiz</a> uses currency as one of its clues precisely because it groups countries in ways that borders and flags do not.</p>
 `
   },
@@ -541,7 +547,7 @@ export const ARTICLES = [
     title: 'The world’s most crowded countries, and the emptiest',
     metaTitle: 'Population Density Explained — Most Crowded',
     description:
-      'Monaco packs roughly 19,000 people into every square kilometre. Mongolia has about two. What population density actually measures, and why it misleads as often as it informs.',
+      'Monaco packs about 19,000 people into each square kilometre; Mongolia has about two. What population density measures, and why it misleads as often as it informs.',
     updated: '28 October 2026',
     summary:
       'Density is just population divided by area, which makes it the simplest statistic on this site and one of the easiest to misread.',
@@ -568,6 +574,14 @@ export const ARTICLES = [
 
 <p><a href="/countries/russia">Russia</a> has a national density that looks low, which obscures that most Russians live in the western, European part of the country; Siberia is enormous and nearly empty, and it is doing almost all of the work of pulling the national average down. A country's total area is not evidence of how much of it people actually occupy.</p>
 
+<h2>Better ways to measure crowding</h2>
+
+<p>Geographers have two common fixes for the averaging problem. The first is <strong>physiological density</strong>, sometimes called arable density: people per square kilometre of farmland rather than of total land. It answers a sharper question — how much pressure is there on the land that can actually feed people? — and it reshuffles the rankings considerably.</p>
+
+<p><a href="/countries/egypt">Egypt</a> is the textbook case. Its national density looks moderate, but the overwhelming majority of Egyptians live along the narrow Nile valley and in the delta, a ribbon of fertile land that makes up only a few percent of the country's territory. The rest is desert. Measured against farmland, Egypt is one of the most intensely used landscapes on Earth.</p>
+
+<p>The second fix is <strong>population-weighted density</strong>: divide the country into small grid squares, measure the density of each, and average them weighted by how many people live in each square. Instead of asking how crowded the land is on average, it asks how crowded the place where the average person lives is. By this measure Australia and Canada stop looking empty — their typical resident lives in a fairly ordinary city suburb — while the deserts and forests that dominate the simple figure drop out of the calculation almost entirely.</p>
+
 <h2>What density is actually useful for</h2>
 
 <p>Despite the caveats, density is a genuinely useful shorthand for one thing: how much pressure there is on land, housing and infrastructure in a given area, which is exactly why planners use it even knowing it averages over a lot of local variation. It is a starting question, not a finished answer — the follow-up question, always, is whether the population is spread out or concentrated, and that is the part a single number cannot tell you.</p>
@@ -581,7 +595,7 @@ export const ARTICLES = [
     title: 'Why some countries have a dozen official languages, and others have none',
     metaTitle: 'Official Languages of the World Explained',
     description:
-      'South Africa recognises twelve official languages, the United States has none at federal level, and Singapore’s national language is one most of its citizens rarely speak at home.',
+      'South Africa has twelve official languages, the US has none at federal level, and Singapore’s national language is one most of its citizens rarely speak at home.',
     updated: '28 October 2026',
     summary:
       '"Official language" is a legal status a government grants, not a measurement of how many people actually speak it. The two line up far less often than most people assume.',
@@ -607,6 +621,14 @@ export const ARTICLES = [
 <h2>A widely spoken language with almost no official status</h2>
 
 <p>Swahili is understood across most of East Africa and is official in <a href="/countries/tanzania">Tanzania</a> and <a href="/countries/kenya">Kenya</a>, but across much of the rest of the region it functions as a trade language and lingua franca with no official standing at all — spoken as a confident second language by tens of millions of people for whom it has no legal status whatsoever where they live. It is the mirror image of Singapore's Malay: enormous practical reach, inconsistent legal recognition.</p>
+
+<h2>How official bilingualism works in practice</h2>
+
+<p>Where a country does name more than one official language, the law usually decides <em>where</em> each one applies, rather than making every language equal everywhere. <a href="/countries/canada">Canada</a> is officially bilingual at the federal level under the Official Languages Act of 1969, so federal services are available in both English and French. The provinces set their own rules, though: Quebec's sole official language is French, and New Brunswick is the only province that is officially bilingual.</p>
+
+<p><a href="/countries/belgium">Belgium</a> divides its territory instead. Dutch is the official language of Flanders in the north, French of Wallonia in the south, and German of a small eastern community near the German border, while Brussels is officially bilingual in French and Dutch. A national government with three official languages ends up running much of daily life in only one of them, depending on which side of a line you live on.</p>
+
+<p><a href="/countries/ireland">Ireland</a> shows a different gap between law and life. Its constitution names Irish as the first official language and English as the second, yet English is the everyday language of the great majority of the population, and Irish is spoken daily outside school by a small minority, mostly in the Gaeltacht regions along the west coast.</p>
 
 <h2>What this means for a quiz answer</h2>
 
@@ -650,6 +672,12 @@ export const ARTICLES = [
 
 <p><a href="/countries/norway">Norway</a>'s coastline, cut by thousands of fjords, illustrates a genuinely strange mathematical fact: a coastline's measured length depends on the scale of the ruler used to measure it. Zoom in further and more inlets and bends appear, and the total length keeps growing — a phenomenon formalised by Lewis Fry Richardson and later popularised by Benoit Mandelbrot as the coastline paradox. It is part of why published coastline lengths vary so widely between sources, and it is most dramatic for exactly the kind of deeply indented coast Norway has.</p>
 
+<h2>Pieces cut off from the rest: exclaves and enclaves</h2>
+
+<p>Some countries are not even one connected piece of land. An <strong>exclave</strong> is a part of a country separated from the rest by foreign territory. Russia's Kaliningrad region sits on the Baltic coast between Poland and Lithuania, hundreds of kilometres from the rest of Russia. <a href="/countries/azerbaijan">Azerbaijan</a>'s Nakhchivan is cut off from the main part of the country by Armenia, and the tip of <a href="/countries/oman">Oman</a>'s Musandam peninsula is separated from the rest of Oman by the United Arab Emirates.</p>
+
+<p>An <strong>enclave</strong> is the reverse: a territory entirely surrounded by another country. Only three sovereign states are completely enclosed by a single neighbour — <a href="/countries/lesotho">Lesotho</a> within South Africa, and <a href="/countries/san-marino">San Marino</a> and <a href="/countries/vatican-city">Vatican City</a> within Italy. Their outlines are simple, but their position shapes almost everything about how they trade and travel.</p>
+
 <h2>Does shape actually matter?</h2>
 
 <p>Beyond the trivia, shape has real consequences. Elongated and fragmented countries generally face higher costs connecting their own territory — more road and rail per person, more regional variation in climate and culture, more difficulty projecting central authority evenly. Compact countries do not solve every problem by being compact, but they start from an easier position on this one specific axis.</p>
@@ -663,7 +691,7 @@ export const ARTICLES = [
     title: 'Why there are only five oceans, and dozens of seas',
     metaTitle: 'Oceans and Seas Explained — Five Oceans',
     description:
-      'The Pacific alone is larger than every continent combined, the Southern Ocean has only been drawn on maps since 2000, and the Caspian Sea is not technically a sea at all.',
+      'The Pacific is larger than every continent combined, the Southern Ocean was only defined in 2000, and the Caspian Sea is not technically a sea at all.',
     updated: '28 October 2026',
     summary:
       'There is only one connected body of salt water on Earth. Oceans, seas, gulfs and bays are names drawn on top of it for convenience, not separate things.',
@@ -687,6 +715,14 @@ export const ARTICLES = [
 <p>The Caspian is the largest inland body of water on Earth, and despite its name it has no outlet to any ocean at all, which makes it technically a lake rather than a sea under most definitions. The distinction is not just semantic: whether the Caspian counts as a sea or a lake affects how its enormous oil and gas reserves are legally divided among the five countries on its shore, which is a genuine, long-running dispute rather than an academic one. It is also the reason <a href="/guides/landlocked-countries">Uzbekistan's status as doubly landlocked</a> survives scrutiny — its Caspian-bordering neighbours do not get credit for ocean access, because the Caspian is not connected to one.</p>
 
 <p>The Dead Sea and the Sea of Galilee carry the same naming quirk in miniature: both are lakes, named "sea" in translation from older usage, with no connection to any ocean whatsoever.</p>
+
+<h2>How deep the oceans go</h2>
+
+<p>The average depth of the world ocean is around 3,700 metres, but the deepest points go much further. The Challenger Deep, in the Mariana Trench in the western Pacific, reaches roughly 10,900 metres below the surface — deep enough that Mount Everest, at 8,849 metres, could be dropped into it with more than two kilometres of water still above its summit. Trenches like this form where one tectonic plate is forced beneath another.</p>
+
+<p>The oceans are not fixed in size, either. The Atlantic is widening by a few centimetres a year as new sea floor forms along the Mid-Atlantic Ridge, which runs down its middle and breaks the surface in Iceland. The Pacific, ringed by subduction zones and the volcanoes of the "Ring of Fire", is slowly shrinking. Over tens of millions of years, the map of oceans that seems permanent today will look noticeably different.</p>
+
+<p>Seas also differ in their chemistry. Enclosed seas in hot, dry climates lose water to evaporation faster than rivers replace it, so they become saltier than the open ocean — the Red Sea and the eastern Mediterranean are both noticeably saltier than the Atlantic. The Baltic Sea is the opposite: fed by many rivers and only narrowly connected to the North Sea, its water is brackish, far less salty than the ocean.</p>
 
 <h2>Gulfs, bays and straits</h2>
 
@@ -736,6 +772,12 @@ export const ARTICLES = [
 
 <p>This model is rarely taught as the default anywhere, but it is the one geologists and geographers reach for when the question is specifically about landmasses rather than inherited cultural boundaries — it is the most literal possible answer to "how many pieces of land are there that you cannot walk between."</p>
 
+<h2>Australia or Oceania?</h2>
+
+<p>Even the name of the seventh continent varies. Older textbooks often call it simply Australia. In strict geological terms, the continent of Australia includes not just the Australian mainland but also Tasmania and New Guinea, which sit on the same continental shelf and were joined to the mainland by dry land during the ice ages, when sea levels were lower.</p>
+
+<p>"Oceania" is a broader idea: a region rather than a single landmass, taking in Australia together with the thousands of Pacific islands of Melanesia, Micronesia and Polynesia, many of which are volcanic or coral islands with no continental shelf at all. <a href="/countries/new-zealand">New Zealand</a> adds a further twist. It sits on Zealandia, a mostly submerged block of continental crust that a group of geologists argued in 2017 should count as a continent in its own right — around 94% of it is under water. This site uses "Oceania", because a quiz about countries needs to cover the Pacific island nations too.</p>
+
 <h2>So which is correct?</h2>
 
 <p>All of them, depending on what the model is for. A geologist mapping tectonic plates, a Russian schoolchild, a Greek schoolchild and an Olympic flag designer are each using a completely consistent system — they are just answering slightly different questions with the same word. The seven-continent model used across this site is a convention, not a law of nature, and that is exactly why the line between Europe and Asia can run wherever historical custom puts it rather than wherever the land happens to end.</p>
@@ -770,6 +812,20 @@ export const ARTICLES = [
 
 <p>The modern map is, in effect, a map of the former British Empire plus a scattering of independent exceptions. <a href="/countries/japan">Japan</a> drives on the left despite never being a British colony, a custom usually traced to its own feudal-era travel norms and later reinforced by British engineers who helped build its early railways. Most of the Americas, continental Europe and China drive on the right, tracing a mix of French, Spanish, Portuguese and Soviet-era influence rather than any single cause.</p>
 
+<h2>Sweden was not the only one</h2>
+
+<p>Iceland followed Sweden less than a year later, switching from left to right on 26 May 1968. In Canada, several eastern provinces and British Columbia kept to the left into the twentieth century before moving right to match the United States; Newfoundland, then still separate from Canada, was the last to switch, in 1947. The Japanese islands of Okinawa drove on the right under United States administration after the Second World War and switched back to the left in 1978, six years after returning to Japan.</p>
+
+<p>The most recent switch went the other way. <a href="/countries/samoa">Samoa</a> moved from right to left in September 2009. The government's main argument was economic: nearby Australia, New Zealand and Japan all drive on the left, so switching let Samoans import cheaper right-hand-drive used cars from those countries.</p>
+
+<h2>Where the two sides meet</h2>
+
+<p>Borders between left- and right-driving countries need a way to swap traffic over. Where the Thai–Lao Friendship Bridge crosses the Mekong between <a href="/countries/thailand">Thailand</a> (left) and <a href="/countries/laos">Laos</a> (right), traffic changes sides at a crossover on the approach road. Similar arrangements handle traffic between Hong Kong and Macau, which both drive on the left, and mainland China, which drives on the right, including on the long Hong Kong–Zhuhai–Macau Bridge.</p>
+
+<p>The position of the steering wheel follows the side of the road: in left-driving countries the driver usually sits on the right, closer to the centre line, which makes it easier to judge oncoming traffic and overtaking.</p>
+
+<p>The Americas show how strong the colonial pattern is. Almost the whole of North and South America drives on the right, but the exceptions are nearly all former British colonies: Jamaica, Barbados, Trinidad and Tobago, the Bahamas and most of the smaller Caribbean islands drive on the left, as does <a href="/countries/guyana">Guyana</a> on the South American mainland. Its neighbour <a href="/countries/suriname">Suriname</a>, a former Dutch colony, drives on the left as well, which makes the pair the only left-driving countries in continental South America.</p>
+
 <p>Whichever side a country ended up on, the choice is now effectively permanent — Sweden's experience is a reminder of just how disruptive a switch is, which is exactly why almost nobody attempts one.</p>
 `
   },
@@ -779,7 +835,7 @@ export const ARTICLES = [
     title: 'Why some countries are so much colder than others',
     metaTitle: "The World's Coldest and Hottest Countries, Explained",
     description:
-      'Latitude is only the start of it. Distance from the ocean and elevation decide just as much of a country’s average temperature, which is why Kazakhstan is colder than you’d guess and Malta is warmer.',
+      'Latitude is only the start. Distance from the ocean and elevation shape a country’s average temperature just as much — so Kazakhstan runs cold and Malta runs warm.',
     updated: '11 November 2026',
     summary:
       'Average annual temperature is a single number standing in for an entire country, and three forces decide it: how far north or south it sits, how far it sits from the ocean, and how high it sits above sea level.',
@@ -803,6 +859,12 @@ export const ARTICLES = [
 <p>Flip the question around and a different pattern shows up. The hottest-ranked European countries by average temperature are not the ones you'd name first on instinct — they're small: <a href="/countries/malta">Malta</a>, <a href="/countries/vatican-city">Vatican City</a>, <a href="/countries/san-marino">San Marino</a> and <a href="/countries/monaco">Monaco</a> all post warmer country-wide averages than much larger countries at similar latitudes.</p>
 
 <p>The reason is almost mechanical. A country's average temperature is, in effect, an average over its own territory, and a microstate has very little territory to average over. There is no cold interior, no high mountain range, no northern region to drag the number down — the entire country is close to one coastline, so the whole country shares that coastline's mild climate. <a href="/countries/spain">Spain</a> and <a href="/countries/portugal">Portugal</a> rank a little lower despite having genuinely hot summers, because both also have real interior and mountain regions where winters are properly cold, and the national average has to answer for those too.</p>
+
+<h2>Ocean currents tilt the map</h2>
+
+<p>The ocean does more than moderate temperatures; its currents carry heat around the planet. The Gulf Stream and its extension, the North Atlantic Drift, bring warm water from the Caribbean up toward northwestern Europe, which is a large part of why <a href="/countries/ireland">Ireland</a> and <a href="/countries/norway">Norway</a>'s coast are so much milder than places at the same latitude in Canada. Much of Norway's coastline stays ice-free all winter, even north of the Arctic Circle.</p>
+
+<p>Cold currents do the opposite. The Humboldt Current flows north along the coasts of <a href="/countries/chile">Chile</a> and <a href="/countries/peru">Peru</a>, keeping Lima cool, cloudy and almost rainless for a city so close to the equator. The Benguela Current plays the same role off <a href="/countries/namibia">Namibia</a>, where the cold water helps create the fog-fed Namib Desert. Two coastlines at the same latitude can have very different climates depending on which way the nearby water is moving.</p>
 
 <h2>Why the number can still mislead</h2>
 

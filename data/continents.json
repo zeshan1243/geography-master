@@ -15,6 +15,10 @@
     "Nigeria is the most populous African country, with over 220 million people.",
     "The Sahara covers roughly a third of the continent's land area.",
     "More than 1,000 languages are spoken across Africa."
+  ],
+  "about": [
+    "Africa's physical geography is dominated by vast plateaus rather than long mountain chains. The Sahara stretches across the north, the Sahel forms a semi-arid belt along its southern edge, and the Congo Basin holds the second-largest tropical rainforest on Earth after the Amazon. In the east, the Great Rift Valley runs from the Afar region of Ethiopia down through Kenya and Tanzania, where the African plate is slowly splitting apart. Its highest point, Kilimanjaro in Tanzania, rises to about 5,895 metres.",
+    "Most of Africa's modern borders were drawn by European colonial powers in the late nineteenth century, often with little regard for existing kingdoms, languages or trade routes, and most countries became independent between the 1950s and the 1970s. Ethiopia and Liberia are the two states that largely escaped colonial rule. Africa also has the youngest population of any continent, with a median age under 20, which is why its share of the world's people is expected to keep rising for decades."
   ]
 },
 {
@@ -33,6 +37,10 @@
     "China and India each have more than 1.4 billion residents.",
     "The Dead Sea shore is the lowest land point on the planet.",
     "Asia contains both the highest and lowest natural elevations on land."
+  ],
+  "about": [
+    "Asia covers about a third of the world's land and holds roughly six in ten of its people. Its geography runs to extremes: the Himalayas, pushed up by the collision of the Indian and Eurasian plates, include Mount Everest at 8,849 metres, while the shore of the Dead Sea sits more than 400 metres below sea level. Between them lie the Siberian taiga, the Gobi and Arabian deserts, the Tibetan Plateau, and the monsoon-fed river plains of South and Southeast Asia that support some of the densest farming populations on Earth.",
+    "Where Asia ends is a matter of convention. Its western boundary with Europe is usually drawn along the Ural Mountains, the Ural River, the Caspian Sea, the Caucasus and the Bosporus, which leaves countries such as Turkey, Kazakhstan, Georgia and Azerbaijan straddling the line. This site counts Turkey and the South Caucasus as Asian and Russia as European; other sources make different choices, which is one reason continent country counts vary between atlases."
   ]
 },
 {
@@ -51,6 +59,10 @@
     "The Euro is the official currency of 20 European Union member states.",
     "Iceland sits on the Mid-Atlantic Ridge, between two tectonic plates.",
     "The Danube flows through more countries than any other river in the world."
+  ],
+  "about": [
+    "Physically, Europe is a large peninsula on the western end of Eurasia, with a coastline so indented by seas, fjords and smaller peninsulas that few places are far from salt water. The North European Plain sweeps from France to Russia, while the Alps, Pyrenees, Carpathians and Scandinavian mountains frame it. Mont Blanc is the highest peak in the Alps, but Mount Elbrus in the Caucasus, at about 5,642 metres, is usually cited as Europe's highest point. Warm Atlantic currents give western Europe a much milder climate than its latitude would suggest.",
+    "Europe is also politically crowded. It has more sovereign states per square kilometre than any other continent, including five of the world's smallest: Vatican City, Monaco, San Marino, Liechtenstein and Malta. Twenty-seven countries belong to the European Union, and many share open borders under the Schengen Area, so for travellers the continent often feels smaller than its map — but language, currency and law still change at most of its frontiers."
   ]
 },
 {
@@ -69,6 +81,10 @@
     "Mexico City is one of the largest metropolitan areas in the world.",
     "The Caribbean holds 13 of the continent's 23 sovereign states.",
     "The Great Lakes contain about a fifth of the world's surface fresh water."
+  ],
+  "about": [
+    "North America runs from the Arctic islands of Canada to the Isthmus of Panama, and by the convention used on this site it also includes Central America and the Caribbean. The Rocky Mountains and the coastal ranges run down the west, the older and lower Appalachians run down the east, and the Great Plains and the Mississippi basin fill much of the interior. Denali in Alaska, at about 6,190 metres, is the continent's highest peak. Greenland, the world's largest island, lies on the North American plate but is an autonomous territory of Denmark rather than a sovereign country.",
+    "Three countries — Canada, the United States and Mexico — cover most of the continent's land, while most of its sovereign states are much smaller: seven in Central America and thirteen island nations in the Caribbean. The Panama Canal, opened in 1914, cuts through the narrowest part of the isthmus and links the Atlantic and Pacific, making this small region one of the most important shipping routes in the world."
   ]
 },
 {
@@ -87,6 +103,10 @@
     "The Andes run for about 7,000 kilometres along the western edge of the continent.",
     "Bolivia and Paraguay are the continent's only landlocked countries.",
     "Angel Falls in Venezuela is the world's tallest uninterrupted waterfall."
+  ],
+  "about": [
+    "South America is shaped by two giant features. Along its western edge the Andes run for about 7,000 kilometres, and Aconcagua in Argentina, at about 6,961 metres, is the highest mountain outside Asia. East of the mountains, the Amazon basin holds the largest tropical rainforest on Earth and the river that carries more water than any other. The continent also contains the Atacama Desert in northern Chile, one of the driest places on the planet, and Lake Titicaca on the Peru–Bolivia border, often described as the highest navigable lake in the world.",
+    "Brazil alone covers almost half of the continent's land area and holds about half of its population. Spanish is the main language in most countries and Portuguese in Brazil, a split that traces back to the Treaty of Tordesillas of 1494. Guyana, where English is official, and Suriname, where Dutch is official, are the exceptions. French Guiana, on the northern coast, is an overseas region of France rather than an independent country, which is why it does not appear in this site's list of 12 sovereign states."
   ]
 },
 {
@@ -105,6 +125,10 @@
     "Nauru is the world's smallest island country at just 21 km².",
     "The Great Barrier Reef is the largest living structure on the planet.",
     "Many Oceanian states use the Australian or US dollar rather than their own currency."
+  ],
+  "about": [
+    "Oceania combines the Australian landmass with thousands of Pacific islands, usually grouped into three regions: Melanesia in the southwest, including Papua New Guinea, Fiji, the Solomon Islands and Vanuatu; Micronesia in the north, made up mostly of small islands and atolls; and Polynesia, a vast triangle with Hawaii, New Zealand and Easter Island at its corners. Australia is the driest inhabited continent, while Papua New Guinea alone has more than 800 living languages.",
+    "The Pacific was settled by seafaring peoples who crossed thousands of kilometres of open ocean in canoes, and New Zealand was one of the last major landmasses on Earth to be settled, around the thirteenth century. Today several Oceanian nations, including Tuvalu, Kiribati and the Marshall Islands, are made up of low-lying coral atolls only a few metres above sea level, which makes rising seas a direct threat to their territory. Kiribati is also the only country that lies in all four hemispheres."
   ]
 },
 {
@@ -123,6 +147,10 @@
     "Antarctica is technically the largest desert in the world.",
     "No country owns Antarctica; the Antarctic Treaty reserves it for scientific research.",
     "Its ice sheet averages about 1.9 kilometres thick."
+  ],
+  "about": [
+    "Antarctica is covered by an ice sheet that averages about 1.9 kilometres thick and in places exceeds 4 kilometres. If all of it melted, global sea level would rise by roughly 58 metres. The Transantarctic Mountains divide the continent into a larger, higher East Antarctica and a smaller West Antarctica, and the continent is surrounded by the Southern Ocean. Because so little snow falls each year, most of the interior qualifies as desert despite the ice.",
+    "The Antarctic Treaty, signed in 1959 by twelve countries and in force since 1961, sets the continent aside for peaceful scientific research. Seven countries — Argentina, Australia, Chile, France, New Zealand, Norway and the United Kingdom — had claimed territory, and the treaty freezes those claims rather than resolving them. A later protocol, signed in 1991, bans mineral mining. Nobody lives there permanently, but research stations house roughly 1,000 people through the winter and several thousand in the southern summer."
   ]
 }
 ]

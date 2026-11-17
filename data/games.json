@@ -126,7 +126,8 @@
     "guide": [
       "Forty-four of the world's countries have no coastline, and all but two of them are in Europe, Africa or Asia. Each continent below is its own quiz, because the countries involved — and how well most people know them — are different enough that lumping them together would just mean more coastal-Europe questions and fewer real ones about Central Asia.",
       "The exceptions are South America, which has only two landlocked countries, and North America and Oceania, which have none at all — worth knowing, but not enough material for a quiz of their own.",
-      "Every country in the continent is on screen at once. Click the ones you think are landlocked; a correct click marks it and keeps you going, a wrong click ends the round immediately. Your score is how many you found before the mistake — or all of them, if you clear the whole list."
+      "Every country in the continent is on screen at once. Click the ones you think are landlocked; a correct click marks it and keeps you going, a wrong click ends the round immediately. Your score is how many you found before the mistake — or all of them, if you clear the whole list.",
+      "Two countries are doubly landlocked — surrounded only by other landlocked countries. Liechtenstein, between Switzerland and Austria, is one; Uzbekistan in Central Asia is the other. Being landlocked has real costs: trade has to cross at least one neighbour's territory to reach a port, which tends to make imports and exports slower and more expensive. The landlocked countries guide explains why some countries ended up without a coast and how they cope."
     ]
   },
   {
@@ -261,7 +262,8 @@
     "guide": [
       "Recognition and recall are different skills, and flags flatter the first. Shown Ghana's flag you may well name it; asked to picture Ghana's flag from the name alone, most people find they cannot. This game tests the harder direction.",
       "Because the wrong flags come from the same continent, the design families do most of the work against you. Four West African flags in red, gold and green look far more alike than any two flags picked at random.",
-      "Flags are drawn with your device's own emoji font, so the exact style depends on your operating system. Colours and layout are identical everywhere."
+      "Flags are drawn with your device's own emoji font, so the exact style depends on your operating system. Colours and layout are identical everywhere.",
+      "To get better at this direction, learn flags in families rather than one by one. The red, gold and green pan-African colours, the Nordic cross used across Scandinavia, the pan-Arab red, white, black and green, and the blue-and-white stripes of Central America each cover several countries. Once you know a family, the job shrinks to spotting the one detail that separates its members — a star, an emblem, the order of the stripes. The guide to why flags look alike covers the main families."
     ]
   },
   {
@@ -408,7 +410,8 @@
     "guide": [
       "The mixed quiz pulls from flags, capitals, countries, continents, landmarks and oceans in a single round. It is the closest thing here to an honest general test, and it is the fastest way to find out which category is letting you down.",
       "Because questions rotate between categories, you cannot settle into one kind of thinking. That makes it noticeably harder than any single game at the same difficulty, even though the individual questions are drawn from the same pools.",
-      "This is also the game behind the daily challenge, where every player gets the same thirty questions, generated from the date so they change at midnight."
+      "This is also the game behind the daily challenge, where every player gets the same thirty questions, generated from the date so they change at midnight.",
+      "The mixed quiz works best as a diagnostic. Play a few rounds and look at the review screen: if most of your mistakes are flags, switch to the flag quiz for a while; if they are capitals, the capital quiz and its reverse version will fix that faster than more mixed rounds. Coming back to the mixed quiz afterwards shows whether the weak spot has actually improved."
     ]
   },
   {
@@ -463,7 +466,8 @@
     "guide": [
       "Each continent's list is ranked by native speakers, not by where a language is officially recognised or how many people speak it as a second language — that single rule is what makes six very different lists comparable to each other.",
       "That convention produces some genuinely surprising results. Swahili is understood by well over a hundred million people across East Africa but ranks low here, because almost all of them learned it as a second language rather than a first.",
-      "Some continents give a full top ten; North America and Oceania stop at six, because beyond that point sources disagree even on which languages belong on the list, not just their order — a shorter, honest list beats a longer, made-up one."
+      "Some continents give a full top ten; North America and Oceania stop at six, because beyond that point sources disagree even on which languages belong on the list, not just their order — a shorter, honest list beats a longer, made-up one.",
+      "Native-speaker figures come from census and survey data that countries collect in different ways and in different years, so exact numbers vary between sources. The rankings here are built to be robust to that: a language only appears above another if the gap between them is clear across the major references. Where sources genuinely disagree on the order of two close languages, the quiz accepts the commonly cited order rather than claiming more precision than the data supports."
     ]
   },
   {
@@ -607,7 +611,8 @@
     "guide": [
       "Going this direction is harder than it sounds. Most people hold landmarks as pictures with a loose sense of somewhere abroad attached; asked to start from the country instead, that loose association stops being enough.",
       "The wrong answers are always real landmarks in other countries, so every question quietly teaches you four placements rather than one. Over a round that adds up faster than the forward version.",
-      "The sixty landmarks here sit in forty-five countries across all six inhabited continents, so a full round covers a lot of ground."
+      "The sixty landmarks here sit in forty-five countries across all six inhabited continents, so a full round covers a lot of ground.",
+      "A practical tip: when you are unsure, rule out answers rather than looking for the right one. A landmark in the wrong climate, on the wrong continent or built in the wrong architectural tradition can usually be eliminated quickly — a Gothic cathedral is unlikely to be in Southeast Asia, and a Khmer temple is unlikely to be in South America. Narrowing four options to two turns a guess into a fair chance, and the explanation after each answer fills in the rest."
     ]
   },
   {
@@ -625,7 +630,8 @@
     "guide": [
       "Landmarks are a sideways route into geography. You almost certainly recognise Petra, Machu Picchu and the Sydney Opera House already; what this game tests is whether you know which country each one stands in.",
       "That gap is common and worth closing. Plenty of people can picture Angkor Wat without being able to name Cambodia, or the Great Mosque of Djenné without placing Mali.",
-      "Every answer comes with a fact about the landmark, so a round doubles as a short tour. The 60 sites here span all six inhabited continents."
+      "Every answer comes with a fact about the landmark, so a round doubles as a short tour. The 60 sites here span all six inhabited continents.",
+      "A useful habit is to anchor each landmark to something you already know about the country. Angkor Wat is on Cambodia's flag, which links the two for good; Petra was carved by the Nabataeans in what is now southern Jordan; Table Mountain looks down on Cape Town, South Africa's legislative capital. Once a landmark is tied to a flag, a capital or a neighbour, it stops being a free-floating picture and becomes part of the country's map in your head."
     ]
   },
   {
@@ -644,8 +650,9 @@
     "stat": "population",
     "guide": [
       "There is no fixed round here and no difficulty setting — one country is shown with its real population, the next is hidden, and you guess higher or lower. Get it right and the hidden country becomes the new visible one, with a fresh challenger behind it. Get it wrong and the streak ends.",
-      "Population surprises people more than area does. Bangladesh has more people than Russia despite being smaller than most US states, and the Democratic Republic of Congo now has more people than most of Western Europe.",
-      "A tie between the two countries counts as correct either way, though with real population figures that almost never actually happens."
+      "Population surprises people more than area does. Bangladesh has more people than Russia despite being about the size of the US state of Iowa, and the Democratic Republic of Congo now has more people than most of Western Europe.",
+      "A tie between the two countries counts as correct either way, though with real population figures that almost never actually happens.",
+      "It also helps to keep a few benchmarks in mind. India and China each have more than 1.4 billion people, the United States about 340 million, Indonesia and Pakistan each well over 200 million, and Nigeria and Brazil not far behind. Below that, most European countries sit between a few million and about 85 million. If you know roughly which band a country falls into, the hard guesses shrink to pairs that really are close."
     ]
   },
   {
@@ -665,7 +672,8 @@
     "guide": [
       "Same chain mechanic as the population version: one country's area is shown, the next is hidden, guess bigger or smaller and keep the streak alive. No fixed round, no difficulty setting — just how far you can get.",
       "Area rewards different instincts than population does. Kazakhstan is bigger than every country in Western Europe combined, and Algeria is the largest country in Africa by a wide margin despite the Sahara covering most of it.",
-      "A tie between the two countries counts as correct either way, though with real area figures that almost never actually happens."
+      "A tie between the two countries counts as correct either way, though with real area figures that almost never actually happens.",
+      "A few reference points make this game much easier. Russia is by far the largest country at about 17 million km², followed by Canada, China, the United States and Brazil, each between roughly 8.5 and 10 million. Australia is a little under 7.7 million, India about 3.3 million, and France, the largest country in the European Union, about 640,000 including its overseas regions. Knowing roughly where a country sits against those markers settles most comparisons before you need to guess."
     ]
   },
   {
@@ -684,7 +692,8 @@
     "guide": [
       "One mystery country, the same for every player on a given day, changing at midnight. You get six guesses, and each wrong one reveals a new hint, starting with the least revealing (continent) and ending with the most (its flag).",
       "The daily seed means there is no advantage to playing later in the day, and no way to reroll a hard one — today's country is today's country for everyone, which is exactly what makes a good result worth sharing.",
-      "Playing Daily Globe counts toward the same day-streak as every other game on the site, shown on the homepage — it does not need to be the only thing you play today, just one of them."
+      "Playing Daily Globe counts toward the same day-streak as every other game on the site, shown on the homepage — it does not need to be the only thing you play today, just one of them.",
+      "A good strategy is to use your early guesses to narrow down the region rather than to hit the answer straight away. Guessing a large, central country on the continent you suspect gives you more information from the hint that follows than guessing a small one on the edge. Daily Globe draws from all 195 countries, so the country quiz and the map quiz are good practice for the days when the mystery country is an obscure one."
     ]
   },
   {
@@ -756,7 +765,7 @@
     "category": "World Games",
     "tagline": "Fill in the table — 4 minutes on the clock",
     "description": "A ranked table of the countries whose residents travel the most by rail each year, in kilometres per person. Type the country to fill in each of the twenty rows before the clock runs out.",
-    "metaTitle": "Countries with the Most Rail Travel per Capita — Fill-In Quiz",
+    "metaTitle": "Most Rail Travel per Capita by Country — Fill-In Quiz",
     "metaDescription": "Free geography quiz: type the country for each rail-travel row, highest first. Twenty countries, 4 minutes on the clock once you start.",
     "popular": false,
     "mode": "railPerCapita",

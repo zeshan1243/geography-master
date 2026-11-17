@@ -227,7 +227,8 @@ async function checkEngine() {
       const subjects = new Set();
       for (const q of round) {
         // The map quiz answers on the map itself, so it has no option buttons.
-        const expectedOptions = q.interaction === 'map' ? 0 : 4;
+        // Click the Continent always offers all seven continents by design.
+        const expectedOptions = q.interaction === 'map' ? 0 : q.kind === 'continentFacts' ? 7 : 4;
         ok(
           q.options.length === expectedOptions,
           `${type}/${id}: expected ${expectedOptions} options, got ${q.options.length}`

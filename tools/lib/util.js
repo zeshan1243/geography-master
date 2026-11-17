@@ -54,3 +54,18 @@ export function decorate(countries) {
     areaRank: byArea.findIndex((x) => x.code === c.code) + 1
   }));
 }
+
+/**
+ * Fits text into a meta description without cutting a word in half: ends at
+ * the last full sentence that fits, or failing that at a word boundary with
+ * an ellipsis.
+ */
+export function metaClip(text, max = 158) {
+  const clean = String(text).replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const head = clean.slice(0, max);
+  const sentenceEnd = Math.max(head.lastIndexOf('. '), head.lastIndexOf('! '), head.lastIndexOf('? '));
+  if (sentenceEnd >= 70) return head.slice(0, sentenceEnd + 1);
+  const space = head.lastIndexOf(' ', max - 1);
+  return `${head.slice(0, space).replace(/[,;:—–-]+$/, '')}…`;
+}

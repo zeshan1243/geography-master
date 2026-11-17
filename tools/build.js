@@ -500,7 +500,7 @@ function build() {
           title: game.name,
           metaTitle: 'Play All 195 Countries — Name the Countries Quiz',
           metaDescription:
-            'Name all 195 countries from memory in fifteen minutes — the full free-recall challenge, no multiple choice. Prefer a shorter round? Pick a single starting letter instead.',
+            'Name all 195 countries from memory in fifteen minutes — the full free-recall challenge, no multiple choice. Prefer a shorter round? Try a single letter.',
           breadcrumbLabel: 'All 195 Countries',
           intro: game.description
         })

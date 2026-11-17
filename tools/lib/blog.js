@@ -387,6 +387,22 @@ export const POSTS = [
   <li><strong><a href="/countries/mongolia">Ulaanbaatar</a></strong> is landlocked and remote in a different way: it is separated from its nearest neighbouring capitals, Beijing and Moscow, by vast stretches of steppe and desert rather than ocean.</li>
 </ul>
 
+<h2>How the distance between capitals is measured</h2>
+
+<p>Distances like these are usually measured as a straight line over the Earth's surface — the "great-circle" distance — between two reference points, most often the city centres or the official coordinates of each capital. That choice matters more than it sounds. Measured from the nearest built-up edges, Kinshasa and Brazzaville are only a few kilometres apart; measured between city centres, about 8km; measured by the route a traveller actually takes, which includes getting to the ferry port and through two sets of border formalities, the trip can take hours. Lists of the closest or most distant capitals rarely say which method they use, which is one reason their numbers do not always match. When comparing two lists, check the method first.</p>
+
+<h2>Other capitals that are close neighbours</h2>
+
+<p>After Kinshasa and Brazzaville, the pair most often cited is <a href="/countries/austria">Vienna</a> and <a href="/countries/slovakia">Bratislava</a>, around 55km apart along the Danube — close enough that some travellers fly into Vienna's airport to visit Bratislava. The two cities were linked by an interurban tram line in the early twentieth century, and today they are connected by frequent trains, buses and even riverboats.</p>
+
+<p>Across the wide estuary of the Río de la Plata, <a href="/countries/argentina">Buenos Aires</a> and <a href="/countries/uruguay">Montevideo</a> are farther apart, at a little over 200km, but regular ferries make the crossing in a few hours, and many visitors to one city take a day trip to the other.</p>
+
+<h2>Capitals that sit right on a border</h2>
+
+<p>A capital on the edge of its own country sounds odd, but it is surprisingly common. Bratislava is the only national capital that borders two other countries, Austria and Hungary. <a href="/countries/laos">Vientiane</a> lies on the Mekong, with Thailand visible on the opposite bank. <a href="/countries/chad">N'Djamena</a>, the capital of Chad, sits where the Chari and Logone rivers meet, directly across from the Cameroonian town of Kousseri.</p>
+
+<p>Most of these locations made sense when the cities grew: rivers carried trade, and a riverbank was a practical place for a town long before modern borders were drawn along the same water. The border came later and simply followed the river, leaving the city on its edge.</p>
+
 <p>None of these has a single authoritative distance that settles the question outright, which is itself the more honest answer: "most isolated" is a judgement call, while "closest" is something you can point at on a map and measure in one obvious way. If you want to test how well you know which capital goes with which country, the <a href="/game/capital-quiz">capital quiz</a> and its <a href="/game/reverse-capital-quiz">reverse</a> version both cover the full list.</p>
 `
   },
@@ -422,6 +438,18 @@ export const POSTS = [
 <h2>Eswatini and Benin: royal versus administrative, and official versus practical</h2>
 
 <p><a href="/countries/eswatini">Eswatini</a> splits the role between Mbabane, the administrative capital, and Lobamba, the royal and legislative capital and the monarchy's traditional seat. <a href="/countries/benin">Benin</a> has a similar but differently shaped split: Porto-Novo is the official constitutional capital, while the much larger Cotonou is the seat of government and the country's main economic centre.</p>
+
+<h2>Official capitals that the government barely uses</h2>
+
+<p>Several countries have a capital by law that still competes with an older, bigger city in practice. <a href="/countries/ivory-coast">Ivory Coast</a> made Yamoussoukro, the home town of its first president, the official capital in 1983, but Abidjan remains the country's economic centre, and many government offices and most foreign embassies are still there. <a href="/countries/tanzania">Tanzania</a> designated Dodoma as its capital in 1973, but the move took decades; much of the government stayed in Dar es Salaam, the largest city and main port, long after the decision.</p>
+
+<p><a href="/countries/malaysia">Malaysia</a> takes a different approach. Kuala Lumpur remains the capital and home of the national parliament, but most federal ministries moved to Putrajaya, a planned administrative city built from the late 1990s about 25km to the south. In <a href="/countries/chile">Chile</a>, Santiago is the capital, but the National Congress has met in the port city of Valparaíso since 1990.</p>
+
+<p><a href="/countries/montenegro">Montenegro</a> keeps a historical title alive in the same way. Podgorica is the capital and seat of government, but the constitution also names Cetinje, the seat of the old Montenegrin kingdom, as the "Old Royal Capital", and the president keeps an official residence there. It has no practical role in government, but it shows how a country can preserve a former capital's status without splitting real power. Capital quizzes, including this site's, use Podgorica.</p>
+
+<h2>Countries that moved the capital outright</h2>
+
+<p>Other countries have chosen a clean break instead of a split. <a href="/countries/brazil">Brazil</a> moved its capital from Rio de Janeiro to the newly built Brasília in 1960, <a href="/countries/nigeria">Nigeria</a> moved from Lagos to Abuja in 1991, <a href="/countries/kazakhstan">Kazakhstan</a> moved from Almaty to Astana in 1997, and <a href="/countries/myanmar">Myanmar</a> moved its government from Yangon to Naypyidaw in the mid-2000s. In each case the old capital kept its role as the largest city and commercial centre. The <a href="/guides/why-capitals-move">guide to why capitals move</a> covers the reasons in more detail.</p>
 
 <p>The common thread across every example here is the same: a capital city is not one single fact so much as a bundle of roles — executive, legislative, judicial, ceremonial — and most countries simply give every role to the same city. The ones on this list decided, for reasons of history, politics or geography, not to. The full <a href="/lists/countries-and-capitals">list of countries and capitals</a> notes each of these exceptions, and the <a href="/game/capital-quiz">capital quiz</a> only ever tests the one answer that actually matters for each.</p>
 `
@@ -460,6 +488,14 @@ export const POSTS = [
 <h2>Why Guangzhou-Shenzhen sometimes tops the list</h2>
 
 <p>Some urban-area rankings put a combined Guangzhou-Shenzhen region, in <a href="/countries/china">China</a>'s Pearl River Delta, at the top of the world by population — commonly cited in the region of 70 million, ahead of Tokyo. The methodology behind that figure treats the delta's built-up area as one continuous urban footprint rather than as separate administrative cities, which is a genuinely different way of drawing the line than counting Guangzhou and Shenzhen individually, where national statistics list each in the high teens to high twenties of millions. Which total is "right" depends entirely on whether a contiguous built-up area or an administrative city line is the thing being measured — this is one of the more contested corners of urban demography, and different trackers land in different places.</p>
+
+<h2>Old counts and fast growth add more confusion</h2>
+
+<p>Even with an agreed definition, rankings mix numbers from different years. Most countries hold a census about once a decade, a few, such as Japan, Canada and Australia, every five years, and some go much longer without one. A ranking published today may compare a city counted last year with another whose most recent full count is well over a decade old and has been projected forward with assumptions about growth.</p>
+
+<p>The problem is most acute for the fastest-growing cities, many of them in Africa and South Asia. Estimates for <a href="/countries/nigeria">Lagos</a>, for example, vary widely between sources, partly because Nigeria went many years without a completed national census and partly because so much of the city's growth happens in informal settlements that are hard to count. Kinshasa and Dhaka face similar issues. When two trackers disagree by several million people for the same city, the gap usually comes from the different assumptions and data sources they used, not from careless counting.</p>
+
+<p>None of this means the numbers are unreliable, only that each one comes with assumptions attached. A good ranking states its definition, its source and the year of its figures, and comparisons are only fair between figures that share all three.</p>
 
 <h2>There is no single correct ranking</h2>
 

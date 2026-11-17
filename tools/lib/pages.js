@@ -10,7 +10,7 @@
 import { page, adSlot, breadcrumbs, breadcrumbSchema, esc, icon, SITE } from './layout.js';
 import { ARTICLES } from './articles.js';
 import { POSTS } from './blog.js';
-import { fmt, approx, ordinal, slugify, flagOf } from './util.js';
+import { fmt, approx, ordinal, slugify, flagOf, metaClip } from './util.js';
 
 const GAME_SCREEN_HEIGHT_NOTE =
   'Thirty questions a round, or survive as long as you can on Expert.';
@@ -2229,8 +2229,9 @@ export function countryPage(country, countries, details = {}, comparisons = []) 
 </section>`;
 
   return page({
-    title: `${country.name} — Capital, Flag, Population and Facts`,
-    description: `${country.name}: capital ${country.capital}, ${fmt(country.population)} people, currency ${country.currency}. ${detail.facts[0] || ''}`.slice(0, 158),
+    // Long names drop "Population" so the title stays inside ~65 characters.
+    title: country.name.length > 20 ? `${country.name} — Capital, Flag and Facts` : `${country.name} — Capital, Flag, Population and Facts`,
+    description: metaClip(`${country.name}: capital ${country.capital}, ${fmt(country.population)} people, currency ${country.currency}. ${detail.facts[0] || ''}`),
     path: `/countries/${country.slug}`,
     rail: true,
     css: ['/css/games.css', '/css/game.css'],
@@ -2337,7 +2338,7 @@ export function comparisonPage(comparison, countries, allComparisons) {
 
   return page({
     title: `${a.name} vs ${b.name}: Country Comparison | ${SITE.name}`,
-    description: `${a.name} vs ${b.name}: capitals, population, area, currency and language compared, plus ${comparison.intro.slice(0, 100)}`.slice(0, 158),
+    description: metaClip(`${a.name} vs ${b.name}: ${comparison.intro}`),
     path: `/compare/${comparison.slug}`,
     css: ['/css/games.css'],
     body,
@@ -2422,6 +2423,15 @@ export function toolsIndex() {
       <span class="play">Open →</span>
     </a>`
     ).join('\n    ')}
+  </div>
+
+  <div class="article">
+    <h2>Why compare countries at true scale?</h2>
+    <p>Most world maps use the Mercator projection, which keeps shapes recognisable but stretches everything near the poles. Greenland looks about the size of Africa on a Mercator map, when Africa is actually around fourteen times larger; Canada and Russia look far bigger than they are compared with countries near the equator such as Brazil, the Democratic Republic of the Congo or Indonesia. The <a href="/guides/map-projections-explained">map projections guide</a> explains why every flat map has to distort something.</p>
+    <p>The size comparison tool sidesteps the problem by working from each country's actual land area in square kilometres, so two countries can be put side by side at the same scale. It also shows population and continent, which makes it easy to see how differently two countries of similar size can be populated.</p>
+
+    <h2>Related reference pages</h2>
+    <p>If you would rather browse than compare two countries at a time, the <a href="/lists/largest-countries">largest countries</a>, <a href="/lists/smallest-countries">smallest countries</a> and <a href="/lists/countries-by-population">countries by population</a> lists rank all 195 countries, and the <a href="/compare/">country comparisons</a> section looks at pairs of countries that are often confused or compared.</p>
   </div>
 </section>`;
 
@@ -2663,7 +2673,12 @@ export function continentPage(continent, countries) {
       ${continent.facts.map((f) => `<li>${esc(f)}</li>`).join('\n      ')}
     </ul>
   </div>
-
+${continent.about?.length ? `
+  <h2>About ${esc(continent.name)}</h2>
+  <div class="article">
+    ${continent.about.map((para) => `<p>${esc(para)}</p>`).join('\n    ')}
+  </div>
+` : ''}
   ${adSlot()}
 
   <h2>${inContinent.length ? `Countries in ${esc(continent.name)}` : 'Countries'}</h2>
@@ -2682,8 +2697,10 @@ export function continentPage(continent, countries) {
 </section>`;
 
   return page({
-    title: `${continent.name} — ${continent.countries ? `${continent.countries} Countries, ` : ''}Capitals, Map Facts`,
-    description: `${continent.name}: ${continent.summary.slice(0, 130)}`,
+    title: continent.countries
+      ? `${continent.name} — ${continent.countries} Countries, Capitals, Map Facts`
+      : `${continent.name} — Ice, Climate and the Antarctic Treaty`,
+    description: metaClip(continent.summary),
     path: `/continents/${continent.slug}/`,
     rail: true,
     css: ['/css/games.css', '/css/game.css'],
@@ -2928,7 +2945,7 @@ export function privacyPage() {
     description: `How ${SITE.name} handles local storage, cookies, advertising and analytics.`,
     h1: 'Privacy policy',
     content: `
-    <p class="muted">Last updated: 11 August 2026</p>
+    <p class="muted">Last updated: 17 November 2026</p>
 
     <p>This policy explains what ${SITE.name} ("we", "the site") stores, what third parties may store, and what choices you have. Plain language, no lawyer-speak where it can be avoided.</p>
 
@@ -2946,37 +2963,42 @@ export function privacyPage() {
     <p>This data stays on your device. It is not transmitted to us or to anyone else, and it is not linked to any identity. You can erase it at any time by clearing site data in your browser settings; the site will simply start again from zero.</p>
 
     <h2>3. Cookies</h2>
-    <p>We set no cookies of our own. Third-party services described below may set cookies in your browser.</p>
+    <p>We set no cookies of our own. The third-party services described below — Google AdSense and Google Analytics — may set cookies or use similar technologies (such as local storage or device identifiers) in your browser.</p>
 
-    <h2>4. Advertising</h2>
-    <p>This site displays advertising to cover its running costs. Advertising is currently served through a third-party ad network (Adsterra), and this may change as our monetisation setup evolves.</p>
+    <h2>4. Advertising (Google AdSense)</h2>
+    <p>This site uses <strong>Google AdSense</strong>, a service of Google LLC / Google Ireland Limited, to display advertising that helps cover its running costs.</p>
     <ul>
-      <li>Ad scripts are loaded from our advertising partner's own servers, which may set cookies in your browser to measure ad performance and limit how often you see the same ad.</li>
-      <li>Serving an ad requires your browser to contact our advertising partner's servers directly, which can see information such as your browser type, approximate location (from your IP address) and the page you are viewing.</li>
-      <li>You can opt out of third-party vendor cookies for personalised advertising at <a href="https://www.aboutads.info/choices/" rel="nofollow noopener" target="_blank">aboutads.info/choices</a>.</li>
+      <li>Third-party vendors, including Google, use cookies to serve ads based on your prior visits to this website or other websites.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to you based on your visit to this site and/or other sites on the Internet.</li>
+      <li>You may opt out of personalised advertising by visiting Google's <a href="https://adssettings.google.com/" rel="nofollow noopener" target="_blank">Ads Settings</a>. You can also opt out of some third-party vendors' use of cookies for personalised advertising at <a href="https://www.aboutads.info/choices/" rel="nofollow noopener" target="_blank">aboutads.info/choices</a> or, in Europe, <a href="https://www.youronlinechoices.eu/" rel="nofollow noopener" target="_blank">youronlinechoices.eu</a>.</li>
+      <li>If you opt out, you will still see ads, but they will not be personalised.</li>
     </ul>
-    <p>Where required by law, we ask for your consent before non-essential cookies are set, and you can withdraw that consent at any time through your browser settings.</p>
+    <p>To learn more about how Google uses information from sites that use its services, see <a href="https://policies.google.com/technologies/partner-sites" rel="nofollow noopener" target="_blank">How Google uses information from sites or apps that use our services</a> and Google's <a href="https://policies.google.com/technologies/ads" rel="nofollow noopener" target="_blank">advertising policies</a>.</p>
 
-    <h2>5. Analytics</h2>
-    <p>We may use a privacy-respecting analytics service to count page views and understand which games are played. Any such analytics is configured to record aggregate usage only — no attempt is made to identify individual visitors or to combine analytics data with advertising data.</p>
+    <h2>5. Consent</h2>
+    <p>Visitors in the European Economic Area, the United Kingdom and Switzerland are shown a consent message, provided through Google's certified consent management platform, before personalised ads or non-essential cookies are used. You can choose to consent, refuse, or manage individual options, and you can change your choice at any time using the privacy settings link shown by that message. If you do not consent, Google may still serve non-personalised or limited ads, which use cookies only for purposes such as frequency capping, aggregated reporting and combating fraud.</p>
 
-    <h2>6. Third-party services</h2>
-    <p>Beyond advertising and analytics, the site is deliberately plain: there are no social widgets, no embedded videos, no comment system and no external fonts. The advertising network named in section 4 loads its own script from its own servers to display ads — see that section for what it does.</p>
+    <h2>6. Analytics (Google Analytics)</h2>
+    <p>We use <strong>Google Analytics</strong> to understand how many people visit the site and which pages and games are used, so we can improve them. Google Analytics uses cookies to collect information such as the pages you visit, how long you stay, your browser and device type, and your approximate location derived from your IP address. We look only at aggregate reports — we do not attempt to identify individual visitors.</p>
+    <p>You can prevent Google Analytics from recording your visits with the <a href="https://tools.google.com/dlpage/gaoptout" rel="nofollow noopener" target="_blank">Google Analytics opt-out browser add-on</a>. See <a href="https://policies.google.com/privacy" rel="nofollow noopener" target="_blank">Google's privacy policy</a> for more.</p>
 
-    <h2>7. Children</h2>
+    <h2>7. Third-party services</h2>
+    <p>Beyond advertising and analytics, the site is deliberately plain: there are no social widgets, no embedded videos, no comment system and no external fonts. Google AdSense and Google Analytics each load their own scripts from Google's servers; those requests can reveal your IP address, browser type and the page you are viewing to Google.</p>
+
+    <h2>8. Children</h2>
     <p>The site is suitable for all ages and is used in classrooms. We do not knowingly collect personal information from anyone, including children. If you believe a child has sent us personal information by email, contact us and we will delete it.</p>
 
-    <h2>8. Your rights</h2>
-    <p>Because we hold no personal data about you, there is generally nothing for us to export or delete on request. For data held by advertising partners, use the opt-out links in section 4, which are controlled by those partners rather than by us.</p>
+    <h2>9. Your rights</h2>
+    <p>Because we hold no personal data about you, there is generally nothing for us to export or delete on request. For data held by advertising partners, use the opt-out links in sections 4 and 6, or the consent choices described in section 5. Those controls are operated by Google rather than by us.</p>
     <p>Visitors in the European Economic Area, the United Kingdom, Switzerland and California have specific rights under the GDPR, UK GDPR and CCPA respectively. Requests can be made through the <a href="/contact">contact page</a>.</p>
 
-    <h2>9. Data transfers and retention</h2>
-    <p>We retain no visitor data, so there is nothing to transfer or to age out. Third parties named above operate their own retention schedules, documented in their own policies.</p>
+    <h2>10. Data transfers and retention</h2>
+    <p>We retain no visitor data, so there is nothing to transfer or to age out. Google operates its own retention schedules for advertising and analytics data, documented in its own policies.</p>
 
-    <h2>10. Changes to this policy</h2>
+    <h2>11. Changes to this policy</h2>
     <p>If this policy changes materially, the date at the top of the page will be updated. Continued use of the site after a change means you accept the revised policy.</p>
 
-    <h2>11. Contact</h2>
+    <h2>12. Contact</h2>
     <p>Questions about privacy can be sent through the <a href="/contact">contact page</a>.</p>`
   });
 }
@@ -2985,7 +3007,7 @@ export function termsPage() {
   return simplePage({
     slug: 'terms',
     title: `Terms of Use — ${SITE.name}`,
-    description: `The terms under which ${SITE.name} is provided.`,
+    description: `The terms of use for ${SITE.name}: how the free geography quizzes may be used, content accuracy, advertising, external links and liability.`,
     h1: 'Terms of use',
     content: `
     <p class="muted">Last updated: 11 August 2026</p>
@@ -3241,8 +3263,6 @@ export function achievementsPage() {
   <p class="badge-progress" data-badge-progress></p>
 
   <div class="badge-grid" data-achievements></div>
-
-  ${adSlot()}
 
   <div class="article">
     <h2>How this works</h2>
