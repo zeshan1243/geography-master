@@ -12,13 +12,13 @@
 
 The single most likely cause of the rejection was technical, not editorial: since commit `979f0e8` (18 Oct 2026) the build has emitted **Adsterra** ad code on every page and **suppressed the AdSense script entirely**, so AdSense's review crawler found no AdSense code and a different ad network instead. The privacy policy also named only Adsterra and contained none of Google's required advertising disclosures.
 
-Both are fixed. The rest of the site is technically sound (no broken links, correct canonicals, valid `ads.txt`, structured data, one H1 per page). The remaining risk is content depth on the 195 templated country pages, which has been documented but deliberately not mass-rewritten in this pass.
+Both are fixed. The rest of the site is technically sound (no broken links, correct canonicals, valid `ads.txt`, structured data, one H1 per page). The 195 country pages, previously the main content risk, now each carry a written, fact-checked paragraph.
 
 | Severity | Found | Fixed in code | Manual / deferred |
 |---|---|---|---|
 | Critical | 1 | 1 | — |
 | High | 2 | 1 | 1 (consent message) |
-| Medium | 6 | 5 | 1 (country pages) |
+| Medium | 6 | 6 | — |
 | Low | 5 | 4 | 1 (og:image) |
 
 ---
@@ -50,10 +50,12 @@ Both are fixed. The rest of the site is technically sound (no broken links, corr
 - **Evidence:** e.g. `/compare/japan-vs-china` ended "…classical culture we"; 113 country pages, 23 compare pages, 7 continent pages. Cause: fixed-length `.slice()` at `tools/lib/pages.js` (country, compare and continent page builders).
 - **Change:** new `metaClip()` in `tools/lib/util.js` ends at the last complete sentence or word boundary (with "…"). All indexable descriptions now 70–165 characters and end cleanly; verified across the whole build.
 
-**M2 — Country pages are largely template text** — ⏸ Deferred (documented)
+**M2 — Country pages are largely template text** — ✅ Fixed
 - **Evidence:** 195 pages, median ~300 words in `<main>`. Structure: generated intro sentences from `data/countries.json` fields, a data table, and three hand-written facts per country (`data/details/*.json`), plus related links.
 - **Why it matters:** at this scale, templated pages are the most plausible trigger for a "low value content" judgement.
-- **Recommendation:** add one genuinely written paragraph (100–150 words: physical geography, history, what makes the country distinctive) per country, region by region, fact-checked. ~25,000 words; not mass-generated in this pass to avoid producing the thin, repetitive text it is meant to replace.
+- **Change:** a written "About {country}" paragraph (140–170 words) for all 195 countries, stored as `about` in `data/details/*.json` and rendered by `countryPage()`. Each covers physical geography, how the state formed, and what shapes it today, without repeating the page's table or existing facts. Every paragraph was reviewed for accuracy; contested topics (disputed territories, ongoing conflicts) are stated neutrally and nothing after 2024 or naming current leaders is included. A new check in `tools/check.js` requires a paragraph of at least 100 words for every country.
+- **Result:** country pages now 435–505 words (median 466, up from ~300); share of text unique to each page up from ~77% to ~85%.
+- **Related data fix:** Bulgaria adopted the euro on 1 January 2026, but `data/countries.json` still listed the Bulgarian lev (also used by the currency quiz). Corrected, along with the euro-member count in `data/continents.json` (20 → 21).
 
 **M3 — Compare pages short** — ✅ Improved
 - **Evidence:** 23 pages at 188–272 words, though 94% unique text.
@@ -95,7 +97,7 @@ Both are fixed. The rest of the site is technically sound (no broken links, corr
 |---|---|---|
 | All pages | 374 built / 306 indexable | AdSense meta + loader; Adsterra removed |
 | `/privacy-policy`, `/terms` | 2 | Disclosures rewritten; meta description |
-| `/countries/*` | 195 | Clean meta descriptions; long-name titles |
+| `/countries/*` | 195 | Written "About" paragraph; clean meta descriptions; long-name titles; Bulgaria currency |
 | `/compare/*` | 23 | New paragraph each; clean descriptions |
 | `/continents/*` | 7 | "About" section; clean descriptions; Antarctica title |
 | `/game/*` | 9 write-ups, 1 title | Expanded guidance; factual fix |
@@ -141,7 +143,7 @@ Both are fixed. The rest of the site is technically sound (no broken links, corr
 | Compare | 23 | 93–94% | Unique but short — improved |
 | Continents | 8 | 87–94% | Improved with written sections |
 | Games | 39 indexable | 44–75% | Shared "difficulty and scoring" block is legitimate; each has its own guide text |
-| Countries | 195 | ~77% (inflated by names/numbers) | **Main remaining risk** — mostly templated (M2) |
+| Countries | 195 | ~85% (was ~77%) | Improved — written paragraph per country (M2); data table and related links remain templated by design |
 
 *Share of 6-word sequences not shared with ≥30% of pages in the same section.
 
@@ -159,7 +161,7 @@ Both are fixed. The rest of the site is technically sound (no broken links, corr
 
 ## 7. Remaining risks
 
-- **Templated country pages (M2)** — the largest residual content risk.
+- **Country pages** — improved substantially (M2), but still partly structured data; they are reference pages, and reviewers may weigh them below the guides.
 - **Interactive pages** — game pages are primarily tools; their written guides help, but reviewers may still weigh them as lighter content.
 - **Site age** — first commit 1 July 2026; a young domain with limited traffic is sometimes rejected or deferred regardless of quality.
 - **Consent** — until the CMP message is published, the privacy policy's §5 describes something not yet in place.
@@ -167,4 +169,4 @@ Both are fixed. The rest of the site is technically sound (no broken links, corr
 ## 8. Final AdSense readiness assessment
 
 **Before this audit:** not reviewable — AdSense code absent, another network active, privacy policy non-compliant.
-**After deployment + manual steps 1–5:** technically ready and policy-consistent, with good editorial content in the guides, blog and lists. The country pages are the main factor that could still lead to a "low value content" outcome; writing the per-country paragraphs (M2) is the recommended next step if the next review is unsuccessful — or before reapplying, if waiting is acceptable.
+**After deployment + manual steps 1–5:** technically ready and policy-consistent, with good editorial content in the guides, blog and lists. With the per-country paragraphs in place, no specific content weakness identified in this audit remains unaddressed. Remaining uncertainty is mainly the domain's age and Google's own judgement of interactive pages.

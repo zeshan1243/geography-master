@@ -508,7 +508,7 @@ export const ARTICLES = [
 
 <h2>A currency union is not a political union</h2>
 
-<p>The clearest case is the euro. Around twenty countries use it, and using it requires no other form of integration — Montenegro and Kosovo both use the euro unilaterally without being EU members at all, while <a href="/countries/san-marino">San Marino</a>, <a href="/countries/vatican-city">Vatican City</a>, <a href="/countries/monaco">Monaco</a> and Andorra each use it under individual monetary agreements. Not every EU member uses it either: Denmark and Sweden have stayed out, by opt-out and by choice respectively, and several newer members are still working toward joining.</p>
+<p>The clearest case is the euro. More than twenty countries use it, and using it requires no other form of integration — Montenegro and Kosovo both use the euro unilaterally without being EU members at all, while <a href="/countries/san-marino">San Marino</a>, <a href="/countries/vatican-city">Vatican City</a>, <a href="/countries/monaco">Monaco</a> and Andorra each use it under individual monetary agreements. Not every EU member uses it either: Denmark and Sweden have stayed out, by opt-out and by choice respectively, and several newer members are still working toward joining.</p>
 
 <p>The Eastern Caribbean dollar is a smaller, less-discussed version of the same idea. Six independent countries — Antigua and Barbuda, Dominica, Grenada, Saint Kitts and Nevis, Saint Lucia and Saint Vincent and the Grenadines — share it, each with its own government, none with a vote over the others' fiscal policy. The currency is fixed to the US dollar and managed by a regional central bank.</p>
 

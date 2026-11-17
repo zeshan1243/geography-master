@@ -127,6 +127,10 @@ function checkDetails() {
     ok(d.facts.every((f) => f.split(' ').length >= 10), `${code}: a fact is too short to be worth showing`);
     ok(Array.isArray(d.cities) && d.cities.length > 0, `${code}: no cities listed`);
     ok(Boolean(d.region), `${code}: no region`);
+    // The written "About" paragraph is what keeps country pages from being
+    // pure template output — every country needs one of real length.
+    const aboutWords = (d.about || '').split(/\s+/).filter(Boolean).length;
+    ok(aboutWords >= 100, `${code}: "about" paragraph missing or under 100 words (${aboutWords})`);
     ok(d.highest && d.highest.name && d.highest.m > 0, `${code}: highest point missing`);
 
     // Borders must be mutual. This is the strongest check available on the

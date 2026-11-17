@@ -109,7 +109,7 @@
 {"name":"Belarus","code":"BY","capital":"Minsk","continent":"Europe","currency":"Belarusian Ruble","language":"Belarusian","population":9500000,"area":207600,"tier":2},
 {"name":"Belgium","code":"BE","capital":"Brussels","continent":"Europe","currency":"Euro","language":"Dutch","population":11700000,"area":30528,"tier":1},
 {"name":"Bosnia and Herzegovina","code":"BA","capital":"Sarajevo","continent":"Europe","currency":"Convertible Mark","language":"Bosnian","population":3200000,"area":51197,"tier":3},
-{"name":"Bulgaria","code":"BG","capital":"Sofia","continent":"Europe","currency":"Bulgarian Lev","language":"Bulgarian","population":6500000,"area":110879,"tier":2},
+{"name":"Bulgaria","code":"BG","capital":"Sofia","continent":"Europe","currency":"Euro","language":"Bulgarian","population":6500000,"area":110879,"tier":2},
 {"name":"Croatia","code":"HR","capital":"Zagreb","continent":"Europe","currency":"Euro","language":"Croatian","population":3900000,"area":56594,"tier":2},
 {"name":"Czechia","code":"CZ","capital":"Prague","continent":"Europe","currency":"Czech Koruna","language":"Czech","population":10500000,"area":78867,"tier":2},
 {"name":"Denmark","code":"DK","capital":"Copenhagen","continent":"Europe","currency":"Danish Krone","language":"Danish","population":5900000,"area":43094,"tier":1},

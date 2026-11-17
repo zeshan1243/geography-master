@@ -2168,7 +2168,12 @@ export function countryPage(country, countries, details = {}, comparisons = []) 
       ${detail.facts.map((f) => `<li>${esc(f)}</li>`).join('\n      ')}
     </ul>
   </div>
-
+${detail.about ? `
+  <div class="article">
+    <h2>About ${esc(country.name)}</h2>
+    <p>${esc(detail.about)}</p>
+  </div>
+` : ''}
   <div class="btn-row" style="margin: 24px 0 8px">
     <a class="btn btn-primary" href="/game/flag-quiz?difficulty=medium&amp;autostart=1">🚩 Test your flag knowledge</a>
     <a class="btn btn-secondary" href="/game/capital-quiz?difficulty=medium&amp;autostart=1">🏛️ Capital quiz</a>
